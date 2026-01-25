@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좀비 아포칼립스 생존 유형 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="좀비 바이러스가 퍼진 세상, 나의 생존 확률과 역할은? 배신자, 영웅, 혹은 최초 감염자?">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
+
+    <div class="container">
+        <div class="ad-placeholder">(광고 - 상단)</div>
+
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">🧟‍♂️</div>
+            <h1>좀비 아포칼립스 생존 테스트</h1>
+            <p>도시가 폐쇄되었습니다.<br>15가지 극한 상황에서 당신의 선택은?</p>
+            <button class="btn" style="background:#2d3436;" onclick="start()">생존 시작하기</button>
+        </div>
+
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#00b894;"></div></div>
+            <h2 id="q-text" style="min-height: 80px;">상황</h2>
+            <div id="answer-box"></div>
+        </div>
+
+        <div id="result-screen" class="content-box hidden">
+            <p>당신의 생존 유형은...</p>
+            <h1 id="result-title" style="color:#d63031;">결과</h1>
+            <h3 id="result-sub" style="color:#555; margin-bottom:20px;">서브</h3>
+            <div id="result-desc" style="background:#dfe6e9; padding:25px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
+            <button class="btn" onclick="location.reload()">다시 시도</button>
+        </div>
+
+        <div class="article-section">
+            <div class="ad-placeholder">(광고 - 하단)</div>
+            <h3>좀비 사태 생존 수칙</h3>
+            <p>1. 소음을 내지 마라.<br>2. 혼자 다니지 마라.<br>3. 의심하고 또 의심하라.<br>이 테스트는 당신의 위기 대처 능력과 도덕성, 그리고 생존 본능을 종합적으로 분석합니다.</p>
+        </div>
+        
+        <div class="share-container" style="text-align:center; margin-top:30px;">
+             <button onclick="copyLink()" style="background:#eee; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 결과 링크 복사</button>
+        </div>
+
+        <footer>
+            <p>© 2024 심심풀이 연구소</p>
+            <p><a href="https://forms.gle/본인링크" target="_blank">문의하기</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const qData = [
+            { q: "[D-Day] 뉴스에서 '사람을 무는 폭동' 속보가 나온다. 당신의 행동은?", a: "창문을 잠그고 집에 있는 무기와 식량을 챙긴다.", b: "무슨 일인지 확인하러 밖으로 나가거나 SNS를 켠다.", type: "survive" },
+            { q: "[Day 1] 편의점을 털어야 한다. 딱 하나만 챙길 수 있다면?", a: "유통기한이 긴 통조림과 물", b: "당장 좀비를 때려잡을 야구배트", type: "smart" },
+            { q: "[Day 2] 좀비가 현관문을 쾅쾅 두드린다. 소리가 점점 커진다.", a: "죽은 척 숨죽이고 없는 척한다.", b: "무기를 들고 문을 열어 선제공격한다.", type: "survive" },
+            { q: "[Day 3] 도망치던 중 낯선 어린아이를 발견했다.", a: "아이가 울면 좀비가 꼬인다. 무시하고 지나간다.", b: "위험하지만 아이를 데리고 함께 이동한다.", type: "human" },
+            { q: "[Day 5] 무기를 선택할 기회가 왔다.", a: "소음이 크지만 확실한 샷건(총)", b: "조용하고 내구성이 좋은 쇠파이프", type: "smart" },
+            { q: "[Day 7] 동료가 팔을 물린 것 같다. 하지만 긁힌 거라고 우긴다.", a: "모두를 위해 즉시 쫓아내거나 처리한다.", b: "확실하지 않으니 일단 격리하고 지켜본다.", type: "cold" },
+            { q: "[Day 10] 식량이 떨어졌다. 좀비가 우글거리는 대형 마트 vs 안전하지만 먹을 게 없는 산속?", a: "위험해도 마트로 간다. 굶어 죽을 순 없다.", b: "일단 산속으로 가서 나무 열매라도 찾는다.", type: "brave" },
+            { q: "[Day 15] 밤에 불을 피우면 따뜻하지만 위치가 노출된다.", a: "추워도 참는다. 불은 절대 금지.", b: "너무 춥다. 작게라도 불을 피운다.", type: "survive" },
+            { q: "[Day 20] 군대 구조 신호가 들린다. 하지만 거리가 100km다.", a: "함정일 수도 있다. 여기서 버틴다.", b: "희망을 걸고 구조 지점으로 이동한다.", type: "smart" },
+            { q: "[Day 25] 좀비 떼에 포위됐다. 옆에 있는 동료를 미끼로 던지면 나는 살 수 있다.", a: "미안하다... 동료를 밀치고 도망친다.", b: "같이 싸우다 죽더라도 의리를 지킨다.", type: "cold" },
+            { q: "[Day 30] 튼튼한 차를 발견했다. 누구를 태울 것인가?", a: "전투력이 강한 군인과 경찰", b: "기술이 있는 의사와 정비공", type: "smart" },
+            { q: "[Day 40] 낯선 생존자 그룹이 우리 식량을 뺏으려 한다.", a: "평화롭게 대화로 협상을 시도한다.", b: "뺏기기 전에 우리가 먼저 기습한다.", type: "brave" },
+            { q: "[Day 50] 좀비에게 물렸다. 변하기까지 1시간 남았다.", a: "동료들에게 피해가 안 가게 스스로 끝낸다.", b: "혹시 항체 보유자일 수도 있다. 끝까지 버틴다.", type: "human" },
+            { q: "[Day 60] 드디어 안전지대(벙커)를 발견했다. 하지만 문이 잠겨있다.", a: "문을 부수고 들어간다.", b: "주변을 수색해 다른 입구나 열쇠를 찾는다.", type: "survive" },
+            { q: "[Last] 좀비 사태가 끝났다. 당신은 어떤 모습일까?", a: "살아남은 사람들을 이끄는 리더", b: "어디선가 조용히 혼자 살고 있는 생존자", type: "role" }
+        ];
+
+        let step = 0;
+        let score = 0; // 생존 점수
+        let humanity = 0; // 인간성 점수
+
+        function start(){
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            next();
+        }
+
+        function next(){
+            if(step >= qData.length){ result(); return; }
+            const q = qData[step];
+            document.getElementById('bar').style.width = ((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText = q.q;
+            const box = document.getElementById('answer-box');
+            box.innerHTML = '';
+
+            let btnA = document.createElement('button');
+            btnA.className = 'btn-option';
+            btnA.innerText = q.a;
+            btnA.onclick = () => { calc(q, 'A'); };
+            
+            let btnB = document.createElement('button');
+            btnB.className = 'btn-option';
+            btnB.innerText = q.b;
+            btnB.onclick = () => { calc(q, 'B'); };
+
+            box.appendChild(btnA);
+            box.appendChild(btnB);
+        }
+
+        function calc(q, ans) {
+            // 점수 로직 (생존력 우선)
+            if(q.type === 'survive' || q.type === 'smart') {
+                if((q.type==='survive' && ans==='A') || (q.type==='smart' && ans==='B') || (q.type==='smart' && ans==='A' && q.q.includes('샷건')===false)) score += 10;
+                else score += 5; // 오답도 점수는 줌
+            } else if(q.type === 'cold') {
+                if(ans === 'A') { score += 10; humanity -= 5; } // 냉정하면 생존+ 인간성-
+                else { score += 0; humanity += 10; }
+            } else if(q.type === 'human') {
+                if(ans === 'B') { humanity += 10; score -= 5; } // 착하면 생존-
+                else { score += 5; }
+            } else {
+                score += 5;
+            }
+            step++;
+            next();
+        }
+
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            let title, sub, desc;
+            
+            // 점수(최대 약 150)와 인간성 기반 결과 분류
+            if(score >= 120) {
+                title = "🤴 신인류의 지배자 '황제'";
+                sub = "생존 확률: 99.9%";
+                desc = "당신은 완벽한 생존 기계입니다. 냉철한 판단력과 뛰어난 무력, 그리고 카리스마로 살아남은 사람들을 규합하여 새로운 제국을 건설할 것입니다. 다만, 피도 눈물도 없는 독재자가 될 수 있으니 조심하세요.";
+            } else if(score >= 100 && humanity >= 20) {
+                title = "🦸‍♂️ 모두가 우러러보는 '영웅'";
+                sub = "생존 확률: 90%";
+                desc = "영화 주인공 그 자체입니다! 뛰어난 생존 능력뿐만 아니라 약자를 돕는 따뜻한 마음까지 가졌습니다. 많은 사람이 당신을 따르며, 위기의 순간에 빛을 발하는 진정한 리더입니다.";
+            } else if(score >= 100 && humanity < 20) {
+                title = "😈 악명 높은 '빌런'";
+                sub = "생존 확률: 95%";
+                desc = "살아남기 위해서라면 동료도 미끼로 쓸 수 있는 냉혈한입니다. 생존 능력은 탑급이지만, 주변에 적이 많아 잘 때도 눈을 뜨고 자야 할지도 모릅니다. 좀비보다 당신이 더 무섭네요.";
+            } else if(score >= 70) {
+                title = "🏃‍♂️ 눈치 백단 '프로 도망러'";
+                sub = "생존 확률: 60%";
+                desc = "싸움 실력은 평범하지만, 도망치는 속도와 눈치는 국가대표급입니다. 위험한 곳은 절대 가지 않으며, 끈질긴 생명력으로 가늘고 길게 살아남습니다. '강한 자가 사는 게 아니라, 사는 자가 강한 것'이 당신의 모토입니다.";
+            } else if(score >= 50 && humanity >= 30) {
+                title = "🛡️ 착해서 슬픈 '인간 방패'";
+                sub = "생존 확률: 30%";
+                desc = "마음이 너무 여려 이 험한 세상에 어울리지 않습니다. 낯선 사람을 도와주다가 뒤통수를 맞거나, 동료를 구하려다 대신 희생할 운명입니다. 다음 생엔 좀 더 이기적으로 태어나세요.";
+            } else if(score >= 40) {
+                title = "🥔 방구석 '식량 창고'";
+                sub = "생존 확률: 10%";
+                desc = "집 밖은 위험해! 집에 있는 라면이 떨어질 때까지만 생존합니다. 식량이 떨어지면 어쩔 수 없이 나갔다가 바로 쫓기게 됩니다. 운이 좋으면 구조되겠지만, 글쎄요...";
+            } else {
+                title = "🧟‍♂️ 오프닝 5분 컷 '최초 감염자'";
+                sub = "생존 확률: 0%";
+                desc = "안타깝습니다. 영화 시작하자마자 '어? 저게 뭐지?' 하고 가까이 갔다가 물리는 엑스트라 1호입니다. 호기심이 너무 많거나 상황 파악이 너무 느립니다. 좀비가 되어서라도 오래 사세요...";
+            }
+
+            document.getElementById('result-title').innerText = title;
+            document.getElementById('result-sub').innerText = sub;
+            document.getElementById('result-desc').innerHTML = desc;
+        }
+
+        function copyLink() { navigator.clipboard.writeText(window.location.href); alert("링크 복사 완료!"); }
+    </script>
+</body>
+</html>

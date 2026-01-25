@@ -115,5 +115,68 @@
             }
         }
     </script>
+
+<style>
+    .share-container {
+        text-align: center;
+        margin: 40px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 15px;
+    }
+    .share-title { font-weight: bold; margin-bottom: 15px; color: #555; }
+    .share-btn-group { display: flex; justify-content: center; gap: 10px; }
+    .share-btn {
+        width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer;
+        display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+        transition: transform 0.2s; color: white;
+    }
+    .share-btn:hover { transform: scale(1.1); }
+    .btn-kakao { background-color: #FEE500; color: #3C1E1E; } /* 링크복사로 대체 */
+    .btn-twitter { background-color: #000000; } /* X (트위터) */
+    .btn-facebook { background-color: #1877F2; }
+    .btn-link { background-color: #8c7ae6; }
+</style>
+
+<div class="container">
+    <div class="share-container">
+        <div class="share-title">친구들에게 공유하고 결과 비교하기</div>
+        <div class="share-btn-group">
+            <button class="share-btn btn-twitter" onclick="shareSNS('twitter')" title="트위터(X) 공유">𝕏</button>
+            
+            <button class="share-btn btn-facebook" onclick="shareSNS('facebook')" title="페이스북 공유">f</button>
+            
+            <button class="share-btn btn-link" onclick="copyLink()" title="링크 복사">🔗</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function shareSNS(sns) {
+        const thisUrl = window.location.href;
+        const snsTitle = document.title;
+        let url = '';
+
+        if(sns === 'twitter') {
+            url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(snsTitle) + '&url=' + encodeURIComponent(thisUrl);
+        } else if(sns === 'facebook') {
+            url = 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(thisUrl);
+        }
+
+        if(url) {
+            window.open(url, '_blank');
+        }
+    }
+
+    function copyLink() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            alert('링크가 복사되었습니다! 친구에게 붙여넣기(Ctrl+V) 하세요.');
+        }).catch(err => {
+            alert('링크 복사에 실패했습니다. 주소창을 복사해주세요.');
+        });
+    }
+</script>
+    
 </body>
 </html>

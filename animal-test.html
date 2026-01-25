@@ -1,74 +1,78 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내 성격과 닮은 동물 찾기 | 심심풀이 연구소</title>
-    <meta name="description" content="나는 강아지상일까 고양이상일까? 성격으로 알아보는 동물상 테스트입니다.">
+    <title>정밀 동물상 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="10가지 정밀 동물 유형으로 알아보는 나의 성격! 사자부터 나무늘보까지, 나는 어떤 동물일까?">
     <link rel="stylesheet" href="style.css">
 </head>
-<body> 
+<body>
     <header>
         <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
     </header>
- 
-    <div class="container">
 
-        <div class="ad-placeholder" style="margin-bottom: 30px;">
-            (구글 애드센스 광고 - 상단)
-        </div>
-        
+    <div class="container">
+        <div class="ad-placeholder" style="margin-bottom: 30px;">(구글 애드센스 광고 - 상단)</div>
+
         <div id="start-screen" class="content-box">
-            <h1>🐶 내 성격과 닮은 동물은?</h1>
-            <p>평소 행동 패턴으로 알아보는<br>나의 소울 애니멀 테스트</p>
-            <img src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" alt="동물 아이콘" style="width:100px; margin: 20px 0;">
-            <button class="btn" onclick="startTest()">테스트 시작하기</button>
+            <h1>🦁 정밀 동물상 테스트</h1>
+            <p>12가지 질문을 통해<br>당신의 무의식 속 동물을 찾아냅니다.</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="동물" style="width:100px; margin: 20px 0;">
+            <button class="btn" onclick="startTest()">분석 시작하기</button>
         </div>
 
         <div id="question-screen" class="content-box hidden">
             <div class="progress-bar"><div class="progress-fill" id="progressBar"></div></div>
-            <h2 id="qTitle">질문 내용</h2>
-            <button class="btn" id="btnA" onclick="selectAnswer('A')">답변 A</button>
-            <button class="btn" id="btnB" onclick="selectAnswer('B')">답변 B</button>
+            <h2 id="qTitle" style="min-height: 60px;">질문 내용</h2>
+            <div style="margin-top: 30px;">
+                <button class="btn" id="btnA" onclick="selectAnswer('A')" style="margin-bottom: 10px;">답변 A</button>
+                <button class="btn" id="btnB" onclick="selectAnswer('B')">답변 B</button>
+            </div>
         </div>
 
         <div id="loading-screen" class="content-box hidden">
-            <h2>🔎 분석 중입니다...</h2>
-            <p>당신의 성향 데이터를 동물 데이터와 대조하고 있습니다.</p>
+            <h2>🧬 유전자 분석 중...</h2>
+            <p>당신의 성향 데이터를 10가지 동물 유형과 대조하고 있습니다.</p>
         </div>
 
         <div id="result-screen" class="content-box hidden">
-            <p>나와 닮은 동물은?</p>
-            <h1 id="resultTitle" style="color:var(--primary-color);">결과 동물 이름</h1>
-            <div id="resultDesc" style="text-align: left; background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 20px 0;">
-                설명 내용
+            <p>당신의 소울 애니멀은?</p>
+            <h1 id="resultTitle" style="color:var(--primary-color); font-size: 2.5rem;">결과 동물</h1>
+            <h3 id="resultSubtitle" style="color:#555;">별명</h3>
+            <div id="resultDesc" style="text-align: left; background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0; line-height: 1.8;">
+                결과 설명
             </div>
             <button class="btn" onclick="location.reload()">다시 테스트하기</button>
         </div>
 
         <div class="article-section">
-            <div class="ad-placeholder">
-                (광고 영역: 결과 확인 후 시선이 머무는 곳)
-            </div>
-
-            <h3>동물상 테스트란 무엇인가요?</h3>
-            <p>사람의 성격은 수만 가지로 분류될 수 있지만, 흥미롭게도 특정 동물의 습성과 놀랍도록 유사한 경우가 많습니다. 강아지처럼 사람을 좋아하고 활동적인 성향이 있는가 하면, 고양이처럼 독립적이고 섬세한 영역을 중시하는 성향도 있습니다.</p>
-            
-            <h3>성향 분석의 원리</h3>
-            <p>이 테스트는 MBTI 심리 이론을 기반으로 간소화하여 제작되었습니다. 외향성(E)과 내향성(I), 그리고 판단 기능 등을 종합하여 당신에게 가장 잘 어울리는 동물 캐릭터를 매칭해 드립니다.</p>
-            <p>결과가 본인의 생각과 다르더라도 재미로 즐겨주세요! 친구들과 결과를 공유하며 서로의 숨겨진 성격을 이야기해보는 것도 좋은 방법입니다.</p>
+            <div class="ad-placeholder">(구글 애드센스 광고 - 하단)</div>
+            <h3>재미로 보는 동물 심리학</h3>
+            <p>사람들은 본능적으로 자신과 닮은 동물에게 끌린다고 합니다. 이 테스트는 외향성(Extroversion), 공감능력(Feeling), 계획성(Judging)의 3가지 척도를 분석하여 당신에게 가장 적합한 동물 페르소나를 찾아줍니다.</p>
+            <p>친구들과 결과를 공유해서 서로가 사자 타입인지, 나무늘보 타입인지 확인해보세요! 의외의 케미를 발견할 수도 있습니다.</p>
         </div>
     </div>
 
     <script>
+        // 12개 질문 (E:외향, F:감성, J:계획)
         const questions = [
-            { q: "주말에 약속이 취소된다면?", a: "아싸! 집에서 푹 쉬어야지 (집순이)", b: "아쉽네.. 다른 친구 연락해볼까? (밖순이)", type: "EI" },
-            { q: "새로운 모임에 나갔을 때 나는?", a: "구석에서 조용히 분위기를 살핀다", b: "먼저 말을 걸며 분위기를 주도한다", type: "EI" },
-            { q: "친구의 고민 상담을 해줄 때?", a: "현실적인 해결책을 제시한다", b: "일단 공감해주고 위로해준다", type: "TF" }
+            { q: "모르는 사람들과 섞여 있는 파티장, 나는?", a: "새로운 사람 만나는 게 즐겁다! (E)", b: "아는 친구 옆에만 꼭 붙어 있는다. (I)", type: "E" },
+            { q: "친구가 우울해서 머리를 잘랐다고 한다. 나는?", a: "무슨 일 있어? 많이 우울했구나 ㅠㅠ (F)", b: "어떤 스타일로? 사진 보여줘봐. (T)", type: "F" },
+            { q: "여행을 갈 때 나는?", a: "분 단위로 엑셀에 계획을 짠다. (J)", b: "일단 가자! 가서 생각하자. (P)", type: "J" },
+            { q: "일주일 동안 집 밖을 안 나가도 된다면?", a: "너무 답답해서 병난다. (E)", b: "그곳이 바로 천국이다. (I)", type: "E" },
+            { q: "친구가 약속 시간에 늦었을 때?", a: "오다가 무슨 일 있었어? 걱정된다. (F)", b: "지금 어디야? 몇 분 늦는데? (T)", type: "F" },
+            { q: "책상을 정리할 때 나는?", a: "용도별로 각 맞춰 정리한다. (J)", b: "일단 한쪽에 몰아둔다. (P)", type: "J" },
+            { q: "식당에서 종업원을 부를 때?", a: "저기요! (크게 부른다) (E)", b: "벨을 누르거나 눈이 마주칠 때까지 기다린다. (I)", type: "E" },
+            { q: "슬픈 영화를 볼 때 나는?", a: "주인공에 이입해서 펑펑 운다. (F)", b: "영화는 영화일 뿐, 눈물은 안 난다. (T)", type: "F" },
+            { q: "해야 할 일이 생겼을 때?", a: "미리미리 끝내놔야 마음이 편하다. (J)", b: "마감 직전의 내가 해결해 줄 것이다. (P)", type: "J" },
+            { q: "엘리베이터에서 이웃을 만났을 때?", a: "안녕하세요! 날씨 좋죠? (스몰토크) (E)", b: "가볍게 목례만 하고 폰을 본다. (I)", type: "E" },
+            { q: "나의 고민 상담 스타일은?", a: "들어주고 위로해주는 게 좋다. (F)", b: "현실적인 해결책을 주는 게 좋다. (T)", type: "F" },
+            { q: "마트에 장을 보러 갈 때?", a: "살 목록을 메모해서 간다. (J)", b: "가서 맛있어 보이는 걸 담는다. (P)", type: "J" }
         ];
 
         let currentStep = 0;
-        let score = { E: 0, I: 0 };
+        let score = { E: 0, F: 0, J: 0 }; // E가 높으면 외향, F가 높으면 감성, J가 높으면 계획
 
         function startTest() {
             document.getElementById('start-screen').classList.add('hidden');
@@ -78,16 +82,17 @@
 
         function setQuestion() {
             let q = questions[currentStep];
-            document.getElementById('qTitle').innerText = q.q;
+            document.getElementById('qTitle').innerText = `Q${currentStep+1}. ${q.q}`;
             document.getElementById('btnA').innerText = q.a;
             document.getElementById('btnB').innerText = q.b;
             document.getElementById('progressBar').style.width = ((currentStep / questions.length) * 100) + '%';
         }
 
         function selectAnswer(ans) {
-            if (questions[currentStep].type === 'EI') {
-                if (ans === 'A') score.I++; else score.E++;
-            }
+            let type = questions[currentStep].type;
+            // A를 선택하면 해당 성향 점수 +1 (외향, 감성, 계획)
+            if (ans === 'A') score[type]++;
+            
             currentStep++;
             if (currentStep < questions.length) {
                 setQuestion();
@@ -104,15 +109,58 @@
                 document.getElementById('loading-screen').classList.add('hidden');
                 document.getElementById('result-screen').classList.remove('hidden');
                 
-                let title, desc;
-                if (score.E > score.I) {
-                    title = "활발한 댕댕이 '골든 리트리버'";
-                    desc = "당신은 사람을 좋아하고 에너지가 넘치는 강아지상입니다!<br><br>어디를 가나 분위기 메이커 역할을 하며, 긍정적인 에너지를 전파합니다. 혼자 있는 것보다는 함께 있는 것을 선호하며, 솔직하고 시원시원한 성격으로 주변에 친구가 많습니다.";
-                } else {
-                    title = "도도한 냥이 '러시안 블루'";
-                    desc = "당신은 혼자만의 시간을 즐길 줄 아는 고양이상입니다!<br><br>독립심이 강하고 섬세한 감수성을 지녔습니다. 낯을 조금 가리지만, 친해진 사람에게는 누구보다 깊은 정을 주는 '쯔위' 같은 매력이 있습니다. 시끄러운 파티보다는 소수의 친구와 깊은 대화를 나누는 것을 좋아합니다.";
+                // 점수 기준 (4점 만점 중 2점 초과면 해당 성향)
+                const isE = score.E > 2;
+                const isF = score.F > 2;
+                const isJ = score.J > 2;
+                
+                let animal, sub, desc;
+
+                // 10가지 로직 분기
+                if (score.E === 4 && score.J === 4) { // 파워 외향 + 파워 계획
+                    animal = "🦁 백수의 왕 '사자'";
+                    sub = "카리스마 넘치는 리더";
+                    desc = "당신은 타고난 리더입니다. 목표를 정하면 불도저처럼 밀고 나가는 추진력이 있으며, 주변 사람들을 이끄는 카리스마가 있습니다. 완벽주의 성향이 있어 결과도 확실합니다.";
+                } else if (score.E === 4 && score.J <= 2) { // 파워 외향 + 즉흥
+                    animal = "🐒 재간둥이 '원숭이'";
+                    sub = "분위기 메이커";
+                    desc = "어디를 가나 분위기를 주도하는 인싸 중의 인싸! 호기심이 많고 유머 감각이 뛰어나 주변에 친구가 끊이지 않습니다. 진지한 것보다는 즐거운 게 최고라고 생각합니다.";
+                } else if (isE && isF && isJ) {
+                    animal = "🐘 다정한 수호자 '코끼리'";
+                    sub = "든든한 맏형/맏언니";
+                    desc = "사람들을 챙기는 것을 좋아하고 책임감이 강합니다. 공동체의 화합을 중요시하며, 묵묵히 자신의 일을 해내는 듬직한 스타일입니다.";
+                } else if (isE && isF && !isJ) {
+                    animal = "🐬 사랑스러운 '돌고래'";
+                    sub = "해피 바이러스";
+                    desc = "긍정적인 에너지가 넘치고 공감 능력이 뛰어납니다. 자유로운 영혼의 소유자로, 구속받는 것을 싫어하고 즉흥적인 여행을 즐깁니다.";
+                } else if (isE && !isF) { // 외향 + 이성적
+                    animal = "🦊 영리한 전략가 '여우'";
+                    sub = "눈치 빠른 협상가";
+                    desc = "머리 회전이 빠르고 처세술이 뛰어납니다. 감정에 휘둘리지 않고 실속을 챙길 줄 알며, 어떤 상황에서도 자신에게 유리한 판을 짭니다.";
+                } else if (!isE && isJ && !isF) { // 내향 + 계획 + 이성
+                    animal = "🦉 지혜로운 현자 '부엉이'";
+                    sub = "논리적인 분석가";
+                    desc = "조용히 상황을 관망하다가 핵심을 찌르는 통찰력을 가졌습니다. 지적 호기심이 많고 혼자서 깊이 생각하는 시간을 즐깁니다.";
+                } else if (!isE && isF && isJ) { // 내향 + 감성 + 계획
+                    animal = "🦌 온화한 평화주의자 '사슴'";
+                    sub = "섬세한 배려왕";
+                    desc = "싸움을 싫어하고 평화를 사랑합니다. 낯을 가리지만 친해지면 누구보다 깊은 정을 줍니다. 성실하고 꼼꼼하게 자신의 일을 처리합니다.";
+                } else if (!isE && isF && !isJ) { // 내향 + 감성 + 즉흥
+                    animal = "🐱 도도한 냥이 '고양이'";
+                    sub = "매력적인 개인주의자";
+                    desc = "독립심이 강하고 자기만의 세계가 확실합니다. 남에게 피해 주는 것도, 받는 것도 싫어합니다. 예술적 감성을 가지고 있습니다.";
+                } else if (score.E <= 1 && score.J <= 1) { // 파워 내향 + 파워 귀찮음
+                    animal = "🦥 느긋한 평화 '나무늘보'";
+                    sub = "집이 최고야";
+                    desc = "이불 밖은 위험해! 침대와 한 몸이 되는 것을 가장 좋아합니다. 경쟁보다는 여유를 중요시하며, 효율적으로 움직이는 것을 선호합니다.";
+                } else { // 그 외 (밸런스형)
+                    animal = "🐻 우직한 뚝심 '곰'";
+                    sub = "믿음직한 친구";
+                    desc = "튀지 않지만 묵묵히 제 자리를 지키는 뚝심이 있습니다. 참을성이 많고 온화하지만, 한번 화가 나면 무서운 반전 매력의 소유자입니다.";
                 }
-                document.getElementById('resultTitle').innerText = title;
+
+                document.getElementById('resultTitle').innerText = animal;
+                document.getElementById('resultSubtitle').innerText = sub;
                 document.getElementById('resultDesc').innerHTML = desc;
             }, 1500);
         }

@@ -5,129 +5,126 @@
     <meta name="google-site-verification" content="Bq9TWjwqcejMho6kVmFCKZPyj8SODQYyckQpkP47jSU" />
     <meta name="naver-site-verification" content="40d39fc0077d05f654030020d2e9c63325c82fcd" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심심풀이 연구소 - 나를 알아보는 심리테스트 모음</title>
-    <meta name="description" content="무료로 즐기는 심리테스트, 성향 분석, 밸런스 게임 모음입니다. 당신의 숨겨진 모습을 발견해보세요.">
+    <title>심심풀이 연구소 - 무료 심리테스트 & 미니게임</title>
+    <meta name="description" content="연애, 성격, 생존 본능까지! 인공지능이 분석해주는 소름돋는 심리테스트 모음집.">
     <link rel="stylesheet" href="style.css">
-    
     </head>
 <body>
     <header>
-        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+        <div class="container" style="padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+        </div>
     </header>
 
     <div class="container">
-        <section style="text-align: center; margin-bottom: 30px;">
-            <h1>오늘 당신의 기분은 어떤가요?</h1>
-            <p>다양한 테스트로 나도 몰랐던 나의 모습을 발견해보세요.</p>
-        </section>
+        <div class="hero-banner">
+            <span style="background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 15px; font-size: 0.8rem;">NEW 🔥</span>
+            <h1>나의 연애 세포 등급은?</h1>
+            <p>죽어가는 연애 세포를 심폐소생술 해드립니다.<br>당신의 연애 능력치를 분석해보세요.</p>
+            <a href="love-test.html" class="hero-btn">테스트 하러가기 👉</a>
+        </div>
 
-        <div class="ad-placeholder" style="margin-bottom: 30px;">
-            (구글 애드센스 디스플레이 광고 - 상단)
-            </div>
+        <div class="ad-placeholder">(구글 애드센스 광고 - 메인 상단)</div>
+
+        <div class="category-nav">
+            <button class="cat-btn active" onclick="filter('all')">전체보기</button>
+            <button class="cat-btn" onclick="filter('personality')">성격/심리</button>
+            <button class="cat-btn" onclick="filter('love')">연애/사랑</button>
+            <button class="cat-btn" onclick="filter('game')">게임/생존</button>
+        </div>
 
         <div class="grid-container">
-            <a href="animal-test.html" class="card">
-                <span class="card-tag">인기 🔥</span>
-                <h3>🐶 동물상 테스트</h3>
-                <p>강아지상? 고양이상? 나의 소울 애니멀 찾기</p>
-            </a>
-            
-            <a href="reaction.html" class="card">
-                <span class="card-tag">게임 🎮</span>
-                <h3>⚡ 순발력 테스트</h3>
-                <p>당신의 반응 속도는 상위 몇 %일까요?</p>
+            <a href="love-test.html" class="card category-love">
+                <div class="card-img" style="background:#ffeaa7;">💖</div>
+                <div class="card-body">
+                    <span class="card-tag">연애</span>
+                    <h3>연애 세포 등급 테스트</h3>
+                    <p>나는 연애 고자일까 고수일까? 12가지 질문으로 알아보는 팩트체크</p>
+                </div>
             </a>
 
-            <a href="lotto.html" class="card">
-                <span class="card-tag">행운 🍀</span>
-                <h3>🎰 로또 번호 생성기</h3>
-                <p>AI가 분석한 이번 주 행운의 숫자 추천</p>
+            <a href="zombie-test.html" class="card category-game">
+                <div class="card-img" style="background:#55efc4;">🧟‍♂️</div>
+                <div class="card-body">
+                    <span class="card-tag">생존</span>
+                    <h3>좀비 아포칼립스 생존 유형</h3>
+                    <p>좀비 사태가 터지면 나는 며칠까지 살 수 있을까? 리더형 vs 배신자형</p>
+                </div>
             </a>
 
-            <a href="mental-age.html" class="card">
-                <span class="card-tag">심리 🧠</span>
-                <h3>👶 정신연령 테스트</h3>
-                <p>나는 꼰대일까 MZ일까? 내 마음의 나이 측정</p>
+            <a href="animal-test.html" class="card category-personality">
+                <div class="card-img" style="background:#74b9ff;">🐶</div>
+                <div class="card-body">
+                    <span class="card-tag">성격</span>
+                    <h3>정밀 동물상 테스트</h3>
+                    <p>사자부터 나무늘보까지, 나의 무의식 속 동물 페르소나 찾기</p>
+                </div>
+            </a>
+
+            <a href="mental-age.html" class="card category-personality">
+                <div class="card-img" style="background:#a29bfe;">🧠</div>
+                <div class="card-body">
+                    <span class="card-tag">심리</span>
+                    <h3>정신연령 테스트</h3>
+                    <p>내 멘탈 나이는 몇 살? 응애부터 산신령까지 정밀 분석</p>
+                </div>
+            </a>
+
+             <a href="reaction.html" class="card category-game">
+                <div class="card-img" style="background:#ff7675;">⚡</div>
+                <div class="card-body">
+                    <span class="card-tag">게임</span>
+                    <h3>순발력 테스트</h3>
+                    <p>0.01초의 승부! 당신의 반응 속도는 상위 몇 %일까요?</p>
+                </div>
+            </a>
+
+            <a href="lotto.html" class="card category-game">
+                <div class="card-img" style="background:#fab1a0;">🎰</div>
+                <div class="card-body">
+                    <span class="card-tag">운세</span>
+                    <h3>AI 로또 번호 생성</h3>
+                    <p>빅데이터 알고리즘이 추천하는 이번 주 행운의 숫자</p>
+                </div>
             </a>
         </div>
 
         <div class="article-section">
-            <div class="ad-placeholder">
-                (구글 애드센스 디스플레이 광고 - 하단)
-                </div>
-
-            <h2>심심풀이 연구소 소개</h2>
-            <p>바쁜 일상 속에서 잠시 쉬어갈 수 있는 공간입니다. MBTI 기반의 성향 분석부터 재미있는 심리 테스트, 미니 게임까지 다양한 콘텐츠를 한곳에 모았습니다.</p>
-            <p>모든 테스트는 무료로 제공되며, 별도의 회원가입이나 앱 설치 없이 바로 즐기실 수 있습니다. 친구들과 결과를 공유하고 서로의 성향을 비교해보세요. 앞으로도 더 재미있는 콘텐츠가 계속 추가될 예정입니다.</p>
+            <div class="ad-placeholder">(구글 애드센스 광고 - 메인 하단)</div>
+            <h2>심심풀이 연구소 이용 안내</h2>
+            <p>심심풀이 연구소는 여러분의 무료한 시간을 책임지기 위해 만들어졌습니다. 별도의 설치나 로그인 없이 모든 콘텐츠를 무료로 즐기실 수 있습니다.</p>
         </div>
     </div>
 
     <footer>
         <p>© 2024 심심풀이 연구소. All rights reserved.</p>
-        <p><a href="privacy.html">개인정보처리방침</a> | <a href="https://forms.gle/trXgbzCgheWqdSiW9">문의하기</a></p>
+        <p>
+            <a href="privacy.html">개인정보처리방침</a> | 
+            <a href="https://forms.gle/본인링크" target="_blank">문의하기</a>
+        </p>
     </footer>
 
-<style>
-    .share-container {
-        text-align: center;
-        margin: 40px 0;
-        padding: 20px;
-        background: #f8f9fa;
-        border-radius: 15px;
-    }
-    .share-title { font-weight: bold; margin-bottom: 15px; color: #555; }
-    .share-btn-group { display: flex; justify-content: center; gap: 10px; }
-    .share-btn {
-        width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-        transition: transform 0.2s; color: white;
-    }
-    .share-btn:hover { transform: scale(1.1); }
-    .btn-kakao { background-color: #FEE500; color: #3C1E1E; } /* 링크복사로 대체 */
-    .btn-twitter { background-color: #000000; } /* X (트위터) */
-    .btn-facebook { background-color: #1877F2; }
-    .btn-link { background-color: #8c7ae6; }
-</style>
+    <script>
+        function filter(category) {
+            // 버튼 활성화 스타일 변경
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-<div class="container">
-    <div class="share-container">
-        <div class="share-title">사이트 공유하기!</div>
-        <div class="share-btn-group">
-            <button class="share-btn btn-twitter" onclick="shareSNS('twitter')" title="트위터(X) 공유">𝕏</button>
-            
-            <button class="share-btn btn-facebook" onclick="shareSNS('facebook')" title="페이스북 공유">f</button>
-            
-            <button class="share-btn btn-link" onclick="copyLink()" title="링크 복사">🔗</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    function shareSNS(sns) {
-        const thisUrl = window.location.href;
-        const snsTitle = document.title;
-        let url = '';
-
-        if(sns === 'twitter') {
-            url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(snsTitle) + '&url=' + encodeURIComponent(thisUrl);
-        } else if(sns === 'facebook') {
-            url = 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(thisUrl);
+            // 카드 필터링 로직
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.classList.contains('category-' + category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
         }
-
-        if(url) {
-            window.open(url, '_blank');
-        }
-    }
-
-    function copyLink() {
-        const url = window.location.href;
-        navigator.clipboard.writeText(url).then(() => {
-            alert('링크가 복사되었습니다! 친구에게 붙여넣기(Ctrl+V) 하세요.');
-        }).catch(err => {
-            alert('링크 복사에 실패했습니다. 주소창을 복사해주세요.');
-        });
-    }
-</script>
-    
+    </script>
 </body>
 </html>

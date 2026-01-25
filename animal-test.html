@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 성격과 닮은 동물 찾기 | 심심풀이 연구소</title>
+    <meta name="description" content="나는 강아지상일까 고양이상일까? 성격으로 알아보는 동물상 테스트입니다.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+    </header>
+
+    <div class="container">
+        <div id="start-screen" class="content-box">
+            <h1>🐶 내 성격과 닮은 동물은?</h1>
+            <p>평소 행동 패턴으로 알아보는<br>나의 소울 애니멀 테스트</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/3069/3069172.png" alt="동물 아이콘" style="width:100px; margin: 20px 0;">
+            <button class="btn" onclick="startTest()">테스트 시작하기</button>
+        </div>
+
+        <div id="question-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="progressBar"></div></div>
+            <h2 id="qTitle">질문 내용</h2>
+            <button class="btn" id="btnA" onclick="selectAnswer('A')">답변 A</button>
+            <button class="btn" id="btnB" onclick="selectAnswer('B')">답변 B</button>
+        </div>
+
+        <div id="loading-screen" class="content-box hidden">
+            <h2>🔎 분석 중입니다...</h2>
+            <p>당신의 성향 데이터를 동물 데이터와 대조하고 있습니다.</p>
+        </div>
+
+        <div id="result-screen" class="content-box hidden">
+            <p>나와 닮은 동물은?</p>
+            <h1 id="resultTitle" style="color:var(--primary-color);">결과 동물 이름</h1>
+            <div id="resultDesc" style="text-align: left; background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 20px 0;">
+                설명 내용
+            </div>
+            <button class="btn" onclick="location.reload()">다시 테스트하기</button>
+        </div>
+
+        <div class="article-section">
+            <div class="ad-placeholder">
+                (광고 영역: 결과 확인 후 시선이 머무는 곳)
+            </div>
+
+            <h3>동물상 테스트란 무엇인가요?</h3>
+            <p>사람의 성격은 수만 가지로 분류될 수 있지만, 흥미롭게도 특정 동물의 습성과 놀랍도록 유사한 경우가 많습니다. 강아지처럼 사람을 좋아하고 활동적인 성향이 있는가 하면, 고양이처럼 독립적이고 섬세한 영역을 중시하는 성향도 있습니다.</p>
+            
+            <h3>성향 분석의 원리</h3>
+            <p>이 테스트는 MBTI 심리 이론을 기반으로 간소화하여 제작되었습니다. 외향성(E)과 내향성(I), 그리고 판단 기능 등을 종합하여 당신에게 가장 잘 어울리는 동물 캐릭터를 매칭해 드립니다.</p>
+            <p>결과가 본인의 생각과 다르더라도 재미로 즐겨주세요! 친구들과 결과를 공유하며 서로의 숨겨진 성격을 이야기해보는 것도 좋은 방법입니다.</p>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "주말에 약속이 취소된다면?", a: "아싸! 집에서 푹 쉬어야지 (집순이)", b: "아쉽네.. 다른 친구 연락해볼까? (밖순이)", type: "EI" },
+            { q: "새로운 모임에 나갔을 때 나는?", a: "구석에서 조용히 분위기를 살핀다", b: "먼저 말을 걸며 분위기를 주도한다", type: "EI" },
+            { q: "친구의 고민 상담을 해줄 때?", a: "현실적인 해결책을 제시한다", b: "일단 공감해주고 위로해준다", type: "TF" }
+        ];
+
+        let currentStep = 0;
+        let score = { E: 0, I: 0 };
+
+        function startTest() {
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('question-screen').classList.remove('hidden');
+            setQuestion();
+        }
+
+        function setQuestion() {
+            let q = questions[currentStep];
+            document.getElementById('qTitle').innerText = q.q;
+            document.getElementById('btnA').innerText = q.a;
+            document.getElementById('btnB').innerText = q.b;
+            document.getElementById('progressBar').style.width = ((currentStep / questions.length) * 100) + '%';
+        }
+
+        function selectAnswer(ans) {
+            if (questions[currentStep].type === 'EI') {
+                if (ans === 'A') score.I++; else score.E++;
+            }
+            currentStep++;
+            if (currentStep < questions.length) {
+                setQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById('question-screen').classList.add('hidden');
+            document.getElementById('loading-screen').classList.remove('hidden');
+            
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('hidden');
+                document.getElementById('result-screen').classList.remove('hidden');
+                
+                let title, desc;
+                if (score.E > score.I) {
+                    title = "활발한 댕댕이 '골든 리트리버'";
+                    desc = "당신은 사람을 좋아하고 에너지가 넘치는 강아지상입니다!<br><br>어디를 가나 분위기 메이커 역할을 하며, 긍정적인 에너지를 전파합니다. 혼자 있는 것보다는 함께 있는 것을 선호하며, 솔직하고 시원시원한 성격으로 주변에 친구가 많습니다.";
+                } else {
+                    title = "도도한 냥이 '러시안 블루'";
+                    desc = "당신은 혼자만의 시간을 즐길 줄 아는 고양이상입니다!<br><br>독립심이 강하고 섬세한 감수성을 지녔습니다. 낯을 조금 가리지만, 친해진 사람에게는 누구보다 깊은 정을 주는 '쯔위' 같은 매력이 있습니다. 시끄러운 파티보다는 소수의 친구와 깊은 대화를 나누는 것을 좋아합니다.";
+                }
+                document.getElementById('resultTitle').innerText = title;
+                document.getElementById('resultDesc').innerHTML = desc;
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

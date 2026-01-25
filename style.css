@@ -1,101 +1,72 @@
-/* style.css - 전체 공통 디자인 */
+/* style.css - 메인 디자인 리뉴얼 */
 :root {
-    --primary-color: #6c5ce7;
-    --secondary-color: #a29bfe;
-    --bg-color: #dfe6e9;
-    --text-color: #2d3436;
+    --primary: #6c5ce7;
+    --secondary: #a29bfe;
+    --bg: #f5f6fa;
+    --text: #2d3436;
     --white: #ffffff;
+    --accent: #e17055;
 }
-
 body {
-    font-family: 'Helvetica Neue', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-} 
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.6;
+}
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+a { text-decoration: none; color: inherit; }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+/* 헤더 */
+header { background: var(--white); padding: 15px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+.logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
 
-/* 헤더 디자인 */
-header {
-    background: var(--white);
-    padding: 15px 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
+/* [NEW] 히어로 배너 (메인 상단 강조) */
+.hero-banner {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+    border-radius: 20px; padding: 40px 30px; margin: 20px 0; color: white;
+    text-align: center; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+    position: relative; overflow: hidden;
 }
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-decoration: none;
+.hero-banner h1 { margin: 0 0 10px 0; font-size: 2rem; }
+.hero-banner p { margin-bottom: 25px; opacity: 0.9; }
+.hero-btn {
+    background: white; color: var(--primary); padding: 12px 30px; border-radius: 25px;
+    font-weight: bold; display: inline-block; transition: transform 0.2s;
 }
+.hero-btn:hover { transform: scale(1.05); }
 
-/* 카드 그리드 (메인 화면) */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+/* [NEW] 카테고리 탭 */
+.category-nav {
+    display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch; /* 모바일 스크롤 부드럽게 */
 }
+.cat-btn {
+    background: white; border: 1px solid #eee; padding: 8px 16px; border-radius: 20px;
+    font-size: 0.9rem; cursor: pointer; white-space: nowrap; transition: all 0.2s; color: #777;
+}
+.cat-btn.active, .cat-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* 그리드 레이아웃 */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .card {
-    background: var(--white);
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
+    background: var(--white); border-radius: 15px; overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: transform 0.2s; display: block;
 }
 .card:hover { transform: translateY(-5px); }
-.card h3 { margin: 0 0 10px 0; color: var(--primary-color); }
-.card-tag { font-size: 0.8rem; background: #eee; padding: 2px 8px; border-radius: 4px; color: #666; }
+.card-img { height: 140px; background-color: #eee; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.card-body { padding: 20px; }
+.card-tag { font-size: 0.75rem; background: #f0f0f0; padding: 3px 8px; border-radius: 4px; color: #666; margin-bottom: 8px; display: inline-block; }
+.card h3 { margin: 5px 0 10px 0; font-size: 1.1rem; }
+.card p { font-size: 0.9rem; color: #888; margin: 0; line-height: 1.4; }
 
-/* 테스트 페이지 및 버튼 */
-.content-box {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.btn {
-    background: var(--primary-color);
-    color: var(--white);
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    border-radius: 30px;
-    cursor: pointer;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 300px;
-    transition: background 0.3s;
-}
-.btn:hover { background-color: #5649c0; }
+/* 테스트 페이지 공통 */
+.content-box { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px;}
+.btn { background: var(--primary); color: white; border: none; padding: 15px 100%; width: 100%; border-radius: 12px; font-size: 1.1rem; cursor: pointer; margin-top: 15px; }
+.btn-option { background: white; border: 2px solid #eee; color: #444; padding: 15px; width: 100%; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; text-align: left;}
+.btn-option:hover { border-color: var(--primary); background: #f8f9ff; }
+.progress-bar { width: 100%; height: 8px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s; }
 .hidden { display: none; }
 
-/* 진행바 */
-.progress-bar { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin: 20px 0; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--primary-color); width: 0%; transition: width 0.3s; }
-
-/* 애드센스용 텍스트 영역 (중요) */
-.article-section {
-    margin-top: 40px;
-    background: var(--white);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: left;
-}
-.ad-placeholder {
-    background: #f1f1f1; padding: 20px; text-align: center; color: #999; margin: 20px 0; border-radius: 10px;
-}
-
-footer { text-align: center; padding: 40px 0; color: #888; font-size: 0.9rem; }
-footer a { color: #888; text-decoration: none; }
+/* 광고 및 SEO 텍스트 */
+.ad-placeholder { background: #f1f1f1; padding: 20px; text-align: center; color: #aaa; border-radius: 10px; margin: 20px 0; font-size: 0.8rem; }
+.article-section { background: white; padding: 25px; border-radius: 15px; margin-top: 30px; }
+footer { text-align: center; padding: 40px 0; color: #999; font-size: 0.85rem; }

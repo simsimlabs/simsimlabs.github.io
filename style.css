@@ -59,7 +59,7 @@ header { background: var(--white); padding: 15px 0; text-align: center; box-shad
 
 /* 테스트 페이지 공통 */
 .content-box { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px;}
-.btn { background: var(--primary); color: white; border: none; padding: 15px 100%; width: 100%; border-radius: 12px; font-size: 1.1rem; cursor: pointer; margin-top: 15px; }
+.btn { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; font-size: 1.1rem; cursor: pointer; margin-top: 15px; }
 .btn-option { background: white; border: 2px solid #eee; color: #444; padding: 15px; width: 100%; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; text-align: left;}
 .btn-option:hover { border-color: var(--primary); background: #f8f9ff; }
 .progress-bar { width: 100%; height: 8px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }

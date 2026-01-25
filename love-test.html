@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초정밀 연애 세포 등급 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="나는 모태솔로? 금사빠? 15가지 질문으로 알아보는 내 연애 세포 생존율과 연애 스타일 정밀 진단">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
+
+    <div class="container">
+        <div class="ad-placeholder">(광고 - 상단)</div>
+
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">💖</div>
+            <h1>초정밀 연애 세포 테스트</h1>
+            <p>당신의 죽어가는 연애 세포를 심폐소생술 해드립니다.<br>총 15문항으로 나의 연애 스타일을 분석하세요.</p>
+            <button class="btn" onclick="start()">진단 시작하기</button>
+        </div>
+
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
+            <h2 id="q-text" style="min-height: 80px;">질문</h2>
+            <div id="answer-box"></div>
+        </div>
+
+        <div id="result-screen" class="content-box hidden">
+            <p>당신의 연애 타입은...</p>
+            <h1 id="result-title" style="color:var(--accent);">결과</h1>
+            <h3 id="result-sub" style="color:#666; margin-bottom:20px;">서브 타이틀</h3>
+            <div id="result-desc" style="background:#fff0f6; padding:25px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
+            <button class="btn" onclick="location.reload()">다시 하기</button>
+        </div>
+
+        <div class="article-section">
+            <div class="ad-placeholder">(광고 - 하단)</div>
+            <h3>연애 세포가 죽는 이유?</h3>
+            <p>바쁜 일상과 반복되는 패턴은 도파민 분비를 줄어들게 하여 연애에 대한 설렘을 무디게 만듭니다. '귀찮음'이 '외로움'을 이기는 순간이 연애 세포 소멸의 시작이라고 하죠. 결과를 통해 자신의 상태를 점검해보세요!</p>
+        </div>
+        
+        <div class="share-container" style="text-align:center; margin-top:30px;">
+            <button onclick="copyLink()" style="background:#eee; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 결과 링크 복사</button>
+        </div>
+
+        <footer>
+            <p>© 2024 심심풀이 연구소</p>
+            <p><a href="https://forms.gle/본인링크" target="_blank">문의하기</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const qData = [
+            { q: "집에서 쉬는데 이성 친구가 '심심해'라며 톡을 보냈다.", a: "오? 무슨 일이지? 바로 칼답한다.", b: "귀찮다... 나중에 천천히 답장한다.", s: 1 },
+            { q: "길 가다가 내 이상형과 완벽히 일치하는 사람을 봤다.", a: "계속 쳐다보며 눈을 마주치려 노력한다.", b: "'잘생겼네/예쁘네' 생각하고 그냥 지나간다.", s: 1 },
+            { q: "로맨스 드라마 키스신을 볼 때 나의 반응은?", a: "나도 저런 연애 하고 싶다... (설렘)", b: "저거 찍을 때 사람 많았겠지? (현실적)", s: 1 },
+            { q: "소개팅 제안이 들어왔다. 나의 반응은?", a: "사진 보여줘! 직업은? (적극적)", b: "아 그냥 쉴래... 거절한다. (귀찮음)", s: 1 },
+            { q: "자기 관리를 위해 내가 하는 노력은?", a: "운동, 옷, 헤어스타일 등 꾸준히 관리한다.", b: "씻고 나가기만 해도 다행이다.", s: 1 },
+            { q: "연인이 생긴다면 가장 하고 싶은 것은?", a: "벚꽃 놀이, 여행, 맛집 탐방", b: "집에서 넷플릭스 보며 배달 음식 먹기", s: 1 },
+            { q: "크리스마스, 발렌타인데이 같은 기념일이 다가오면?", a: "옆구리가 시리고 외롭다.", b: "상술이다. 그냥 빨간 날일 뿐.", s: 1 },
+            { q: "친구가 연애 상담을 해오면?", a: "감정이입해서 같이 화내고 기뻐해 준다.", b: "헤어지라거나 참으라는 현실적인 조언만 한다.", s: 1 },
+            { q: "이성 친구와 단둘이 밥이나 술을 먹게 되었다.", a: "이것도 데이트인가? 묘한 기류가 흐른다.", b: "그냥 밥 친구다. 국밥이나 먹자.", s: 1 },
+            { q: "썸 탈 때의 '간질간질한' 느낌을 떠올리면?", a: "그립다. 다시 느끼고 싶다.", b: "생각만 해도 기 빨리고 피곤하다.", s: 1 },
+            { q: "마지막 연애는 언제인가?", a: "1년 미만 혹은 현재 썸 타는 중", b: "3년 이상 혹은 모태솔로", s: 1 },
+            { q: "좋아하는 사람이 생기면 먼저 고백할 수 있나?", a: "직진! 안 되면 말고 일단 지른다.", b: "거절당할까 봐 절대 못 한다.", s: 1 },
+            { q: "거울을 보며 '나 좀 괜찮은데?'라고 생각한 적이?", a: "자주 있다.", b: "거의 없다.", s: 1 },
+            { q: "전 애인에게 연락이 온다면?", a: "궁금해서 일단 받아본다.", b: "차단하거나 무시한다.", s: 1 },
+            { q: "다음 생에 태어나면?", a: "절세 미녀/미남으로 태어나 연애를 즐긴다.", b: "돈 많은 백수로 태어나 혼자 즐긴다.", s: 1 }
+        ];
+
+        let step = 0;
+        let score = 0;
+
+        function start(){
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            next();
+        }
+
+        function next(){
+            if(step >= qData.length){ result(); return; }
+            const q = qData[step];
+            document.getElementById('bar').style.width = ((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText = `Q${step+1}. ${q.q}`;
+            const box = document.getElementById('answer-box');
+            box.innerHTML = '';
+            
+            let btnA = document.createElement('button');
+            btnA.className = 'btn-option';
+            btnA.innerText = q.a;
+            btnA.onclick = () => { score += q.s; step++; next(); };
+            
+            let btnB = document.createElement('button');
+            btnB.className = 'btn-option';
+            btnB.innerText = q.b;
+            btnB.onclick = () => { step++; next(); };
+            box.appendChild(btnA);
+            box.appendChild(btnB);
+        }
+
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            let title, sub, desc;
+            
+            // 0~15점 분포
+            if(score >= 14) {
+                title = "💖 걸어 다니는 페로몬 '카사노바'";
+                sub = "연애 세포 활동성: 200%";
+                desc = "당신은 숨만 쉬어도 이성이 꼬이는 매력 덩어리입니다. 연애에 대한 스킬과 눈치가 만렙이며, 마음만 먹으면 언제든 연애를 시작할 수 있습니다. 다만 너무 많은 어장에 주의하세요!";
+            } else if(score >= 11) {
+                title = "🔥 열정적인 '금사빠'";
+                sub = "연애 세포 활동성: 90%";
+                desc = "사랑에 빠지는 속도가 5G급입니다. 감수성이 풍부하고 외로움을 잘 타는 편이라 연애 없이는 못 사는 스타일! 조금만 잘해줘도 '우리 결혼하나?' 상상하는 귀여운 면이 있습니다.";
+            } else if(score >= 8) {
+                title = "🥰 준비된 인재 '연애 유망주'";
+                sub = "연애 세포 활동성: 70%";
+                desc = "적당한 설렘과 적당한 현실 감각을 갖춘 가장 건강한 상태입니다. 좋은 사람만 나타난다면 언제든 예쁜 사랑을 할 준비가 되어 있습니다. 소개팅을 적극적으로 받아보세요!";
+            } else if(score >= 6) {
+                title = "🛡️ 철벽치는 '유교걸/유교보이'";
+                sub = "연애 세포 활동성: 50%";
+                desc = "연애를 하고 싶긴 하지만, 막상 누가 다가오면 의심부터 합니다. '내 생활이 깨지는 건 싫어'라는 생각 때문에 썸이 깨지는 경우가 많네요. 마음의 문을 조금만 더 열어보세요.";
+            } else if(score >= 4) {
+                title = "🛌 겨울잠 자는 '집순이/집돌이'";
+                sub = "연애 세포 활동성: 30%";
+                desc = "'귀찮아'가 입버릇인 당신. 연애보다 넷플릭스와 치킨이 더 좋습니다. 나가서 사람을 만나야 연애를 하죠! 세포들이 동면에 들어갔으니 강제로라도 깨워야 합니다.";
+            } else if(score >= 2) {
+                title = "🧊 감정 메마른 'AI 로봇'";
+                sub = "연애 세포 활동성: 10%";
+                desc = "로맨스 영화를 봐도 무덤덤하고, 이성을 봐도 돌같이 보입니다. 혼자 사는 삶에 너무 익숙해져서 타인과의 감정 교류가 불필요하다고 느끼는 단계입니다.";
+            } else {
+                title = "⚰️ 연애 세포 '화석' 발견";
+                sub = "연애 세포 활동성: 0%";
+                desc = "축하합니다(?) 박물관에 전시해도 될 수준입니다. 연애 세포가 이미 멸종했습니다. 혹시 마지막 연애가 전생인가요? 당장 밖으로 나가서 재활 훈련을 시작하세요!";
+            }
+
+            document.getElementById('result-title').innerText = title;
+            document.getElementById('result-sub').innerText = sub;
+            document.getElementById('result-desc').innerHTML = desc;
+        }
+
+        function copyLink() { navigator.clipboard.writeText(window.location.href); alert("링크 복사 완료!"); }
+    </script>
+</body>
+</html>

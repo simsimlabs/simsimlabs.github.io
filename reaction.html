@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초정밀 순발력 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="나의 반응 속도는 상위 몇 %일까? 화면이 색이 바뀌는 순간 클릭하세요. 프로게이머급 순발력에 도전해보세요.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #screen {
+            width: 100%; height: 300px;
+            background-color: #ff7675; /* 대기 색상 (빨강) */
+            color: white;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            border-radius: 15px; cursor: pointer;
+            user-select: none;
+            font-size: 1.5rem; font-weight: bold;
+            transition: background 0.2s;
+        }
+        #screen.ready { background-color: #fab1a0; } /* 준비 (주황) */
+        #screen.now { background-color: #00b894; } /* 클릭 (초록) */
+        .rank-text { margin-top: 20px; font-weight: bold; color: #d63031; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+    </header>
+
+    <div class="container">
+        <div class="content-box">
+            <h1>⚡ 초정밀 순발력 테스트</h1>
+            <p>화면이 <strong>초록색</strong>으로 바뀌면 최대한 빨리 클릭하세요!</p>
+            
+            <div id="screen" onclick="handleClick()">
+                클릭해서 시작하기
+            </div>
+            
+            <div id="result" class="hidden">
+                <h2>반응 속도: <span id="time">0</span> ms</h2>
+                <p class="rank-text" id="rankMsg"></p>
+                <button class="btn" onclick="init()">다시 시도</button>
+            </div>
+        </div>
+
+        <div class="article-section">
+            <div class="ad-placeholder">(광고 영역)</div>
+            <h3>반응 속도가 빠르면 무엇이 좋을까요?</h3>
+            <p>반응 속도(Reaction Time)는 뇌가 시각적 자극을 인지하고 근육에 명령을 내리기까지 걸리는 시간을 의미합니다. 보통 일반인의 평균 반응 속도는 250ms(0.25초) 정도이며, 훈련된 운동선수나 프로게이머는 150ms 대를 기록하기도 합니다.</p>
+            <p>이 테스트를 반복하면 집중력을 높이는 데 도움이 될 수 있습니다. 친구들과 내기 게임으로 활용하거나, 졸음이 올 때 뇌를 깨우는 용도로 사용해보세요.</p>
+        </div>
+    </div>
+
+    <script>
+        let startTime;
+        let endTime;
+        let timeoutId;
+        const screen = document.querySelector('#screen');
+        const result = document.querySelector('#result');
+        const timeSpan = document.querySelector('#time');
+        const rankMsg = document.querySelector('#rankMsg');
+
+        // 상태: waiting(대기), ready(준비), now(시작)
+        let state = 'waiting';
+
+        function init() {
+            state = 'waiting';
+            screen.className = '';
+            screen.style.backgroundColor = '#ff7675';
+            screen.textContent = '클릭해서 시작하기';
+            result.classList.add('hidden');
+        }
+
+        function handleClick() {
+            if (state === 'waiting') {
+                state = 'ready';
+                screen.className = 'ready';
+                screen.textContent = '초록색이 되면 클릭하세요...';
+                screen.style.backgroundColor = '#fab1a0';
+                
+                // 2~4초 사이 랜덤 시간 후 색 변경
+                timeoutId = setTimeout(() => {
+                    state = 'now';
+                    screen.className = 'now';
+                    screen.textContent = '지금 클릭하세요!!!';
+                    screen.style.backgroundColor = '#00b894';
+                    startTime = new Date();
+                }, Math.floor(Math.random() * 2000) + 2000);
+
+            } else if (state === 'ready') {
+                clearTimeout(timeoutId);
+                state = 'waiting';
+                screen.textContent = '너무 빨라요! 초록색이 되면 누르세요.';
+                screen.style.backgroundColor = '#ff7675';
+            } else if (state === 'now') {
+                endTime = new Date();
+                state = 'waiting';
+                const diff = endTime - startTime;
+                screen.textContent = '결과 확인 중...';
+                
+                timeSpan.innerText = diff;
+                
+                // 등급 판정
+                if(diff < 200) rankMsg.innerText = "🏆 신의 손! 프로게이머 수준입니다.";
+                else if(diff < 300) rankMsg.innerText = "🚗 훌륭합니다! 평균 이상이네요.";
+                else rankMsg.innerText = "🐢 조금 더 집중해보세요!";
+
+                result.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

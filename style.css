@@ -70,3 +70,43 @@ header { background: var(--white); padding: 15px 0; text-align: center; box-shad
 .ad-placeholder { background: #f1f1f1; padding: 20px; text-align: center; color: #aaa; border-radius: 10px; margin: 20px 0; font-size: 0.8rem; }
 .article-section { background: white; padding: 25px; border-radius: 15px; margin-top: 30px; }
 footer { text-align: center; padding: 40px 0; color: #999; font-size: 0.85rem; }
+
+/* --- 모바일 전용 디자인 (화면이 600px보다 작을 때 적용) --- */
+@media (max-width: 600px) {
+    /* 양옆 여백을 줄여서 화면을 넓게 씀 */
+    .container { 
+        padding: 15px; 
+    }
+
+    /* 배너 크기와 글자 크기 축소 */
+    .hero-banner { 
+        padding: 30px 20px; 
+        margin: 10px 0;
+    }
+    .hero-banner h1 { 
+        font-size: 1.6rem; /* 제목 좀 더 작게 */
+    }
+    .hero-banner p {
+        font-size: 0.95rem; /* 설명글 좀 더 작게 */
+    }
+
+    /* 카테고리 버튼 스크롤 편하게 */
+    .category-nav {
+        padding-bottom: 5px;
+    }
+    .cat-btn {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+
+    /* 카드 이미지 높이 조절 (너무 길지 않게) */
+    .card-img {
+        height: 120px;
+    }
+    
+    /* 공유 버튼 간격 조절 */
+    .share-container {
+        margin: 20px 0;
+        padding: 15px;
+    }
+}

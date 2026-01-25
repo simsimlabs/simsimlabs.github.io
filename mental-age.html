@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정신연령 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="내 생각은 꼰대일까 MZ일까? 간단한 질문으로 알아보는 정신연령 테스트입니다.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+    </header>
+
+    <div class="container">
+        <div id="start-box" class="content-box">
+            <h1>🧠 정신연령 테스트</h1>
+            <p>당신의 마음은 몇 살인가요?<br>솔직하게 답변해 주세요.</p>
+            <button class="btn" onclick="start()">시작하기</button>
+        </div>
+
+        <div id="quiz-box" class="content-box hidden">
+            <h2 id="q-text">질문</h2>
+            <div style="margin: 30px 0;">
+                <button class="btn" style="background:#a29bfe; margin:5px;" onclick="next(10)">그렇다</button>
+                <button class="btn" style="background:#dfe6e9; color:#333; margin:5px;" onclick="next(5)">보통</button>
+                <button class="btn" style="background:#b2bec3; color:#333; margin:5px;" onclick="next(0)">아니다</button>
+            </div>
+        </div>
+
+        <div id="result-box" class="content-box hidden">
+            <h2>당신의 정신연령은...</h2>
+            <h1 id="result-age" style="color:#6c5ce7; font-size: 3rem;">0세</h1>
+            <p id="result-desc">설명</p>
+            <button class="btn" onclick="location.reload()">다시하기</button>
+        </div>
+
+        <div class="article-section">
+            <div class="ad-placeholder">(광고 영역)</div>
+            <h3>정신연령과 실제 나이의 차이</h3>
+            <p>육체적인 나이와 정신적인 성숙도는 반드시 비례하지 않습니다. 어떤 사람은 어린 나이에도 깊은 통찰력을 가지고 있고(애늙은이), 어떤 사람은 나이가 들어도 순수한 호기심을 잃지 않습니다(피터팬).</p>
+            <p>자신의 정신연령을 아는 것은 타인과의 소통 방식을 이해하는 데 도움이 됩니다. 너무 심각하게 받아들이기보다는 가벼운 마음으로 즐겨주세요.</p>
+        </div>
+    </div>
+
+    <script>
+        const qList = [
+            "최신 유행어(밈)를 들으면 바로 이해가 된다.",
+            "아침에 일어날 때 몸이 무겁고 여기저기 쑤신다.",
+            "애니메이션이나 만화보다 뉴스가 더 재미있다.",
+            "시끄러운 술자리보다는 조용한 밥집이 좋다.",
+            "요즘 아이돌 노래는 누가 누군지 모르겠다."
+        ];
+        let idx = 0;
+        let totalScore = 0;
+
+        function start() {
+            document.getElementById('start-box').classList.add('hidden');
+            document.getElementById('quiz-box').classList.remove('hidden');
+            showQ();
+        }
+        function showQ() {
+            document.getElementById('q-text').innerText = qList[idx];
+        }
+        function next(score) {
+            totalScore += score;
+            idx++;
+            if(idx < qList.length) {
+                showQ();
+            } else {
+                showResult();
+            }
+        }
+        function showResult() {
+            document.getElementById('quiz-box').classList.add('hidden');
+            document.getElementById('result-box').classList.remove('hidden');
+            
+            // 점수가 높을수록(그렇다) 나이가 많음
+            let age = 20 + Math.floor(totalScore / 1.5);
+            let desc = "";
+            
+            if(age < 25) desc = "파릇파릇한 새싹! 순수하고 열정적인 MZ 감성을 가지고 계시네요.";
+            else if(age < 40) desc = "성숙함과 젊음이 공존하는 황금기입니다. 사회생활 만렙이시군요.";
+            else desc = "인생의 지혜가 느껴지는 어르신... 따뜻한 차 한 잔 어떠세요?";
+
+            document.getElementById('result-age').innerText = age + "세";
+            document.getElementById('result-desc').innerText = desc;
+        }
+    </script>
+</body>
+</html>

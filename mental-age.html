@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정신연령 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="내 생각은 꼰대일까 MZ일까? 간단한 질문으로 알아보는 정신연령 테스트입니다.">
+    <title>초정밀 정신연령 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="내 마음의 나이는 몇 살일까? 15가지 질문으로 알아보는 10단계 정밀 정신연령 테스트!">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,48 +13,60 @@
     </header>
 
     <div class="container">
+        <div class="ad-placeholder" style="margin-bottom: 30px;">(구글 애드센스 광고 - 상단)</div>
 
-        <div class="ad-placeholder" style="margin-bottom: 30px;">
-            (구글 애드센스 광고 - 상단)
-        </div>
-        
         <div id="start-box" class="content-box">
-            <h1>🧠 정신연령 테스트</h1>
-            <p>당신의 마음은 몇 살인가요?<br>솔직하게 답변해 주세요.</p>
-            <button class="btn" onclick="start()">시작하기</button>
+            <h1>🧠 초정밀 정신연령 테스트</h1>
+            <p>총 15개의 질문으로 당신의 멘탈 나이를<br>나노 단위로 분석해 드립니다.</p>
+            <button class="btn" onclick="start()">측정 시작하기</button>
         </div>
 
         <div id="quiz-box" class="content-box hidden">
-            <h2 id="q-text">질문</h2>
-            <div style="margin: 30px 0;">
-                <button class="btn" style="background:#a29bfe; margin:5px;" onclick="next(10)">그렇다</button>
-                <button class="btn" style="background:#dfe6e9; color:#333; margin:5px;" onclick="next(5)">보통</button>
-                <button class="btn" style="background:#b2bec3; color:#333; margin:5px;" onclick="next(0)">아니다</button>
+            <div class="progress-bar"><div class="progress-fill" id="progressBar"></div></div>
+            <h2 id="q-text" style="min-height: 80px;">질문</h2>
+            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
+                <button class="btn" style="background:#6c5ce7; width:100%; margin:0;" onclick="next(5)">매우 그렇다 (+5)</button>
+                <button class="btn" style="background:#a29bfe; width:100%; margin:0;" onclick="next(3)">애매하다 (+3)</button>
+                <button class="btn" style="background:#b2bec3; width:100%; margin:0; color:#333;" onclick="next(1)">전혀 아니다 (+1)</button>
             </div>
         </div>
 
         <div id="result-box" class="content-box hidden">
             <h2>당신의 정신연령은...</h2>
-            <h1 id="result-age" style="color:#6c5ce7; font-size: 3rem;">0세</h1>
-            <p id="result-desc">설명</p>
+            <h1 id="result-age" style="color:#e17055; font-size: 3.5rem; margin: 10px 0;">0세</h1>
+            <h3 id="result-type" style="color:#2d3436;">타입 이름</h3>
+            <div id="result-desc" style="background:#ffeaa7; padding:20px; border-radius:10px; margin-top:20px; text-align: left; line-height: 1.6;">
+                설명
+            </div>
             <button class="btn" onclick="location.reload()">다시하기</button>
         </div>
 
         <div class="article-section">
-            <div class="ad-placeholder">(광고 영역)</div>
-            <h3>정신연령과 실제 나이의 차이</h3>
-            <p>육체적인 나이와 정신적인 성숙도는 반드시 비례하지 않습니다. 어떤 사람은 어린 나이에도 깊은 통찰력을 가지고 있고(애늙은이), 어떤 사람은 나이가 들어도 순수한 호기심을 잃지 않습니다(피터팬).</p>
-            <p>자신의 정신연령을 아는 것은 타인과의 소통 방식을 이해하는 데 도움이 됩니다. 너무 심각하게 받아들이기보다는 가벼운 마음으로 즐겨주세요.</p>
+            <div class="ad-placeholder">(구글 애드센스 광고 - 하단)</div>
+            <h3>정신연령 테스트 결과 해석</h3>
+            <p>이 테스트는 당신의 라이프스타일, 가치관, 그리고 유행에 대한 민감도를 종합하여 10단계의 정신 연령으로 분류합니다.</p>
+            <p>결과가 실제 나이보다 어리게 나왔다면 당신은 여전히 세상에 대한 호기심과 유연함을 간직하고 있다는 뜻입니다. 반대로 높게 나왔다면, 또래보다 성숙하고 깊은 통찰력을 지녔다는 의미일 수 있습니다.</p>
         </div>
     </div>
 
     <script>
+        // 질문 15개 (점수가 높을수록 '올드'한 성향)
         const qList = [
-            "최신 유행어(밈)를 들으면 바로 이해가 된다.",
-            "아침에 일어날 때 몸이 무겁고 여기저기 쑤신다.",
-            "애니메이션이나 만화보다 뉴스가 더 재미있다.",
-            "시끄러운 술자리보다는 조용한 밥집이 좋다.",
-            "요즘 아이돌 노래는 누가 누군지 모르겠다."
+            "요즘 아이돌 노래는 가사가 잘 안 들리고 다 비슷하게 들린다.",
+            "줄임말이나 밈(Meme)을 쓰면 가벼워 보인다고 생각한다.",
+            "아침에 눈을 뜨면 뉴스나 주식, 날씨부터 확인한다.",
+            "시끄러운 술집보다는 조용한 밥집이나 집이 편하다.",
+            "비가 오면 '파전에 막걸리' 생각이 가장 먼저 난다.",
+            "건강보조식품(영양제, 홍삼 등)을 3종류 이상 챙겨 먹는다.",
+            "나보다 어린 사람이 예의 없게 굴면 참을 수가 없다.",
+            "카카오톡 프로필 사진이 꽃, 풍경, 등산 사진이거나 기본이다.",
+            "새로운 도전보다는 익숙하고 안정적인 것이 훨씬 좋다.",
+            "약속이 취소되면 아쉬움보다는 솔직히 기분이 좋다.",
+            "유튜브 알고리즘에 '건강', '부동산', '정치' 관련 영상이 많다.",
+            "철없는 친구들을 보면 '언제 철들래?'라는 말이 목구멍까지 나온다.",
+            "최신 스마트폰 기능보다 배터리 오래가는 게 최고다.",
+            "가끔은 옛날(학창 시절, 90년대 등)이 사무치게 그립다.",
+            "지금 내 나이가 믿기지 않을 때가 있다."
         ];
         let idx = 0;
         let totalScore = 0;
@@ -64,9 +76,12 @@
             document.getElementById('quiz-box').classList.remove('hidden');
             showQ();
         }
+
         function showQ() {
-            document.getElementById('q-text').innerText = qList[idx];
+            document.getElementById('q-text').innerText = `Q${idx+1}. ${qList[idx]}`;
+            document.getElementById('progressBar').style.width = ((idx / qList.length) * 100) + '%';
         }
+
         function next(score) {
             totalScore += score;
             idx++;
@@ -76,20 +91,59 @@
                 showResult();
             }
         }
+
         function showResult() {
             document.getElementById('quiz-box').classList.add('hidden');
             document.getElementById('result-box').classList.remove('hidden');
             
-            // 점수가 높을수록(그렇다) 나이가 많음
-            let age = 20 + Math.floor(totalScore / 1.5);
-            let desc = "";
-            
-            if(age < 25) desc = "파릇파릇한 새싹! 순수하고 열정적인 MZ 감성을 가지고 계시네요.";
-            else if(age < 40) desc = "성숙함과 젊음이 공존하는 황금기입니다. 사회생활 만렙이시군요.";
-            else desc = "인생의 지혜가 느껴지는 어르신... 따뜻한 차 한 잔 어떠세요?";
+            // 점수 범위: 15점 ~ 75점
+            let age, type, desc;
 
-            document.getElementById('result-age').innerText = age + "세";
-            document.getElementById('result-desc').innerText = desc;
+            if (totalScore <= 20) {
+                age = "5세";
+                type = "👶 순수한 응애";
+                desc = "세상 모든 것이 신기한 상태입니다. 호기심 대마왕이며, 복잡한 것은 딱 질색입니다. 당신의 순수함을 지키세요!";
+            } else if (totalScore <= 26) {
+                age = "7세";
+                type = "🎒 천방지축 유치원생";
+                desc = "노는 게 제일 좋아! 뽀로로급 에너지를 가지고 있습니다. 최신 유행은 다 꿰뚫고 있으며 텐션이 아주 높습니다.";
+            } else if (totalScore <= 32) {
+                age = "12세";
+                type = "🎮 호기심 많은 초딩";
+                desc = "장난기가 가득하고 유쾌합니다. 진지한 분위기를 못 견디며, 친구들과 어울려 노는 것을 인생의 낙으로 삼습니다.";
+            } else if (totalScore <= 38) {
+                age = "17세";
+                type = "🔥 질풍노도의 사춘기";
+                desc = "감수성이 풍부하고 반항심도 조금 있습니다. 내 멋대로 살고 싶은 욕구가 강하며, 트렌드에 민감합니다.";
+            } else if (totalScore <= 44) {
+                age = "24세";
+                type = "🎓 열정적인 대학생";
+                desc = "이상과 현실 사이에서 고민하는 시기입니다. 열정은 넘치지만 미래에 대한 불안감도 가지고 있는, 가장 청춘에 가까운 상태입니다.";
+            } else if (totalScore <= 50) {
+                age = "30세";
+                type = "💼 적응력 만렙 직장인";
+                desc = "사회생활에 완벽 적응했습니다. 눈치가 빠르고 효율성을 중시합니다. '금융치료'가 필요한 상태일 수도 있겠네요.";
+            } else if (totalScore <= 56) {
+                age = "45세";
+                type = "👔 노련한 베테랑";
+                desc = "인생의 노하우가 쌓인 상태입니다. 웬만한 일에는 놀라지 않으며, 책임감이 강하고 현실적인 판단을 내립니다.";
+            } else if (totalScore <= 62) {
+                age = "58세";
+                type = "🏔 등산복 입은 부장님";
+                desc = "안정을 최우선으로 생각합니다. '라떼는 말이야'가 입에 붙기 시작했으며, 건강을 챙기는 것이 가장 큰 관심사입니다.";
+            } else if (totalScore <= 68) {
+                age = "70세";
+                type = "🍵 여유로운 어르신";
+                desc = "모든 욕심을 내려놓은 상태입니다. 느긋하고 온화하며, 자연과 함께하는 삶을 동경합니다.";
+            } else {
+                age = "999세";
+                type = "🧘 통달한 산신령";
+                desc = "당신은 인간계를 초월했습니다. 세상만사 다 부질없음을 깨닫고 해탈의 경지에 올랐군요. 존경합니다.";
+            }
+
+            document.getElementById('result-age').innerText = age;
+            document.getElementById('result-type').innerText = type;
+            document.getElementById('result-desc').innerHTML = desc;
         }
     </script>
 </body>

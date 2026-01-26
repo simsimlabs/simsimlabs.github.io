@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Time Test | Boredom Lab</title>
+    <meta name="description" content="Test your reflexes! Click as fast as you can when the color changes. Can you beat 200ms?">
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+    <style>
+        #click-area { 
+            width: 100%; height: 350px; 
+            background: #ce1f1f; color: white; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            font-size: 1.5rem; font-weight: bold; 
+            border-radius: 15px; cursor: pointer; user-select: none; text-align: center; padding: 20px; box-sizing: border-box;
+            transition: background 0.1s;
+        }
+    </style>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads - Top)</div>
+        
+        <div class="content-box">
+            <div style="font-size:3rem;">⚡</div>
+            <h1>Reaction Time Test</h1>
+            <p style="margin-bottom:20px;">1. Wait for <span style="color:#00b894; font-weight:bold;">GREEN</span>.<br>2. Click as fast as you can!</p>
+            
+            <div id="click-area" onclick="handleClick()">
+                <div style="font-size:2rem;">Click to Start</div>
+            </div>
+            
+            <h2 id="result-text" style="margin-top:20px; color:#2d3436; min-height:40px;"></h2>
+        </div>
+
+        <div class="ad-placeholder">(Ads - Bottom)</div>
+        
+        <footer>
+            <p>© 2024 Boredom Lab</p>
+            <p><a href="../privacy.html">Privacy Policy</a> | <a href="../index.html">Home</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let state = "waiting"; // waiting(대기), ready(준비-빨강), now(시작-초록)
+        let startTime, timeout;
+        const area = document.getElementById('click-area');
+        const res = document.getElementById('result-text');
+
+        function handleClick() {
+            if(state === "waiting") {
+                state = "ready";
+                area.style.backgroundColor = "#d63031"; // Red
+                area.innerHTML = "<div style='font-size:2rem;'>Wait for Green...</div>";
+                res.innerText = "";
+                
+                // 2~5초 사이 랜덤 시간 후 초록색으로 변경
+                let randomTime = Math.floor(Math.random() * 3000) + 2000;
+                timeout = setTimeout(() => {
+                    state = "now";
+                    area.style.backgroundColor = "#00b894"; // Green
+                    area.innerHTML = "<div style='font-size:3rem;'>CLICK NOW!</div>";
+                    startTime = Date.now();
+                }, randomTime);
+            } else if(state === "ready") {
+                clearTimeout(timeout);
+                state = "waiting";
+                area.style.backgroundColor = "#0984e3"; // Blue
+                area.innerHTML = "<div style='font-size:2rem;'>Too Early!</div><div>Click to retry</div>";
+            } else if(state === "now") {
+                let endTime = Date.now();
+                let score = endTime - startTime;
+                state = "waiting";
+                area.style.backgroundColor = "#0984e3"; // Blue
+                area.innerHTML = `<div style='font-size:2rem;'>${score} ms</div><div>Click to try again</div>`;
+                
+                let grade = "";
+                if(score < 200) grade = "⚡ Godlike Reflexes!";
+                else if(score < 300) grade = "🚗 Fast Driver";
+                else if(score < 400) grade = "🐢 Average";
+                else grade = "🐌 Wake up!";
+                
+                res.innerText = grade;
+            }
+        }
+    </script>
+</body>
+</html>

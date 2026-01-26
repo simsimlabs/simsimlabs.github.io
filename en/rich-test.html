@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be Rich? | Boredom Lab</title>
+    <meta name="description" content="Test your money mindset! Analyze your spending habits and investment style to see if you'll become a millionaire.">
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads)</div>
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">💰</div>
+            <h1>Will You Be Rich?</h1>
+            <p>Is your salary vanishing every month?<br>Check your subconscious 'Money Mindset'.</p>
+            <button class="btn" onclick="start()">Start Test</button>
+        </div>
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#ffd700;"></div></div>
+            <h2 id="q-text">Question</h2>
+            <div id="answer-box"></div>
+        </div>
+        <div id="result-screen" class="content-box hidden">
+            <p>Your probability is...</p>
+            <h1 id="result-title" style="color:#f1c40f;">Result</h1>
+            <h3 id="result-sub">Sub</h3>
+            <div id="result-desc" style="background:#fffbf0; padding:20px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+        <div class="ad-placeholder">(Ads)</div>
+        <footer>
+            <p>© 2024 Boredom Lab</p>
+            <p><a href="../privacy.html">Privacy Policy</a> | <a href="../index.html">Home</a></p>
+        </footer>
+    </div>
+    <script>
+        const qData = [
+            { q: "You won $1 Million in the lottery. What first?", a: "Invest in stocks or real estate.", b: "Buy a luxury car and brand goods.", s: 5 },
+            { q: "You want to buy something but lack funds.", a: "Wait until I save enough.", b: "Buy it on credit card immediately.", s: 5 },
+            { q: "The stock market crashed by -30%.", a: "Opportunity! Buy more while cheap.", b: "Panic! Sell everything and run.", s: 4 },
+            { q: "Friends invite you to an expensive dinner.", a: "Sure! Life is short.", b: "Over budget. I'll make an excuse.", s: 3 },
+            { q: "Do you know your exact monthly expenses?", a: "Yes, I track every penny.", b: "Roughly... I check when the bill comes.", s: 5 },
+            { q: "How do rich people become rich?", a: "Hard work and smart investing.", b: "Luck or rich parents.", s: 5 },
+            { q: "You made $100 profit from $1000 investment.", a: "Good! Re-invest it (Compound interest).", b: "Nice! Buy a delicious meal.", s: 4 },
+            { q: "Bank interest rates are too low.", a: "Safety is number one.", b: "Study other investments for higher returns.", s: 4 },
+            { q: "What do you do after work?", a: "Side hustle or self-improvement.", b: "Netflix or Gaming.", s: 5 },
+            { q: "Do you have a financial goal?", a: "Yes, I have a specific plan.", b: "I just hope for the best.", s: 5 }
+        ];
+        let step=0, score=0;
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=q.q;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ score+=q.s; step++; next(); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ step++; next(); };
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t,s,d;
+            if(score>=40) { t="💎 The Next 'Warren Buffett'"; s="Rich Probability: 99%"; d="Your money mindset is perfect. You understand how money works and have great self-control. Financial freedom is just a matter of time for you."; }
+            else if(score>=25) { t="🐜 The Steady Saver"; s="Rich Probability: 60%"; d="You have good economic sense. You know how to save! If you study investing a bit more aggressively, your assets will grow much faster."; }
+            else { t="💸 The YOLO Spender"; s="Rich Probability: 10%"; d="You believe 'You Only Live Once'. You enjoy the present, but your future is at risk! Try cutting up your credit card and starting a budget today."; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+        }
+    </script>
+</body>
+</html>

@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="Bq9TWjwqcejMho6kVmFCKZPyj8SODQYyckQpkP47jSU" />
-    <meta name="naver-site-verification" content="40d39fc0077d05f654030020d2e9c63325c82fcd" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심심풀이 연구소 - 무료 심리테스트 & 미니게임</title>
-    <meta name="description" content="연애, 성격, 생존 본능까지! 인공지능이 분석해주는 소름돋는 심리테스트 모음집.">
+    <title>심심풀이 연구소 | 무료 심리테스트, MBTI, 미니게임 모음</title>
+    <meta name="description" content="심심할 때 뭐 하지? 연애 세포 테스트, 꼰대 성향 검사, 어휘력 테스트, 절대색감 게임, 좀비 생존 등 시간 순삭 무료 콘텐츠가 가득!">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simsimlabs.github.io/">
+    <meta property="og:title" content="심심풀이 연구소 - 심심할 때 여기 모여라!">
+    <meta property="og:description" content="나의 성향, 연애 스타일, 지능, 생존 능력까지! AI가 분석해주는 소름 돋는 결과 확인하기">
+    <meta property="og:image" content="https://user-images.githubusercontent.com/본인이미지주소.png">
+    
     <link rel="stylesheet" href="style.css">
+    
     </head>
 <body>
     <header>
@@ -20,28 +24,58 @@
 
     <div class="container">
         <div class="hero-banner">
-            <span style="background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 15px; font-size: 0.8rem;">NEW 🔥</span>
+            <span style="background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 15px; font-size: 0.8rem;">HOT 🔥</span>
             <h1>나의 연애 세포 등급은?</h1>
             <p>죽어가는 연애 세포를 심폐소생술 해드립니다.<br>당신의 연애 능력치를 분석해보세요.</p>
             <a href="love-test.html" class="hero-btn">테스트 하러가기 👉</a>
         </div>
 
-        <div class="ad-placeholder">(구글 애드센스 광고 - 메인 상단)</div>
+        <div class="ad-placeholder">(광고 - 메인 상단)</div>
 
         <div class="category-nav">
             <button class="cat-btn active" onclick="filter('all')">전체보기</button>
             <button class="cat-btn" onclick="filter('personality')">성격/심리</button>
             <button class="cat-btn" onclick="filter('love')">연애/사랑</button>
             <button class="cat-btn" onclick="filter('game')">게임/생존</button>
+            <button class="cat-btn" onclick="filter('work')">직업/적성</button>
+            <button class="cat-btn" onclick="filter('brain')">IQ/두뇌</button>
         </div>
 
         <div class="grid-container">
+            
+            <a href="color-game.html" class="card category-game">
+                <div class="card-img" style="background:#00cec9;">🎨</div>
+                <div class="card-body">
+                    <span class="card-tag">미니게임</span>
+                    <h3>절대색감 테스트</h3>
+                    <p>당신의 눈은 상위 몇 %? 틀린 색깔 찾기 (중독성 주의)</p>
+                </div>
+            </a>
+
+            <a href="kkondae-test.html" class="card category-work">
+                <div class="card-img" style="background:#dfe6e9;">☕</div>
+                <div class="card-body">
+                    <span class="card-tag">직업</span>
+                    <h3>직장인 꼰대 성향 테스트</h3>
+                    <p>나도 혹시 젊은 꼰대? '라떼는 말이야' 지수 측정하기</p>
+                </div>
+            </a>
+
+            <a href="vocab-test.html" class="card category-brain">
+                <div class="card-img" style="background:#a29bfe;">📚</div>
+                <div class="card-body">
+                    <span class="card-tag">IQ</span>
+                    <h3>한국인 상위 1% 어휘력 테스트</h3>
+                    <p>당신의 문해력은 몇 점? 헷갈리는 맞춤법과 사자성어 퀴즈</p>
+                </div>
+            </a>
+
             <a href="love-test.html" class="card category-love">
                 <div class="card-img" style="background:#ffeaa7;">💖</div>
                 <div class="card-body">
                     <span class="card-tag">연애</span>
                     <h3>연애 세포 등급 테스트</h3>
-                    <p>나는 연애 고자일까 고수일까? 12가지 질문으로 알아보는 팩트체크</p>
+                    <p>나는 연애 고자일까 고수일까? 15문항으로 알아보는 팩트체크</p>
                 </div>
             </a>
 
@@ -50,7 +84,7 @@
                 <div class="card-body">
                     <span class="card-tag">생존</span>
                     <h3>좀비 아포칼립스 생존 유형</h3>
-                    <p>좀비 사태가 터지면 나는 며칠까지 살 수 있을까? 리더형 vs 배신자형</p>
+                    <p>좀비 사태 발생! 나는 리더일까, 배신자일까, 아니면 최초 감염자?</p>
                 </div>
             </a>
 
@@ -59,12 +93,12 @@
                 <div class="card-body">
                     <span class="card-tag">성격</span>
                     <h3>정밀 동물상 테스트</h3>
-                    <p>사자부터 나무늘보까지, 나의 무의식 속 동물 페르소나 찾기</p>
+                    <p>사자, 고양이, 나무늘보... 나의 무의식 속 동물 페르소나 찾기</p>
                 </div>
             </a>
 
             <a href="mental-age.html" class="card category-personality">
-                <div class="card-img" style="background:#a29bfe;">🧠</div>
+                <div class="card-img" style="background:#fdcb6e;">🧠</div>
                 <div class="card-body">
                     <span class="card-tag">심리</span>
                     <h3>정신연령 테스트</h3>
@@ -72,7 +106,7 @@
                 </div>
             </a>
 
-             <a href="reaction.html" class="card category-game">
+            <a href="reaction.html" class="card category-game">
                 <div class="card-img" style="background:#ff7675;">⚡</div>
                 <div class="card-body">
                     <span class="card-tag">게임</span>
@@ -89,12 +123,22 @@
                     <p>빅데이터 알고리즘이 추천하는 이번 주 행운의 숫자</p>
                 </div>
             </a>
+            
+            <a href="#" class="card category-work" onclick="alert('데이터 수집 중입니다! 곧 오픈됩니다.'); return false;">
+                <div class="card-img" style="background:#ffeaa7;">💰</div>
+                <div class="card-body">
+                    <span class="card-tag">재물</span>
+                    <h3>부자 될 확률 테스트</h3>
+                    <p>나의 소비 습관과 마인드로 분석하는 미래의 자산 규모</p>
+                </div>
+            </a>
         </div>
 
         <div class="article-section">
-            <div class="ad-placeholder">(구글 애드센스 광고 - 메인 하단)</div>
-            <h2>심심풀이 연구소 이용 안내</h2>
-            <p>심심풀이 연구소는 여러분의 무료한 시간을 책임지기 위해 만들어졌습니다. 별도의 설치나 로그인 없이 모든 콘텐츠를 무료로 즐기실 수 있습니다.</p>
+            <div class="ad-placeholder">(광고 - 메인 하단)</div>
+            <h2>심심풀이 연구소 즐기는 법</h2>
+            <p>심심할 때 할만한 것을 찾으시나요? 심심풀이 연구소에서 <strong>무료 MBTI 성향 분석</strong>, <strong>연애 능력 고사</strong>, <strong>직업 적성 검사</strong>, <strong>뇌지컬 테스트</strong> 등 다양한 미니게임을 즐겨보세요.</p>
+            <p>친구, 연인, 가족과 함께 결과를 공유하고 서로의 성향을 비교해보면 더욱 재미있습니다. 모든 콘텐츠는 회원가입 없이 100% 무료로 제공됩니다.</p>
         </div>
     </div>
 
@@ -108,12 +152,10 @@
 
     <script>
         function filter(category) {
-            // 버튼 활성화 스타일 변경
             const buttons = document.querySelectorAll('.cat-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // 카드 필터링 로직
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
                 if (category === 'all') {

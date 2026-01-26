@@ -3,119 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mental Age Test | Boredom Lab</title>
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Mental Age Test | SimSim Labs</title>
+    <meta name="description" content="How old is your mind? Analyze your true Mental Age in 10 levels with 15 questions.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">🧠</div>
-            <h1>Mental Age Test</h1>
-            <p>Your body is Adult, but Brain?<br>Check your true mental age.</p>
-            <button class="btn" onclick="start()">Start Test</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#a29bfe;"></div></div>
-            <h2 id="q-text">Question</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>Your Mental Age is...</p>
-            <h1 id="result-title" style="color:#6c5ce7;">Result</h1>
-            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-        </div>
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="mental-age.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="mental-age-en.html" class="lang-btn active">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">🧠</div>
+                <h1 class="main-title">Mental Age Test</h1>
+                <p class="sub-desc">Adult body, child mind?<br>Or an old soul in a young body?<br>Find out your true age.</p>
+                <button onclick="startTest()" class="btn-primary full-width">Start Test</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Restart</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">Question goes here.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">👶</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">Result Title</h1>
+                <p id="res-desc">Result description goes here.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Result</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
+        </footer>
     </div>
-</div>
-        
-        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
-    </div>
+
     <script>
-        const qData = [
-            { q: "It's snowing!", a: "Make a snowman!", b: "Traffic will be bad.", s: 0 },
-            { q: "Preferred gift?", a: "Toys/Games.", b: "Cash.", s: 5 },
-            { q: "K-Pop Idols?", a: "Know them all.", b: "Look the same.", s: 5 },
-            { q: "Fall on street?", a: "Cry.", b: "Get up quickly.", s: 3 },
-            { q: "Friday night?", a: "Party!", b: "Rest at home.", s: 5 },
-            { q: "Cartoons?", a: "Still watch them.", b: "For kids.", s: 3 },
-            { q: "Vegetables?", a: "Yuck.", b: "Healthy.", s: 5 },
-            { q: "Loud music?", a: "Dance!", b: "Headache.", s: 5 },
-            { q: "Clothes?", a: "Style.", b: "Comfort/Warmth.", s: 5 },
-            { q: "Slang words?", a: "Use often.", b: "Proper grammar.", s: 5 },
-            { q: "Worry?", a: "Homework/Friends.", b: "Money/Health.", s: 5 },
-            { q: "Playground slide?", a: "Ride it!", b: "Dirty.", s: 3 }
+        // --- Data (15 Questions in English) ---
+        const questions = [
+            { q: "Passing by a toy store, you...", a: [{ t: "Wow! I want that! (Stare)", s: 0 }, { t: "Toys are high quality these days.", s: 5 }, { t: "Kids would love that. No interest.", s: 10 }] },
+            { q: "After fighting with a friend...", a: [{ t: "Sulk and don't talk to them.", s: 2 }, { t: "Talk it out over a drink.", s: 6 }, { t: "Fighting is a waste of energy. Let it go.", s: 10 }] },
+            { q: "When watching cartoons/anime?", a: [{ t: "I cry when the hero is in danger.", s: 2 }, { t: "Enjoyable, but I check for realism.", s: 5 }, { t: "Too childish for me.", s: 10 }] },
+            { q: "When it rains, you think...", a: [{ t: "Want to jump in puddles!", s: 0 }, { t: "Pancakes and drinks sound good.", s: 6 }, { t: "My joints ache.", s: 10 }] },
+            { q: "Do you know current slang/memes?", a: [{ t: "I use them all the time.", s: 0 }, { t: "I know them but rarely use them.", s: 5 }, { t: "I have no idea what they mean.", s: 10 }] },
+            { q: "At an amusement park...", a: [{ t: "Wear a headband and run around!", s: 2 }, { t: "Just ride a few thrill rides.", s: 6 }, { t: "Sitting on a bench guarding bags is best.", s: 10 }] },
+            { q: "Food at a restaurant tastes bad.", a: [{ t: "Complain and leave food.", s: 2 }, { t: "Eat quietly and never come back.", s: 6 }, { t: "Eat it all thinking of the chef's effort.", s: 10 }] },
+            { q: "What makes you laugh?", a: [{ t: "Fart jokes, silly faces.", s: 0 }, { t: "Variety shows, comedy sketches.", s: 5 }, { t: "Dad jokes, satire, dry humor.", s: 10 }] },
+            { q: "Worries about the future?", a: [{ t: "Future? Playing today is priority.", s: 0 }, { t: "Jobs, marriage, housing prices.", s: 6 }, { t: "Retirement plans and health.", s: 10 }] },
+            { q: "When someone nags you...", a: [{ t: "Cover ears, hate hearing it.", s: 0 }, { t: "Say okay and ignore it.", s: 5 }, { t: "Reflect if it's helpful advice.", s: 10 }] },
+            { q: "Ideal Birthday Gift?", a: [{ t: "Games, toys, pretty useless things.", s: 2 }, { t: "Cash or gift cards.", s: 6 }, { t: "Health supplements or massage device.", s: 10 }] },
+            { q: "A younger person talks down to you.", a: [{ t: "Talk back! 'How old are you?'", s: 2 }, { t: "Offended but hold it in.", s: 5 }, { t: "Haha... Kids these days...", s: 10 }] },
+            { q: "Favorite Snack?", a: [{ t: "Jellies, chocolate, candy.", s: 2 }, { t: "Pizza, Chicken, Spicy food.", s: 5 }, { t: "Rice crust, Dried persimmon, Tea.", s: 10 }] },
+            { q: "How often do you show emotions?", a: [{ t: "Immediately show if upset.", s: 0 }, { t: "Control depending on situation.", s: 6 }, { t: "Rarely show emotions.", s: 10 }] },
+            { q: "If born again?", a: [{ t: "Carefree Kindergartner.", s: 0 }, { t: "Passionate 20s.", s: 5 }, { t: "Don't want to be born again. Once is enough.", s: 10 }] }
         ];
-        let step=0, score=0;
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=q.q;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ step++; next(); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ score+=q.s; step++; next(); };
-            box.appendChild(btnA); box.appendChild(btnB);
+
+        // Result Data
+        const results = [
+            { lv: "Lv.1", icon: "🍼", t: "Toddler (5 yrs)", d: "Pure innocence! Everything is new and fun. You can be bratty sometimes, but you're adorable." },
+            { lv: "Lv.2", icon: "🎈", t: "Elementary Schooler (10 yrs)", d: "Full of curiosity. Playing is priority. You dislike serious things and think simply." },
+            { lv: "Lv.3", icon: "🎸", t: "Puberty Teen (15 yrs)", d: "Sensitive and emotional. The world revolves around you. Passionate but sometimes embarrassing." },
+            { lv: "Lv.4", icon: "🌱", t: "Fresh Adult (20 yrs)", d: "Just stepped into the adult world. You crave freedom but fear responsibility." },
+            { lv: "Lv.5", icon: "🎓", t: "Young Professional (25 yrs)", d: "Starting to feel reality. Constantly worrying and growing between dreams and reality." },
+            { lv: "Lv.6", icon: "💼", t: "Realistic Adult (30 yrs)", d: "Adapted to society. You value efficiency and gain, and dislike emotional waste." },
+            { lv: "Lv.7", icon: "🍷", t: "Mature Middle-aged (45 yrs)", d: "Experienced and tough mentally. You have the composure not to be shaken easily." },
+            { lv: "Lv.8", icon: "🌳", t: "Wise Elder (60 yrs)", d: "Mastering the ways of the world. You like giving advice and value tradition." },
+            { lv: "Lv.9", icon: "☁️", t: "Enlightened Monk (80 yrs)", d: "Material greed is gone. You have found inner peace. A transcendent mentality." },
+            { lv: "Lv.10", icon: "🧙‍♂️", t: "Ancient Sage (1000 yrs)", d: "Are you human? You have shed all worldly desires. A sage found in legends." }
+        ];
+
+        // --- Logic ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t, d;
-            if(score<=15) { t="👶 5 Years Old"; d="Pure and innocent baby."; }
-            else if(score<=30) { t="👦 18 Years Old"; d="Full of energy and passion."; }
-            else if(score<=45) { t="👨‍💼 35 Years Old"; d="Realistic and mature adult."; }
-            else { t="👴 80 Years Old"; d="Wise sage. Back hurting?"; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-desc').innerText=d;
+
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-        /* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-icon').innerText = res.icon;
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied!");
+            });
+        }
     </script>
 </body>
 </html>

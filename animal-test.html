@@ -1,258 +1,184 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정밀 동물상 테스트 | 심심풀이 연구소</title> 
-    <meta name="description" content="10가지 정밀 동물 유형으로 알아보는 나의 성격! 사자부터 나무늘보까지, 나는 어떤 동물일까?">
+    <title>동물상 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="나와 닮은 동물은 무엇일까? 성격으로 알아보는 나의 내면 동물 찾기 (10단계)">
     <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-    </header> 
-
-    <div class="container">
-        <div class="ad-placeholder" style="margin-bottom: 30px;">(구글 애드센스 광고 - 상단)</div>
-
-        <div id="start-screen" class="content-box">
-            <h1>🦁 정밀 동물상 테스트</h1>
-            <p>12가지 질문을 통해<br>당신의 무의식 속 동물을 찾아냅니다.</p>
-            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="동물" style="width:100px; margin: 20px 0;">
-            <button class="btn" onclick="startTest()">분석 시작하기</button>
-        </div>
-
-        <div id="question-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="progressBar"></div></div>
-            <h2 id="qTitle" style="min-height: 60px;">질문 내용</h2>
-            <div style="margin-top: 30px;">
-                <button class="btn" id="btnA" onclick="selectAnswer('A')" style="margin-bottom: 10px;">답변 A</button>
-                <button class="btn" id="btnB" onclick="selectAnswer('B')">답변 B</button>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+            <div class="lang-switch">
+                <a href="animal-test.html" class="lang-btn active">🇰🇷 KO</a>
+                <a href="animal-test-en.html" class="lang-btn">🇺🇸 EN</a>
             </div>
+        </header>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div id="loading-screen" class="content-box hidden">
-            <h2>🧬 유전자 분석 중...</h2>
-            <p>당신의 성향 데이터를 10가지 동물 유형과 대조하고 있습니다.</p>
-        </div>
-
-        <div id="result-screen" class="content-box hidden">
-            <p>당신의 소울 애니멀은?</p>
-            <h1 id="resultTitle" style="color:var(--primary-color); font-size: 2.5rem;">결과 동물</h1>
-            <h3 id="resultSubtitle" style="color:#555;">별명</h3>
-            <div id="resultDesc" style="text-align: left; background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0; line-height: 1.8;">
-                결과 설명
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">🐶</div>
+                <h1 class="main-title">내 안의 동물 찾기</h1>
+                <p class="sub-desc">당신의 성격과 가장 닮은 동물은?<br>15문항으로 알아보는 10가지 동물 유형</p>
+                <button onclick="startTest()" class="btn-primary full-width">테스트 시작하기</button>
             </div>
-            <button class="btn" onclick="copyLink()" style="background:#eee; color:#333; margin-bottom: 10px;">🔗 결과 공유하기</button>
-            <button class="btn" onclick="location.reload()">다시 테스트하기</button>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← 처음으로</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">질문 내용</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">🐾</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">결과 제목</h1>
+                <p id="res-desc">결과 설명</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 결과 공유하기</button>
+                <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <div class="ad-placeholder">(구글 애드센스 광고 - 하단)</div>
-            <h3>재미로 보는 동물 심리학</h3>
-            <p>사람들은 본능적으로 자신과 닮은 동물에게 끌린다고 합니다. 이 테스트는 외향성(Extroversion), 공감능력(Feeling), 계획성(Judging)의 3가지 척도를 분석하여 당신에게 가장 적합한 동물 페르소나를 찾아줍니다.</p>
-            <p>친구들과 결과를 공유해서 서로가 사자 타입인지, 나무늘보 타입인지 확인해보세요! 의외의 케미를 발견할 수도 있습니다.</p>
-        </div>
+        <footer>
+            <p>© 2024 심심풀이 연구소</p>
+            <div class="footer-links">
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // 12개 질문 (E:외향, F:감성, J:계획)
+        // --- 데이터 영역 (15문항) ---
         const questions = [
-            { q: "모르는 사람들과 섞여 있는 파티장, 나는?", a: "새로운 사람 만나는 게 즐겁다! (E)", b: "아는 친구 옆에만 꼭 붙어 있는다. (I)", type: "E" },
-            { q: "친구가 우울해서 머리를 잘랐다고 한다. 나는?", a: "무슨 일 있어? 많이 우울했구나 ㅠㅠ (F)", b: "어떤 스타일로? 사진 보여줘봐. (T)", type: "F" },
-            { q: "여행을 갈 때 나는?", a: "분 단위로 엑셀에 계획을 짠다. (J)", b: "일단 가자! 가서 생각하자. (P)", type: "J" },
-            { q: "일주일 동안 집 밖을 안 나가도 된다면?", a: "너무 답답해서 병난다. (E)", b: "그곳이 바로 천국이다. (I)", type: "E" },
-            { q: "친구가 약속 시간에 늦었을 때?", a: "오다가 무슨 일 있었어? 걱정된다. (F)", b: "지금 어디야? 몇 분 늦는데? (T)", type: "F" },
-            { q: "책상을 정리할 때 나는?", a: "용도별로 각 맞춰 정리한다. (J)", b: "일단 한쪽에 몰아둔다. (P)", type: "J" },
-            { q: "식당에서 종업원을 부를 때?", a: "저기요! (크게 부른다) (E)", b: "벨을 누르거나 눈이 마주칠 때까지 기다린다. (I)", type: "E" },
-            { q: "슬픈 영화를 볼 때 나는?", a: "주인공에 이입해서 펑펑 운다. (F)", b: "영화는 영화일 뿐, 눈물은 안 난다. (T)", type: "F" },
-            { q: "해야 할 일이 생겼을 때?", a: "미리미리 끝내놔야 마음이 편하다. (J)", b: "마감 직전의 내가 해결해 줄 것이다. (P)", type: "J" },
-            { q: "엘리베이터에서 이웃을 만났을 때?", a: "안녕하세요! 날씨 좋죠? (스몰토크) (E)", b: "가볍게 목례만 하고 폰을 본다. (I)", type: "E" },
-            { q: "나의 고민 상담 스타일은?", a: "들어주고 위로해주는 게 좋다. (F)", b: "현실적인 해결책을 주는 게 좋다. (T)", type: "F" },
-            { q: "마트에 장을 보러 갈 때?", a: "살 목록을 메모해서 간다. (J)", b: "가서 맛있어 보이는 걸 담는다. (P)", type: "J" }
+            { q: "새로운 모임에 나갔을 때 나는?", a: [{ t: "구석에서 조용히 분위기를 살핀다.", s: 2 }, { t: "옆 사람에게 먼저 말을 건다.", s: 6 }, { t: "무대를 장악하고 분위기를 주도한다.", s: 10 }] },
+            { q: "친구가 고민을 털어놓을 때 나는?", a: [{ t: "묵묵히 들어주며 공감한다.", s: 2 }, { t: "현실적인 조언을 해준다.", s: 6 }, { t: "내 일처럼 흥분해서 같이 화낸다.", s: 10 }] },
+            { q: "주말에 집에서 쉴 때 나는?", a: [{ t: "침대와 한 몸이 되어 움직이지 않는다.", s: 0 }, { t: "밀린 집안일이나 취미 생활을 한다.", s: 5 }, { t: "집에만 있으면 답답해서 나간다.", s: 10 }] },
+            { q: "일을 처리하는 나의 스타일은?", a: [{ t: "최대한 미루다가 벼락치기.", s: 2 }, { t: "계획대로 차근차근.", s: 6 }, { t: "빠르고 효율적으로 후딱 해치운다.", s: 10 }] },
+            { q: "누군가 시비를 걸어온다면?", a: [{ t: "무서워서 피하거나 무시한다.", s: 2 }, { t: "논리적으로 따져 묻는다.", s: 6 }, { t: "참지 않는다. 바로 맞서 싸운다.", s: 10 }] },
+            { q: "여행 갈 때 나의 계획은?", a: [{ t: "무계획이 계획이다.", s: 2 }, { t: "큰 틀만 정하고 자유롭게.", s: 6 }, { t: "분 단위 엑셀 파일 계획표.", s: 10 }] },
+            { q: "나의 식성은?", a: [{ t: "입이 짧고 가리는 게 많다.", s: 3 }, { t: "주는 대로 잘 먹는다.", s: 6 }, { t: "미식가이자 대식가다.", s: 10 }] },
+            { q: "좋아하는 사람 앞에서는?", a: [{ t: "부끄러워서 눈도 못 마주친다.", s: 2 }, { t: "은근슬쩍 챙겨준다.", s: 6 }, { t: "대놓고 호감을 표현한다.", s: 10 }] },
+            { q: "리더 역할을 맡게 된다면?", a: [{ t: "부담스러워서 거절한다.", s: 2 }, { t: "시키면 책임감 있게 한다.", s: 6 }, { t: "내가 나서서 리드한다.", s: 10 }] },
+            { q: "화가 났을 때 나는?", a: [{ t: "속으로 삭힌다.", s: 2 }, { t: "조곤조곤 이유를 말한다.", s: 6 }, { t: "그 자리에서 폭발한다.", s: 10 }] },
+            { q: "나의 평소 표정은?", a: [{ t: "멍하니 있거나 졸려 보인다.", s: 2 }, { t: "항상 웃는 상이다.", s: 6 }, { t: "날카롭고 카리스마 있다.", s: 10 }] },
+            { q: "경쟁 상황에서 나는?", a: [{ t: "경쟁을 싫어해서 양보한다.", s: 2 }, { t: "적당히 즐기면서 한다.", s: 6 }, { t: "무조건 이겨야 직성이 풀린다.", s: 10 }] },
+            { q: "친구들이 말하는 나는?", a: [{ t: "순하고 착하다.", s: 2 }, { t: "재미있고 센스 있다.", s: 6 }, { t: "기가 세고 강하다.", s: 10 }] },
+            { q: "위험한 도전을 즐기는가?", a: [{ t: "안전한 게 최고다.", s: 2 }, { t: "가끔은 스릴을 즐긴다.", s: 6 }, { t: "인생은 모험이다! 즐긴다.", s: 10 }] },
+            { q: "다시 태어난다면?", a: [{ t: "사랑받는 애완동물.", s: 2 }, { t: "자유로운 야생동물.", s: 6 }, { t: "정글의 왕.", s: 10 }] }
         ];
 
+        // 결과 데이터 (0~150점 -> 10단계 매핑)
+        const results = [
+            { lv: "Lv.1", icon: "🦥", t: "평화로운 나무늘보", d: "세상만사 귀찮습니다. 침대 밖은 위험해요! 느긋하고 평화주의적인 성격입니다." },
+            { lv: "Lv.2", icon: "🐹", t: "소심한 햄스터", d: "겁이 많고 조심성이 뛰어나지만, 자기 사람에게는 한없이 귀여운 매력을 발산합니다." },
+            { lv: "Lv.3", icon: "🐰", t: "상큼한 토끼", d: "발랄하고 귀엽지만 예민한 구석이 있습니다. 깡총깡총 어디로 튈지 모르는 매력!" },
+            { lv: "Lv.4", icon: "🐈", t: "도도한 고양이", d: "독립적이고 자존심이 셉니다. 츤데레 같은 매력으로 주변 사람을 홀립니다." },
+            { lv: "Lv.5", icon: "🐶", t: "충직한 강아지", d: "사람을 좋아하고 에너지가 넘칩니다. 의리가 있고 정이 많은 인기쟁이입니다." },
+            { lv: "Lv.6", icon: "🦌", t: "우아한 사슴", d: "눈치가 빠르고 감수성이 풍부합니다. 겉은 여려 보이지만 속은 단단한 외유내강형." },
+            { lv: "Lv.7", icon: "🦊", t: "영리한 여우", d: "두뇌 회전이 빠르고 처세술이 뛰어납니다. 원하는 것을 얻어내는 능력이 탁월합니다." },
+            { lv: "Lv.8", icon: "🦅", t: "카리스마 독수리", d: "통찰력이 있고 목표 지향적입니다. 한번 노린 먹잇감은 절대 놓치지 않습니다." },
+            { lv: "Lv.9", icon: "🦁", t: "용맹한 사자", d: "리더십이 뛰어나고 자존감이 높습니다. 무리를 이끄는 왕의 기질을 타고났습니다." },
+            { lv: "Lv.10", icon: "🦄", t: "신비로운 유니콘", d: "상상 속에나 존재할 법한 완벽함! 독특하고 창의적이며 모두가 동경하는 존재입니다." }
+        ];
+
+        // --- 로직 (연애 테스트와 동일 구조) ---
         let currentStep = 0;
-        let score = { E: 0, F: 0, J: 0 }; // E가 높으면 외향, F가 높으면 감성, J가 높으면 계획
+        let score = 0;
 
         function startTest() {
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('question-screen').classList.remove('hidden');
-            setQuestion();
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
 
-        function setQuestion() {
-            let q = questions[currentStep];
-            document.getElementById('qTitle').innerText = `Q${currentStep+1}. ${q.q}`;
-            document.getElementById('btnA').innerText = q.a;
-            document.getElementById('btnB').innerText = q.b;
-            document.getElementById('progressBar').style.width = ((currentStep / questions.length) * 100) + '%';
-        }
-
-        function selectAnswer(ans) {
-            let type = questions[currentStep].type;
-            // A를 선택하면 해당 성향 점수 +1 (외향, 감성, 계획)
-            if (ans === 'A') score[type]++;
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
             
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
+        }
+
+        function nextStep(s) {
+            score += s;
             currentStep++;
             if (currentStep < questions.length) {
-                setQuestion();
+                showQuestion();
             } else {
                 showResult();
             }
         }
 
         function showResult() {
-            document.getElementById('question-screen').classList.add('hidden');
-            document.getElementById('loading-screen').classList.remove('hidden');
-            
-            setTimeout(() => {
-                document.getElementById('loading-screen').classList.add('hidden');
-                document.getElementById('result-screen').classList.remove('hidden');
-                
-                // 점수 기준 (4점 만점 중 2점 초과면 해당 성향)
-                const isE = score.E > 2;
-                const isF = score.F > 2;
-                const isJ = score.J > 2;
-                
-                let animal, sub, desc;
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-                // 10가지 로직 분기
-                if (score.E === 4 && score.J === 4) { // 파워 외향 + 파워 계획
-                    animal = "🦁 백수의 왕 '사자'";
-                    sub = "카리스마 넘치는 리더";
-                    desc = "당신은 타고난 리더입니다. 목표를 정하면 불도저처럼 밀고 나가는 추진력이 있으며, 주변 사람들을 이끄는 카리스마가 있습니다. 완벽주의 성향이 있어 결과도 확실합니다.";
-                } else if (score.E === 4 && score.J <= 2) { // 파워 외향 + 즉흥
-                    animal = "🐒 재간둥이 '원숭이'";
-                    sub = "분위기 메이커";
-                    desc = "어디를 가나 분위기를 주도하는 인싸 중의 인싸! 호기심이 많고 유머 감각이 뛰어나 주변에 친구가 끊이지 않습니다. 진지한 것보다는 즐거운 게 최고라고 생각합니다.";
-                } else if (isE && isF && isJ) {
-                    animal = "🐘 다정한 수호자 '코끼리'";
-                    sub = "든든한 맏형/맏언니";
-                    desc = "사람들을 챙기는 것을 좋아하고 책임감이 강합니다. 공동체의 화합을 중요시하며, 묵묵히 자신의 일을 해내는 듬직한 스타일입니다.";
-                } else if (isE && isF && !isJ) {
-                    animal = "🐬 사랑스러운 '돌고래'";
-                    sub = "해피 바이러스";
-                    desc = "긍정적인 에너지가 넘치고 공감 능력이 뛰어납니다. 자유로운 영혼의 소유자로, 구속받는 것을 싫어하고 즉흥적인 여행을 즐깁니다.";
-                } else if (isE && !isF) { // 외향 + 이성적
-                    animal = "🦊 영리한 전략가 '여우'";
-                    sub = "눈치 빠른 협상가";
-                    desc = "머리 회전이 빠르고 처세술이 뛰어납니다. 감정에 휘둘리지 않고 실속을 챙길 줄 알며, 어떤 상황에서도 자신에게 유리한 판을 짭니다.";
-                } else if (!isE && isJ && !isF) { // 내향 + 계획 + 이성
-                    animal = "🦉 지혜로운 현자 '부엉이'";
-                    sub = "논리적인 분석가";
-                    desc = "조용히 상황을 관망하다가 핵심을 찌르는 통찰력을 가졌습니다. 지적 호기심이 많고 혼자서 깊이 생각하는 시간을 즐깁니다.";
-                } else if (!isE && isF && isJ) { // 내향 + 감성 + 계획
-                    animal = "🦌 온화한 평화주의자 '사슴'";
-                    sub = "섬세한 배려왕";
-                    desc = "싸움을 싫어하고 평화를 사랑합니다. 낯을 가리지만 친해지면 누구보다 깊은 정을 줍니다. 성실하고 꼼꼼하게 자신의 일을 처리합니다.";
-                } else if (!isE && isF && !isJ) { // 내향 + 감성 + 즉흥
-                    animal = "🐱 도도한 냥이 '고양이'";
-                    sub = "매력적인 개인주의자";
-                    desc = "독립심이 강하고 자기만의 세계가 확실합니다. 남에게 피해 주는 것도, 받는 것도 싫어합니다. 예술적 감성을 가지고 있습니다.";
-                } else if (score.E <= 1 && score.J <= 1) { // 파워 내향 + 파워 귀찮음
-                    animal = "🦥 느긋한 평화 '나무늘보'";
-                    sub = "집이 최고야";
-                    desc = "이불 밖은 위험해! 침대와 한 몸이 되는 것을 가장 좋아합니다. 경쟁보다는 여유를 중요시하며, 효율적으로 움직이는 것을 선호합니다.";
-                } else { // 그 외 (밸런스형)
-                    animal = "🐻 우직한 뚝심 '곰'";
-                    sub = "믿음직한 친구";
-                    desc = "튀지 않지만 묵묵히 제 자리를 지키는 뚝심이 있습니다. 참을성이 많고 온화하지만, 한번 화가 나면 무서운 반전 매력의 소유자입니다.";
-                }
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-                document.getElementById('resultTitle').innerText = animal;
-                document.getElementById('resultSubtitle').innerText = sub;
-                document.getElementById('resultDesc').innerHTML = desc;
-            }, 1500);
+            const res = results[level];
+            document.getElementById('res-icon').innerText = res.icon;
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
+
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("링크가 복사되었습니다!");
+            });
         }
     </script>
-
-<style>
-    .share-container {
-        text-align: center;
-        margin: 40px 0;
-        padding: 20px;
-        background: #f8f9fa;
-        border-radius: 15px;
-    }
-    .share-title { font-weight: bold; margin-bottom: 15px; color: #555; }
-    .share-btn-group { display: flex; justify-content: center; gap: 10px; }
-    .share-btn {
-        width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-        transition: transform 0.2s; color: white;
-    }
-    .share-btn:hover { transform: scale(1.1); }
-    .btn-kakao { background-color: #FEE500; color: #3C1E1E; } /* 링크복사로 대체 */
-    .btn-twitter { background-color: #000000; } /* X (트위터) */
-    .btn-facebook { background-color: #1877F2; }
-    .btn-link { background-color: #8c7ae6; }
-</style>
-
-<div class="container">
-    <div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">친구에게 테스트 공유하기</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 링크 복사</button>
-    </div>
-</div>
-</div>
-
-<script>
-    /* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
-function shareTwitter() {
-    var sendText = document.title; // 기본 제목
-    var sendUrl = window.location.href; // 기본 주소
-
-    // 결과 화면이 보이면? 결과 멘트를 추가한다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
-        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
-    }
-
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
-
-function shareFacebook() {
-    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
-
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl; // 기본은 링크만
-
-    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        // 복사될 텍스트 포맷
-        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
-    });
-}
-</script>
-
-<footer>
-        <p>© 2024 심심풀이 연구소. All rights reserved.</p>
-        <p>
-            <a href="privacy.html">개인정보처리방침</a> | 
-            <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
-        </p>
-    </footer>
-    
 </body>
 </html>

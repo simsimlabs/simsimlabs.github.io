@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar IQ Test | Boredom Lab</title>
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads - Top)</div>
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">📚</div>
+            <h1>Grammar IQ Test</h1>
+            <p>Even native speakers fail this.<br>Can you get a perfect score?</p>
+            <button class="btn" onclick="start()">Start Test</button>
+        </div>
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#6c5ce7;"></div></div>
+            <h2 id="q-text">Question</h2>
+            <div id="answer-box"></div>
+        </div>
+        <div id="result-screen" class="content-box hidden">
+            <p>Your Level is...</p>
+            <h1 id="result-title" style="color:#6c5ce7;">Result</h1>
+            <h1 id="result-score"></h1>
+            <div id="result-desc" style="background:#f8f9fa; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+        <div class="ad-placeholder">(Ads - Bottom)</div>
+        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
+    </div>
+    <script>
+        const qData = [
+            { q: "They go to school over _____.", a: "their", b: "there", ans: "B" },
+            { q: "Your advice had a great _____.", a: "affect", b: "effect", ans: "B" },
+            { q: "It's better _____ yours.", a: "then", b: "than", ans: "B" },
+            { q: "_____ going to be a great day.", a: "Its", b: "It's", ans: "B" },
+            { q: "I have _____ money than you.", a: "less", b: "fewer", ans: "A" },
+            { q: "She _____ good.", a: "did", b: "done", ans: "A" },
+            { q: "Who is it? It is _____.", a: "I", b: "me", ans: "A" },
+            { q: "You should _____ down.", a: "lay", b: "lie", ans: "B" },
+            { q: "To _____ should I send this?", a: "who", b: "whom", ans: "B" },
+            { q: "I could _____ helped you.", a: "of", b: "have", ans: "B" },
+            { q: "The dog wagged _____ tail.", a: "its", b: "it's", ans: "A" },
+            { q: "One of the women who _____ hard.", a: "work", b: "works", ans: "A" },
+            { q: "Between you and _____.", a: "I", b: "me", ans: "B" },
+            { q: "I feel _____.", a: "good", b: "well", ans: "A" },
+            { q: "A large amount of _____.", a: "people", b: "money", ans: "B" }
+        ];
+        let step=0, score=0;
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=`Q${step+1}. ${q.q}`;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ check('A',q.ans); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ check('B',q.ans); };
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+        function check(c,a){ if(c===a) score++; step++; next(); }
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t,d;
+            if(score===15) { t="👑 Shakespeare"; d="Perfect score! Are you a professor?"; }
+            else if(score>=12) { t="🎓 Honor Student"; d="Excellent grammar."; }
+            else if(score>=8) { t="🙂 Average"; d="Not bad, but tricky ones got you."; }
+            else { t="👶 Beginner"; d="You need to read more books!"; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-score').innerText=score+"/15"; document.getElementById('result-desc').innerText=d;
+        }
+    </script>
+</body>
+</html>

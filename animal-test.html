@@ -204,30 +204,22 @@
 </div>
 
 <script>
-    function shareSNS(sns) {
-        const thisUrl = window.location.href;
-        const snsTitle = document.title;
-        let url = '';
-
-        if(sns === 'twitter') {
-            url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(snsTitle) + '&url=' + encodeURIComponent(thisUrl);
-        } else if(sns === 'facebook') {
-            url = 'http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(thisUrl);
-        }
-
-        if(url) {
-            window.open(url, '_blank');
-        }
-    }
-
-    function copyLink() {
-        const url = window.location.href;
-        navigator.clipboard.writeText(url).then(() => {
-            alert('링크가 복사되었습니다! 친구에게 붙여넣기(Ctrl+V) 하세요.');
-        }).catch(err => {
-            alert('링크 복사에 실패했습니다. 주소창을 복사해주세요.');
-        });
-    }
+    /* === 공유하기 기능 (스크립트 맨 아래 추가) === */
+function shareTwitter() {
+    var sendText = document.title;
+    var sendUrl = window.location.href;
+    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+}
+function shareFacebook() {
+    var sendUrl = window.location.href;
+    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+}
+function copyLink() {
+    var sendUrl = window.location.href;
+    navigator.clipboard.writeText(sendUrl).then(function() {
+        alert("링크가 복사되었습니다! (Link Copied!)");
+    });
+}
 </script>
 
 <footer>

@@ -4,126 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부자 될 확률 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="나의 소비 습관과 마인드로 분석하는 미래 자산 규모! 나는 워렌 버핏이 될 수 있을까?">
-    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2482/2482520.png">
+    <meta name="description" content="나의 머니 마인드는 상위 몇 %일까? 15문항으로 알아보는 부자 될 확률 테스트 (10단계)">
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(광고 - 상단)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">💰</div>
-            <h1>부자 될 확률 테스트</h1>
-            <p>월급은 통장을 스쳐 갈 뿐인가요?<br>당신의 무의식 속 '머니 마인드'를 점검합니다.</p>
-            <button class="btn" onclick="start()">진단 시작하기</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#ffd700;"></div></div>
-            <h2 id="q-text">질문</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>당신의 부자 가능성은...</p>
-            <h1 id="result-title" style="color:#f1c40f;">결과</h1>
-            <h3 id="result-sub">서브</h3>
-            <div id="result-desc" style="background:#fffbf0; padding:20px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
-            <button class="btn" onclick="location.reload()">다시 하기</button>
-        </div>
-        <div class="ad-placeholder">(광고 - 하단)</div>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+            <div class="lang-switch">
+                <a href="rich-test.html" class="lang-btn active">🇰🇷 KO</a>
+                <a href="rich-test-en.html" class="lang-btn">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">친구에게 테스트 공유하기</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 링크 복사</button>
-    </div>
-</div>
-        
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">💰</div>
+                <h1 class="main-title">부자 될 확률 테스트</h1>
+                <p class="sub-desc">나의 소비 습관과 투자 마인드는?<br>15문항으로 알아보는 재력 잠재력 분석</p>
+                <button onclick="startTest()" class="btn-primary full-width">테스트 시작하기</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← 처음으로</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">질문 내용</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">💎</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">결과 제목</h1>
+                <p id="res-desc">결과 설명</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 결과 공유하기</button>
+                <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
         <footer>
             <p>© 2024 심심풀이 연구소</p>
-            <p><a href="privacy.html">개인정보처리방침</a> | <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a></p>
+            <div class="footer-links">
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
+            </div>
         </footer>
     </div>
+
     <script>
-        const qData = [
-            { q: "복권에 당첨되어 10억이 생겼다. 가장 먼저 할 일은?", a: "건물이나 주식 등 자산을 산다.", b: "차를 바꾸고 사고 싶던 명품을 산다.", s: 5 },
-            { q: "사고 싶은 물건이 생겼는데 돈이 부족하다면?", a: "돈을 모을 때까지 참는다.", b: "할부나 마이너스 통장으로 일단 산다.", s: 5 },
-            { q: "주식/코인이 폭락해서 -30%가 되었다.", a: "기회다! 쌀 때 더 산다 (추매).", b: "무서워서 다 팔고 도망친다 (손절).", s: 4 },
-            { q: "친구들이 비싼 오마카세를 먹으러 가자고 한다.", a: "가끔은 괜찮지! 즐겁게 간다.", b: "예산 초과다. 적당한 핑계로 빠진다.", s: 3 },
-            { q: "나는 내 한 달 지출 내역을 정확히 알고 있다.", a: "그렇다. 가계부를 쓴다.", b: "대충 안다. 카드값 나오면 본다.", s: 5 },
-            { q: "부자들은 OOO 해서 돈을 벌었을 것이다.", a: "노력하고 투자해서", b: "부모를 잘 만나거나 운이 좋아서", s: 5 },
-            { q: "100만 원을 투자해서 10만 원을 벌었다.", a: "10% 수익 굿! 재투자한다.", b: "10만 원으로 맛있는 거 사 먹는다.", s: 4 },
-            { q: "은행 예적금 금리가 너무 낮다.", a: "그래도 안전한 게 최고다.", b: "투자를 공부해서 다른 곳에 굴린다.", s: 4 },
-            { q: "퇴근 후 남는 시간에 나는 주로?", a: "자기계발이나 부업을 한다.", b: "넷플릭스 보거나 게임하며 쉰다.", s: 5 },
-            { q: "현재 나의 자산 상태에 대해?", a: "구체적인 목표와 계획이 있다.", b: "어떻게든 되겠지 생각한다.", s: 5 }
+        // --- 데이터 영역 (15문항) ---
+        const questions = [
+            { q: "로또 10억에 당첨된다면 가장 먼저 할 일은?", a: [{ t: "평소 갖고 싶던 명품차와 가방을 산다.", s: 2 }, { t: "빚을 갚고 나머지는 통장에 넣는다.", s: 5 }, { t: "건물이나 우량 주식에 투자한다.", s: 10 }] },
+            { q: "사고 싶은 물건이 있는데 돈이 부족하다.", a: [{ t: "신용카드 할부로 일단 긁는다.", s: 2 }, { t: "부모님이나 친구에게 빌린다.", s: 4 }, { t: "돈을 모을 때까지 참거나 포기한다.", s: 10 }] },
+            { q: "투자해 둔 주식이 -30% 폭락했다.", a: [{ t: "공포에 질려 다 팔아치운다 (손절).", s: 2 }, { t: "본전이 올 때까지 앱을 삭제한다 (존버).", s: 5 }, { t: "바겐세일 기회다! 쌀 때 더 산다 (추가매수).", s: 10 }] },
+            { q: "친구들이 1인당 10만 원짜리 식사를 가자고 한다.", a: [{ t: "분위기에 휩쓸려 무리해서 간다.", s: 2 }, { t: "고민하다가 이번만 간다.", s: 5 }, { t: "예산 초과라고 솔직히 말하고 빠진다.", s: 10 }] },
+            { q: "나의 한 달 지출 내역을 정확히 알고 있나?", a: [{ t: "전혀 모른다. 카드 명세서 보면 놀란다.", s: 2 }, { t: "대충 얼마 쓰는지는 안다.", s: 6 }, { t: "가계부를 써서 10원 단위까지 안다.", s: 10 }] },
+            { q: "은행 금리가 너무 낮다. 나의 선택은?", a: [{ t: "그래도 안전한 게 최고다. 예금만 한다.", s: 4 }, { t: "주변에서 좋다는 코인을 산다.", s: 2 }, { t: "주식, 부동산 등 투자를 공부해서 굴린다.", s: 10 }] },
+            { q: "퇴근 후 남는 시간에 나는?", a: [{ t: "넷플릭스 보거나 게임을 한다.", s: 2 }, { t: "친구 만나서 술 마신다.", s: 2 }, { t: "자기계발을 하거나 부업을 한다.", s: 10 }] },
+            { q: "부자들은 어떻게 돈을 벌었을까?", a: [{ t: "운이 좋거나 부모를 잘 만나서.", s: 2 }, { t: "나쁜 짓을 해서 벌었을 것이다.", s: 0 }, { t: "남다른 노력과 투자 실력이 있어서.", s: 10 }] },
+            { q: "뜻하지 않게 100만 원이 생겼다.", a: [{ t: "기분이다! 친구들에게 한턱 쏜다.", s: 2 }, { t: "평소 사고 싶던 옷을 산다.", s: 4 }, { t: "투자 통장에 넣어서 굴린다 (복리 효과).", s: 10 }] },
+            { q: "신용카드 리볼빙 서비스를 써본 적 있나?", a: [{ t: "자주 쓴다.", s: 0 }, { t: "한두 번 써봤다.", s: 4 }, { t: "절대 안 쓴다. 그게 뭔지도 모른다.", s: 10 }] },
+            { q: "경제 뉴스를 챙겨 보는가?", a: [{ t: "머리 아파서 연예 뉴스만 본다.", s: 2 }, { t: "가끔 헤드라인만 본다.", s: 5 }, { t: "매일 아침 챙겨 본다.", s: 10 }] },
+            { q: "지금 당장 100만 원이 급하게 필요하다면?", a: [{ t: "빌릴 곳을 찾아야 한다.", s: 2 }, { t: "적금을 깨야 한다.", s: 5 }, { t: "비상금 통장에 여유가 있다.", s: 10 }] },
+            { q: "대폭 할인(세일) 기간에 나는?", a: [{ t: "싸니까 일단 사고 본다.", s: 2 }, { t: "평소 눈여겨본 것만 산다.", s: 6 }, { t: "필요 없으면 90% 할인해도 안 산다.", s: 10 }] },
+            { q: "돈은 OOO이다.", a: [{ t: "쓰기 위해 버는 것 (현재의 즐거움).", s: 2 }, { t: "없으면 불편한 것.", s: 5 }, { t: "자유를 얻기 위한 수단 (미래의 자유).", s: 10 }] },
+            { q: "10년 뒤 나의 자산 목표가 있는가?", a: [{ t: "하루하루 살기도 벅차다.", s: 2 }, { t: "막연하게 부자가 되고 싶다.", s: 5 }, { t: "구체적인 목표 금액과 계획이 있다.", s: 10 }] }
         ];
-        let step=0, score=0;
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=q.q;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ score+=q.s; step++; next(); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ step++; next(); };
-            box.appendChild(btnA); box.appendChild(btnB);
+
+        // 결과 데이터 (0~150점 -> 10단계 매핑)
+        const results = [
+            { lv: "Lv.1", t: "해맑은 텅장 요정", d: "월급이 통장을 스쳐 지나갑니다. '욜로(YOLO)'하다가 '골로' 갈 수 있습니다. 소비 통제가 시급합니다." },
+            { lv: "Lv.2", t: "충동 구매러", d: "할인 문구만 보면 이성을 잃습니다. '이건 사야 해!'가 말버릇이시군요. 신용카드를 자르세요." },
+            { lv: "Lv.3", t: "금융 신생아", d: "돈을 모으고는 싶지만 방법은 모릅니다. 경제 공부를 ABC부터 시작해야 할 단계입니다." },
+            { lv: "Lv.4", t: "평범한 서민", d: "적금은 꼬박꼬박 하지만 물가 상승률을 따라잡기 벅찹니다. 투자가 필요합니다." },
+            { lv: "Lv.5", t: "안전 지향형 거북이", d: "잃지 않는 투자를 선호합니다. 하지만 부자가 되려면 조금 더 과감해질 필요가 있습니다." },
+            { lv: "Lv.6", t: "재테크 꿈나무", d: "관심은 많으나 아직 실전 경험이 부족합니다. 조금만 더 공부하면 성과가 보일 겁니다." },
+            { lv: "Lv.7", t: "스마트 개미", d: "똑똑하게 소비하고 투자합니다. 시드머니가 차곡차곡 모이고 있네요. 희망이 보입니다!" },
+            { lv: "Lv.8", t: "투자 고수", d: "자본주의의 원리를 이해하고 있습니다. 돈이 돈을 버는 시스템을 구축하는 단계입니다." },
+            { lv: "Lv.9", t: "예비 건물주", d: "경제적 자유가 코앞입니다. 이미 부자일 수도 있겠군요. 존경합니다!" },
+            { lv: "Lv.10", t: "한국의 워렌 버핏", d: "당신의 머니 마인드는 완벽합니다. 걸어 다니는 대기업입니다. 저에게도 팁 좀 주세요!" }
+        ];
+
+        // --- 로직 (공통) ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t,s,d;
-            if(score>=40) { t="💎 숨만 쉬어도 돈이 붙는 '워렌 버핏'"; s="부자 확률 99%"; d="당신의 머니 마인드는 완벽합니다. 돈이 돈을 버는 구조를 이해하고 있으며, 소비 통제력도 뛰어납니다. 지금처럼만 하면 경제적 자유는 시간문제입니다."; }
-            else if(score>=25) { t="🐜 성실하게 모으는 '슈퍼 개미'"; s="부자 확률 60%"; d="기본적인 경제 관념이 잡혀 있습니다. 티끌 모아 태산을 만들 줄 아는 타입! 조금 더 과감한 투자 공부를 병행한다면 자산 증식 속도가 빨라질 것입니다."; }
-            else { t="💸 통장이 텅장인 'YOLO족'"; s="부자 확률 10%"; d="'인생은 한 번뿐'이라며 현재의 즐거움을 중시하네요. 하지만 이대로 가다간 노후가 위험합니다! 오늘부터 신용카드를 자르고 가계부를 써보세요."; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-/* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
-function shareTwitter() {
-    var sendText = document.title; // 기본 제목
-    var sendUrl = window.location.href; // 기본 주소
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    // 결과 화면이 보이면? 결과 멘트를 추가한다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
-        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl; // 기본은 링크만
-
-    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        // 복사될 텍스트 포맷
-        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("링크가 복사되었습니다!");
+            });
+        }
     </script>
 </body>
 </html>

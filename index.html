@@ -1,230 +1,78 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>심심풀이 연구소 | 무료 심리테스트, MBTI, 미니게임 모음</title>
-    <meta name="description" content="심심할 때 뭐 하지? 연애 세포 테스트, 꼰대 성향 검사, 어휘력 테스트, 절대색감 게임, 좀비 생존 등 시간 순삭 무료 콘텐츠가 가득!">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://simsimlabs.github.io/">
-    <meta property="og:title" content="심심풀이 연구소 - 심심할 때 여기 모여라!">
-    <meta property="og:description" content="나의 성향, 연애 스타일, 지능, 생존 능력까지! AI가 분석해주는 소름 돋는 결과 확인하기">
-    <meta property="og:image" content="https://user-images.githubusercontent.com/본인이미지주소.png">
-    
+    <title>심심풀이 연구소 | 무료 심리테스트 & MBTI 성향 분석</title>
+    <meta name="description" content="심심할 때 뭐 하지? 연애 세포 테스트, 동물상 찾기, 좀비 생존 게임, 꼰대 성향 테스트 등 시간 순삭 무료 콘텐츠 모음.">
     <link rel="stylesheet" href="style.css">
-    
-    </head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+</head>
 <body>
     <header>
-    <div class="container" style="padding: 0 20px; display: flex; justify-content: space-between; align-items: center;">
-        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-        <a href="en/index.html" style="font-size:0.9rem; border:1px solid #ddd; padding:5px 10px; border-radius:15px;">🇺🇸 EN</a>
-    </div>
-</header>
-
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+            <a href="en/index.html" style="border:1px solid #ddd; padding:5px 10px; border-radius:15px; font-size:0.9rem;">🇺🇸 EN</a>
+        </div>
+    </header>
     <div class="container">
         <div class="hero-banner">
-            <span style="background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 15px; font-size: 0.8rem;">HOT 🔥</span>
+            <span style="background:rgba(255,255,255,0.2); padding:4px 10px; border-radius:15px; font-size:0.8rem;">HOT 🔥</span>
             <h1>나의 연애 세포 등급은?</h1>
-            <p>죽어가는 연애 세포를 심폐소생술 해드립니다.<br>당신의 연애 능력치를 분석해보세요.</p>
-            <a href="love-test.html" class="hero-btn">테스트 하러가기 👉</a>
+            <p>죽어가는 연애 세포를 심폐소생술 해드립니다.</p>
+            <a href="love-test.html" class="hero-btn">테스트 시작 👉</a>
         </div>
-
         <div class="ad-placeholder">(광고 - 메인 상단)</div>
-
+        
         <div class="category-nav">
-            <button class="cat-btn active" onclick="filter('all')">전체보기</button>
+            <button class="cat-btn active" onclick="filter('all')">전체</button>
             <button class="cat-btn" onclick="filter('personality')">성격/심리</button>
-            <button class="cat-btn" onclick="filter('love')">연애/사랑</button>
+            <button class="cat-btn" onclick="filter('love')">연애</button>
             <button class="cat-btn" onclick="filter('game')">게임/생존</button>
             <button class="cat-btn" onclick="filter('work')">직업/적성</button>
-            <button class="cat-btn" onclick="filter('brain')">IQ/두뇌</button>
+            <button class="cat-btn" onclick="filter('iq')">IQ/두뇌</button>
         </div>
 
         <div class="grid-container">
-            
-            <a href="color-game.html" class="card category-game">
-                <div class="card-img" style="background:#00cec9;">🎨</div>
-                <div class="card-body">
-                    <span class="card-tag">미니게임</span>
-                    <h3>절대색감 테스트</h3>
-                    <p>당신의 눈은 상위 몇 %? 틀린 색깔 찾기 (중독성 주의)</p>
-                </div>
-            </a>
-
-            <a href="kkondae-test.html" class="card category-work">
-                <div class="card-img" style="background:#dfe6e9;">☕</div>
-                <div class="card-body">
-                    <span class="card-tag">직업</span>
-                    <h3>직장인 꼰대 성향 테스트</h3>
-                    <p>나도 혹시 젊은 꼰대? '라떼는 말이야' 지수 측정하기</p>
-                </div>
-            </a>
-
-            <a href="vocab-test.html" class="card category-brain">
-                <div class="card-img" style="background:#a29bfe;">📚</div>
-                <div class="card-body">
-                    <span class="card-tag">IQ</span>
-                    <h3>한국인 상위 1% 어휘력 테스트</h3>
-                    <p>당신의 문해력은 몇 점? 헷갈리는 맞춤법과 사자성어 퀴즈</p>
-                </div>
-            </a>
-
-            <a href="love-test.html" class="card category-love">
-                <div class="card-img" style="background:#ffeaa7;">💖</div>
-                <div class="card-body">
-                    <span class="card-tag">연애</span>
-                    <h3>연애 세포 등급 테스트</h3>
-                    <p>나는 연애 고자일까 고수일까? 15문항으로 알아보는 팩트체크</p>
-                </div>
-            </a>
-
-            <a href="zombie-test.html" class="card category-game">
-                <div class="card-img" style="background:#55efc4;">🧟‍♂️</div>
-                <div class="card-body">
-                    <span class="card-tag">생존</span>
-                    <h3>좀비 아포칼립스 생존 유형</h3>
-                    <p>좀비 사태 발생! 나는 리더일까, 배신자일까, 아니면 최초 감염자?</p>
-                </div>
-            </a>
-
-            <a href="animal-test.html" class="card category-personality">
-                <div class="card-img" style="background:#74b9ff;">🐶</div>
-                <div class="card-body">
-                    <span class="card-tag">성격</span>
-                    <h3>정밀 동물상 테스트</h3>
-                    <p>사자, 고양이, 나무늘보... 나의 무의식 속 동물 페르소나 찾기</p>
-                </div>
-            </a>
-
-            <a href="mental-age.html" class="card category-personality">
-                <div class="card-img" style="background:#fdcb6e;">🧠</div>
-                <div class="card-body">
-                    <span class="card-tag">심리</span>
-                    <h3>정신연령 테스트</h3>
-                    <p>내 멘탈 나이는 몇 살? 응애부터 산신령까지 정밀 분석</p>
-                </div>
-            </a>
-
-            <a href="reaction.html" class="card category-game">
-                <div class="card-img" style="background:#ff7675;">⚡</div>
-                <div class="card-body">
-                    <span class="card-tag">게임</span>
-                    <h3>순발력 테스트</h3>
-                    <p>0.01초의 승부! 당신의 반응 속도는 상위 몇 %일까요?</p>
-                </div>
-            </a>
-
-            <a href="lotto.html" class="card category-game">
-                <div class="card-img" style="background:#fab1a0;">🎰</div>
-                <div class="card-body">
-                    <span class="card-tag">운세</span>
-                    <h3>AI 로또 번호 생성</h3>
-                    <p>빅데이터 알고리즘이 추천하는 이번 주 행운의 숫자</p>
-                </div>
-            </a>
-            
-            <a href="rich-test.html" class="card category-work">
-                <div class="card-img" style="background:#ffeaa7;">💰</div>
-                <div class="card-body">
-                    <span class="card-tag">재물</span>
-                    <h3>부자 될 확률 테스트</h3>
-                    <p>나의 소비 습관과 마인드로 분석하는 미래의 자산 규모</p>
-                </div>
-            </a>
+            <a href="color-game.html" class="card category-game"><div class="card-img" style="background:#00cec9;">🎨</div><div class="card-body"><span class="card-tag">게임</span><h3>절대색감 테스트</h3><p>당신의 눈은 상위 몇 %?</p></div></a>
+            <a href="rich-test.html" class="card category-work"><div class="card-img" style="background:#ffd700;">💰</div><div class="card-body"><span class="card-tag">적성</span><h3>부자 될 확률 테스트</h3><p>나의 머니 마인드 분석</p></div></a>
+            <a href="love-test.html" class="card category-love"><div class="card-img" style="background:#ffeaa7;">💖</div><div class="card-body"><span class="card-tag">연애</span><h3>연애 세포 테스트</h3><p>나는 연애 고수일까?</p></div></a>
+            <a href="zombie-test.html" class="card category-game"><div class="card-img" style="background:#55efc4;">🧟‍♂️</div><div class="card-body"><span class="card-tag">생존</span><h3>좀비 아포칼립스</h3><p>당신은 살아남을 수 있을까?</p></div></a>
+            <a href="kkondae-test.html" class="card category-work"><div class="card-img" style="background:#dfe6e9;">☕</div><div class="card-body"><span class="card-tag">직업</span><h3>꼰대 성향 테스트</h3><p>혹시 나도 젊은 꼰대?</p></div></a>
+            <a href="vocab-test.html" class="card category-iq"><div class="card-img" style="background:#a29bfe;">📚</div><div class="card-body"><span class="card-tag">IQ</span><h3>어휘력/문해력 테스트</h3><p>한국인 상위 1% 도전</p></div></a>
+            <a href="animal-test.html" class="card category-personality"><div class="card-img" style="background:#74b9ff;">🐶</div><div class="card-body"><span class="card-tag">성격</span><h3>동물상 테스트</h3><p>내 내면의 동물 찾기</p></div></a>
+            <a href="mental-age.html" class="card category-personality"><div class="card-img" style="background:#fdcb6e;">🧠</div><div class="card-body"><span class="card-tag">심리</span><h3>정신연령 테스트</h3><p>내 멘탈 나이는 몇 살?</p></div></a>
+            <a href="reaction.html" class="card category-game"><div class="card-img" style="background:#ff7675;">⚡</div><div class="card-body"><span class="card-tag">게임</span><h3>순발력 테스트</h3><p>0.01초의 승부!</p></div></a>
+            <a href="lotto.html" class="card category-game"><div class="card-img" style="background:#fab1a0;">🎰</div><div class="card-body"><span class="card-tag">운세</span><h3>로또 번호 생성</h3><p>AI가 추천하는 행운 번호</p></div></a>
         </div>
 
         <div class="article-section">
             <div class="ad-placeholder">(광고 - 메인 하단)</div>
-
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">친구에게 테스트 공유하기</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 링크 복사</button>
-    </div>
-</div>
-            
             <h2>심심풀이 연구소 즐기는 법</h2>
-            <p>심심할 때 할만한 것을 찾으시나요? 심심풀이 연구소에서 <strong>무료 MBTI 성향 분석</strong>, <strong>연애 능력 고사</strong>, <strong>직업 적성 검사</strong>, <strong>뇌지컬 테스트</strong> 등 다양한 미니게임을 즐겨보세요.</p>
-            <p>친구, 연인, 가족과 함께 결과를 공유하고 서로의 성향을 비교해보면 더욱 재미있습니다. 모든 콘텐츠는 회원가입 없이 100% 무료로 제공됩니다.</p>
+            <p>심심할 때 할만한 것을 찾으시나요? 무료 심리테스트, MBTI 분석, 미니게임을 즐겨보세요.</p>
+        </div>
+
+        <div class="share-container" style="text-align:center; margin: 30px 0;">
+            <p style="font-weight:bold; margin-bottom:10px;">친구에게 사이트 공유하기</p>
+            <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:8px 15px; border-radius:20px; cursor:pointer;">X (트위터)</button>
+            <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:8px 15px; border-radius:20px; cursor:pointer;">🔗 주소 복사</button>
         </div>
     </div>
-
     <footer>
-        <p>© 2024 심심풀이 연구소. All rights reserved.</p>
-        <p>
-            <a href="privacy.html">개인정보처리방침</a> | 
-            <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
-        </p>
+        <p>© 2024 심심풀이 연구소</p>
+        <p><a href="privacy.html">개인정보처리방침</a> | <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a></p>
     </footer>
-
     <script>
-        function filter(category) {
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+        function filter(c){
+            document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
             event.target.classList.add('active');
-
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    if (card.classList.contains('category-' + category)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                }
+            document.querySelectorAll('.card').forEach(d=>{
+                d.style.display = (c==='all' || d.classList.contains('category-'+c)) ? 'block' : 'none';
             });
         }
-
-/* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
-function shareTwitter() {
-    var sendText = document.title; // 기본 제목
-    var sendUrl = window.location.href; // 기본 주소
-
-    // 결과 화면이 보이면? 결과 멘트를 추가한다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
-        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
-    }
-
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
-
-function shareFacebook() {
-    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
-
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl; // 기본은 링크만
-
-    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        // 복사될 텍스트 포맷
-        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
-    });
-}
-        
+        function shareTwitter() { window.open("https://twitter.com/intent/tweet?text=" + document.title + "&url=" + window.location.href); }
+        function copyLink() { navigator.clipboard.writeText(window.location.href).then(()=>alert("주소가 복사되었습니다!")); }
     </script>
 </body>
 </html>

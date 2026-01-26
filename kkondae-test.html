@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>직장인 꼰대 성향 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="나도 혹시 젊은 꼰대? 15가지 질문으로 알아보는 나의 꼰대력 측정 테스트">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simsimlabs.github.io/kkondae-test.html">
+    <meta property="og:title" content="직장인 꼰대 성향 테스트 ☕">
+    <meta property="og:description" content="라떼는 말이야... 나도 모르게 꼰대짓을 하고 있을까? 팩트 폭격 결과 확인하기">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3063/3063823.png">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
+
+    <div class="container">
+        <div class="ad-placeholder">(광고 - 상단)</div>
+
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">☕</div>
+            <h1>직장인 꼰대 테스트</h1>
+            <p>"나 때는 말이야..."<br>혹시 나도 모르게 이 말을 쓰고 있나요?<br>당신의 꼰대력을 정밀 측정해 드립니다.</p>
+            <button class="btn" onclick="start()">측정 시작하기</button>
+        </div>
+
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#636e72;"></div></div>
+            <h2 id="q-text" style="min-height: 80px;">질문</h2>
+            <div id="answer-box"></div>
+        </div>
+
+        <div id="result-screen" class="content-box hidden">
+            <p>당신의 꼰대 레벨은...</p>
+            <h1 id="result-title" style="color:#2d3436;">결과</h1>
+            <h3 id="result-sub" style="color:#636e72;">서브</h3>
+            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
+            <button class="btn" onclick="location.reload()">다시 검사하기</button>
+        </div>
+
+        <div class="ad-placeholder">(광고 - 하단)</div>
+
+        <div class="share-container" style="text-align:center; margin-top:30px;">
+             <button onclick="copyLink()" style="background:#eee; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 결과 링크 복사</button>
+        </div>
+
+        <footer>
+            <p>© 2024 심심풀이 연구소. All rights reserved.</p>
+            <p>
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const qData = [
+            { q: "후배가 출근 시간에 딱 맞춰(9시 정각) 오는 걸 보면?", a: "뭐.. 지각은 아니니까 괜찮다.", b: "그래도 10분 전에는 와서 준비해야지!", s: 5 },
+            { q: "회식 메뉴를 정할 때 나는?", a: "다수결이나 막내의 의견을 따른다.", b: "내가 먹고 싶은 걸 은근히 어필한다.", s: 4 },
+            { q: "후배가 에어팟을 끼고 일하는 모습을 본다면?", a: "일만 잘하면 상관없다.", b: "저건 좀 예의가 아니지 않나?", s: 5 },
+            { q: "'자유로운 복장'이라고 했지만, 후배가 츄리닝을 입고 왔다.", a: "진짜 편해 보이네. 부럽다.", b: "아무리 그래도 회사인데 저건 좀...", s: 4 },
+            { q: "휴가를 쓸 때 상사의 눈치를 보는 편인가?", a: "내 권리인데 왜 눈치를 봐?", b: "바쁜 시즌엔 눈치가 보인다.", s: 3 },
+            { q: "후배에게 업무를 가르쳐 줄 때?", a: "한 번 알려주고 모르면 다시 물어보라 한다.", b: "'나 때는 아무도 안 알려줬어'라는 말이 목끝까지 차오른다.", s: 5 },
+            { q: "칼퇴근하는 후배를 보면?", a: "오 빠르네, 잘 가!", b: "상사들이 남아있는데 인사는 하고 가야지...", s: 4 },
+            { q: "점심시간, 막내가 수저를 세팅하지 않고 가만히 있다.", a: "내가 하거나 아무 생각 없다.", b: "요즘 애들은 센스가 없네...", s: 5 },
+            { q: "카톡 프로필 사진이 너무 화려하거나 노출이 있다면?", a: "사생활이니 신경 끈다.", b: "회사 사람들도 보는데 좀 그렇지 않나?", s: 4 },
+            { q: "업무 외적인 사생활 질문을 후배에게 하는 편인가?", a: "실례될까 봐 안 한다.", b: "친해지려고 애인 유무, 집안일 등을 묻는다.", s: 5 },
+            { q: "회의 시간에 내 의견에 반박하는 후배가 있다면?", a: "오, 신선한데? 수용한다.", b: "뭘 안다고... 기분이 살짝 나쁘다.", s: 5 },
+            { q: "나는 '라떼는(나 때는)' 이야기를 자주 하는 편이다.", a: "거의 안 한다.", b: "도움 되라고 종종 한다.", s: 5 },
+            { q: "솔직히 내가 꼰대라고 생각하나?", a: "나는 꼰대일 수도 있다.", b: "나는 절대 꼰대가 아니다. (쿨하다)", s: 3 },
+            { q: "회식도 업무의 연장이라고 생각하나?", a: "절대 아니다. 돈 주면 인정.", b: "팀워크를 위해 필요하다.", s: 4 },
+            { q: "주말에 업무 관련 연락을 한 적이 있다.", a: "절대 없다.", b: "급하면 할 수도 있다.", s: 5 }
+        ];
+
+        let step=0, score=0;
+
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=`Q${step+1}. ${q.q}`;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ step++; next(); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ score+=q.s; step++; next(); };
+            
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t,s,d;
+            if(score<=15) { t="👼 날개 없는 '천사 선배'"; s="꼰대력 0%"; d="당신은 꼰대 유전자가 1%도 없는 청정 구역입니다. 후배들이 가장 따르고 싶어 하는 워너비 선배! 다만 호구 잡히지 않게 조심하세요."; }
+            else if(score<=30) { t="🙂 이해심 깊은 '오픈 마인드'"; s="꼰대력 30%"; d="세대 차이는 느끼지만 이해하려고 노력하는 멋진 어른입니다. 가끔 욱할 때도 있지만 이성적으로 참을 줄 아는 당신은 젠틀맨!"; }
+            else if(score<=45) { t="😐 입이 근질거리는 '선택적 꼰대'"; s="꼰대력 50%"; d="평소엔 쿨하지만, 특정 포인트(예절, 근태 등)에서는 엄격해집니다. '나는 꼰대 아니지?'라고 자주 묻는다면 위험 신호입니다."; }
+            else if(score<=60) { t="😤 훈수 두는 '젊은 꼰대'"; s="꼰대력 80%"; d="본인은 합리적이라고 생각하지만 후배들은 당신을 피하고 있을지도 모릅니다. '너 잘되라고 하는 소리야'라는 말은 이제 그만!"; }
+            else { t="🦖 살아있는 화석 '라떼킹'"; s="꼰대력 100%"; d="축하합니다(?) 꼰대계의 지존이십니다. 당신의 말씀은 법이고 진리입니다. 후배들의 정신건강을 위해 재택근무를 추천합니다."; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+        }
+
+        function copyLink(){ navigator.clipboard.writeText(window.location.href); alert('링크가 복사되었습니다!'); }
+    </script>
+</body>
+</html>

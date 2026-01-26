@@ -1,206 +1,239 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>    <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>초정밀 순발력 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="나의 반응 속도는 상위 몇 %일까? 화면이 색이 바뀌는 순간 클릭하세요. 프로게이머급 순발력에 도전해보세요.">
+    <title>순발력 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="나의 반응 속도는 몇 ms? 0.01초의 승부, 초정밀 순발력 테스트 게임">
     <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
     <style>
-        #screen { 
-            width: 100%; height: 300px; 
-            background-color: #ff7675; /* 대기 색상 (빨강) */
+        /* 게임 전용 스타일 */
+        #game-area {
+            width: 100%;
+            height: 350px;
+            background-color: #0984e3; /* 대기 색상 (파랑) */
             color: white;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            border-radius: 15px; cursor: pointer;
-            user-select: none;
-            font-size: 1.5rem; font-weight: bold;
-            transition: background 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            cursor: pointer;
+            user-select: none; /* 텍스트 드래그 방지 */
+            transition: background-color 0.1s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 20px;
         }
-        #screen.ready { background-color: #fab1a0; } /* 준비 (주황) */
-        #screen.now { background-color: #00b894; } /* 클릭 (초록) */
-        .rank-text { margin-top: 20px; font-weight: bold; color: #d63031; }
+        #game-area h1 { font-size: 3rem; margin: 0; }
+        #game-area p { font-size: 1.2rem; margin-top: 10px; opacity: 0.9; }
+        
+        /* 상태별 색상 클래스 */
+        .state-wait { background-color: #0984e3 !important; } /* 파랑: 시작 전/결과 */
+        .state-ready { background-color: #d63031 !important; } /* 빨강: 준비 */
+        .state-go { background-color: #00b894 !important; } /* 초록: 클릭! */
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-    </header>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+            <div class="lang-switch">
+                <a href="reaction.html" class="lang-btn active">🇰🇷 KO</a>
+                <a href="reaction-en.html" class="lang-btn">🇺🇸 EN</a>
+            </div>
+        </header>
 
-    <div class="container">
-
-<div class="ad-placeholder" style="margin-bottom: 30px;">
-            (구글 애드센스 광고 - 상단)
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
-        
-        <div class="content-box">
-            <h1>⚡ 초정밀 순발력 테스트</h1>
-            <p>화면이 <strong>초록색</strong>으로 바뀌면 최대한 빨리 클릭하세요!</p>
-            
-            <div id="screen" onclick="handleClick()">
-                클릭해서 시작하기
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">⚡</div>
+                <h1 class="main-title">순발력 테스트</h1>
+                <p class="sub-desc">당신의 반응 속도는 얼마나 빠를까요?<br>화면 색이 바뀌는 순간 클릭하세요!</p>
+                <button onclick="startGame()" class="btn-primary full-width">테스트 시작하기</button>
+            </div>
+        </main>
+
+        <main id="screen-game" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← 처음으로</button>
             </div>
             
-            <div id="result" class="hidden">
-                <h2>반응 속도: <span id="time">0</span> ms</h2>
-                <p class="rank-text" id="rankMsg"></p>
-                <button class="btn" onclick="init()">다시 시도</button>
+            <div id="game-area" class="state-wait" onmousedown="handleClick()">
+                <div id="game-icon" style="font-size: 4rem; margin-bottom: 10px;">⚡</div>
+                <h1 id="game-msg">클릭해서 시작</h1>
+                <p id="game-sub">초록색이 되면 클릭하세요!</p>
             </div>
+            
+            <div class="record-list" style="margin-top: 20px; text-align: center; color: #666;">
+                <p>최근 기록: <span id="last-score">-</span> ms</p>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">⏱️</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">0 ms</h1>
+                <p id="res-desc">결과 설명</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 기록 공유하기</button>
+                <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
+                <button onclick="resetGame()" class="btn-primary" style="background-color:#00b894; margin-top:10px; flex-basis:100%;">다시 도전하기</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <div class="ad-placeholder">(광고 영역)</div>
-            <h3>반응 속도가 빠르면 무엇이 좋을까요?</h3>
-            <p>반응 속도(Reaction Time)는 뇌가 시각적 자극을 인지하고 근육에 명령을 내리기까지 걸리는 시간을 의미합니다. 보통 일반인의 평균 반응 속도는 250ms(0.25초) 정도이며, 훈련된 운동선수나 프로게이머는 150ms 대를 기록하기도 합니다.</p>
-            <p>이 테스트를 반복하면 집중력을 높이는 데 도움이 될 수 있습니다. 친구들과 내기 게임으로 활용하거나, 졸음이 올 때 뇌를 깨우는 용도로 사용해보세요.</p>
-        </div>
+        <footer>
+            <p>© 2024 심심풀이 연구소</p>
+            <div class="footer-links">
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
+            </div>
+        </footer>
     </div>
 
     <script>
-        let startTime;
-        let endTime;
-        let timeoutId;
-        const screen = document.querySelector('#screen');
-        const result = document.querySelector('#result');
-        const timeSpan = document.querySelector('#time');
-        const rankMsg = document.querySelector('#rankMsg');
+        let state = 'waiting'; // waiting, ready, now, result
+        let startTime = 0;
+        let endTime = 0;
+        let timeoutId = null;
+        let score = 0;
 
-        // 상태: waiting(대기), ready(준비), now(시작)
-        let state = 'waiting';
+        const area = document.getElementById('game-area');
+        const msg = document.getElementById('game-msg');
+        const sub = document.getElementById('game-sub');
+        const icon = document.getElementById('game-icon');
 
-        function init() {
+        function startGame() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-game').classList.add('active');
+            resetState();
+        }
+
+        function resetGame() {
+            document.getElementById('screen-result').classList.remove('active');
+            document.getElementById('screen-game').classList.add('active');
+            resetState();
+        }
+
+        function resetState() {
             state = 'waiting';
-            screen.className = '';
-            screen.style.backgroundColor = '#ff7675';
-            screen.textContent = '클릭해서 시작하기';
-            result.classList.add('hidden');
+            area.className = 'state-wait';
+            icon.innerText = '⚡';
+            msg.innerText = '클릭해서 시작';
+            sub.innerText = '초록색이 되면 클릭하세요!';
         }
 
         function handleClick() {
             if (state === 'waiting') {
+                // 준비 상태로 전환
                 state = 'ready';
-                screen.className = 'ready';
-                screen.textContent = '초록색이 되면 클릭하세요...';
-                screen.style.backgroundColor = '#fab1a0';
+                area.className = 'state-ready';
+                icon.innerText = '🔴';
+                msg.innerText = '기다리세요...';
+                sub.innerText = '아직 아닙니다.';
                 
-                // 2~4초 사이 랜덤 시간 후 색 변경
+                // 랜덤 시간 후 초록색으로 변경 (2~5초 사이)
+                const randomTime = Math.floor(Math.random() * 3000) + 2000;
                 timeoutId = setTimeout(() => {
                     state = 'now';
-                    screen.className = 'now';
-                    screen.textContent = '지금 클릭하세요!!!';
-                    screen.style.backgroundColor = '#00b894';
-                    startTime = new Date();
-                }, Math.floor(Math.random() * 2000) + 2000);
+                    area.className = 'state-go';
+                    icon.innerText = '🟢';
+                    msg.innerText = '클릭!!!';
+                    sub.innerText = '지금 누르세요!';
+                    startTime = Date.now();
+                }, randomTime);
 
             } else if (state === 'ready') {
+                // 너무 빨리 클릭함 (부정출발)
                 clearTimeout(timeoutId);
                 state = 'waiting';
-                screen.textContent = '너무 빨라요! 초록색이 되면 누르세요.';
-                screen.style.backgroundColor = '#ff7675';
+                area.className = 'state-wait';
+                icon.innerText = '⚠️';
+                msg.innerText = '너무 빨라요!';
+                sub.innerText = '초록색이 되면 클릭해야 합니다. 다시 하려면 클릭.';
+            
             } else if (state === 'now') {
-                endTime = new Date();
-                state = 'waiting';
-                const diff = endTime - startTime;
-                screen.textContent = '결과 확인 중...';
+                // 성공적인 클릭
+                endTime = Date.now();
+                score = endTime - startTime;
+                state = 'result';
                 
-                timeSpan.innerText = diff;
-                
-                // 등급 판정
-                if(diff < 200) rankMsg.innerText = "🏆 신의 손! 프로게이머 수준입니다.";
-                else if(diff < 300) rankMsg.innerText = "🚗 훌륭합니다! 평균 이상이네요.";
-                else rankMsg.innerText = "🐢 조금 더 집중해보세요!";
+                // 결과 화면 표시 (약간의 딜레이 후)
+                document.getElementById('last-score').innerText = score;
+                setTimeout(showResult, 200);
+            }
+        }
 
-                result.classList.remove('hidden');
+        function showResult() {
+            document.getElementById('screen-game').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
+
+            let level = "";
+            let title = "";
+            let desc = "";
+
+            if (score < 180) {
+                level = "God Like";
+                title = "⚡ " + score + " ms";
+                desc = "인간의 반응 속도가 아닙니다! 프로게이머 수준이네요.";
+            } else if (score < 250) {
+                level = "Pro Gamer";
+                title = "🏎️ " + score + " ms";
+                desc = "엄청난 반사 신경입니다. 상위 1%에 해당합니다.";
+            } else if (score < 350) {
+                level = "Average";
+                title = "🚗 " + score + " ms";
+                desc = "평균적인 반응 속도입니다. 집중하면 더 빨라질 수 있어요.";
+            } else if (score < 500) {
+                level = "Turtle";
+                title = "🐢 " + score + " ms";
+                desc = "조금 느긋하시군요. 피곤하신가요?";
+            } else {
+                level = "Sloth";
+                title = "🦥 " + score + " ms";
+                desc = "주무시고 계셨나요? 다시 도전해보세요!";
+            }
+
+            document.getElementById('res-level').innerText = level;
+            document.getElementById('res-title').innerText = title;
+            document.getElementById('res-desc').innerText = desc;
+        }
+
+        function shareResult() {
+            const text = `나의 순발력 테스트 결과: ${score}ms! 당신은 몇 ms가 나올까요?`;
+            const url = window.location.href;
+            
+            if (navigator.share) {
+                navigator.share({ title: '순발력 테스트', text: text, url: url });
+            } else {
+                navigator.clipboard.writeText(`${text} ${url}`).then(() => {
+                    alert("기록이 복사되었습니다!");
+                });
             }
         }
     </script>
-
-<style>
-    .share-container {
-        text-align: center;
-        margin: 40px 0;
-        padding: 20px;
-        background: #f8f9fa;
-        border-radius: 15px;
-    }
-    .share-title { font-weight: bold; margin-bottom: 15px; color: #555; }
-    .share-btn-group { display: flex; justify-content: center; gap: 10px; }
-    .share-btn {
-        width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-        transition: transform 0.2s; color: white;
-    }
-    .share-btn:hover { transform: scale(1.1); }
-    .btn-kakao { background-color: #FEE500; color: #3C1E1E; } /* 링크복사로 대체 */
-    .btn-twitter { background-color: #000000; } /* X (트위터) */
-    .btn-facebook { background-color: #1877F2; }
-    .btn-link { background-color: #8c7ae6; }
-</style>
-
-<div class="container">
-    <div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">친구에게 테스트 공유하기</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 링크 복사</button>
-    </div>
-</div>
-</div>
-
-<script>
-    /* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
-function shareTwitter() {
-    var sendText = document.title; // 기본 제목
-    var sendUrl = window.location.href; // 기본 주소
-
-    // 결과 화면이 보이면? 결과 멘트를 추가한다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
-        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
-    }
-
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
-
-function shareFacebook() {
-    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
-
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl; // 기본은 링크만
-
-    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        // 복사될 텍스트 포맷
-        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
-    });
-}
-</script>
-
-<footer>
-        <p>© 2024 심심풀이 연구소. All rights reserved.</p>
-        <p>
-            <a href="privacy.html">개인정보처리방침</a> | 
-            <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
-        </p>
-    </footer>
-    
 </body>
 </html>

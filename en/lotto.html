@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powerball Number Generator | Boredom Lab</title>
+    <meta name="description" content="Generate lucky Powerball numbers instantly! AI-powered random picker for US Lottery. Try your luck now for free.">
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+    
+    <style>
+        .ball-container { margin-top: 30px; min-height: 70px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+        .ball { 
+            width: 50px; height: 50px; line-height: 50px; 
+            border-radius: 50%; font-weight: bold; font-size: 1.4rem;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 2px 3px 5px rgba(0,0,0,0.2);
+        }
+        /* 파워볼 스타일: 흰 공 */
+        .white-ball { background: white; color: #333; border: 2px solid #ddd; }
+        /* 파워볼 스타일: 빨간 공 */
+        .red-ball { background: #e74c3c; color: white; border: 2px solid #c0392b; animation: pop 0.5s ease; }
+        
+        @keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads - Top)</div>
+        
+        <div class="content-box">
+            <div style="font-size:3rem;">🎰</div>
+            <h1>Powerball Generator</h1>
+            <p>Get your lucky numbers for the US Powerball.<br><strong>5 White Balls</strong> + <strong>1 Red Powerball</strong></p>
+            
+            <button class="btn" onclick="genPowerball()" style="background: #e74c3c; border:none; margin-top:15px;">Generate Numbers</button>
+            
+            <div id="result-box" class="ball-container">
+                <span style="color:#aaa; line-height: 50px;">Click button to generate</span>
+            </div>
+        </div>
+
+        <div class="ad-placeholder">(Ads - Bottom)</div>
+        
+        <footer>
+            <p>© 2024 Boredom Lab</p>
+            <p><a href="../privacy.html">Privacy Policy</a> | <a href="../index.html">Home</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function genPowerball() {
+            // 1. 흰 공: 1~69 사이에서 중복 없이 5개 뽑기
+            let whiteBalls = [];
+            while(whiteBalls.length < 5){
+                let r = Math.floor(Math.random() * 69) + 1;
+                if(whiteBalls.indexOf(r) === -1) whiteBalls.push(r);
+            }
+            // 보기 좋게 오름차순 정렬
+            whiteBalls.sort((a,b)=>a-b);
+            
+            // 2. 빨간 공(파워볼): 1~26 사이에서 1개 뽑기
+            let redBall = Math.floor(Math.random() * 26) + 1;
+            
+            // 3. HTML 만들기
+            let html = "";
+            
+            // 흰 공 그리기
+            whiteBalls.forEach(n => {
+                html += `<div class="ball white-ball">${n}</div>`;
+            });
+            
+            // 빨간 공 그리기 (강조)
+            html += `<div class="ball red-ball">${redBall}</div>`;
+            
+            // 화면에 뿌리기
+            const box = document.getElementById('result-box');
+            box.style.opacity = 0;
+            setTimeout(() => {
+                box.innerHTML = html;
+                box.style.opacity = 1;
+                box.style.transition = "opacity 0.3s";
+            }, 100);
+        }
+    </script>
+</body>
+</html>

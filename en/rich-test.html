@@ -3,117 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be Rich? | Boredom Lab</title>
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Rich Potential Test | SimSim Labs</title>
+    <meta name="description" content="What are your chances of becoming rich? Analyze your money mindset with 15 questions.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">💰</div>
-            <h1>Will You Be Rich?</h1>
-            <p>10 Questions to check your 'Money Mindset'.<br>Are you a future millionaire?</p>
-            <button class="btn" onclick="start()">Start Test</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#ffd700;"></div></div>
-            <h2 id="q-text">Question</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>Your probability is...</p>
-            <h1 id="result-title" style="color:#f1c40f;">Result</h1>
-            <h3 id="result-sub">Sub</h3>
-            <div id="result-desc" style="background:#fffbf0; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-        </div>
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="rich-test.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="rich-test-en.html" class="lang-btn active">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">💰</div>
+                <h1 class="main-title">Rich Potential Test</h1>
+                <p class="sub-desc">Analyze your spending habits and mindset.<br>Will you become a millionaire?</p>
+                <button onclick="startTest()" class="btn-primary full-width">Start Test</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Restart</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">Question goes here.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">💎</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">Result Title</h1>
+                <p id="res-desc">Result description goes here.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Result</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
+        </footer>
     </div>
-</div>
-        
-        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
-    </div>
+
     <script>
-        const qData = [
-            { q: "You won $1 Million. First thing to do?", a: "Invest in assets (Stocks/Real Estate).", b: "Buy luxury car & bags.", s: 5 },
-            { q: "Want to buy something but no cash.", a: "Wait and save.", b: "Buy on Credit/Debt.", s: 5 },
-            { q: "Stock market crashes -30%.", a: "Opportunity! Buy more.", b: "Panic! Sell everything.", s: 4 },
-            { q: "Expensive dinner invitation from friends.", a: "Sure! Life is short.", b: "Over budget. Decline politely.", s: 3 },
-            { q: "Do you know your exact monthly expense?", a: "Yes, I track it.", b: "Roughly. I check later.", s: 5 },
-            { q: "Rich people are rich because...", a: "Hard work & Investment.", b: "Luck or Parents.", s: 5 },
-            { q: "You made 10% profit on investment.", a: "Re-invest (Compound interest).", b: "Withdraw and eat something good.", s: 4 },
-            { q: "Bank interest rates are low.", a: "Keep money in bank (Safety).", b: "Study other investments.", s: 4 },
-            { q: "After work time.", a: "Side hustle / Study.", b: "Netflix / Gaming.", s: 5 },
-            { q: "Do you have a financial goal?", a: "Yes, specific plan.", b: "Just hope for best.", s: 5 }
+        // --- Data (15 Questions in English) ---
+        const questions = [
+            { q: "You won $1 Million in a lottery. First thing you do?", a: [{ t: "Buy a luxury car and bag.", s: 2 }, { t: "Pay off debt and save the rest.", s: 5 }, { t: "Invest in real estate or stocks.", s: 10 }] },
+            { q: "You want to buy something but lack money.", a: [{ t: "Buy it on credit card installment.", s: 2 }, { t: "Borrow from parents or friends.", s: 4 }, { t: "Save up until I can afford it.", s: 10 }] },
+            { q: "Your stocks crashed by -30%.", a: [{ t: "Panic sell immediately.", s: 2 }, { t: "Delete the app and wait.", s: 5 }, { t: "Buy more at a discount.", s: 10 }] },
+            { q: "Friends suggest an expensive dinner ($100/person).", a: [{ t: "Go anyway (FOMO).", s: 2 }, { t: "Go just this once.", s: 5 }, { t: "Decline, saying it's over budget.", s: 10 }] },
+            { q: "Do you know your exact monthly expenses?", a: [{ t: "No clue. The bill shocks me.", s: 2 }, { t: "Roughly know the amount.", s: 6 }, { t: "Track every penny.", s: 10 }] },
+            { q: "Bank interest rates are too low.", a: [{ t: "Safety is key. Just save.", s: 4 }, { t: "Buy crypto because friends said so.", s: 2 }, { t: "Study investing to grow money.", s: 10 }] },
+            { q: "What do you do after work?", a: [{ t: "Watch Netflix or game.", s: 2 }, { t: "Drink with friends.", s: 2 }, { t: "Study or work on a side hustle.", s: 10 }] },
+            { q: "How do rich people get rich?", a: [{ t: "Luck or rich parents.", s: 2 }, { t: "They must be scammers.", s: 0 }, { t: "Effort and investment skills.", s: 10 }] },
+            { q: "You unexpectedly got $1,000.", a: [{ t: "Treat friends to a party.", s: 2 }, { t: "Buy clothes I wanted.", s: 4 }, { t: "Invest it immediately.", s: 10 }] },
+            { q: "Do you use revolving credit?", a: [{ t: "Often.", s: 0 }, { t: "Once or twice.", s: 4 }, { t: "Never. Don't even know what it is.", s: 10 }] },
+            { q: "Do you check economic news?", a: [{ t: "Headache. Only entertainment news.", s: 2 }, { t: "Only headlines sometimes.", s: 5 }, { t: "Check every morning.", s: 10 }] },
+            { q: "You need $1,000 urgently right now.", a: [{ t: "Need to find someone to borrow from.", s: 2 }, { t: "Break my savings.", s: 5 }, { t: "I have an emergency fund.", s: 10 }] },
+            { q: "Big Sale Season (Black Friday) is here.", a: [{ t: "Buy because it's cheap.", s: 2 }, { t: "Buy only what I eyed before.", s: 6 }, { t: "Don't buy if not needed.", s: 10 }] },
+            { q: "Money is...", a: [{ t: "For spending (Current pleasure).", s: 2 }, { t: "Inconvenient if missing.", s: 5 }, { t: "Tool for freedom (Future freedom).", s: 10 }] },
+            { q: "Do you have a financial goal for 10 years later?", a: [{ t: "Hard enough surviving today.", s: 2 }, { t: "Vaguely want to be rich.", s: 5 }, { t: "Specific amount and plan.", s: 10 }] }
         ];
-        let step=0, score=0;
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=q.q;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ score+=q.s; step++; next(); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ step++; next(); };
-            box.appendChild(btnA); box.appendChild(btnB);
+
+        // Result Data
+        const results = [
+            { lv: "Lv.1", t: "Empty Wallet Fairy", d: "Money just passes through your account. Stop spending and start saving now!" },
+            { lv: "Lv.2", t: "Impulse Buyer", d: "You lose reason when you see 'SALE'. Cut up your credit cards." },
+            { lv: "Lv.3", t: "Financial Baby", d: "You want to save but don't know how. Start studying basic economics." },
+            { lv: "Lv.4", t: "Average Joe", d: "You save diligently, but inflation eats your money. Need to invest." },
+            { lv: "Lv.5", t: "Safety Turtle", d: "You prefer not losing money. But to be rich, you need some risk." },
+            { lv: "Lv.6", t: "Investment Dreamer", d: "Interested but lack experience. Study a bit more and you'll see results." },
+            { lv: "Lv.7", t: "Smart Ant", d: "Smart spending and investing. Your seed money is growing well!" },
+            { lv: "Lv.8", t: "Investment Pro", d: "You understand capitalism. You are building a system where money makes money." },
+            { lv: "Lv.9", t: "Future Tycoon", d: "Financial freedom is near. You might already be rich. Respect!" },
+            { lv: "Lv.10", t: "Warren Buffett", d: "Your money mindset is perfect. You are a walking corporation." }
+        ];
+
+        // --- Logic ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t,s,d;
-            if(score>=40) { t="💎 Next Warren Buffett"; s="Rich Probability: 99%"; d="Perfect mindset. You understand money flow. Financial freedom is coming soon."; }
-            else if(score>=25) { t="🐜 Steady Saver"; s="Rich Probability: 60%"; d="Good economic habits. You know how to save. Learn investing to grow faster."; }
-            else { t="💸 YOLO Spender"; s="Rich Probability: 10%"; d="You enjoy the present too much. Your future is at risk. Cut your credit card!"; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied!");
+            });
+        }
     </script>
 </body>
 </html>

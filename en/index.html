@@ -96,7 +96,14 @@
                 d.style.display = (c==='all' || d.classList.contains('category-'+c)) ? 'block' : 'none';
             });
         }
-        function shareTwitter() { window.open("https://twitter.com/intent/tweet?text=" + document.title + "&url=" + window.location.href); }
+        function shareTwitter() {
+    // 제목과 주소를 URL에 넣을 수 있는 형태로 변환(인코딩)
+    var sendText = encodeURIComponent(document.title);
+    var sendUrl = encodeURIComponent(window.location.href);
+    
+    // 새 창으로 트위터 공유 페이지 열기
+    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+}
         function copyLink() { navigator.clipboard.writeText(window.location.href).then(()=>alert("Link Copied!")); }
     </script>
 </body>

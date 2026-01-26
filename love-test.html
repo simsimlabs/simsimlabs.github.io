@@ -1,195 +1,183 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>초정밀 연애 세포 등급 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="나는 모태솔로? 금사빠? 15가지 질문으로 알아보는 내 연애 세포 생존율과 연애 스타일 정밀 진단">
-    <link rel="stylesheet" href="style.css"> 
+    <title>연애 세포 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="나의 연애 세포 생존율은? 15문항으로 알아보는 10단계 정밀 연애 능력 진단">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
-<body> 
-    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
+<body>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+            <div class="lang-switch">
+                <a href="love-test.html" class="lang-btn active">🇰🇷 KO</a>
+                <a href="love-test-en.html" class="lang-btn">🇺🇸 EN</a>
+            </div>
+        </header>
 
-    <div class="container">
-        <div class="ad-placeholder">(광고 - 상단)</div>
-
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">💖</div>
-            <h1>초정밀 연애 세포 테스트</h1>
-            <p>당신의 죽어가는 연애 세포를 심폐소생술 해드립니다.<br>총 15문항으로 나의 연애 스타일을 분석하세요.</p>
-            <button class="btn" onclick="start()">진단 시작하기</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
-            <h2 id="q-text" style="min-height: 80px;">질문</h2>
-            <div id="answer-box"></div>
-        </div>
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">💖</div>
+                <h1 class="main-title">연애 세포 생존 테스트</h1>
+                <p class="sub-desc">당신의 연애 세포는 안녕하신가요?<br>15문항으로 알아보는 10단계 정밀 진단</p>
+                <button onclick="startTest()" class="btn-primary full-width">테스트 시작하기</button>
+            </div>
+        </main>
 
-        <div id="result-screen" class="content-box hidden">
-            <p>당신의 연애 타입은...</p>
-            <h1 id="result-title" style="color:var(--accent);">결과</h1>
-            <h3 id="result-sub" style="color:#666; margin-bottom:20px;">서브 타이틀</h3>
-            <div id="result-desc" style="background:#fff0f6; padding:25px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
-            <button class="btn" onclick="location.reload()">다시 하기</button>
-        </div>
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← 처음으로</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">질문 내용이 여기에 나옵니다.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
 
-        <div class="article-section">
-            <div class="ad-placeholder">(광고 - 하단)</div>
-            <h3>연애 세포가 죽는 이유?</h3>
-            <p>바쁜 일상과 반복되는 패턴은 도파민 분비를 줄어들게 하여 연애에 대한 설렘을 무디게 만듭니다. '귀찮음'이 '외로움'을 이기는 순간이 연애 세포 소멸의 시작이라고 하죠. 결과를 통해 자신의 상태를 점검해보세요!</p>
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon">💌</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">결과 제목</h1>
+                <p id="res-desc">결과 설명</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 결과 공유하기</button>
+                <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
-        
-        <div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">친구에게 테스트 공유하기</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 링크 복사</button>
-    </div>
-</div>
 
         <footer>
             <p>© 2024 심심풀이 연구소</p>
-            <p><a href="https://forms.gle/본인링크" target="_blank">문의하기</a></p>
+            <div class="footer-links">
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
+            </div>
         </footer>
     </div>
 
     <script>
-        const qData = [
-            { q: "집에서 쉬는데 이성 친구가 '심심해'라며 톡을 보냈다.", a: "오? 무슨 일이지? 바로 칼답한다.", b: "귀찮다... 나중에 천천히 답장한다.", s: 1 },
-            { q: "길 가다가 내 이상형과 완벽히 일치하는 사람을 봤다.", a: "계속 쳐다보며 눈을 마주치려 노력한다.", b: "'잘생겼네/예쁘네' 생각하고 그냥 지나간다.", s: 1 },
-            { q: "로맨스 드라마 키스신을 볼 때 나의 반응은?", a: "나도 저런 연애 하고 싶다... (설렘)", b: "저거 찍을 때 사람 많았겠지? (현실적)", s: 1 },
-            { q: "소개팅 제안이 들어왔다. 나의 반응은?", a: "사진 보여줘! 직업은? (적극적)", b: "아 그냥 쉴래... 거절한다. (귀찮음)", s: 1 },
-            { q: "자기 관리를 위해 내가 하는 노력은?", a: "운동, 옷, 헤어스타일 등 꾸준히 관리한다.", b: "씻고 나가기만 해도 다행이다.", s: 1 },
-            { q: "연인이 생긴다면 가장 하고 싶은 것은?", a: "벚꽃 놀이, 여행, 맛집 탐방", b: "집에서 넷플릭스 보며 배달 음식 먹기", s: 1 },
-            { q: "크리스마스, 발렌타인데이 같은 기념일이 다가오면?", a: "옆구리가 시리고 외롭다.", b: "상술이다. 그냥 빨간 날일 뿐.", s: 1 },
-            { q: "친구가 연애 상담을 해오면?", a: "감정이입해서 같이 화내고 기뻐해 준다.", b: "헤어지라거나 참으라는 현실적인 조언만 한다.", s: 1 },
-            { q: "이성 친구와 단둘이 밥이나 술을 먹게 되었다.", a: "이것도 데이트인가? 묘한 기류가 흐른다.", b: "그냥 밥 친구다. 국밥이나 먹자.", s: 1 },
-            { q: "썸 탈 때의 '간질간질한' 느낌을 떠올리면?", a: "그립다. 다시 느끼고 싶다.", b: "생각만 해도 기 빨리고 피곤하다.", s: 1 },
-            { q: "마지막 연애는 언제인가?", a: "1년 미만 혹은 현재 썸 타는 중", b: "3년 이상 혹은 모태솔로", s: 1 },
-            { q: "좋아하는 사람이 생기면 먼저 고백할 수 있나?", a: "직진! 안 되면 말고 일단 지른다.", b: "거절당할까 봐 절대 못 한다.", s: 1 },
-            { q: "거울을 보며 '나 좀 괜찮은데?'라고 생각한 적이?", a: "자주 있다.", b: "거의 없다.", s: 1 },
-            { q: "전 애인에게 연락이 온다면?", a: "궁금해서 일단 받아본다.", b: "차단하거나 무시한다.", s: 1 },
-            { q: "다음 생에 태어나면?", a: "절세 미녀/미남으로 태어나 연애를 즐긴다.", b: "돈 많은 백수로 태어나 혼자 즐긴다.", s: 1 }
+        // --- 데이터 영역 (15문항) ---
+        const questions = [
+            { q: "주말에 갑자기 약속이 취소되었다면?", a: [{ t: "아싸! 집에서 쉰다.", s: 2 }, { t: "다른 친구에게 연락해본다.", s: 5 }, { t: "혼자라도 핫플레이스에 간다.", s: 10 }] },
+            { q: "마음에 드는 이성을 발견했을 때 나는?", a: [{ t: "멀리서 지켜보기만 한다.", s: 2 }, { t: "주변을 서성거리며 눈도장을 찍는다.", s: 5 }, { t: "가서 번호를 물어본다.", s: 10 }] },
+            { q: "연인과 싸운 후 화해하는 방식은?", a: [{ t: "화가 풀릴 때까지 연락을 안 한다.", s: 2 }, { t: "시간을 갖자고 한다.", s: 5 }, { t: "바로 대화로 푼다.", s: 10 }] },
+            { q: "기념일을 챙기는 나의 스타일은?", a: [{ t: "기념일이 뭐죠? 까먹는다.", s: 0 }, { t: "간단한 식사 정도만 한다.", s: 5 }, { t: "서프라이즈 파티를 준비한다.", s: 10 }] },
+            { q: "연인이 이성 친구와 단둘이 밥을 먹는다면?", a: [{ t: "절대 안 된다. 헤어질 사유다.", s: 2 }, { t: "기분 나쁘지만 참는다.", s: 5 }, { t: "믿으니까 쿨하게 보낸다.", s: 9 }] },
+            { q: "나의 연락 빈도는?", a: [{ t: "하루에 1~2번 생존신고만.", s: 2 }, { t: "틈날 때마다 한다.", s: 6 }, { t: "24시간 칼답장 대기 중.", s: 10 }] },
+            { q: "연인이 우울해 보일 때 나는?", a: [{ t: "왜 우울한지 논리적으로 분석한다.", s: 2 }, { t: "조용히 곁에 있어준다.", s: 7 }, { t: "기분 전환을 위해 드라이브를 간다.", s: 10 }] },
+            { q: "이상형에 가까운 사람은?", a: [{ t: "나를 리드해주는 사람", s: 3 }, { t: "친구 같은 편안한 사람", s: 6 }, { t: "내가 챙겨줘야 하는 사람", s: 9 }] },
+            { q: "이별 통보를 받았을 때 나는?", a: [{ t: "쿨하게 알겠다고 한다.", s: 2 }, { t: "울며불며 매달린다.", s: 8 }, { t: "이유를 묻고 납득하면 보낸다.", s: 5 }] },
+            { q: "다음 연애를 시작할 준비가 되었나?", a: [{ t: "아직 혼자가 좋다.", s: 0 }, { t: "좋은 사람이 있다면?", s: 5 }, { t: "당장이라도 사랑하고 싶다!", s: 10 }] },
+            { q: "로맨스 영화를 볼 때?", a: [{ t: "현실성이 없다고 생각한다.", s: 2 }, { t: "그냥 재미로 본다.", s: 5 }, { t: "주인공에 빙의해서 설렌다.", s: 10 }] },
+            { q: "길거리에서 커플을 보면?", a: [{ t: "더워 보이네..", s: 2 }, { t: "아무 생각 없다.", s: 5 }, { t: "부럽다.. 나도..", s: 10 }] },
+            { q: "소개팅 제안이 들어온다면?", a: [{ t: "귀찮아서 거절한다.", s: 2 }, { t: "사진 보고 결정한다.", s: 5 }, { t: "무조건 OK!", s: 10 }] },
+            { q: "자기 전에 하는 생각은?", a: [{ t: "내일 뭐 입지/먹지?", s: 2 }, { t: "오늘 하루 반성.", s: 5 }, { t: "전 애인 생각 or 연애 망상", s: 10 }] },
+            { q: "내가 생각하는 나의 매력은?", a: [{ t: "잘 모르겠다.", s: 2 }, { t: "볼수록 매력 있다.", s: 6 }, { t: "철철 넘쳐흐른다.", s: 10 }] }
         ];
 
-        let step = 0;
+        const results = [
+            { lv: "Lv.1", t: "철벽의 독신주의자", d: "연애 세포가 거의 동면 상태입니다. 혼자 노는 게 제일 좋지 않나요?" },
+            { lv: "Lv.2", t: "수줍은 관찰자", d: "마음은 있지만 행동으로 옮기는 것을 두려워하네요." },
+            { lv: "Lv.3", t: "소심한 썸린이", d: "연애 경험이 부족하거나 조심성이 너무 많습니다." },
+            { lv: "Lv.4", t: "안전제일주의", d: "상처받기 싫어서 마음의 문을 꽉 닫고 있습니다." },
+            { lv: "Lv.5", t: "평범한 시민", d: "적당한 센스와 눈치를 겸비했습니다. 노력하면 가능합니다!" },
+            { lv: "Lv.6", t: "썸의 장인", d: "분위기는 잘 타는데 결정적인 한 방이 부족하군요." },
+            { lv: "Lv.7", t: "여우 같은 곰", d: "순진해 보이지만 알 건 다 아는 고수입니다." },
+            { lv: "Lv.8", t: "로맨틱 가이/걸", d: "상대방을 배려할 줄 아는 최고의 신랑/신부감입니다." },
+            { lv: "Lv.9", t: "마성의 카사노바", d: "숨만 쉬어도 이성이 꼬입니다. 어장관리 조심하세요." },
+            { lv: "Lv.10", t: "연애의 신", d: "더 이상 배울 게 없습니다. 하산하십시오." }
+        ];
+
+        // --- 로직 영역 ---
+        let currentStep = 0;
         let score = 0;
 
-        function start(){
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            next();
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
 
-        function next(){
-            if(step >= qData.length){ result(); return; }
-            const q = qData[step];
-            document.getElementById('bar').style.width = ((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText = `Q${step+1}. ${q.q}`;
-            const box = document.getElementById('answer-box');
-            box.innerHTML = '';
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
             
-            let btnA = document.createElement('button');
-            btnA.className = 'btn-option';
-            btnA.innerText = q.a;
-            btnA.onclick = () => { score += q.s; step++; next(); };
-            
-            let btnB = document.createElement('button');
-            btnB.className = 'btn-option';
-            btnB.innerText = q.b;
-            btnB.onclick = () => { step++; next(); };
-            box.appendChild(btnA);
-            box.appendChild(btnB);
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-
-            let title, sub, desc;
-            
-            // 0~15점 분포
-            if(score >= 14) {
-                title = "💖 걸어 다니는 페로몬 '카사노바'";
-                sub = "연애 세포 활동성: 200%";
-                desc = "당신은 숨만 쉬어도 이성이 꼬이는 매력 덩어리입니다. 연애에 대한 스킬과 눈치가 만렙이며, 마음만 먹으면 언제든 연애를 시작할 수 있습니다. 다만 너무 많은 어장에 주의하세요!";
-            } else if(score >= 11) {
-                title = "🔥 열정적인 '금사빠'";
-                sub = "연애 세포 활동성: 90%";
-                desc = "사랑에 빠지는 속도가 5G급입니다. 감수성이 풍부하고 외로움을 잘 타는 편이라 연애 없이는 못 사는 스타일! 조금만 잘해줘도 '우리 결혼하나?' 상상하는 귀여운 면이 있습니다.";
-            } else if(score >= 8) {
-                title = "🥰 준비된 인재 '연애 유망주'";
-                sub = "연애 세포 활동성: 70%";
-                desc = "적당한 설렘과 적당한 현실 감각을 갖춘 가장 건강한 상태입니다. 좋은 사람만 나타난다면 언제든 예쁜 사랑을 할 준비가 되어 있습니다. 소개팅을 적극적으로 받아보세요!";
-            } else if(score >= 6) {
-                title = "🛡️ 철벽치는 '유교걸/유교보이'";
-                sub = "연애 세포 활동성: 50%";
-                desc = "연애를 하고 싶긴 하지만, 막상 누가 다가오면 의심부터 합니다. '내 생활이 깨지는 건 싫어'라는 생각 때문에 썸이 깨지는 경우가 많네요. 마음의 문을 조금만 더 열어보세요.";
-            } else if(score >= 4) {
-                title = "🛌 겨울잠 자는 '집순이/집돌이'";
-                sub = "연애 세포 활동성: 30%";
-                desc = "'귀찮아'가 입버릇인 당신. 연애보다 넷플릭스와 치킨이 더 좋습니다. 나가서 사람을 만나야 연애를 하죠! 세포들이 동면에 들어갔으니 강제로라도 깨워야 합니다.";
-            } else if(score >= 2) {
-                title = "🧊 감정 메마른 'AI 로봇'";
-                sub = "연애 세포 활동성: 10%";
-                desc = "로맨스 영화를 봐도 무덤덤하고, 이성을 봐도 돌같이 보입니다. 혼자 사는 삶에 너무 익숙해져서 타인과의 감정 교류가 불필요하다고 느끼는 단계입니다.";
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
             } else {
-                title = "⚰️ 연애 세포 '화석' 발견";
-                sub = "연애 세포 활동성: 0%";
-                desc = "축하합니다(?) 박물관에 전시해도 될 수준입니다. 연애 세포가 이미 멸종했습니다. 혹시 마지막 연애가 전생인가요? 당장 밖으로 나가서 재활 훈련을 시작하세요!";
+                showResult();
             }
-
-            document.getElementById('result-title').innerText = title;
-            document.getElementById('result-sub').innerText = sub;
-            document.getElementById('result-desc').innerHTML = desc;
         }
 
-        /* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
-function shareTwitter() {
-    var sendText = document.title; // 기본 제목
-    var sendUrl = window.location.href; // 기본 주소
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    // 결과 화면이 보이면? 결과 멘트를 추가한다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
-        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
-    }
+            // 150점 만점 기준 10단계 계산
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            const res = results[level];
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function shareFacebook() {
-    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
-
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl; // 기본은 링크만
-
-    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        // 복사될 텍스트 포맷
-        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("링크가 복사되었습니다! 친구들에게 공유해보세요.");
+            });
+        }
     </script>
 </body>
 </html>

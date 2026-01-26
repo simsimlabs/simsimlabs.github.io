@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workplace 'Boomer' Test | Boredom Lab</title>
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads - Top)</div>
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">☕</div>
+            <h1>Workplace 'Boomer' Test</h1>
+            <p>Do you say "Back in my day..." often?<br>Are you a toxic boss? Check your score.</p>
+            <button class="btn" onclick="start()">Start Test</button>
+        </div>
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#636e72;"></div></div>
+            <h2 id="q-text">Question</h2>
+            <div id="answer-box"></div>
+        </div>
+        <div id="result-screen" class="content-box hidden">
+            <p>Your Level is...</p>
+            <h1 id="result-title" style="color:#2d3436;">Result</h1>
+            <h3 id="result-sub" style="color:#636e72;">Sub</h3>
+            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+        <div class="ad-placeholder">(Ads - Bottom)</div>
+        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
+    </div>
+    <script>
+        const qData = [
+            { q: "Junior employee arrives exactly at 9:00 AM.", a: "It's fine. Not late.", b: "Should be here 10 mins early!", s: 5 },
+            { q: "Choosing lunch menu for team.", a: "Ask everyone.", b: "I hint what I want.", s: 4 },
+            { q: "Junior working with AirPods on.", a: "Fine if work is done.", b: "Disrespectful.", s: 5 },
+            { q: "Junior wearing sweatpants.", a: "Looks comfy.", b: "Unprofessional.", s: 4 },
+            { q: "Taking a vacation.", a: "It's my right.", b: "I feel guilty if busy.", s: 3 },
+            { q: "Teaching new employee.", a: "Explain kindly.", b: "Think 'Nobody taught ME...'", s: 5 },
+            { q: "Leaving exactly at 5:00 PM.", a: "Bye!", b: "Boss is still here...", s: 4 },
+            { q: "Junior doesn't set the table at lunch.", a: "I do it.", b: "Young ones should do it.", s: 5 },
+            { q: "Junior's fancy profile picture.", a: "Don't care.", b: "Bit too much for work.", s: 4 },
+            { q: "Asking about private life.", a: "No.", b: "Yes, to get closer.", s: 5 },
+            { q: "Junior disagrees in meeting.", a: "Listen to them.", b: "Get annoyed.", s: 5 },
+            { q: "Saying 'Back in my day'.", a: "Rarely.", b: "Often.", s: 5 },
+            { q: "Am I Bossy?", a: "Maybe.", b: "No, never.", s: 3 },
+            { q: "Team dinner is work?", a: "No.", b: "Yes, necessary.", s: 4 },
+            { q: "Contacting on weekends?", a: "Never.", b: "If urgent.", s: 5 }
+        ];
+        let step=0, score=0;
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=q.q;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ step++; next(); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ score+=q.s; step++; next(); };
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t,s,d;
+            if(score<=15) { t="👼 Angel Senior"; s="Toxicity: 0%"; d="Perfect mentor. Everyone wants to work with you."; }
+            else if(score<=30) { t="🙂 Open Minded"; s="Toxicity: 30%"; d="You try to understand the young generation. Good boss."; }
+            else if(score<=45) { t="😐 Latent Boomer"; s="Toxicity: 50%"; d="You think you are cool, but you have some strict rules."; }
+            else if(score<=60) { t="😤 Young Boomer"; s="Toxicity: 80%"; d="You are stressing people out with 'Advice'. Stop it."; }
+            else { t="🦖 The Fossil"; s="Toxicity: 100%"; d="Textbook toxic boss. Please consider remote work."; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+        }
+    </script>
+</body>
+</html>

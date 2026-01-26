@@ -3,127 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Cell Test | Boredom Lab</title>
-    <meta name="description" content="Is your romance dead? 15 questions to diagnose your dating potential and love style.">
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Love Cell Test | SimSim Labs</title>
+    <meta name="description" content="Is your love life alive? Check your dating ability level in 10 steps with 15 questions.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">💖</div>
-            <h1>Love Cell Test</h1>
-            <p>Is your love life frozen?<br>Let's diagnose your dating potential with 15 questions.</p>
-            <button class="btn" onclick="start()">Start Test</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
-            <h2 id="q-text" style="min-height: 80px;">Question</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>Your Love Type is...</p>
-            <h1 id="result-title" style="color:var(--accent);">Result</h1>
-            <h3 id="result-sub" style="color:#666;">Sub</h3>
-            <div id="result-desc" style="background:#fff0f6; padding:25px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-        </div>
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="love-test.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="love-test-en.html" class="lang-btn active">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">💖</div>
+                <h1 class="main-title">Love Cell Test</h1>
+                <p class="sub-desc">Are your love cells still alive?<br>Analyze your dating level in 10 steps.</p>
+                <button onclick="startTest()" class="btn-primary full-width">Start Test</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Restart</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">Question goes here.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon">💌</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">Result Title</h1>
+                <p id="res-desc">Result description goes here.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Result</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
+        </footer>
     </div>
-</div>
-        
-        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
-    </div>
+
     <script>
-        const qData = [
-            { q: "A friend offers to set you up on a blind date.", a: "Sure! Show me a photo immediately.", b: "Nah, I'd rather rest at home.", s: 1 },
-            { q: "You see your ideal type on the street.", a: "Try to make eye contact.", b: "Just think 'Wow' and walk past.", s: 1 },
-            { q: "Watching a romantic kiss scene in a movie...", a: "I feel butterflies... I want that.", b: "Actors must be tired. It's just work.", s: 1 },
-            { q: "Someone asks you out on a date.", a: "Ask for photos and job details first.", b: "I'm too lazy to go out. Decline.", s: 1 },
-            { q: "Do you take care of your appearance?", a: "Yes, I workout and dress well.", b: "I'm happy if I just showered.", s: 1 },
-            { q: "If you get a lover, what do you want to do?", a: "Travel, Picnic, Restaurants.", b: "Netflix and Chill at home.", s: 1 },
-            { q: "On Valentine's Day or Christmas...", a: "I feel lonely and cold.", b: "It's just a commercial holiday.", s: 1 },
-            { q: "Friend asks for dating advice.", a: "I get emotional and empathize.", b: "I give realistic, cold advice.", s: 1 },
-            { q: "Dinner with a friend of the opposite sex.", a: "Is this a date? I feel tension.", b: "Just a meal. Let's eat quickly.", s: 1 },
-            { q: "Thinking about the 'flirting' phase...", a: "I miss that excitement.", b: "Just thinking about it is exhausting.", s: 1 },
-            { q: "When was your last relationship?", a: "Less than 1 year or Now.", b: "Over 3 years or Never.", s: 1 },
-            { q: "Can you confess first if you like someone?", a: "Yes! Go for it!", b: "No, I'm afraid of rejection.", s: 1 },
-            { q: "Looking in the mirror, do you think you look good?", a: "Often.", b: "Rarely.", s: 1 },
-            { q: "Your ex contacts you.", a: "I answer out of curiosity.", b: "Block or Ignore.", s: 1 },
-            { q: "In your next life...", a: "I want to be born attractive and date a lot.", b: "I want to be a rich hermit.", s: 1 }
+        // --- Data (15 Questions in English) ---
+        const questions = [
+            { q: "Your weekend plans got cancelled suddenly. You...", a: [{ t: "Yes! Stay home and relax.", s: 2 }, { t: "Call another friend.", s: 5 }, { t: "Go out alone to a hot spot.", s: 10 }] },
+            { q: "You see someone attractive. You...", a: [{ t: "Just watch from afar.", s: 2 }, { t: "Hover around to get noticed.", s: 5 }, { t: "Go and ask for their number.", s: 10 }] },
+            { q: "After a fight with your partner, how do you reconcile?", a: [{ t: "No contact until I cool off.", s: 2 }, { t: "Ask for some time alone.", s: 5 }, { t: "Talk it out immediately.", s: 10 }] },
+            { q: "How do you handle anniversaries?", a: [{ t: "What anniversary? I forget.", s: 0 }, { t: "Just a nice meal.", s: 5 }, { t: "Prepare a surprise party.", s: 10 }] },
+            { q: "Partner eating alone with a friend of opposite sex?", a: [{ t: "Absolutely not allowed.", s: 2 }, { t: "Unpleasant but I bear it.", s: 5 }, { t: "I trust them, so it's cool.", s: 9 }] },
+            { q: "Your texting frequency?", a: [{ t: "Only when necessary (1-2 times).", s: 2 }, { t: "Whenever I have time.", s: 6 }, { t: "24/7 instant reply.", s: 10 }] },
+            { q: "When your partner looks depressed?", a: [{ t: "Analyze why they are sad logically.", s: 2 }, { t: "Stay quietly by their side.", s: 7 }, { t: "Take them for a drive/food.", s: 10 }] },
+            { q: "Your ideal type is closer to?", a: [{ t: "Someone who leads me.", s: 3 }, { t: "Comfortable like a friend.", s: 6 }, { t: "Someone I need to take care of.", s: 9 }] },
+            { q: "If you get dumped?", a: [{ t: "Say okay coolly.", s: 2 }, { t: "Beg and cry.", s: 8 }, { t: "Ask why and accept if logical.", s: 5 }] },
+            { q: "Ready for the next relationship?", a: [{ t: "Still prefer being alone.", s: 0 }, { t: "If there's a good person?", s: 5 }, { t: "Want to date right now!", s: 10 }] },
+            { q: "When watching romance movies?", a: [{ t: "Unrealistic.", s: 2 }, { t: "Just for fun.", s: 5 }, { t: "I get butterflies like the main character.", s: 10 }] },
+            { q: "Seeing couples on the street?", a: [{ t: "Looks hot/annoying.", s: 2 }, { t: "No thoughts.", s: 5 }, { t: "Envious... I want that.", s: 10 }] },
+            { q: "Got a blind date offer?", a: [{ t: "Decline, too bothersome.", s: 2 }, { t: "Check photo first.", s: 5 }, { t: "Absolutely Yes!", s: 10 }] },
+            { q: "Thoughts before sleeping?", a: [{ t: "What to eat/wear tomorrow?", s: 2 }, { t: "Reflecting on today.", s: 5 }, { t: "About ex or romantic fantasies.", s: 10 }] },
+            { q: "How charming are you?", a: [{ t: "I don't know.", s: 2 }, { t: "I have my moments.", s: 6 }, { t: "Overflowing with charm.", s: 10 }] }
         ];
-        let step=0, score=0;
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=`Q${step+1}. ${q.q}`;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ score+=q.s; step++; next(); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ step++; next(); };
-            box.appendChild(btnA); box.appendChild(btnB);
+
+        const results = [
+            { lv: "Lv.1", t: "The Monk", d: "Your love cells are hibernating. Isn't being alone the best?" },
+            { lv: "Lv.2", t: "Shy Observer", d: "You have the heart, but you fear taking action." },
+            { lv: "Lv.3", t: "Timid Beginner", d: "You lack experience or are too cautious." },
+            { lv: "Lv.4", t: "Safety First", d: "You close your heart because you're afraid of getting hurt." },
+            { lv: "Lv.5", t: "Average Citizen", d: "You have decent sense. It's possible if you try!" },
+            { lv: "Lv.6", t: "Flirting Master", d: "You know how to set the mood but lack the finishing move." },
+            { lv: "Lv.7", t: "Fox-like Bear", d: "You look innocent but are actually a pro." },
+            { lv: "Lv.8", t: "The Romantic", d: "Considerate and romantic. The best partner material." },
+            { lv: "Lv.9", t: "Casanova", d: "Breathing alone attracts people. Be careful not to lead people on." },
+            { lv: "Lv.10", t: "God of Love", d: "Nothing left to learn. You have mastered love." }
+        ];
+
+        // --- Logic ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t,s,d;
-            if(score>=14) { t="💖 The Casanova"; s="Activity: 200%"; d="You are a master of romance. You can start a relationship anytime you want. Be careful not to break too many hearts!"; }
-            else if(score>=11) { t="🔥 Fast Lover"; s="Activity: 90%"; d="You fall in love quickly (5G speed). You are emotional and hate being alone. You might already be imagining a wedding."; }
-            else if(score>=8) { t="🥰 Dating Prospect"; s="Activity: 70%"; d="You are healthy and ready. You have a good balance of romance and reality. Just waiting for the right person."; }
-            else if(score>=6) { t="🛡️ The Conservative"; s="Activity: 50%"; d="You want to date, but you are suspicious. You are afraid of breaking your daily routine. Open your heart a bit more."; }
-            else if(score>=4) { t="🛌 The Homebody"; s="Activity: 30%"; d="'It's annoying' is your catchphrase. You love your bed more than people. Your love cells are hibernating."; }
-            else if(score>=2) { t="🧊 AI Robot"; s="Activity: 10%"; d="Romance movies don't move you. You are used to being alone and don't feel the need for emotional exchange."; }
-            else { t="⚰️ The Fossil"; s="Activity: 0%"; d="Your love cells are extinct. Is your last relationship from a past life? Go out and start rehabilitation now!"; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied! Share it with your friends.");
+            });
+        }
     </script>
 </body>
 </html>

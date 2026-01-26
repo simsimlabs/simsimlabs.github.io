@@ -3,133 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zombie Survival Test | Boredom Lab</title>
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Zombie Survival Test | SimSim Labs</title>
+    <meta name="description" content="Can you survive a Zombie Apocalypse? Check your survival rank in 10 levels with 15 questions.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">🧟‍♂️</div>
-            <h1>Zombie Apocalypse Test</h1>
-            <p>The city is locked down.<br>Will you survive 15 extreme situations?</p>
-            <button class="btn" style="background:#2d3436;" onclick="start()">Start Survival</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#00b894;"></div></div>
-            <h2 id="q-text" style="min-height: 80px;">Scenario</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>Your Survival Type is...</p>
-            <h1 id="result-title" style="color:#d63031;">Result</h1>
-            <h3 id="result-sub" style="color:#555;">Sub</h3>
-            <div id="result-desc" style="background:#dfe6e9; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-        </div>
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="zombie-test.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="zombie-test-en.html" class="lang-btn active">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">🧟‍♂️</div>
+                <h1 class="main-title">Zombie Survival Test</h1>
+                <p class="sub-desc">The world is overrun by zombies.<br>Can you survive until the end?</p>
+                <button onclick="startTest()" class="btn-primary full-width">Check Survival Rate</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Give Up</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">Question goes here.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">💀</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">Result Title</h1>
+                <p id="res-desc">Result description goes here.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Result</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
+        </footer>
     </div>
-</div>
-        
-        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
-    </div>
+
     <script>
-        const qData = [
-            { q: "[D-Day] Breaking news: 'Man-eating riots'. What do you do?", a: "Lock doors, grab weapon & food.", b: "Check SNS or look outside.", type: "survive" },
-            { q: "[Day 1] Looting a store. Pick ONE item.", a: "Canned food & Water (Long term)", b: "Baseball Bat (Combat)", type: "smart" },
-            { q: "[Day 2] Zombies banging on your door.", a: "Stay silent and hide.", b: "Open door and fight preemptively.", type: "survive" },
-            { q: "[Day 3] Found a lost child on the street.", a: "Ignore. Too risky.", b: "Take the child with you.", type: "human" },
-            { q: "[Day 5] Choosing a weapon.", a: "Shotgun (Loud but strong)", b: "Steel Pipe (Quiet & durable)", type: "smart" },
-            { q: "[Day 7] Teammate looks bitten but denies it.", a: "Kick them out or kill them.", b: "Isolate and observe them.", type: "cold" },
-            { q: "[Day 10] Out of food. Dangerous Mart vs Safe Mountain?", a: "Go to Mart. Need real food.", b: "Go to Mountain. Eat berries.", type: "brave" },
-            { q: "[Day 15] It's freezing at night.", a: "No fire. It reveals location.", b: "Light a small fire.", type: "survive" },
-            { q: "[Day 20] Army signal detected 100km away.", a: "It's a trap. Stay here.", b: "Risk it and move to signal.", type: "smart" },
-            { q: "[Day 25] Surrounded. Can use friend as bait to escape.", a: "Push friend and run. (Sorry!)", b: "Fight together till death.", type: "cold" },
-            { q: "[Day 30] Found a car. Who to take?", a: "Soldier & Police (Combat)", b: "Doctor & Mechanic (Skill)", type: "smart" },
-            { q: "[Day 40] Strangers try to steal your food.", a: "Try to negotiate.", b: "Attack them first.", type: "brave" },
-            { q: "[Day 50] You got bitten. 1 hour left.", a: "Commit suicide to save others.", b: "Hide it and hope for immunity.", type: "human" },
-            { q: "[Day 60] Found a bunker, but it's locked.", a: "Smash the door open.", b: "Search for a key or vent.", type: "survive" },
-            { q: "[Last] The pandemic ends. Who are you?", a: "The Leader of survivors.", b: "A Lone Survivor.", type: "role" }
+        // --- Data (15 Questions in English) ---
+        const questions = [
+            { q: "Breaking News! Zombie virus is spreading.", a: [{ t: "Lock doors and wait at home.", s: 5 }, { t: "Run to the mart for food immediately.", s: 10 }, { t: "Ignore it as fake news and go to work.", s: 0 }] },
+            { q: "Choose one weapon to take.", a: [{ t: "Loud but powerful Shotgun.", s: 6 }, { t: "Quiet and durable Baseball Bat.", s: 10 }, { t: "Cool Katana (Samurai Sword).", s: 4 }] },
+            { q: "A stranger knocks begging for help.", a: [{ t: "Open the door out of pity.", s: 0 }, { t: "Ignore and pretend no one's home.", s: 8 }, { t: "Check for bites, disarm, then let in.", s: 10 }] },
+            { q: "Your friend got bitten on the arm!", a: [{ t: "Protect them till the end.", s: 2 }, { t: "Eliminate them before they turn.", s: 10 }, { t: "Tie them up somewhere safe.", s: 6 }] },
+            { q: "Out of food. Zombies are everywhere.", a: [{ t: "Stay inside even if starving.", s: 0 }, { t: "Go out to scavenge despite danger.", s: 10 }, { t: "Try to loot the neighbor's house.", s: 7 }] },
+            { q: "It's freezing at night. Make a fire?", a: [{ t: "Make a fire, don't want to freeze.", s: 2 }, { t: "Don't. Light and smoke attract them.", s: 10 }, { t: "Make a very small, hidden fire.", s: 6 }] },
+            { q: "A horde is attacking. Need to escape.", a: [{ t: "Use a teammate as bait and run.", s: 5 }, { t: "Try to save everyone and run.", s: 8 }, { t: "Quietly escape alone.", s: 10 }] },
+            { q: "You hear a military rescue helicopter.", a: [{ t: "Run to the roof and scream.", s: 4 }, { t: "Signal with mirror or smoke.", s: 10 }, { t: "Watch first, it might be a trap.", s: 7 }] },
+            { q: "Found an empty-looking supermarket.", a: [{ t: "Rush inside immediately!", s: 2 }, { t: "Scout the area and use back door.", s: 10 }, { t: "Barricade entrance and make it a base.", s: 6 }] },
+            { q: "Found an injured puppy on the way.", a: [{ t: "Take it. It cures loneliness.", s: 4 }, { t: "Leave it. Barking is dangerous.", s: 10 }, { t: "Use it as food...", s: 8 }] },
+            { q: "Zombie blood splashed in your eye.", a: [{ t: "Wipe it off and ignore.", s: 2 }, { t: "Wash immediately with clean water.", s: 10 }, { t: "Assume infection and give up.", s: 0 }] },
+            { q: "Met a large survivor group. Join them?", a: [{ t: "Yes, strength in numbers.", s: 6 }, { t: "No, humans are scarier. Stay solo.", s: 8 }, { t: "Follow secretly to observe.", s: 10 }] },
+            { q: "When sleeping...", a: [{ t: "Just sleep deep to recover.", s: 0 }, { t: "Take turns standing guard.", s: 10 }, { t: "Sleep lightly with one eye open.", s: 7 }] },
+            { q: "Radio says a vaccine is developed.", a: [{ t: "Doubt it. Could be a trap.", s: 10 }, { t: "Go to the station with hope.", s: 4 }, { t: "Wait and see others go first.", s: 7 }] },
+            { q: "Cornered at the very end. Your choice?", a: [{ t: "Die as a human.", s: 5 }, { t: "Do whatever to survive (Become zombie?)", s: 2 }, { t: "Fight till death, take them with me.", s: 10 }] }
         ];
-        let step=0, score=0, humanity=0;
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=q.q;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ calc(q,'A'); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ calc(q,'B'); };
-            box.appendChild(btnA); box.appendChild(btnB);
-        }
-        function calc(q, ans){
-            if(q.type==='survive'||q.type==='smart'){ if((q.type==='survive'&&ans==='A')||(q.type==='smart'&&ans==='B')||(q.type==='smart'&&ans==='A'&&!q.q.includes('Shotgun'))) score+=10; else score+=5; }
-            else if(q.type==='cold'){ if(ans==='A'){ score+=10; humanity-=5; } else { score+=0; humanity+=10; } }
-            else if(q.type==='human'){ if(ans==='B'){ humanity+=10; score-=5; } else score+=5; }
-            else score+=5;
-            step++; next();
-        }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t,s,d;
-            if(score>=120) { t="🤴 The Emperor"; s="Survival Rate: 99.9%"; d="Perfect survival machine. Cold judgment and strength. You will build a new empire."; }
-            else if(score>=100 && humanity>=20) { t="🦸‍♂️ The Hero"; s="Survival Rate: 90%"; d="Like a movie protagonist. You survive and help others. True Leader."; }
-            else if(score>=100 && humanity<20) { t="😈 The Villain"; s="Survival Rate: 95%"; d="You survive by sacrificing others. You are scarier than zombies."; }
-            else if(score>=70) { t="🏃‍♂️ The Runner"; s="Survival Rate: 60%"; d="Fast at running away. You survive, but it's a hard life."; }
-            else if(score>=50 && humanity>=30) { t="🛡️ The Human Shield"; s="Survival Rate: 30%"; d="Too kind for this world. You likely died saving someone."; }
-            else if(score>=40) { t="🥔 Couch Potato"; s="Survival Rate: 10%"; d="You stayed home eating chips until they ran out. Then you died."; }
-            else { t="🧟‍♂️ First Infected"; s="Survival Rate: 0%"; d="You died in the opening scene. Too curious or too weak. RIP."; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+
+        // Result Data
+        const results = [
+            { lv: "Lv.1", icon: "🍗", t: "Opening Victim", d: "You die in the first 5 minutes wondering 'What's that?'. Next time, be faster." },
+            { lv: "Lv.2", icon: "📢", t: "The Nuisance", d: "You scream at wrong times and doom your team. A true burden to humanity." },
+            { lv: "Lv.3", icon: "🏃", t: "Extra A", d: "Good at running but has low stamina. You specialize in screaming and dying." },
+            { lv: "Lv.4", icon: "🏠", t: "Home Camper", d: "Outside is dangerous! You survive until food runs out. Might get rescued if lucky." },
+            { lv: "Lv.5", icon: "🛡️", t: "Loyal Guardian", d: "Great fighter but too kind. You will likely die sacrificing yourself for others." },
+            { lv: "Lv.6", icon: "🧠", t: "Cold Strategist", d: "You make quick, cold decisions. High survival chance due to lack of hesitation." },
+            { lv: "Lv.7", icon: "🍀", t: "Lucky Coward", d: "No skills but insane luck. You survive by accidentally avoiding every danger." },
+            { lv: "Lv.8", icon: "🗡️", t: "Human Weapon", d: "You beat zombies with bare hands. Zombies run away from YOU." },
+            { lv: "Lv.9", icon: "🐺", t: "Lone Wolf", d: "You trust no one and survive alone. A legendary survivor." },
+            { lv: "Lv.10", icon: "👑", t: "Wasteland Ruler", d: "You have the antibody or will build a new civilization. Hope of humanity!" }
+        ];
+
+        // --- Logic ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
+        }
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
+            const res = results[level];
+            document.getElementById('res-icon').innerText = res.icon;
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied!");
+            });
+        }
     </script>
 </body>
 </html>

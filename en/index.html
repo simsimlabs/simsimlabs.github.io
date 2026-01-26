@@ -36,17 +36,17 @@
         <div class="ad-placeholder">(Ads - Top)</div>
 
         <div class="category-nav">
-            <button class="cat-btn active">All</button>
-            <button class="cat-btn">Personality</button>
-            <button class="cat-btn">Love</button>
-            <button class="cat-btn">Game</button>
-            <button class="cat-btn">Work</button>
-            <button class="cat-btn">IQ</button>
+            <button class="cat-btn active" onclick="filter('all')">All</button>
+            <button class="cat-btn" onclick="filter('personality')">Personality</button>
+            <button class="cat-btn" onclick="filter('love')">Love</button>
+            <button class="cat-btn" onclick="filter('game')">Game</button>
+            <button class="cat-btn" onclick="filter('work')">Work</button>
+            <button class="cat-btn" onclick="filter('iq')">IQ</button>
         </div>
 
         <div class="grid-container">
             
-            <a href="color-game.html" class="card">
+            <a href="color-game.html" class="card category-game">
                 <div class="card-img" style="background:#00cec9;">🎨</div>
                 <div class="card-body">
                     <span class="card-tag">Game</span>
@@ -55,7 +55,7 @@
                 </div>
             </a>
 
-            <a href="rich-test.html" class="card">
+            <a href="rich-test.html" class="card category-work">
                 <div class="card-img" style="background:#ffd700;">💰</div>
                 <div class="card-body">
                     <span class="card-tag">Work</span>
@@ -64,7 +64,7 @@
                 </div>
             </a>
 
-            <a href="love-test.html" class="card">
+            <a href="love-test.html" class="card category-love">
                 <div class="card-img" style="background:#ffeaa7;">💖</div>
                 <div class="card-body">
                     <span class="card-tag">Love</span>
@@ -73,7 +73,7 @@
                 </div>
             </a>
 
-            <a href="zombie-test.html" class="card">
+            <a href="zombie-test.html" class="card category-game">
                 <div class="card-img" style="background:#55efc4;">🧟‍♂️</div>
                 <div class="card-body">
                     <span class="card-tag">Survival</span>
@@ -82,7 +82,7 @@
                 </div>
             </a>
 
-            <a href="kkondae-test.html" class="card">
+            <a href="kkondae-test.html" class="card category-work">
                 <div class="card-img" style="background:#dfe6e9;">☕</div>
                 <div class="card-body">
                     <span class="card-tag">Work</span>
@@ -91,7 +91,7 @@
                 </div>
             </a>
 
-            <a href="vocab-test.html" class="card">
+            <a href="vocab-test.html" class="card category-iq">
                 <div class="card-img" style="background:#a29bfe;">📚</div>
                 <div class="card-body">
                     <span class="card-tag">IQ</span>
@@ -100,7 +100,7 @@
                 </div>
             </a>
 
-            <a href="animal-test.html" class="card">
+            <a href="animal-test.html" class="card category-personality">
                 <div class="card-img" style="background:#74b9ff;">🐶</div>
                 <div class="card-body">
                     <span class="card-tag">Personality</span>
@@ -109,7 +109,7 @@
                 </div>
             </a>
 
-            <a href="mental-age.html" class="card">
+            <a href="mental-age.html" class="card category-personality">
                 <div class="card-img" style="background:#fdcb6e;">🧠</div>
                 <div class="card-body">
                     <span class="card-tag">Personality</span>
@@ -118,7 +118,7 @@
                 </div>
             </a>
 
-            <a href="reaction.html" class="card">
+            <a href="reaction.html" class="card category-game">
                 <div class="card-img" style="background:#ff7675;">⚡</div>
                 <div class="card-body">
                     <span class="card-tag">Game</span>
@@ -127,12 +127,14 @@
                 </div>
             </a>
 
-            <a href="lotto.html" class="card">
-    <div class="card-img" style="background:#fab1a0;">🎰</div>
-    <div class="card-body">
-        <span class="card-tag">Luck</span>
-        <h3>Powerball Generator</h3> <p>Get your lucky numbers for US Powerball.</p> </div>
-</a>
+            <a href="lotto.html" class="card category-game">
+                <div class="card-img" style="background:#fab1a0;">🎰</div>
+                <div class="card-body">
+                    <span class="card-tag">Luck</span>
+                    <h3>Powerball Generator</h3> 
+                    <p>Get your lucky numbers for US Powerball.</p> 
+                </div>
+            </a>
 
         </div>
 
@@ -154,8 +156,28 @@
     </footer>
 
     <script>
-        // 필터링 스크립트는 상위 카테고리명(Love, Game 등)과 카드 태그가 일치해야 작동합니다.
-        // 현재는 버튼만 있고 기능은 단순 연결입니다. 추후 정교화 가능합니다.
+        function filter(category) {
+            // 1. 모든 버튼에서 active 클래스 제거하고 클릭된 버튼에만 추가
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // 2. 카드 필터링 로직
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    // 전체보기면 다 보여줌
+                    card.style.display = 'block'; // grid-container에서는 flex/block 대신 기본 display 유지 필요할 수 있으나 보통 block으로 해결됨
+                } else {
+                    // 해당 카테고리 클래스가 있으면 보여주고, 없으면 숨김
+                    if (card.classList.contains('category-' + category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>

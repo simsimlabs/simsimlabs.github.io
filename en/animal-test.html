@@ -3,120 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spirit Animal Test | Boredom Lab</title>
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Spirit Animal Test | SimSim Labs</title>
+    <meta name="description" content="What is your spirit animal? Find your inner animal based on your personality.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">🐶</div>
-            <h1>Spirit Animal Test</h1>
-            <p>Dog, Cat, or Sloth?<br>Find your inner spirit animal.</p>
-            <button class="btn" onclick="start()">Start Test</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#74b9ff;"></div></div>
-            <h2 id="q-text">Question</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>Your Spirit Animal is...</p>
-            <h1 id="result-title" style="color:#0984e3;">Result</h1>
-            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-        </div>
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="animal-test.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="animal-test-en.html" class="lang-btn active">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">🐶</div>
+                <h1 class="main-title">Spirit Animal Test</h1>
+                <p class="sub-desc">Which animal matches your personality?<br>Find out in 10 levels with 15 questions.</p>
+                <button onclick="startTest()" class="btn-primary full-width">Start Test</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Restart</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">Question goes here.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">🐾</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">Result Title</h1>
+                <p id="res-desc">Result description goes here.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Result</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
+        </footer>
     </div>
-</div>
-        
-        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
-    </div>
+
     <script>
-        const qData = [
-            { q: "At a party, you...", a: "Talk to everyone.", b: "Stay in a corner.", type: "E" },
-            { q: "Working style?", a: "Lead the team.", b: "Follow instructions.", type: "L" },
-            { q: "Ideal weekend?", a: "Hiking/Theme park.", b: "Staying in bed.", type: "A" },
-            { q: "When angry?", a: "Explode immediately.", b: "Hold it in.", type: "E" },
-            { q: "Are you emotional?", a: "Yes, I cry easily.", b: "No, I am logical.", type: "F" },
-            { q: "Meeting new people?", a: "Exciting!", b: "Exhausting.", type: "E" },
-            { q: "Walking speed?", a: "Fast.", b: "Slow.", type: "A" },
-            { q: "Solving problems?", a: "Intuition.", b: "Data/Logic.", type: "L" },
-            { q: "Attention?", a: "Love it.", b: "Hate it.", type: "E" },
-            { q: "Sad movies?", a: "Focus on plot.", b: "Get emotional.", type: "F" },
-            { q: "Your room?", a: "Messy.", b: "Clean.", type: "J" },
-            { q: "Predator or Herbivore?", a: "Predator.", b: "Herbivore.", type: "A" }
+        // --- Data (15 Questions in English) ---
+        const questions = [
+            { q: "At a new social gathering, you...", a: [{ t: "Observe quietly from the corner.", s: 2 }, { t: "Talk to the person next to me.", s: 6 }, { t: "Take center stage and lead.", s: 10 }] },
+            { q: "When a friend shares their worries...", a: [{ t: "Listen quietly and empathize.", s: 2 }, { t: "Give realistic advice.", s: 6 }, { t: "Get angry together like it's my own problem.", s: 10 }] },
+            { q: "On a weekend off, you...", a: [{ t: "Become one with the bed.", s: 0 }, { t: "Do chores or hobbies.", s: 5 }, { t: "Go out because staying home is boring.", s: 10 }] },
+            { q: "Your work style is...", a: [{ t: "Procrastinate until the last minute.", s: 2 }, { t: "Step by step as planned.", s: 6 }, { t: "Fast and efficient.", s: 10 }] },
+            { q: "If someone picks a fight?", a: [{ t: "Avoid or ignore it.", s: 2 }, { t: "Ask logically why.", s: 6 }, { t: "Fight back immediately.", s: 10 }] },
+            { q: "Your travel plan is...", a: [{ t: "No plan is the plan.", s: 2 }, { t: "Just the basics, flexible.", s: 6 }, { t: "Detailed Excel spreadsheet.", s: 10 }] },
+            { q: "Your eating habits?", a: [{ t: "Picky eater.", s: 3 }, { t: "Eat whatever is given.", s: 6 }, { t: "Gourmet and big eater.", s: 10 }] },
+            { q: "In front of your crush...", a: [{ t: "Can't even make eye contact.", s: 2 }, { t: "Take care of them subtly.", s: 6 }, { t: "Express feelings openly.", s: 10 }] },
+            { q: "If asked to be a leader?", a: [{ t: "Refuse, it's burdensome.", s: 2 }, { t: "Do it responsibly if asked.", s: 6 }, { t: "Volunteer to lead.", s: 10 }] },
+            { q: "When you are angry...", a: [{ t: "Hold it inside.", s: 2 }, { t: "Calmly explain why.", s: 6 }, { t: "Explode right there.", s: 10 }] },
+            { q: "Your usual facial expression?", a: [{ t: "Blank or sleepy.", s: 2 }, { t: "Always smiling.", s: 6 }, { t: "Sharp and charismatic.", s: 10 }] },
+            { q: "In a competition...", a: [{ t: "I dislike competition, so I yield.", s: 2 }, { t: "Enjoy it moderately.", s: 6 }, { t: "Must win at all costs.", s: 10 }] },
+            { q: "Friends say you are...", a: [{ t: "Kind and gentle.", s: 2 }, { t: "Funny and witty.", s: 6 }, { t: "Strong and tough.", s: 10 }] },
+            { q: "Do you enjoy dangerous challenges?", a: [{ t: "Safety first.", s: 2 }, { t: "Enjoy the thrill sometimes.", s: 6 }, { t: "Life is an adventure! Enjoy.", s: 10 }] },
+            { q: "If born again?", a: [{ t: "A loved pet.", s: 2 }, { t: "Free wild animal.", s: 6 }, { t: "King of the jungle.", s: 10 }] }
         ];
-        let step=0, scores={E:0,A:0,F:0};
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=q.q;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ scores[q.type]++; step++; next(); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ step++; next(); };
-            box.appendChild(btnA); box.appendChild(btnB);
+
+        // Result Data
+        const results = [
+            { lv: "Lv.1", icon: "🦥", t: "Peaceful Sloth", d: "Everything is bothersome. Outside of bed is dangerous! You are relaxed and peaceful." },
+            { lv: "Lv.2", icon: "🐹", t: "Timid Hamster", d: "Scared and cautious, but you show endless cuteness to your own people." },
+            { lv: "Lv.3", icon: "🐰", t: "Fresh Rabbit", d: "Lively and cute but sensitive. No one knows where you will bounce next!" },
+            { lv: "Lv.4", icon: "🐈", t: "Chic Cat", d: "Independent with high pride. You charm people with your Tsundere style." },
+            { lv: "Lv.5", icon: "🐶", t: "Loyal Dog", d: "Energetic and loves people. You are loyal and popular among friends." },
+            { lv: "Lv.6", icon: "🦌", t: "Elegant Deer", d: "Quick-witted and sensitive. You look fragile but are strong inside." },
+            { lv: "Lv.7", icon: "🦊", t: "Clever Fox", d: "Smart and great at social skills. You know exactly how to get what you want." },
+            { lv: "Lv.8", icon: "🦅", t: "Charismatic Eagle", d: "Insightful and goal-oriented. You never miss a target you aim for." },
+            { lv: "Lv.9", icon: "🦁", t: "Brave Lion", d: "Great leadership and high self-esteem. You are born to be a king." },
+            { lv: "Lv.10", icon: "🦄", t: "Mystical Unicorn", d: "Perfection that only exists in imagination! You are unique and admired by all." }
+        ];
+
+        // --- Logic ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t, d;
-            if(scores.E>=3 && scores.A>=2) { t="🦁 King Lion"; d="Born leader. Confident and strong."; }
-            else if(scores.E>=3) { t="🐶 Golden Retriever"; d="Social, energetic, and loyal. Everyone loves you."; }
-            else if(scores.A<=1 && scores.E<=1) { t="🦥 Sloth"; d="Peace and sleep are priorities. Why rush?"; }
-            else if(scores.F>=2) { t="🐱 Chic Cat"; d="Independent and cool. You value privacy."; }
-            else { t="🦉 Wise Owl"; d="Calm, logical, and observant."; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-desc').innerText=d;
+
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-icon').innerText = res.icon;
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied!");
+            });
+        }
     </script>
 </body>
 </html>

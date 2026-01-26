@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Survival Test | Boredom Lab</title>
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads)</div>
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">🧟‍♂️</div>
+            <h1>Zombie Apocalypse Test</h1>
+            <p>The virus has spread.<br>Will you survive? Or become a zombie?</p>
+            <button class="btn" style="background:#2d3436;" onclick="start()">Start Survival</button>
+        </div>
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#00b894;"></div></div>
+            <h2 id="q-text">Scenario</h2>
+            <div id="answer-box"></div>
+        </div>
+        <div id="result-screen" class="content-box hidden">
+            <p>Your survival type is...</p>
+            <h1 id="result-title" style="color:#d63031;">Result</h1>
+            <h3 id="result-sub">Sub</h3>
+            <div id="result-desc" style="background:#dfe6e9; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+        <footer>
+            <p>© 2024 Boredom Lab</p>
+            <p><a href="../privacy.html">Privacy</a></p>
+        </footer>
+    </div>
+    <script>
+        const qData = [
+            { q: "[D-Day] Breaking news about a 'man-eating virus'. Screams outside.", a: "Lock doors, check food, hide.", b: "Go outside or check SNS to see what's happening.", type: "survive" },
+            { q: "[Day 1] You need supplies. Pick one weapon.", a: "Baseball bat (Long reach)", b: "Chainsaw (Powerful but loud)", type: "smart" },
+            { q: "[Day 3] You meet a stranger. They look injured.", a: "Ignore them. Too risky.", b: "Talk to them. Might be helpful.", type: "human" },
+            { q: "[Day 7] A zombie spots you!", a: "Aim for the head and fight.", b: "Run away immediately.", type: "fight" },
+            { q: "[Day 10] A friend seems bitten but hides it.", a: "Confront and isolate them immediately.", b: "Wait and observe.", type: "cold" },
+            { q: "[Day 20] Radio signal from the army detected. It's far.", a: "Stay here. It might be a trap.", b: "Move to the rescue point.", type: "smart" },
+            { q: "[Last] Surrounded by zombies. You can push your friend to escape.", a: "Push friend and run. (Sorry!)", b: "Fight together until the end.", type: "cold" }
+        ];
+        let step=0, score=0, humanity=0;
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=q.q;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ calc(q,'A'); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ calc(q,'B'); };
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+        function calc(q, ans){
+            if(q.type==='survive'||q.type==='smart'){ if(ans==='A') score+=20; else score+=10; }
+            else if(q.type==='cold'){ if(ans==='A'){ score+=20; humanity-=10; } else { score+=0; humanity+=20; } }
+            else { score+=10; }
+            step++; next();
+        }
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t,s,d;
+            if(score>=100) { t="🤴 The Emperor"; s="Survival Rate: 99%"; d="You are a perfect survival machine. Cold judgment and strength. You will build a new empire."; }
+            else if(score>=80 && humanity>=10) { t="🦸‍♂️ The Hero"; s="Survival Rate: 90%"; d="You have both skills and a warm heart. People will follow you."; }
+            else if(score>=60) { t="🏃‍♂️ The Runner"; s="Survival Rate: 60%"; d="You are fast at running away. You survive, but it's a hard life."; }
+            else { t="🧟‍♂️ The First Zombie"; s="Survival Rate: 0%"; d="You died in the opening scene. Too curious or too weak. RIP."; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+        }
+    </script>
+</body>
+</html>

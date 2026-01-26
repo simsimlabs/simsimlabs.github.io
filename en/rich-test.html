@@ -66,6 +66,44 @@
             else { t="💸 YOLO Spender"; s="Rich Probability: 10%"; d="You enjoy the present too much. Your future is at risk. Cut your credit card!"; }
             document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
         }
+
+/* === Smart Share Function (Replace the old one) === */
+function shareTwitter() {
+    var sendText = document.title;
+    var sendUrl = window.location.href;
+
+    var resultScreen = document.getElementById('result-screen');
+    if (resultScreen && !resultScreen.classList.contains('hidden')) {
+        var resultTitle = document.getElementById('result-title').innerText;
+        // Text format: [My Result] Title
+        sendText = "[My Result] " + resultTitle + " | " + document.title;
+    }
+
+    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
+}
+
+function shareFacebook() {
+    var sendUrl = window.location.href;
+    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+}
+
+function copyLink() {
+    var sendUrl = window.location.href;
+    var textToCopy = sendUrl;
+
+    var resultScreen = document.getElementById('result-screen');
+    if (resultScreen && !resultScreen.classList.contains('hidden')) {
+        var resultTitle = document.getElementById('result-title').innerText;
+        var resultDesc = document.getElementById('result-desc').innerText;
+        
+        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
+    }
+
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        alert("Result & Link Copied! \nPaste it to your friends.");
+    });
+}
+        
     </script>
 </body>
 </html>

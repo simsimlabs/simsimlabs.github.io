@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirit Animal Test | Boredom Lab</title>
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads - Top)</div>
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">🐶</div>
+            <h1>Spirit Animal Test</h1>
+            <p>Dog, Cat, or Sloth?<br>Find your inner spirit animal.</p>
+            <button class="btn" onclick="start()">Start Test</button>
+        </div>
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#74b9ff;"></div></div>
+            <h2 id="q-text">Question</h2>
+            <div id="answer-box"></div>
+        </div>
+        <div id="result-screen" class="content-box hidden">
+            <p>Your Spirit Animal is...</p>
+            <h1 id="result-title" style="color:#0984e3;">Result</h1>
+            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+        <div class="ad-placeholder">(Ads - Bottom)</div>
+        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
+    </div>
+    <script>
+        const qData = [
+            { q: "At a party, you...", a: "Talk to everyone.", b: "Stay in a corner.", type: "E" },
+            { q: "Working style?", a: "Lead the team.", b: "Follow instructions.", type: "L" },
+            { q: "Ideal weekend?", a: "Hiking/Theme park.", b: "Staying in bed.", type: "A" },
+            { q: "When angry?", a: "Explode immediately.", b: "Hold it in.", type: "E" },
+            { q: "Are you emotional?", a: "Yes, I cry easily.", b: "No, I am logical.", type: "F" },
+            { q: "Meeting new people?", a: "Exciting!", b: "Exhausting.", type: "E" },
+            { q: "Walking speed?", a: "Fast.", b: "Slow.", type: "A" },
+            { q: "Solving problems?", a: "Intuition.", b: "Data/Logic.", type: "L" },
+            { q: "Attention?", a: "Love it.", b: "Hate it.", type: "E" },
+            { q: "Sad movies?", a: "Focus on plot.", b: "Get emotional.", type: "F" },
+            { q: "Your room?", a: "Messy.", b: "Clean.", type: "J" },
+            { q: "Predator or Herbivore?", a: "Predator.", b: "Herbivore.", type: "A" }
+        ];
+        let step=0, scores={E:0,A:0,F:0};
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=q.q;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ scores[q.type]++; step++; next(); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ step++; next(); };
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t, d;
+            if(scores.E>=3 && scores.A>=2) { t="🦁 King Lion"; d="Born leader. Confident and strong."; }
+            else if(scores.E>=3) { t="🐶 Golden Retriever"; d="Social, energetic, and loyal. Everyone loves you."; }
+            else if(scores.A<=1 && scores.E<=1) { t="🦥 Sloth"; d="Peace and sleep are priorities. Why rush?"; }
+            else if(scores.F>=2) { t="🐱 Chic Cat"; d="Independent and cool. You value privacy."; }
+            else { t="🦉 Wise Owl"; d="Calm, logical, and observant."; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-desc').innerText=d;
+        }
+    </script>
+</body>
+</html>

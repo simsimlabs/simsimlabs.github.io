@@ -3,124 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grammar IQ Test | Boredom Lab</title>
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Vocabulary IQ Test | SimSim Labs</title>
+    <meta name="description" content="Test your English Vocabulary & Grammar. Top 1% Challenge. 15 Questions.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
-<body> 
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">📚</div>
-            <h1>Grammar IQ Test</h1>
-            <p>Even native speakers fail this.<br>Can you get a perfect score?</p>
-            <button class="btn" onclick="start()">Start Test</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#6c5ce7;"></div></div>
-            <h2 id="q-text">Question</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>Your Level is...</p>
-            <h1 id="result-title" style="color:#6c5ce7;">Result</h1>
-            <h1 id="result-score"></h1>
-            <div id="result-desc" style="background:#f8f9fa; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-        </div>
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+<body>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="vocab-test.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="vocab-test-en.html" class="lang-btn active">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">📚</div>
+                <h1 class="main-title">Vocabulary IQ Test</h1>
+                <p class="sub-desc">How rich is your vocabulary?<br>Test your English level in 15 questions.</p>
+                <button onclick="startTest()" class="btn-primary full-width">Start Test</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Restart</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">Question goes here.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">🎓</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">Result Title</h1>
+                <p id="res-desc">Result description goes here.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Result</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
+        </footer>
     </div>
-</div>
-        
-        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
-    </div>
+
     <script>
-        const qData = [
-            { q: "They go to school over _____.", a: "their", b: "there", ans: "B" },
-            { q: "Your advice had a great _____.", a: "affect", b: "effect", ans: "B" },
-            { q: "It's better _____ yours.", a: "then", b: "than", ans: "B" },
-            { q: "_____ going to be a great day.", a: "Its", b: "It's", ans: "B" },
-            { q: "I have _____ money than you.", a: "less", b: "fewer", ans: "A" },
-            { q: "She _____ good.", a: "did", b: "done", ans: "A" },
-            { q: "Who is it? It is _____.", a: "I", b: "me", ans: "A" },
-            { q: "You should _____ down.", a: "lay", b: "lie", ans: "B" },
-            { q: "To _____ should I send this?", a: "who", b: "whom", ans: "B" },
-            { q: "I could _____ helped you.", a: "of", b: "have", ans: "B" },
-            { q: "The dog wagged _____ tail.", a: "its", b: "it's", ans: "A" },
-            { q: "One of the women who _____ hard.", a: "work", b: "works", ans: "A" },
-            { q: "Between you and _____.", a: "I", b: "me", ans: "B" },
-            { q: "I feel _____.", a: "good", b: "well", ans: "A" },
-            { q: "A large amount of _____.", a: "people", b: "money", ans: "B" }
+        // --- Data (15 Questions in English) ---
+        const questions = [
+            { q: "Choose the correct spelling.", a: [{ t: "Receive", s: 10 }, { t: "Recieve", s: 0 }] },
+            { q: "Synonym for 'Happy'?", a: [{ t: "Sad", s: 0 }, { t: "Ecstatic", s: 10 }, { t: "Angry", s: 0 }] },
+            { q: "'It's raining cats and dogs' means?", a: [{ t: "Animals are falling", s: 0 }, { t: "Raining very heavily", s: 10 }] },
+            { q: "Choose the correct word: 'I saw ___ car.'", a: [{ t: "Their", s: 10 }, { t: "There", s: 0 }, { t: "They're", s: 0 }] },
+            { q: "Antonym of 'Artificial'?", a: [{ t: "Fake", s: 0 }, { t: "Natural", s: 10 }, { t: "Synthetic", s: 0 }] },
+            { q: "Select the correct grammar.", a: [{ t: "She don't like apples.", s: 0 }, { t: "She doesn't like apples.", s: 10 }] },
+            { q: "What does 'Break a leg' mean?", a: [{ t: "Get hurt", s: 0 }, { t: "Good luck", s: 10 }] },
+            { q: "'Benevolent' means?", a: [{ t: "Cruel", s: 0 }, { t: "Kind and generous", s: 10 }, { t: "Lazy", s: 0 }] },
+            { q: "Correct usage: 'The medicine had a good ___.'", a: [{ t: "Effect", s: 10 }, { t: "Affect", s: 0 }] },
+            { q: "'Ephemeral' means?", a: [{ t: "Lasting forever", s: 0 }, { t: "Lasting a short time", s: 10 }] },
+            { q: "'To kill two birds with one stone' means?", a: [{ t: "Animal cruelty", s: 0 }, { t: "Achieve two things at once", s: 10 }] },
+            { q: "'Ubiquitous' means?", a: [{ t: "Found everywhere", s: 10 }, { t: "Very rare", s: 0 }] },
+            { q: "'Serendipity' refers to?", a: [{ t: "Bad luck", s: 0 }, { t: "Finding good things by chance", s: 10 }] },
+            { q: "Someone who speaks well is '___'.", a: [{ t: "Eloquent", s: 10 }, { t: "Silent", s: 0 }] },
+            { q: "'Procrastinate' means?", a: [{ t: "To work hard", s: 0 }, { t: "To delay or postpone action", s: 10 }] }
         ];
-        let step=0, score=0;
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=`Q${step+1}. ${q.q}`;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ check('A',q.ans); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ check('B',q.ans); };
-            box.appendChild(btnA); box.appendChild(btnB);
+
+        // Result Data
+        const results = [
+            { lv: "Lv.1", t: "Newborn Baby", d: "Goo goo ga ga? You are just starting to learn words." },
+            { lv: "Lv.2", t: "Toddler", d: "You know basic words like 'Mom', 'Dad', and 'No!'." },
+            { lv: "Lv.3", t: "Elementary Student", d: "You can hold a basic conversation. Keep reading!" },
+            { lv: "Lv.4", t: "High Schooler", d: "You have a decent vocabulary for daily life." },
+            { lv: "Lv.5", t: "College Student", d: "You know enough words to write essays and reports." },
+            { lv: "Lv.6", t: "English Teacher", d: "Your grammar is solid. You rarely make mistakes." },
+            { lv: "Lv.7", t: "Journalist", d: "You have a rich vocabulary and can express complex ideas." },
+            { lv: "Lv.8", t: "Professor", d: "You use sophisticated words that others might need a dictionary for." },
+            { lv: "Lv.9", t: "Walking Dictionary", d: "Incredible! Do you memorize the dictionary for fun?" },
+            { lv: "Lv.10", t: "Shakespeare", d: "Thou art a master of words! A true poetic genius." }
+        ];
+
+        // --- Logic ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
-        function check(c,a){ if(c===a) score++; step++; next(); }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t,d;
-            if(score===15) { t="👑 Shakespeare"; d="Perfect score! Are you a professor?"; }
-            else if(score>=12) { t="🎓 Honor Student"; d="Excellent grammar."; }
-            else if(score>=8) { t="🙂 Average"; d="Not bad, but tricky ones got you."; }
-            else { t="👶 Beginner"; d="You need to read more books!"; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-score').innerText=score+"/15"; document.getElementById('result-desc').innerText=d;
+
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied!");
+            });
+        }
     </script>
 </body>
 </html>

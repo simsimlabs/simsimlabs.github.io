@@ -98,6 +98,49 @@
             else { t="👶 응애 나 아기 한국인"; d="혹시 외국에서 살다 오셨나요? 맞춤법 공부가 시급합니다! 책을 좀 더 읽어보시는 게 어떨까요?"; }
             document.getElementById('result-title').innerText=t; document.getElementById('result-score').innerText=score+"점 / 15점"; document.getElementById('result-desc').innerText=d;
         }
+
+/* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
+function shareTwitter() {
+    var sendText = document.title; // 기본 제목
+    var sendUrl = window.location.href; // 기본 주소
+
+    // 결과 화면이 보이면? 결과 멘트를 추가한다!
+    var resultScreen = document.getElementById('result-screen');
+    if (resultScreen && !resultScreen.classList.contains('hidden')) {
+        var resultTitle = document.getElementById('result-title').innerText;
+        var resultDesc = document.getElementById('result-desc').innerText;
+        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
+        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
+    }
+
+    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
+}
+
+function shareFacebook() {
+    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
+    var sendUrl = window.location.href;
+    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+}
+
+function copyLink() {
+    var sendUrl = window.location.href;
+    var textToCopy = sendUrl; // 기본은 링크만
+
+    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
+    var resultScreen = document.getElementById('result-screen');
+    if (resultScreen && !resultScreen.classList.contains('hidden')) {
+        var resultTitle = document.getElementById('result-title').innerText;
+        var resultDesc = document.getElementById('result-desc').innerText;
+        
+        // 복사될 텍스트 포맷
+        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
+    }
+
+    navigator.clipboard.writeText(textToCopy).then(function() {
+        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
+    });
+}
+        
     </script>
 </body>
 </html>

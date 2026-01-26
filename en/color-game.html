@@ -3,128 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Sense Test | Boredom Lab</title>
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Color Sense Test | SimSim Labs</title>
+    <meta name="description" content="Test your color vision! Find the slightly different color tile. How sharp are your eyes?">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
     <style>
-        #game-board { display: grid; gap: 5px; width: 300px; height: 300px; margin: 0 auto; background: #eee; padding: 5px; border-radius: 10px; }
-        .color-box { border-radius: 5px; cursor: pointer; }
+        /* Game Specific Styles */
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        #board {
+            display: grid;
+            gap: 8px;
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .cell {
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .cell:active { transform: scale(0.95); }
+        .timer-danger { color: #e74c3c; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0.5; } }
     </style>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">🎨</div>
-            <h1>Color Sense Test</h1>
-            <p>One square has a <strong>different color</strong>.<br>Find it before time runs out!</p>
-            <button class="btn" onclick="startGame()">Start Game</button>
-        </div>
-        <div id="game-screen" class="content-box hidden">
-            <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:10px;">
-                <span id="score-display">Lv. 1</span>
-                <span id="time-display" style="color:red;">15.0s</span>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="color-game.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="color-game-en.html" class="lang-btn active">🇺🇸 EN</a>
             </div>
-            <div id="game-board"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <h1>⏳ Time's Up!</h1>
-            <h2>Level: <span id="final-score" style="color:var(--primary);">0</span></h2>
-            <div id="rank-text" style="margin:20px 0; font-weight:bold;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
+        </header>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="ad-placeholder">(Ads)</div>
-        
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
-    </div>
-</div>
-        
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">🎨</div>
+                <h1 class="main-title">Color Sense Test</h1>
+                <p class="sub-desc">Find the one tile with a different color!<br>It gets harder as you level up.</p>
+                <button onclick="startGame()" class="btn-primary full-width">Start Game</button>
+            </div>
+        </main>
+
+        <main id="screen-game" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Give Up</button>
+            </div>
+            
+            <div class="game-info">
+                <span id="level-display">Lv. 1</span>
+                <span id="time-display">15.0s</span>
+            </div>
+
+            <div id="board">
+                </div>
+            <p style="text-align:center; color:#888; margin-top:15px; font-size:0.9rem;">
+                Wrong click = -3 seconds!
+            </p>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">👁️</div>
+                <h3 id="res-level">Level 0</h3>
+                <h1 id="res-title">Game Over!</h1>
+                <p id="res-desc">Result Message</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Score</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+                <button onclick="location.reload()" class="btn-primary" style="background-color:#00b894; margin-top:10px; flex-basis:100%;">Try Again</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
         <footer>
-            <p>© 2024 Boredom Lab</p>
-            <p><a href="../privacy.html">Privacy</a></p>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
         </footer>
     </div>
+
     <script>
-        let level = 1, timeLeft = 15.0, timer;
+        let level = 1;
+        let time = 15.0;
+        let timerInterval;
+        let isPlaying = false;
+
         function startGame() {
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('game-screen').classList.remove('hidden');
-            nextLevel();
-            timer = setInterval(() => {
-                timeLeft -= 0.1;
-                document.getElementById('time-display').innerText = timeLeft.toFixed(1) + "s";
-                if(timeLeft <= 0) gameOver();
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-game').classList.add('active');
+            
+            level = 1;
+            time = 15.0;
+            isPlaying = true;
+            
+            renderGame();
+            
+            timerInterval = setInterval(() => {
+                if (!isPlaying) return;
+                time -= 0.1;
+                updateTimeDisplay();
+                
+                if (time <= 0) {
+                    endGame();
+                }
             }, 100);
         }
-        function nextLevel() {
-            document.getElementById('score-display').innerText = `Lv. ${level}`;
-            const board = document.getElementById('game-board'); board.innerHTML = '';
-            let size = Math.min(Math.ceil((level + 1) / 2) + 1, 8);
-            board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-            let r=Math.floor(Math.random()*200)+20, g=Math.floor(Math.random()*200)+20, b=Math.floor(Math.random()*200)+20;
-            let diff=Math.max(30-level*1.5, 5);
-            let correctIndex=Math.floor(Math.random()*(size*size));
-            for(let i=0; i<size*size; i++) {
-                let box=document.createElement('div'); box.className='color-box';
-                if(i===correctIndex) { box.style.backgroundColor=`rgb(${r+diff},${g+diff},${b+diff})`; box.onclick=()=>{ level++; timeLeft+=1.0; nextLevel(); }; }
-                else { box.style.backgroundColor=`rgb(${r},${g},${b})`; box.onclick=()=>{ timeLeft-=2.0; board.style.animation="shake 0.3s"; }; }
-                board.appendChild(box);
+
+        function updateTimeDisplay() {
+            const timeEl = document.getElementById('time-display');
+            timeEl.innerText = time.toFixed(1) + "s";
+            if (time <= 5) {
+                timeEl.classList.add('timer-danger');
+            } else {
+                timeEl.classList.remove('timer-danger');
             }
         }
-        function gameOver() {
-            clearInterval(timer);
-            document.getElementById('game-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-            document.getElementById('final-score').innerText = level;
-            let msg = level < 15 ? "You need better eyes!" : "Amazing vision!";
-            document.getElementById('rank-text').innerText = msg;
+
+        function renderGame() {
+            document.getElementById('level-display').innerText = `Lv. ${level}`;
+            const board = document.getElementById('board');
+            board.innerHTML = '';
+
+            let size = Math.min(Math.ceil((level + 1) / 2) + 1, 8);
+            board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+            let r = Math.floor(Math.random() * 200) + 20;
+            let g = Math.floor(Math.random() * 200) + 20;
+            let b = Math.floor(Math.random() * 200) + 20;
+
+            let diff = Math.max(40 - level * 1.5, 5); 
+            
+            let answerIndex = Math.floor(Math.random() * (size * size));
+
+            for (let i = 0; i < size * size; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                
+                if (i === answerIndex) {
+                    cell.style.backgroundColor = `rgb(${r + diff}, ${g + diff}, ${b + diff})`;
+                    cell.onclick = () => {
+                        if (!isPlaying) return;
+                        level++;
+                        time += 1.0; 
+                        renderGame();
+                    };
+                } else {
+                    cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                    cell.onclick = () => {
+                        if (!isPlaying) return;
+                        time -= 3.0; 
+                        updateTimeDisplay();
+                        board.style.transform = 'translateX(5px)';
+                        setTimeout(() => board.style.transform = 'translateX(0)', 100);
+                        if(time <= 0) endGame();
+                    };
+                }
+                board.appendChild(cell);
+            }
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function endGame() {
+            isPlaying = false;
+            clearInterval(timerInterval);
+            
+            document.getElementById('screen-game').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
+            
+            document.getElementById('res-level').innerText = `Final Score: Lv. ${level}`;
+            
+            let title = "";
+            let desc = "";
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+            if (level < 5) {
+                title = "Need Eye Check";
+                desc = "Is your screen too dark? You might need a color vision test.";
+            } else if (level < 15) {
+                title = "Average Eyes";
+                desc = "Most people reach this level. Keep practicing!";
+            } else if (level < 25) {
+                title = "Sharp Eyes";
+                desc = "Do you have artistic talent? Your color sense is great.";
+            } else if (level < 40) {
+                title = "God's Eyes";
+                desc = "Beyond human limits. You can see pixels!";
+            } else {
+                title = "Superhuman";
+                desc = "Are you a machine? Unbelievable score!";
+            }
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            document.getElementById('res-title').innerText = title;
+            document.getElementById('res-desc').innerText = desc;
+        }
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
-
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const text = `Color Sense Test Result: Reached Lv.${level}! How accurate are your eyes?`;
+            const url = window.location.href;
+            
+            if (navigator.share) {
+                navigator.share({ title: 'Color Sense Test', text: text, url: url });
+            } else {
+                navigator.clipboard.writeText(`${text} ${url}`).then(() => {
+                    alert("Link Copied!");
+                });
+            }
+        }
     </script>
 </body>
 </html>

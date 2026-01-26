@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://simsimlabs.github.io/sitemap.xml
+ 

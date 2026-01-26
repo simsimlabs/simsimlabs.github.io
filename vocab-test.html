@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국인 어휘력 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="당신의 문해력은 몇 점일까요? 헷갈리는 맞춤법과 어휘력 15문제 도전!">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simsimlabs.github.io/vocab-test.html">
+    <meta property="og:title" content="한국인 상위 1% 어휘력 테스트 📚">
+    <meta property="og:description" content="어의없다? 어이없다? 한국인 60%가 틀리는 맞춤법 퀴즈 도전!">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3588/3588658.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
+
+    <div class="container">
+        <div class="ad-placeholder">(광고 - 상단)</div>
+
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">📚</div>
+            <h1>어휘력/문해력 테스트</h1>
+            <p>한국인 10명 중 6명이 틀린다는<br>고난이도 맞춤법 퀴즈입니다.<br>당신은 상위 1%일까요?</p>
+            <button class="btn" onclick="start()">시험 보기</button>
+        </div>
+
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#6c5ce7;"></div></div>
+            <h2 id="q-text" style="min-height: 80px;">문제</h2>
+            <div id="answer-box"></div>
+        </div>
+
+        <div id="result-screen" class="content-box hidden">
+            <p>당신의 어휘력 등급은...</p>
+            <h1 id="result-title" style="color:#6c5ce7;">결과</h1>
+            <h1 id="result-score">0점</h1>
+            <div id="result-desc" style="background:#f8f9fa; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
+            <button class="btn" onclick="location.reload()">재도전</button>
+        </div>
+
+        <div class="ad-placeholder">(광고 - 하단)</div>
+
+        <footer>
+            <p>© 2024 심심풀이 연구소. All rights reserved.</p>
+            <p>
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const qData = [
+            { q: "다음 중 맞춤법이 올바른 것은?", a: "어의가 없다", b: "어이가 없다", ans: "B" },
+            { q: "다음 중 표기가 올바른 것은?", a: "설거지", b: "설겆이", ans: "A" },
+            { q: "그는 정말 ( ) 사람이다.", a: "두터운", b: "두꺼운", ans: "A" },
+            { q: "며칠 뒤에 뵙겠습니다.", a: "몇일", b: "며칠", ans: "B" },
+            { q: "병이 깨끗이 ( )", a: "낳았다", b: "나았다", ans: "B" },
+            { q: "다음 중 표준어는?", a: "쭈꾸미", b: "주꾸미", ans: "B" },
+            { q: "결재를 ( ) 주세요.", a: "바랍니다", b: "바라입니다", ans: "A" },
+            { q: "김치찌개를 ( )", a: "졸이다", b: "조리다", ans: "A" },
+            { q: "무난하게 합격하다.", a: "문안하다", b: "무난하다", ans: "B" },
+            { q: "어떻게 ( ) 좋겠어?", a: "하면", b: "해면", ans: "A" },
+            { q: "숲속에서 길을 ( )", a: "헤매다", b: "해매다", ans: "A" },
+            { q: "다음 중 '환골탈태'의 뜻은?", a: "뼈를 바꾸고 태를 벗다", b: "옛것을 익혀 새것을 앎", ans: "A" },
+            { q: "임산부에게 자리를 ( )", a: "양보하다", b: "양분하다", ans: "A" },
+            { q: "내노라하는 인물들.", a: "내노라", b: "내로라", ans: "B" },
+            { q: "곰곰이 ( ) 보았다.", a: "생각해", b: "생각헤", ans: "A" }
+        ];
+
+        let step=0, score=0;
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=`Q${step+1}. ${q.q}`;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ check('A', q.ans); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ check('B', q.ans); };
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+        function check(choice, ans){ if(choice===ans) score++; step++; next(); }
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t, d;
+            if(score===15) { t="👑 세종대왕의 후예"; d="와우! 만점입니다. 혹시 국어국문학과 나오셨나요? 당신의 우리말 실력은 상위 0.1%입니다."; }
+            else if(score>=12) { t="🎓 걸어 다니는 국어사전"; d="아깝게 한두 개 틀렸네요. 그래도 대단한 실력입니다. 어디 가서 맞춤법 틀릴 일은 없겠어요."; }
+            else if(score>=8) { t="🙂 평범한 한국인"; d="일상생활에 지장 없는 수준입니다. 하지만 가끔 헷갈리는 맞춤법은 검색이 필요하겠네요."; }
+            else { t="👶 응애 나 아기 한국인"; d="혹시 외국에서 살다 오셨나요? 맞춤법 공부가 시급합니다! 책을 좀 더 읽어보시는 게 어떨까요?"; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-score').innerText=score+"점 / 15점"; document.getElementById('result-desc').innerText=d;
+        }
+    </script>
+</body>
+</html>

@@ -3,124 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workplace 'Boomer' Test | Boredom Lab</title>
-    <link rel="stylesheet" href="../style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
+    <title>Boomer Test | SimSim Labs</title>
+    <meta name="description" content="Am I a Boomer? Check your Boomer(Kkondae) level in 10 steps with 15 questions.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">☕</div>
-            <h1>Workplace 'Boomer' Test</h1>
-            <p>Do you say "Back in my day..." often?<br>Are you a toxic boss? Check your score.</p>
-            <button class="btn" onclick="start()">Start Test</button>
-        </div>
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#636e72;"></div></div>
-            <h2 id="q-text">Question</h2>
-            <div id="answer-box"></div>
-        </div>
-        <div id="result-screen" class="content-box hidden">
-            <p>Your Level is...</p>
-            <h1 id="result-title" style="color:#2d3436;">Result</h1>
-            <h3 id="result-sub" style="color:#636e72;">Sub</h3>
-            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
-            <button class="btn" onclick="location.reload()">Try Again</button>
-        </div>
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="kkondae-test.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="kkondae-test-en.html" class="lang-btn active">🇺🇸 EN</a>
+            </div>
+        </header>
 
-<div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">👔</div>
+                <h1 class="main-title">Boomer Test</h1>
+                <p class="sub-desc">"Back in my day..."<br>What is your inner Boomer Level?</p>
+                <button onclick="startTest()" class="btn-primary full-width">Start Test</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← Restart</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">Question goes here.</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">☕</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">Result Title</h1>
+                <p id="res-desc">Result description goes here.</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Result</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <footer>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
+        </footer>
     </div>
-</div>
-        
-        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
-    </div>
+
     <script>
-        const qData = [
-            { q: "Junior employee arrives exactly at 9:00 AM.", a: "It's fine. Not late.", b: "Should be here 10 mins early!", s: 5 },
-            { q: "Choosing lunch menu for team.", a: "Ask everyone.", b: "I hint what I want.", s: 4 },
-            { q: "Junior working with AirPods on.", a: "Fine if work is done.", b: "Disrespectful.", s: 5 },
-            { q: "Junior wearing sweatpants.", a: "Looks comfy.", b: "Unprofessional.", s: 4 },
-            { q: "Taking a vacation.", a: "It's my right.", b: "I feel guilty if busy.", s: 3 },
-            { q: "Teaching new employee.", a: "Explain kindly.", b: "Think 'Nobody taught ME...'", s: 5 },
-            { q: "Leaving exactly at 5:00 PM.", a: "Bye!", b: "Boss is still here...", s: 4 },
-            { q: "Junior doesn't set the table at lunch.", a: "I do it.", b: "Young ones should do it.", s: 5 },
-            { q: "Junior's fancy profile picture.", a: "Don't care.", b: "Bit too much for work.", s: 4 },
-            { q: "Asking about private life.", a: "No.", b: "Yes, to get closer.", s: 5 },
-            { q: "Junior disagrees in meeting.", a: "Listen to them.", b: "Get annoyed.", s: 5 },
-            { q: "Saying 'Back in my day'.", a: "Rarely.", b: "Often.", s: 5 },
-            { q: "Am I Bossy?", a: "Maybe.", b: "No, never.", s: 3 },
-            { q: "Team dinner is work?", a: "No.", b: "Yes, necessary.", s: 4 },
-            { q: "Contacting on weekends?", a: "Never.", b: "If urgent.", s: 5 }
+        // --- Data (15 Questions in English) ---
+        const questions = [
+            { q: "A junior arrives at work exactly at 9:00 AM.", a: [{ t: "It's fine, not late.", s: 0 }, { t: "Should be 10 mins early.", s: 5 }, { t: "No discipline.", s: 10 }] },
+            { q: "Are company dinners part of work?", a: [{ t: "Never. It's personal time.", s: 0 }, { t: "Sometimes necessary for teamwork.", s: 5 }, { t: "Absolutely. Attendance mandatory.", s: 10 }] },
+            { q: "A junior works with earphones on.", a: [{ t: "Fine if they work well.", s: 0 }, { t: "Worried they won't hear me.", s: 5 }, { t: "How dare they? Remove immediately.", s: 10 }] },
+            { q: "A boss younger than you gives you orders.", a: [{ t: "Rank is rank. I follow.", s: 0 }, { t: "I follow but feel weird inside.", s: 5 }, { t: "I show my displeasure.", s: 10 }] },
+            { q: "Choosing a lunch menu.", a: [{ t: "Anything is fine.", s: 0 }, { t: "I hint at what I want.", s: 6 }, { t: "The answer is set. Follow me.", s: 10 }] },
+            { q: "A junior wears ripped jeans to work.", a: [{ t: "It's fashion. Don't care.", s: 0 }, { t: "Should respect TPO.", s: 5 }, { t: "Disrespectful.", s: 10 }] },
+            { q: "How often do you say 'Back in my day'?", a: [{ t: "Rarely.", s: 0 }, { t: "Sometimes as a joke.", s: 5 }, { t: "Often, to teach them.", s: 10 }] },
+            { q: "A junior asks for vacation leave.", a: [{ t: "Have a nice trip.", s: 0 }, { t: "Ask why they need it.", s: 6 }, { t: "Ask if they must go now.", s: 10 }] },
+            { q: "Leaving work right on time (Clocking out).", a: [{ t: "It's their right.", s: 0 }, { t: "Should read the room a bit.", s: 5 }, { t: "Rude to leave before the boss.", s: 10 }] },
+            { q: "Thoughts on Gen Z?", a: [{ t: "Smart and reasonable.", s: 0 }, { t: "Too individualistic.", s: 5 }, { t: "Weak mentality.", s: 10 }] },
+            { q: "Junior replies late to messages.", a: [{ t: "They must be busy.", s: 0 }, { t: "Ask why they are late.", s: 5 }, { t: "Call and scold them.", s: 10 }] },
+            { q: "Junior didn't follow your advice.", a: [{ t: "That happens.", s: 0 }, { t: "Not my fault if they fail.", s: 6 }, { t: "I'll remember this.", s: 10 }] },
+            { q: "Who should press the elevator button?", a: [{ t: "Whoever is closest.", s: 0 }, { t: "Preferably the junior.", s: 5 }, { t: "Of course the youngest.", s: 10 }] },
+            { q: "Asking for 'free opinions' in a meeting.", a: [{ t: "Really listen.", s: 0 }, { t: "Listen but persuade them to my side.", s: 6 }, { t: "Expect them to agree with me.", s: 10 }] },
+            { q: "Do you think you are a Boomer?", a: [{ t: "Absolutely not.", s: 10 }, { t: "Maybe a little?", s: 5 }, { t: "I admit it.", s: 0 }] } 
         ];
-        let step=0, score=0;
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=q.q;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ step++; next(); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ score+=q.s; step++; next(); };
-            box.appendChild(btnA); box.appendChild(btnB);
+
+        // Result Data
+        const results = [
+            { lv: "Lv.1", t: "Pure Angel", d: "0% Boomer. You are open-minded and considerate. Are you an angel?" },
+            { lv: "Lv.2", t: "Peacekeeper", d: "You try not to be a Boomer, but sometimes you feel the urge." },
+            { lv: "Lv.3", t: "Closet Boomer", d: "Cool on the outside, complaining on the inside." },
+            { lv: "Lv.4", t: "Selective Boomer", d: "Usually fine, but your Boomer side comes out in specific situations." },
+            { lv: "Lv.5", t: "Young Boomer", d: "Young in age, old in mind. Asking 'Am I a Boomer?' means you are one." },
+            { lv: "Lv.6", t: "Latte Lover", d: "'Back in my day' is your catchphrase. Drunk on past glory." },
+            { lv: "Lv.7", t: "Nagging Manager", d: "You love giving unsolicited advice. Juniors might be avoiding you." },
+            { lv: "Lv.8", t: "Dictator", d: "The answer is fixed, you just have to agree. My word is law." },
+            { lv: "Lv.9", t: "Boomer Heritage", d: "Even your breathing is authoritative. Unrivaled Boomer energy." },
+            { lv: "Lv.10", t: "God of Boomers", d: "Congrats! You reached max level. No one can stop you now." }
+        ];
+
+        // --- Logic ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t,s,d;
-            if(score<=15) { t="👼 Angel Senior"; s="Toxicity: 0%"; d="Perfect mentor. Everyone wants to work with you."; }
-            else if(score<=30) { t="🙂 Open Minded"; s="Toxicity: 30%"; d="You try to understand the young generation. Good boss."; }
-            else if(score<=45) { t="😐 Latent Boomer"; s="Toxicity: 50%"; d="You think you are cool, but you have some strict rules."; }
-            else if(score<=60) { t="😤 Young Boomer"; s="Toxicity: 80%"; d="You are stressing people out with 'Advice'. Stop it."; }
-            else { t="🦖 The Fossil"; s="Toxicity: 100%"; d="Textbook toxic boss. Please consider remote work."; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("Link Copied!");
+            });
+        }
     </script>
 </body>
 </html>

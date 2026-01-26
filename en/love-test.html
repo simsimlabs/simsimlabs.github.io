@@ -4,94 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Cell Test | Boredom Lab</title>
+    <meta name="description" content="Is your romance dead? 15 questions to diagnose your dating potential and love style.">
     <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
 </head>
 <body>
     <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-
     <div class="container">
-        <div class="ad-placeholder">(Ads)</div>
-
+        <div class="ad-placeholder">(Ads - Top)</div>
         <div id="start-screen" class="content-box">
             <div style="font-size:3rem;">💖</div>
             <h1>Love Cell Test</h1>
-            <p>Is your romance dead?<br>Let's diagnose your dating potential.</p>
+            <p>Is your love life frozen?<br>Let's diagnose your dating potential with 15 questions.</p>
             <button class="btn" onclick="start()">Start Test</button>
         </div>
-
         <div id="quiz-screen" class="content-box hidden">
             <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
             <h2 id="q-text" style="min-height: 80px;">Question</h2>
             <div id="answer-box"></div>
         </div>
-
         <div id="result-screen" class="content-box hidden">
-            <p>Your Level is...</p>
+            <p>Your Love Type is...</p>
             <h1 id="result-title" style="color:var(--accent);">Result</h1>
+            <h3 id="result-sub" style="color:#666;">Sub</h3>
             <div id="result-desc" style="background:#fff0f6; padding:25px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
             <button class="btn" onclick="location.reload()">Try Again</button>
         </div>
+        <div class="ad-placeholder">(Ads - Bottom)</div>
+        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
     </div>
-
     <script>
         const qData = [
-            { q: "A friend offers to set you up on a blind date.", a: "Sure! Show me a photo first.", b: "No thanks, I prefer resting at home.", s: 1 },
-            { q: "You see someone who is exactly your ideal type on the street.", a: "Try to make eye contact.", b: "Just think 'Wow' and walk past.", s: 1 },
-            { q: "When watching a kiss scene in a movie...", a: "My heart flutters... I want that.", b: "It's just acting. They must be tired.", s: 1 },
-            { q: "It's Friday night. What's your plan?", a: "Meeting friends or potential dates.", b: "Netflix and delivery food at home.", s: 1 },
-            { q: "If you get a confession right now?", a: "If they are nice, why not?", b: "I'm too busy for a relationship.", s: 1 },
-            { q: "Checking your phone messenger...", a: "I reply quickly to keep the conversation going.", b: "I only reply when necessary.", s: 1 },
-            { q: "When you see a happy couple?", a: "I feel lonely and envious.", b: "Whatever.", s: 1 }
-            // 질문을 더 추가할 수 있습니다.
+            { q: "A friend offers to set you up on a blind date.", a: "Sure! Show me a photo immediately.", b: "Nah, I'd rather rest at home.", s: 1 },
+            { q: "You see your ideal type on the street.", a: "Try to make eye contact.", b: "Just think 'Wow' and walk past.", s: 1 },
+            { q: "Watching a romantic kiss scene in a movie...", a: "I feel butterflies... I want that.", b: "Actors must be tired. It's just work.", s: 1 },
+            { q: "Someone asks you out on a date.", a: "Ask for photos and job details first.", b: "I'm too lazy to go out. Decline.", s: 1 },
+            { q: "Do you take care of your appearance?", a: "Yes, I workout and dress well.", b: "I'm happy if I just showered.", s: 1 },
+            { q: "If you get a lover, what do you want to do?", a: "Travel, Picnic, Restaurants.", b: "Netflix and Chill at home.", s: 1 },
+            { q: "On Valentine's Day or Christmas...", a: "I feel lonely and cold.", b: "It's just a commercial holiday.", s: 1 },
+            { q: "Friend asks for dating advice.", a: "I get emotional and empathize.", b: "I give realistic, cold advice.", s: 1 },
+            { q: "Dinner with a friend of the opposite sex.", a: "Is this a date? I feel tension.", b: "Just a meal. Let's eat quickly.", s: 1 },
+            { q: "Thinking about the 'flirting' phase...", a: "I miss that excitement.", b: "Just thinking about it is exhausting.", s: 1 },
+            { q: "When was your last relationship?", a: "Less than 1 year or Now.", b: "Over 3 years or Never.", s: 1 },
+            { q: "Can you confess first if you like someone?", a: "Yes! Go for it!", b: "No, I'm afraid of rejection.", s: 1 },
+            { q: "Looking in the mirror, do you think you look good?", a: "Often.", b: "Rarely.", s: 1 },
+            { q: "Your ex contacts you.", a: "I answer out of curiosity.", b: "Block or Ignore.", s: 1 },
+            { q: "In your next life...", a: "I want to be born attractive and date a lot.", b: "I want to be a rich hermit.", s: 1 }
         ];
-
-        let step = 0;
-        let score = 0;
-
-        function start(){
-            document.getElementById('start-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
-            next();
-        }
-
+        let step=0, score=0;
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
         function next(){
-            if(step >= qData.length){ result(); return; }
-            const q = qData[step];
-            document.getElementById('bar').style.width = ((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText = `Q${step+1}. ${q.q}`;
-            const box = document.getElementById('answer-box');
-            box.innerHTML = '';
-            
-            let btnA = document.createElement('button');
-            btnA.className = 'btn-option';
-            btnA.innerText = q.a;
-            btnA.onclick = () => { score += q.s; step++; next(); };
-            
-            let btnB = document.createElement('button');
-            btnB.className = 'btn-option';
-            btnB.innerText = q.b;
-            btnB.onclick = () => { step++; next(); };
-            
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=`Q${step+1}. ${q.q}`;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ score+=q.s; step++; next(); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ step++; next(); };
             box.appendChild(btnA); box.appendChild(btnB);
         }
-
         function result(){
-            document.getElementById('quiz-screen').classList.add('hidden');
-            document.getElementById('result-screen').classList.remove('hidden');
-
-            let title, desc;
-            if(score >= 5) {
-                title = "💖 'Casanova' Level";
-                desc = "Your love cells are very active! You are ready to start a romance anytime. Just go out there!";
-            } else if(score >= 3) {
-                title = "🥰 'Ready' Level";
-                desc = "You are in a healthy state. If a good person appears, you can start a relationship.";
-            } else {
-                title = "⚰️ 'Fossil' Level";
-                desc = "Oh no... Your love cells are almost dead. You enjoy being alone too much. You need rehabilitation!";
-            }
-            document.getElementById('result-title').innerText = title;
-            document.getElementById('result-desc').innerText = desc;
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t,s,d;
+            if(score>=14) { t="💖 The Casanova"; s="Activity: 200%"; d="You are a master of romance. You can start a relationship anytime you want. Be careful not to break too many hearts!"; }
+            else if(score>=11) { t="🔥 Fast Lover"; s="Activity: 90%"; d="You fall in love quickly (5G speed). You are emotional and hate being alone. You might already be imagining a wedding."; }
+            else if(score>=8) { t="🥰 Dating Prospect"; s="Activity: 70%"; d="You are healthy and ready. You have a good balance of romance and reality. Just waiting for the right person."; }
+            else if(score>=6) { t="🛡️ The Conservative"; s="Activity: 50%"; d="You want to date, but you are suspicious. You are afraid of breaking your daily routine. Open your heart a bit more."; }
+            else if(score>=4) { t="🛌 The Homebody"; s="Activity: 30%"; d="'It's annoying' is your catchphrase. You love your bed more than people. Your love cells are hibernating."; }
+            else if(score>=2) { t="🧊 AI Robot"; s="Activity: 10%"; d="Romance movies don't move you. You are used to being alone and don't feel the need for emotional exchange."; }
+            else { t="⚰️ The Fossil"; s="Activity: 0%"; d="Your love cells are extinct. Is your last relationship from a past life? Go out and start rehabilitation now!"; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
         }
     </script>
 </body>

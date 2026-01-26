@@ -3,138 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Powerball Number Generator | Boredom Lab</title>
-    <meta name="description" content="Generate lucky Powerball numbers instantly! AI-powered random picker for US Lottery. Try your luck now for free.">
-    
-    <link rel="stylesheet" href="../style.css">
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
-    
+    <title>Powerball Generator | SimSim Labs</title>
+    <meta name="description" content="AI Lucky Number Generator for Powerball. Generate your winning numbers now!">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
     <style>
-        .ball-container { margin-top: 30px; min-height: 70px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
-        .ball { 
-            width: 50px; height: 50px; line-height: 50px; 
-            border-radius: 50%; font-weight: bold; font-size: 1.4rem;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 2px 3px 5px rgba(0,0,0,0.2);
+        /* Powerball Styles */
+        .lotto-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            min-height: 60px;
         }
-        /* 파워볼 스타일: 흰 공 */
-        .white-ball { background: white; color: #333; border: 2px solid #ddd; }
-        /* 파워볼 스타일: 빨간 공 */
-        .red-ball { background: #e74c3c; color: white; border: 2px solid #c0392b; animation: pop 0.5s ease; }
-        
-        @keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #ddd;
+        }
+        /* Powerball Colors */
+        .bg-white { background-color: #ffffff; color: #333; }
+        .bg-power { background-color: #d63031; color: white; border: none; } /* Red */
+
+        @keyframes popIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .history-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #555;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .history-item { border-bottom: 1px solid #eee; padding: 5px 0; }
+        .pb-text { color: #d63031; font-weight: bold; }
     </style>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
-    <div class="container">
-        <div class="ad-placeholder">(Ads - Top)</div>
-        
-        <div class="content-box">
-            <div style="font-size:3rem;">🎰</div>
-            <h1>Powerball Generator</h1>
-            <p>Get your lucky numbers for the US Powerball.<br><strong>5 White Balls</strong> + <strong>1 Red Powerball</strong></p>
-            
-            <button class="btn" onclick="genPowerball()" style="background: #e74c3c; border:none; margin-top:15px;">Generate Numbers</button>
-            
-            <div id="result-box" class="ball-container">
-                <span style="color:#aaa; line-height: 50px;">Click button to generate</span>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 SimSim Labs</a>
+            <div class="lang-switch">
+                <a href="lotto.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="lotto-en.html" class="lang-btn active">🇺🇸 EN</a>
             </div>
+        </header>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="ad-placeholder">(Ads - Bottom)</div>
+        <main id="screen-game" class="screen active">
+            <div class="top-bar">
+                <button onclick="location.href='index.html'" class="back-btn">← Home</button>
+            </div>
+            
+            <div class="hero" style="padding: 20px 0;">
+                <div class="icon-large">🎰</div>
+                <h1 class="main-title">Powerball Generator</h1>
+                <p class="sub-desc">Lucky Numbers for Powerball!<br>5 White Balls + 1 Red Powerball.</p>
+            </div>
 
+            <div id="result-area" class="lotto-container">
+                <div style="color:#aaa; align-self:center;">Tap button to generate</div>
+            </div>
 
-        <div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">Share with Friends</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 Copy Link</button>
-    </div>
-</div>
-        
-        
+            <button onclick="generatePowerball()" class="btn-primary full-width" style="font-size: 1.2rem;">🎲 Generate Numbers</button>
+
+            <div class="history-box">
+                <strong>📋 History</strong>
+                <div id="history-list"></div>
+            </div>
+            
+            <div class="action-buttons" style="margin-top: 20px;">
+                <button onclick="shareResult()" class="btn-secondary">🔗 Share Numbers</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
         <footer>
-            <p>© 2024 Boredom Lab</p>
-            <p><a href="../privacy.html">Privacy Policy</a> | <a href="../index.html">Home</a></p>
+            <p>© 2024 SimSim Labs</p>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+            </div>
         </footer>
     </div>
 
     <script>
-        function genPowerball() {
-            // 1. 흰 공: 1~69 사이에서 중복 없이 5개 뽑기
-            let whiteBalls = [];
-            while(whiteBalls.length < 5){
-                let r = Math.floor(Math.random() * 69) + 1;
-                if(whiteBalls.indexOf(r) === -1) whiteBalls.push(r);
+        function generatePowerball() {
+            const container = document.getElementById('result-area');
+            container.innerHTML = ''; 
+
+            // 1. Generate 5 White Balls (1-69)
+            const whiteBalls = new Set();
+            while(whiteBalls.size < 5) {
+                whiteBalls.add(Math.floor(Math.random() * 69) + 1);
             }
-            // 보기 좋게 오름차순 정렬
-            whiteBalls.sort((a,b)=>a-b);
+            const sortedWhite = [...whiteBalls].sort((a, b) => a - b);
+
+            // 2. Generate 1 Red Powerball (1-26)
+            const powerBall = Math.floor(Math.random() * 26) + 1;
             
-            // 2. 빨간 공(파워볼): 1~26 사이에서 1개 뽑기
-            let redBall = Math.floor(Math.random() * 26) + 1;
-            
-            // 3. HTML 만들기
-            let html = "";
-            
-            // 흰 공 그리기
-            whiteBalls.forEach(n => {
-                html += `<div class="ball white-ball">${n}</div>`;
+            let delay = 0;
+
+            // Render White Balls
+            sortedWhite.forEach(num => {
+                setTimeout(() => {
+                    const ball = document.createElement('div');
+                    ball.className = `ball bg-white`;
+                    ball.innerText = num;
+                    container.appendChild(ball);
+                }, delay);
+                delay += 100;
             });
-            
-            // 빨간 공 그리기 (강조)
-            html += `<div class="ball red-ball">${redBall}</div>`;
-            
-            // 화면에 뿌리기
-            const box = document.getElementById('result-box');
-            box.style.opacity = 0;
+
+            // Render Red Ball
             setTimeout(() => {
-                box.innerHTML = html;
-                box.style.opacity = 1;
-                box.style.transition = "opacity 0.3s";
-            }, 100);
+                const ball = document.createElement('div');
+                ball.className = `ball bg-power`;
+                ball.innerText = powerBall;
+                container.appendChild(ball);
+            }, delay);
+
+            addToHistory(sortedWhite, powerBall);
         }
 
-/* === Smart Share Function (Replace the old one) === */
-function shareTwitter() {
-    var sendText = document.title;
-    var sendUrl = window.location.href;
+        function addToHistory(whites, red) {
+            const list = document.getElementById('history-list');
+            const item = document.createElement('div');
+            item.className = 'history-item';
+            
+            const now = new Date();
+            const timeStr = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+            
+            item.innerHTML = `<span>[${timeStr}]</span> <strong>${whites.join(', ')}</strong> + <span class="pb-text">${red}</span>`;
+            list.prepend(item); 
+        }
 
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        // Text format: [My Result] Title
-        sendText = "[My Result] " + resultTitle + " | " + document.title;
-    }
+        function shareResult() {
+            const balls = document.querySelectorAll('.ball');
+            if (balls.length === 0) {
+                alert("Generate numbers first!");
+                return;
+            }
+            
+            // Separate White and Red
+            const nums = Array.from(balls).map(b => b.innerText);
+            const whites = nums.slice(0, 5).join(', ');
+            const red = nums[5];
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
-
-function shareFacebook() {
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
-
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl;
-
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        textToCopy = "📢 My Result: " + resultTitle + "\n" + resultDesc + "\n\nTry it here 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("Result & Link Copied! \nPaste it to your friends.");
-    });
-}
-        
+            const text = `🎱 My Powerball Numbers:\nWhite: [ ${whites} ]\nRed: [ ${red} ]\nGood Luck!`;
+            
+            if (navigator.share) {
+                navigator.share({ title: 'Powerball Generator', text: text, url: window.location.href });
+            } else {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("Copied to clipboard!");
+                });
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,161 +1,183 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>직장인 꼰대 성향 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="나도 혹시 젊은 꼰대? 15가지 질문으로 알아보는 나의 꼰대력 측정 테스트">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://simsimlabs.github.io/kkondae-test.html">
-    <meta property="og:title" content="직장인 꼰대 성향 테스트 ☕">
-    <meta property="og:description" content="라떼는 말이야... 나도 모르게 꼰대짓을 하고 있을까? 팩트 폭격 결과 확인하기">
-    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3063/3063823.png">
-    
+    <title>꼰대 성향 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="혹시 나도 젊은 꼰대? 15문항으로 알아보는 나의 꼰대력 레벨 테스트 (10단계)">
     <link rel="stylesheet" href="style.css">
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+            <div class="lang-switch">
+                <a href="kkondae-test.html" class="lang-btn active">🇰🇷 KO</a>
+                <a href="kkondae-test-en.html" class="lang-btn">🇺🇸 EN</a>
+            </div>
+        </header>
 
-    <div class="container">
-        <div class="ad-placeholder">(광고 - 상단)</div>
-
-        <div id="start-screen" class="content-box">
-            <div style="font-size:3rem;">☕</div>
-            <h1>직장인 꼰대 테스트</h1>
-            <p>"나 때는 말이야..."<br>혹시 나도 모르게 이 말을 쓰고 있나요?<br>당신의 꼰대력을 정밀 측정해 드립니다.</p>
-            <button class="btn" onclick="start()">측정 시작하기</button>
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div id="quiz-screen" class="content-box hidden">
-            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#636e72;"></div></div>
-            <h2 id="q-text" style="min-height: 80px;">질문</h2>
-            <div id="answer-box"></div>
+        <main id="screen-start" class="screen active">
+            <div class="hero">
+                <div class="icon-large">👔</div>
+                <h1 class="main-title">꼰대 성향 테스트</h1>
+                <p class="sub-desc">"라떼는 말이야..."<br>당신의 꼰대력은 몇 레벨일까요?</p>
+                <button onclick="startTest()" class="btn-primary full-width">테스트 시작하기</button>
+            </div>
+        </main>
+
+        <main id="screen-quiz" class="screen">
+            <div class="top-bar">
+                <button onclick="location.reload()" class="back-btn">← 처음으로</button>
+                <span id="quiz-progress">1 / 15</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            
+            <div class="quiz-content">
+                <h2 id="q-text">질문 내용</h2>
+                <div id="answer-box">
+                    </div>
+            </div>
+        </main>
+
+        <main id="screen-result" class="screen">
+            <div class="result-card">
+                <div class="res-icon" id="res-icon">☕</div>
+                <h3 id="res-level">Level ?</h3>
+                <h1 id="res-title">결과 제목</h1>
+                <p id="res-desc">결과 설명</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button onclick="shareResult()" class="btn-secondary">🔗 결과 공유하기</button>
+                <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
-
-        <div id="result-screen" class="content-box hidden">
-            <p>당신의 꼰대 레벨은...</p>
-            <h1 id="result-title" style="color:#2d3436;">결과</h1>
-            <h3 id="result-sub" style="color:#636e72;">서브</h3>
-            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px; line-height:1.7;"></div>
-            <button class="btn" onclick="copyLink()" style="background:#eee; color:#333; margin-bottom: 10px;">🔗 결과 공유하기</button>
-            <button class="btn" onclick="location.reload()">다시 검사하기</button>
-        </div>
-
-        <div class="ad-placeholder">(광고 - 하단)</div>
-
-        <div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">친구에게 테스트 공유하기</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 링크 복사</button>
-    </div>
-</div>
 
         <footer>
-            <p>© 2024 심심풀이 연구소. All rights reserved.</p>
-            <p>
+            <p>© 2024 심심풀이 연구소</p>
+            <div class="footer-links">
                 <a href="privacy.html">개인정보처리방침</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
-            </p>
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
+            </div>
         </footer>
     </div>
 
     <script>
-        const qData = [
-            { q: "후배가 출근 시간에 딱 맞춰(9시 정각) 오는 걸 보면?", a: "뭐.. 지각은 아니니까 괜찮다.", b: "그래도 10분 전에는 와서 준비해야지!", s: 5 },
-            { q: "회식 메뉴를 정할 때 나는?", a: "다수결이나 막내의 의견을 따른다.", b: "내가 먹고 싶은 걸 은근히 어필한다.", s: 4 },
-            { q: "후배가 에어팟을 끼고 일하는 모습을 본다면?", a: "일만 잘하면 상관없다.", b: "저건 좀 예의가 아니지 않나?", s: 5 },
-            { q: "'자유로운 복장'이라고 했지만, 후배가 츄리닝을 입고 왔다.", a: "진짜 편해 보이네. 부럽다.", b: "아무리 그래도 회사인데 저건 좀...", s: 4 },
-            { q: "휴가를 쓸 때 상사의 눈치를 보는 편인가?", a: "내 권리인데 왜 눈치를 봐?", b: "바쁜 시즌엔 눈치가 보인다.", s: 3 },
-            { q: "후배에게 업무를 가르쳐 줄 때?", a: "한 번 알려주고 모르면 다시 물어보라 한다.", b: "'나 때는 아무도 안 알려줬어'라는 말이 목끝까지 차오른다.", s: 5 },
-            { q: "칼퇴근하는 후배를 보면?", a: "오 빠르네, 잘 가!", b: "상사들이 남아있는데 인사는 하고 가야지...", s: 4 },
-            { q: "점심시간, 막내가 수저를 세팅하지 않고 가만히 있다.", a: "내가 하거나 아무 생각 없다.", b: "요즘 애들은 센스가 없네...", s: 5 },
-            { q: "카톡 프로필 사진이 너무 화려하거나 노출이 있다면?", a: "사생활이니 신경 끈다.", b: "회사 사람들도 보는데 좀 그렇지 않나?", s: 4 },
-            { q: "업무 외적인 사생활 질문을 후배에게 하는 편인가?", a: "실례될까 봐 안 한다.", b: "친해지려고 애인 유무, 집안일 등을 묻는다.", s: 5 },
-            { q: "회의 시간에 내 의견에 반박하는 후배가 있다면?", a: "오, 신선한데? 수용한다.", b: "뭘 안다고... 기분이 살짝 나쁘다.", s: 5 },
-            { q: "나는 '라떼는(나 때는)' 이야기를 자주 하는 편이다.", a: "거의 안 한다.", b: "도움 되라고 종종 한다.", s: 5 },
-            { q: "솔직히 내가 꼰대라고 생각하나?", a: "나는 꼰대일 수도 있다.", b: "나는 절대 꼰대가 아니다. (쿨하다)", s: 3 },
-            { q: "회식도 업무의 연장이라고 생각하나?", a: "절대 아니다. 돈 주면 인정.", b: "팀워크를 위해 필요하다.", s: 4 },
-            { q: "주말에 업무 관련 연락을 한 적이 있다.", a: "절대 없다.", b: "급하면 할 수도 있다.", s: 5 }
+        // --- 데이터 영역 (15문항) ---
+        const questions = [
+            { q: "후배가 출근 시간인 9시 정각에 딱 맞춰 도착했다.", a: [{ t: "지각은 아니니까 괜찮다.", s: 0 }, { t: "그래도 10분 전에는 와야지.", s: 5 }, { t: "기본 자세가 안 되어 있다.", s: 10 }] },
+            { q: "회식도 업무의 연장이라고 생각하는가?", a: [{ t: "절대 아니다. 업무 시간 외다.", s: 0 }, { t: "팀워크를 위해 가끔은 필요하다.", s: 5 }, { t: "당연하다. 불참은 있을 수 없다.", s: 10 }] },
+            { q: "후배가 업무 중에 이어폰을 끼고 일한다.", a: [{ t: "일만 잘하면 상관없다.", s: 0 }, { t: "부를 때 못 들을까 봐 걱정된다.", s: 5 }, { t: "어디 감히? 당장 빼게 한다.", s: 10 }] },
+            { q: "나보다 어린 상사가 나에게 지시를 내린다.", a: [{ t: "직급이 깡패다. 따른다.", s: 0 }, { t: "겉으로는 따르지만 속으론 찝찝하다.", s: 5 }, { t: "기분 나빠서 티를 낸다.", s: 10 }] },
+            { q: "점심 메뉴를 정할 때 나는?", a: [{ t: "아무거나 다 좋다.", s: 0 }, { t: "내가 먹고 싶은 걸 넌지시 말한다.", s: 6 }, { t: "답은 정해져 있다. 나를 따르라.", s: 10 }] },
+            { q: "후배의 옷차림이 너무 자유분방하다. (찢어진 청바지 등)", a: [{ t: "개성이다. 신경 끄자.", s: 0 }, { t: "TPO는 지켰으면 좋겠다.", s: 5 }, { t: "직장인으로서 예의가 아니다.", s: 10 }] },
+            { q: "나는 '나 때는 말이야~'라는 말을 자주 쓴다.", a: [{ t: "거의 안 쓴다.", s: 0 }, { t: "농담 삼아 가끔 한다.", s: 5 }, { t: "경험담을 통해 가르쳐주고 싶다.", s: 10 }] },
+            { q: "후배가 휴가를 쓴다고 했을 때?", a: [{ t: "잘 다녀오라고 한다.", s: 0 }, { t: "무슨 일 있는지 물어본다.", s: 6 }, { t: "바쁜데 꼭 지금 가야 하냐고 묻는다.", s: 10 }] },
+            { q: "칼퇴근(정시 퇴근)에 대한 생각은?", a: [{ t: "당연한 권리다.", s: 0 }, { t: "상사 눈치는 좀 봐야 한다.", s: 5 }, { t: "상사가 남았는데 먼저 가는 건 예의가 아니다.", s: 10 }] },
+            { q: "요즘 젊은 친구들을 보면 드는 생각은?", a: [{ t: "똑똑하고 합리적이다.", s: 0 }, { t: "개인주의가 좀 강한 것 같다.", s: 5 }, { t: "끈기가 없고 멘탈이 약하다.", s: 10 }] },
+            { q: "카톡 답장이 늦는 후배, 어떻게 할까?", a: [{ t: "바쁜가 보다 한다.", s: 0 }, { t: "왜 늦었는지 물어본다.", s: 5 }, { t: "전화를 걸어 혼쭐을 낸다.", s: 10 }] },
+            { q: "내가 해준 조언을 후배가 따르지 않았다.", a: [{ t: "그럴 수도 있지.", s: 0 }, { t: "다음에 문제 생기면 내 탓 아니다.", s: 6 }, { t: "괘씸해서 두고 본다.", s: 10 }] },
+            { q: "엘리베이터 버튼 조작은 누가 해야 할까?", a: [{ t: "가까운 사람이 한다.", s: 0 }, { t: "그래도 아랫사람이 하는 게 좋다.", s: 5 }, { t: "당연히 막내가 해야 한다.", s: 10 }] },
+            { q: "자유로운 의견을 말해보라고 했을 때?", a: [{ t: "진짜 의견을 경청한다.", s: 0 }, { t: "듣긴 하지만 내 생각과 다르면 설득한다.", s: 6 }, { t: "내 의견에 동의해주길 바란다.", s: 10 }] },
+            { q: "나는 내가 꼰대라고 생각하는가?", a: [{ t: "나는 절대 꼰대가 아니다.", s: 10 }, { t: "조금은 그럴 수도?", s: 5 }, { t: "쿨하게 인정한다.", s: 0 }] } // 꼰대는 자기가 꼰대인 줄 모름
         ];
 
-        let step=0, score=0;
+        // 결과 데이터 (0~150점)
+        const results = [
+            { lv: "Lv.1", t: "청정수 신입사원", d: "꼰대력이 0%에 수렴합니다. 배려심이 넘치고 열려있는 사람이군요! 혹시 천사이신가요?" },
+            { lv: "Lv.2", t: "눈치 보는 평화주의자", d: "꼰대가 되지 않으려고 노력하는 단계입니다. 하지만 가끔 욱하는 마음이 들기도 합니다." },
+            { lv: "Lv.3", t: "소심한 잠재적 꼰대", d: "겉으로는 쿨한 척하지만, 속으로는 '이건 좀 아닌데...'라며 구시렁거리고 있네요." },
+            { lv: "Lv.4", t: "선택적 꼰대", d: "평소엔 괜찮지만 본인의 기분이나 특정 상황에서는 꼰대 기질이 튀어나옵니다." },
+            { lv: "Lv.5", t: "젊은 꼰대 (젊꼰)", d: "나이는 젊지만 마인드는 부장님! '나는 꼰대 아니지?'라고 묻는 순간 이미 꼰대입니다." },
+            { lv: "Lv.6", t: "라떼 매니아", d: "입만 열면 '나 때는 말이야'가 자동으로 재생됩니다. 과거의 영광에 취해 계시군요." },
+            { lv: "Lv.7", t: "훈수 두는 시어머니", d: "남의 일에 감 놔라 배 놔라 참견하기를 좋아합니다. 후배들이 슬슬 피해 다닐 수 있습니다." },
+            { lv: "Lv.8", t: "독불장군 부장님", d: "답은 정해져 있고 넌 대답만 해 (답정너). 본인의 생각이 곧 법이라고 생각합니다." },
+            { lv: "Lv.9", t: "꼰대계의 인간문화재", d: "숨 쉬는 것조차 권위적입니다. 당신의 꼰대력은 타의 추종을 불허합니다." },
+            { lv: "Lv.10", t: "꼰대 오브 꼰대 (GOD)", d: "경축! 꼰대 만렙을 달성하셨습니다. 이제 당신을 막을 수 있는 사람은 없습니다." }
+        ];
 
-        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
-        
-        function next(){
-            if(step>=qData.length){ result(); return; }
-            let q=qData[step];
-            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
-            document.getElementById('q-text').innerText=`Q${step+1}. ${q.q}`;
-            let box=document.getElementById('answer-box'); box.innerHTML='';
-            
-            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ step++; next(); };
-            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ score+=q.s; step++; next(); };
-            
-            box.appendChild(btnA); box.appendChild(btnB);
+        // --- 로직 (공통) ---
+        let currentStep = 0;
+        let score = 0;
+
+        function startTest() {
+            document.getElementById('screen-start').classList.remove('active');
+            document.getElementById('screen-quiz').classList.add('active');
+            showQuestion();
         }
 
-        function result(){
-            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
-            let t,s,d;
-            if(score<=15) { t="👼 날개 없는 '천사 선배'"; s="꼰대력 0%"; d="당신은 꼰대 유전자가 1%도 없는 청정 구역입니다. 후배들이 가장 따르고 싶어 하는 워너비 선배! 다만 호구 잡히지 않게 조심하세요."; }
-            else if(score<=30) { t="🙂 이해심 깊은 '오픈 마인드'"; s="꼰대력 30%"; d="세대 차이는 느끼지만 이해하려고 노력하는 멋진 어른입니다. 가끔 욱할 때도 있지만 이성적으로 참을 줄 아는 당신은 젠틀맨!"; }
-            else if(score<=45) { t="😐 입이 근질거리는 '선택적 꼰대'"; s="꼰대력 50%"; d="평소엔 쿨하지만, 특정 포인트(예절, 근태 등)에서는 엄격해집니다. '나는 꼰대 아니지?'라고 자주 묻는다면 위험 신호입니다."; }
-            else if(score<=60) { t="😤 훈수 두는 '젊은 꼰대'"; s="꼰대력 80%"; d="본인은 합리적이라고 생각하지만 후배들은 당신을 피하고 있을지도 모릅니다. '너 잘되라고 하는 소리야'라는 말은 이제 그만!"; }
-            else { t="🦖 살아있는 화석 '라떼킹'"; s="꼰대력 100%"; d="축하합니다(?) 꼰대계의 지존이십니다. 당신의 말씀은 법이고 진리입니다. 후배들의 정신건강을 위해 재택근무를 추천합니다."; }
-            document.getElementById('result-title').innerText=t; document.getElementById('result-sub').innerText=s; document.getElementById('result-desc').innerText=d;
+        function showQuestion() {
+            const q = questions[currentStep];
+            document.getElementById('q-text').innerText = `Q${currentStep + 1}. ${q.q}`;
+            document.getElementById('quiz-progress').innerText = `${currentStep + 1} / ${questions.length}`;
+            document.getElementById('bar').style.width = `${((currentStep) / questions.length) * 100}%`;
+            
+            const btnContainer = document.getElementById('answer-box');
+            btnContainer.innerHTML = '';
+
+            q.a.forEach(answer => {
+                const btn = document.createElement('button');
+                btn.className = 'opt-btn';
+                btn.innerText = answer.t;
+                btn.onclick = () => nextStep(answer.s);
+                btnContainer.appendChild(btn);
+            });
         }
 
-/* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
-function shareTwitter() {
-    var sendText = document.title; // 기본 제목
-    var sendUrl = window.location.href; // 기본 주소
+        function nextStep(s) {
+            score += s;
+            currentStep++;
+            if (currentStep < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
 
-    // 결과 화면이 보이면? 결과 멘트를 추가한다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
-        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
-    }
+        function showResult() {
+            document.getElementById('screen-quiz').classList.remove('active');
+            document.getElementById('screen-result').classList.add('active');
 
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
+            let level = Math.floor(score / 15.1);
+            if (level >= 10) level = 9;
+            if (level < 0) level = 0;
 
-function shareFacebook() {
-    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
+            const res = results[level];
+            document.getElementById('res-level').innerText = res.lv;
+            document.getElementById('res-title').innerText = res.t;
+            document.getElementById('res-desc').innerText = res.d;
+        }
 
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl; // 기본은 링크만
-
-    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        // 복사될 텍스트 포맷
-        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
-    });
-}
-        
+        function shareResult() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                alert("링크가 복사되었습니다!");
+            });
+        }
     </script>
 </body>
 </html>

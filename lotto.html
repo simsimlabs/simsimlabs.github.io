@@ -1,172 +1,194 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
-     crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 로또 번호 생성기 | 심심풀이 연구소</title>
-    <meta name="description" content="빅데이터 기반 무작위 알고리즘으로 행운의 로또 번호를 추천해 드립니다. 이번 주 1등의 주인공은 당신일지도 모릅니다.">
+    <title>로또 번호 생성기 | 심심풀이 연구소</title>
+    <meta name="description" content="AI 알고리즘이 추천하는 이번 주 행운의 로또 번호! 1등 당첨을 기원합니다.">
     <link rel="stylesheet" href="style.css">
-    <style> 
-        .ball-container { display: flex; justify-content: center; gap: 10px; margin: 30px 0; flex-wrap: wrap; }
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
+    <style>
+        /* 로또 전용 스타일 */
+        .lotto-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+            min-height: 60px;
+        }
         .ball {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: #eee; display: flex; align-items: center; justify-content: center; 
-            font-weight: bold; font-size: 1.2rem; color: white; 
-            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-        } 
-        /* 로또 공 색상 */
-        .b-1 { background-color: #fbc400; text-shadow: 0 0 3px rgba(0,0,0,0.5); }
-        .b-10 { background-color: #69c8f2; }
-        .b-20 { background-color: #ff7272; }
-        .b-30 { background-color: #aaaaaa; }
-        .b-40 { background-color: #b0d840; }
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        /* 한국 로또 색상 */
+        .bg-yellow { background-color: #fbc400; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .bg-blue { background-color: #69c8f2; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .bg-red { background-color: #ff7272; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .bg-gray { background-color: #aaa; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .bg-green { background-color: #b0d840; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+
+        @keyframes popIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .history-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #555;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .history-item { border-bottom: 1px solid #eee; padding: 5px 0; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-    </header>
+    <div class="app-container">
+        <header>
+            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
+            <div class="lang-switch">
+                <a href="lotto.html" class="lang-btn active">🇰🇷 KO</a>
+                <a href="lotto-en.html" class="lang-btn">🇺🇸 EN</a>
+            </div>
+        </header>
 
-    <div class="container">
-
-        <div class="ad-placeholder" style="margin-bottom: 30px;">
-            (구글 애드센스 광고 - 상단)
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
-        
-        <div class="content-box">
-            <h1>🎰 행운의 번호 추출기</h1>
-            <p>잠시 눈을 감고 행운을 빌어보세요.</p>
-            
-            <div class="ball-container" id="balls">
-                <div class="ball">?</div><div class="ball">?</div><div class="ball">?</div>
-                <div class="ball">?</div><div class="ball">?</div><div class="ball">?</div>
+
+        <main id="screen-game" class="screen active">
+            <div class="top-bar">
+                <button onclick="location.href='index.html'" class="back-btn">← 메인으로</button>
             </div>
             
-            <button class="btn" onclick="generateLotto()">번호 생성하기</button>
+            <div class="hero" style="padding: 20px 0;">
+                <div class="icon-large">🎰</div>
+                <h1 class="main-title">로또 번호 생성기</h1>
+                <p class="sub-desc">AI 알고리즘이 추천하는 행운의 번호!<br>오늘의 당첨 운을 시험해보세요.</p>
+            </div>
+
+            <div id="result-area" class="lotto-container">
+                <div style="color:#aaa; align-self:center;">버튼을 눌러 번호를 생성하세요</div>
+            </div>
+
+            <button onclick="generateLotto()" class="btn-primary full-width" style="font-size: 1.2rem;">🎲 번호 생성하기</button>
+
+            <div class="history-box">
+                <strong>📋 최근 생성 기록</strong>
+                <div id="history-list"></div>
+            </div>
+            
+            <div class="action-buttons" style="margin-top: 20px;">
+                <button onclick="shareResult()" class="btn-secondary">🔗 번호 공유하기</button>
+            </div>
+        </main>
+
+        <div class="ad-banner">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2261846676525942"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <div class="ad-placeholder">(광고 영역)</div>
-            <h3>로또 1등 당첨 확률은?</h3>
-            <p>로또 6/45의 1등 당첨 확률은 약 814만 분의 1입니다. 이는 벼락을 맞을 확률보다 낮다고 알려져 있습니다. 하지만 "사지 않으면 당첨될 확률은 0%"라는 명언이 있죠.</p>
-            <p>본 생성기는 자바스크립트의 난수 생성 알고리즘(Math.random)을 사용하여 공정하게 번호를 추출합니다. 재미로만 즐겨주시고, 지나친 복권 구매는 지양해 주세요. 이번 주, 당신에게 기적 같은 행운이 깃들기를 바랍니다!</p>
-        </div>
+        <footer>
+            <p>© 2024 심심풀이 연구소</p>
+            <div class="footer-links">
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
+            </div>
+        </footer>
     </div>
 
     <script>
         function generateLotto() {
+            const container = document.getElementById('result-area');
+            container.innerHTML = ''; // 초기화
+
             const numbers = new Set();
             while(numbers.size < 6) {
                 numbers.add(Math.floor(Math.random() * 45) + 1);
             }
+            
+            // 오름차순 정렬
             const sortedNumbers = [...numbers].sort((a, b) => a - b);
             
-            const container = document.getElementById('balls');
-            container.innerHTML = '';
-            
+            let delay = 0;
             sortedNumbers.forEach(num => {
-                const ball = document.createElement('div');
-                ball.classList.add('ball');
-                ball.innerText = num;
-                
-                // 색상 결정
-                if(num <= 10) ball.classList.add('b-1');
-                else if(num <= 20) ball.classList.add('b-10');
-                else if(num <= 30) ball.classList.add('b-20');
-                else if(num <= 40) ball.classList.add('b-30');
-                else ball.classList.add('b-40');
-
-                container.appendChild(ball);
+                setTimeout(() => {
+                    const ball = document.createElement('div');
+                    ball.className = `ball ${getColorClass(num)}`;
+                    ball.innerText = num;
+                    container.appendChild(ball);
+                }, delay);
+                delay += 100; // 공이 하나씩 나오는 효과
             });
+
+            // 기록에 추가
+            addToHistory(sortedNumbers);
+        }
+
+        function getColorClass(num) {
+            if (num <= 10) return 'bg-yellow';
+            if (num <= 20) return 'bg-blue';
+            if (num <= 30) return 'bg-red';
+            if (num <= 40) return 'bg-gray';
+            return 'bg-green';
+        }
+
+        function addToHistory(nums) {
+            const list = document.getElementById('history-list');
+            const item = document.createElement('div');
+            item.className = 'history-item';
+            
+            // 현재 시간
+            const now = new Date();
+            const timeStr = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+            
+            item.innerHTML = `<span>[${timeStr}]</span> <strong>${nums.join(', ')}</strong>`;
+            list.prepend(item); // 최신순 정렬
+        }
+
+        function shareResult() {
+            // 현재 화면에 있는 번호 가져오기
+            const balls = document.querySelectorAll('.ball');
+            if (balls.length === 0) {
+                alert("먼저 번호를 생성해주세요!");
+                return;
+            }
+            
+            const nums = Array.from(balls).map(b => b.innerText).join(', ');
+            const text = `🍀 행운의 로또 번호: [ ${nums} ]\n1등 가자!!`;
+            
+            if (navigator.share) {
+                navigator.share({ title: '로또 번호 생성기', text: text, url: window.location.href });
+            } else {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("번호가 복사되었습니다!");
+                });
+            }
         }
     </script>
-
-<style>
-    .share-container {
-        text-align: center;
-        margin: 40px 0;
-        padding: 20px;
-        background: #f8f9fa;
-        border-radius: 15px;
-    }
-    .share-title { font-weight: bold; margin-bottom: 15px; color: #555; }
-    .share-btn-group { display: flex; justify-content: center; gap: 10px; }
-    .share-btn {
-        width: 50px; height: 50px; border-radius: 50%; border: none; cursor: pointer;
-        display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-        transition: transform 0.2s; color: white;
-    }
-    .share-btn:hover { transform: scale(1.1); }
-    .btn-kakao { background-color: #FEE500; color: #3C1E1E; } /* 링크복사로 대체 */
-    .btn-twitter { background-color: #000000; } /* X (트위터) */
-    .btn-facebook { background-color: #1877F2; }
-    .btn-link { background-color: #8c7ae6; }
-</style>
-
-<div class="container">
-    <div class="share-container" style="text-align:center; margin: 30px 0;">
-    <p style="font-weight:bold; margin-bottom:10px;">친구에게 테스트 공유하기</p>
-    <div style="display:flex; justify-content:center; gap:10px;">
-        <button onclick="shareTwitter()" style="background:black; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">X (Twitter)</button>
-        <button onclick="shareFacebook()" style="background:#3b5998; color:white; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">Facebook</button>
-        <button onclick="copyLink()" style="background:#ddd; color:black; border:none; padding:10px 20px; border-radius:20px; cursor:pointer;">🔗 링크 복사</button>
-    </div>
-</div>
-</div>
-
-<script>
-    /* === 스마트 공유 기능 (기존 것 지우고 이걸로 교체) === */
-function shareTwitter() {
-    var sendText = document.title; // 기본 제목
-    var sendUrl = window.location.href; // 기본 주소
-
-    // 결과 화면이 보이면? 결과 멘트를 추가한다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        // 텍스트 구성: [결과] 제목 - 설명 (앞부분만)
-        sendText = "[나의 결과] " + resultTitle + "\n" + resultDesc.substring(0, 40) + "...";
-    }
-
-    window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(sendText) + "&url=" + encodeURIComponent(sendUrl));
-}
-
-function shareFacebook() {
-    // 페이스북은 정책상 우리가 텍스트를 강제로 못 넣습니다. (URL만 공유 가능)
-    var sendUrl = window.location.href;
-    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
-}
-
-function copyLink() {
-    var sendUrl = window.location.href;
-    var textToCopy = sendUrl; // 기본은 링크만
-
-    // 결과 화면이 보이면? 텍스트도 같이 복사해준다!
-    var resultScreen = document.getElementById('result-screen');
-    if (resultScreen && !resultScreen.classList.contains('hidden')) {
-        var resultTitle = document.getElementById('result-title').innerText;
-        var resultDesc = document.getElementById('result-desc').innerText;
-        
-        // 복사될 텍스트 포맷
-        textToCopy = "📢 나의 결과: " + resultTitle + "\n" + resultDesc + "\n\n테스트 하러가기 👉 " + sendUrl;
-    }
-
-    navigator.clipboard.writeText(textToCopy).then(function() {
-        alert("결과와 링크가 복사되었습니다! \n카톡이나 메시지에 붙여넣기 해보세요.");
-    });
-}
-</script>
-
-<footer>
-        <p>© 2024 심심풀이 연구소. All rights reserved.</p>
-        <p>
-            <a href="privacy.html">개인정보처리방침</a> | 
-            <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
-        </p>
-    </footer>
-    
 </body>
 </html>

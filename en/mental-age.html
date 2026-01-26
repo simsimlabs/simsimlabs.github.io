@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Age Test | Boredom Lab</title>
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 Boredom Lab</a></header>
+    <div class="container">
+        <div class="ad-placeholder">(Ads - Top)</div>
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">🧠</div>
+            <h1>Mental Age Test</h1>
+            <p>Your body is Adult, but Brain?<br>Check your true mental age.</p>
+            <button class="btn" onclick="start()">Start Test</button>
+        </div>
+        <div id="quiz-screen" class="content-box hidden">
+            <div class="progress-bar"><div class="progress-fill" id="bar" style="background:#a29bfe;"></div></div>
+            <h2 id="q-text">Question</h2>
+            <div id="answer-box"></div>
+        </div>
+        <div id="result-screen" class="content-box hidden">
+            <p>Your Mental Age is...</p>
+            <h1 id="result-title" style="color:#6c5ce7;">Result</h1>
+            <div id="result-desc" style="background:#f1f2f6; padding:20px; border-radius:15px; text-align:left; margin-top:20px;"></div>
+            <button class="btn" onclick="location.reload()">Try Again</button>
+        </div>
+        <div class="ad-placeholder">(Ads - Bottom)</div>
+        <footer><p>© 2024 Boredom Lab</p><p><a href="../privacy.html">Privacy Policy</a></p></footer>
+    </div>
+    <script>
+        const qData = [
+            { q: "It's snowing!", a: "Make a snowman!", b: "Traffic will be bad.", s: 0 },
+            { q: "Preferred gift?", a: "Toys/Games.", b: "Cash.", s: 5 },
+            { q: "K-Pop Idols?", a: "Know them all.", b: "Look the same.", s: 5 },
+            { q: "Fall on street?", a: "Cry.", b: "Get up quickly.", s: 3 },
+            { q: "Friday night?", a: "Party!", b: "Rest at home.", s: 5 },
+            { q: "Cartoons?", a: "Still watch them.", b: "For kids.", s: 3 },
+            { q: "Vegetables?", a: "Yuck.", b: "Healthy.", s: 5 },
+            { q: "Loud music?", a: "Dance!", b: "Headache.", s: 5 },
+            { q: "Clothes?", a: "Style.", b: "Comfort/Warmth.", s: 5 },
+            { q: "Slang words?", a: "Use often.", b: "Proper grammar.", s: 5 },
+            { q: "Worry?", a: "Homework/Friends.", b: "Money/Health.", s: 5 },
+            { q: "Playground slide?", a: "Ride it!", b: "Dirty.", s: 3 }
+        ];
+        let step=0, score=0;
+        function start(){ document.getElementById('start-screen').classList.add('hidden'); document.getElementById('quiz-screen').classList.remove('hidden'); next(); }
+        function next(){
+            if(step>=qData.length){ result(); return; }
+            let q=qData[step];
+            document.getElementById('bar').style.width=((step/qData.length)*100)+'%';
+            document.getElementById('q-text').innerText=q.q;
+            let box=document.getElementById('answer-box'); box.innerHTML='';
+            let btnA=document.createElement('button'); btnA.className='btn-option'; btnA.innerText=q.a; btnA.onclick=()=>{ step++; next(); };
+            let btnB=document.createElement('button'); btnB.className='btn-option'; btnB.innerText=q.b; btnB.onclick=()=>{ score+=q.s; step++; next(); };
+            box.appendChild(btnA); box.appendChild(btnB);
+        }
+        function result(){
+            document.getElementById('quiz-screen').classList.add('hidden'); document.getElementById('result-screen').classList.remove('hidden');
+            let t, d;
+            if(score<=15) { t="👶 5 Years Old"; d="Pure and innocent baby."; }
+            else if(score<=30) { t="👦 18 Years Old"; d="Full of energy and passion."; }
+            else if(score<=45) { t="👨‍💼 35 Years Old"; d="Realistic and mature adult."; }
+            else { t="👴 80 Years Old"; d="Wise sage. Back hurting?"; }
+            document.getElementById('result-title').innerText=t; document.getElementById('result-desc').innerText=d;
+        }
+    </script>
+</body>
+</html>

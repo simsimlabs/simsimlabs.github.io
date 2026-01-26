@@ -1,112 +1,50 @@
-/* style.css - 메인 디자인 리뉴얼 */
+/* style.css 전체 덮어쓰기 */
 :root {
     --primary: #6c5ce7;
-    --secondary: #a29bfe;
+    --accent: #ff7675;
     --bg: #f5f6fa;
-    --text: #2d3436; 
-    --white: #ffffff;
-    --accent: #e17055;
+    --text: #2d3436;
 }
-body {
-    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-    background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.6;
-}
-.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+body { font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
 a { text-decoration: none; color: inherit; }
-
-/* 헤더 */
-header { background: var(--white); padding: 15px 0; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-.logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
-
-/* [NEW] 히어로 배너 (메인 상단 강조) */
-.hero-banner {
-    background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
-    border-radius: 20px; padding: 40px 30px; margin: 20px 0; color: white;
-    text-align: center; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
-    position: relative; overflow: hidden;
-}
-.hero-banner h1 { margin: 0 0 10px 0; font-size: 2rem; }
-.hero-banner p { margin-bottom: 25px; opacity: 0.9; }
-.hero-btn {
-    background: white; color: var(--primary); padding: 12px 30px; border-radius: 25px;
-    font-weight: bold; display: inline-block; transition: transform 0.2s;
-}
+.container { max-width: 600px; margin: 0 auto; padding: 20px; }
+header { background: white; padding: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+.logo { font-size: 1.2rem; font-weight: bold; color: var(--primary); }
+.hero-banner { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; padding: 30px 20px; border-radius: 20px; text-align: center; margin-bottom: 20px; }
+.hero-btn { display: inline-block; background: white; color: var(--primary); padding: 10px 20px; border-radius: 20px; font-weight: bold; margin-top: 10px; transition: 0.2s; }
 .hero-btn:hover { transform: scale(1.05); }
 
-/* [NEW] 카테고리 탭 */
-.category-nav {
-    display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch; /* 모바일 스크롤 부드럽게 */
-}
-.cat-btn {
-    background: white; border: 1px solid #eee; padding: 8px 16px; border-radius: 20px;
-    font-size: 0.9rem; cursor: pointer; white-space: nowrap; transition: all 0.2s; color: #777;
-}
-.cat-btn.active, .cat-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+/* 카테고리 버튼 */
+.category-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; scrollbar-width: none; }
+.cat-btn { background: white; border: 1px solid #ddd; padding: 8px 15px; border-radius: 20px; white-space: nowrap; cursor: pointer; transition: 0.2s; }
+.cat-btn.active, .cat-btn:hover { background: var(--text); color: white; border-color: var(--text); }
 
-/* 그리드 레이아웃 */
-.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-.card {
-    background: var(--white); border-radius: 15px; overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03); transition: transform 0.2s; display: block;
-}
+/* 카드 그리드 */
+.grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+.card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.2s; cursor: pointer; display: block; }
 .card:hover { transform: translateY(-5px); }
-.card-img { height: 140px; background-color: #eee; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-.card-body { padding: 20px; }
-.card-tag { font-size: 0.75rem; background: #f0f0f0; padding: 3px 8px; border-radius: 4px; color: #666; margin-bottom: 8px; display: inline-block; }
-.card h3 { margin: 5px 0 10px 0; font-size: 1.1rem; }
-.card p { font-size: 0.9rem; color: #888; margin: 0; line-height: 1.4; }
+.card-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.card-body { padding: 15px; }
+.card-tag { font-size: 0.7rem; color: #888; background: #eee; padding: 2px 6px; border-radius: 4px; }
+.card h3 { margin: 5px 0; font-size: 1rem; }
+.card p { font-size: 0.8rem; color: #666; margin: 0; }
 
-/* 테스트 페이지 공통 */
-.content-box { background: white; padding: 30px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px;}
-.btn { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; font-size: 1.1rem; cursor: pointer; margin-top: 15px; }
-.btn-option { background: white; border: 2px solid #eee; color: #444; padding: 15px; width: 100%; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; text-align: left;}
-.btn-option:hover { border-color: var(--primary); background: #f8f9ff; }
-.progress-bar { width: 100%; height: 8px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
-.progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s; }
+/* 광고 및 콘텐츠 박스 */
+.ad-placeholder { background: #eee; height: 100px; margin: 20px 0; display: flex; align-items: center; justify-content: center; color: #aaa; border-radius: 10px; }
+.content-box { background: white; padding: 30px 20px; border-radius: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
 .hidden { display: none; }
+.btn, .btn-option { display: block; width: 100%; padding: 15px; margin: 10px 0; border: none; border-radius: 10px; background: var(--bg); font-size: 1rem; cursor: pointer; transition: 0.2s; }
+.btn { background: var(--primary); color: white; font-weight: bold; }
+.btn:hover, .btn-option:hover { filter: brightness(0.9); }
+.progress-bar { width: 100%; height: 10px; background: #eee; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
+.progress-fill { height: 100%; transition: width 0.3s; }
 
-/* 광고 및 SEO 텍스트 */
-.ad-placeholder { background: #f1f1f1; padding: 20px; text-align: center; color: #aaa; border-radius: 10px; margin: 20px 0; font-size: 0.8rem; }
-.article-section { background: white; padding: 25px; border-radius: 15px; margin-top: 30px; }
-footer { text-align: center; padding: 40px 0; color: #999; font-size: 0.85rem; }
+/* 로또/파워볼 공 스타일 */
+.ball-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 20px; min-height: 60px; }
+.ball { width: 40px; height: 40px; line-height: 40px; border-radius: 50%; color: white; font-weight: bold; text-align: center; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); }
+/* 파워볼 전용 */
+.white-ball { background: white; color: #333; border: 2px solid #ddd; }
+.red-ball { background: #e74c3c; color: white; border: 2px solid #c0392b; }
 
-/* --- 모바일 전용 디자인 (화면이 600px보다 작을 때 적용) --- */
-@media (max-width: 600px) {
-    /* 양옆 여백을 줄여서 화면을 넓게 씀 */
-    .container { 
-        padding: 15px; 
-    }
-
-    /* 배너 크기와 글자 크기 축소 */
-    .hero-banner { 
-        padding: 30px 20px; 
-        margin: 10px 0;
-    }
-    .hero-banner h1 { 
-        font-size: 1.6rem; /* 제목 좀 더 작게 */
-    }
-    .hero-banner p {
-        font-size: 0.95rem; /* 설명글 좀 더 작게 */
-    }
-
-    /* 카테고리 버튼 스크롤 편하게 */
-    .category-nav {
-        padding-bottom: 5px;
-    }
-    .cat-btn {
-        padding: 6px 14px;
-        font-size: 0.85rem;
-    }
-
-    /* 카드 이미지 높이 조절 (너무 길지 않게) */
-    .card-img {
-        height: 120px;
-    }
-    
-    /* 공유 버튼 간격 조절 */
-    .share-container {
-        margin: 20px 0;
-        padding: 15px;
-    }
-}
+footer { text-align: center; padding: 40px 0; color: #888; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 40px; }
+@media (max-width: 480px) { .grid-container { grid-template-columns: 1fr; } }

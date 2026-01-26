@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>절대색감 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="당신의 눈은 얼마나 정확한가요? 미세하게 다른 색깔을 찾아보세요! 중독성 200% 미니게임">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simsimlabs.github.io/color-game.html">
+    <meta property="og:title" content="절대색감 테스트 🎨">
+    <meta property="og:description" content="레벨이 오를수록 안 보여요! 당신은 과연 몇 단계까지 갈 수 있을까요?">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3233/3233497.png">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+     crossorigin="anonymous"></script>
+
+    <style>
+        #game-board {
+            display: grid; gap: 5px; width: 300px; height: 300px; margin: 0 auto;
+            background: #eee; padding: 5px; border-radius: 10px;
+        }
+        .color-box {
+            border-radius: 5px; cursor: pointer; transition: transform 0.1s;
+        }
+        .color-box:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+    <header><a href="index.html" class="logo">🧪 심심풀이 연구소</a></header>
+
+    <div class="container">
+        <div class="ad-placeholder">(광고 - 상단)</div>
+
+        <div id="start-screen" class="content-box">
+            <div style="font-size:3rem;">🎨</div>
+            <h1>절대색감 테스트</h1>
+            <p>여러 개의 사각형 중<br>색깔이 <strong>딱 하나만</strong> 다릅니다.<br>제한 시간 안에 찾으세요!</p>
+            <button class="btn" onclick="startGame()">게임 시작</button>
+        </div>
+
+        <div id="game-screen" class="content-box hidden">
+            <div style="display:flex; justify-content:space-between; font-weight:bold; margin-bottom:10px;">
+                <span id="score-display">Lv. 1</span>
+                <span id="time-display" style="color:red;">15.0초</span>
+            </div>
+            <div id="game-board"></div>
+        </div>
+
+        <div id="result-screen" class="content-box hidden">
+            <h1>⏳ 시간 종료!</h1>
+            <h2>최종 레벨: <span id="final-score" style="color:var(--primary);">0</span></h2>
+            <div id="rank-text" style="margin:20px 0; font-weight:bold;"></div>
+            <button class="btn" onclick="location.reload()">다시 도전</button>
+        </div>
+
+        <div class="ad-placeholder">(광고 - 하단)</div>
+
+        <footer>
+            <p>© 2024 심심풀이 연구소. All rights reserved.</p>
+            <p>
+                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        let level = 1;
+        let timeLeft = 15.0;
+        let timer;
+        
+        function startGame() {
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            nextLevel();
+            timer = setInterval(() => {
+                timeLeft -= 0.1;
+                document.getElementById('time-display').innerText = timeLeft.toFixed(1) + "초";
+                if(timeLeft <= 0) gameOver();
+            }, 100);
+        }
+
+        function nextLevel() {
+            document.getElementById('score-display').innerText = `Lv. ${level}`;
+            const board = document.getElementById('game-board');
+            board.innerHTML = '';
+            
+            let size = Math.min(Math.ceil((level + 1) / 2) + 1, 8); 
+            board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+            
+            let r = Math.floor(Math.random() * 200) + 20;
+            let g = Math.floor(Math.random() * 200) + 20;
+            let b = Math.floor(Math.random() * 200) + 20;
+            
+            let diff = Math.max(30 - level * 1.5, 5); 
+            
+            let correctIndex = Math.floor(Math.random() * (size * size));
+
+            for(let i=0; i<size*size; i++) {
+                let box = document.createElement('div');
+                box.className = 'color-box';
+                if(i === correctIndex) {
+                    box.style.backgroundColor = `rgb(${r+diff}, ${g+diff}, ${b+diff})`;
+                    box.onclick = () => { level++; timeLeft += 1.0; nextLevel(); };
+                } else {
+                    box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                    box.onclick = () => { timeLeft -= 2.0; board.style.animation = "shake 0.3s"; };
+                }
+                board.appendChild(box);
+            }
+        }
+
+        function gameOver() {
+            clearInterval(timer);
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('final-score').innerText = level;
+            
+            let msg = "";
+            if(level < 5) msg = "색맹 테스트가 필요합니다...";
+            else if(level < 15) msg = "평범한 눈을 가지셨군요.";
+            else if(level < 30) msg = "미대 입시 준비하셨나요?";
+            else msg = "인간의 눈이 아닙니다! 매의 눈!";
+            document.getElementById('rank-text').innerText = msg;
+        }
+    </script>
+    <style>
+        @keyframes shake { 0% { transform: translate(1px, 1px); } 50% { transform: translate(-1px, -1px); } 100% { transform: translate(1px, 1px); } }
+    </style>
+</body>
+</html>

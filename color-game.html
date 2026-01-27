@@ -3,40 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>순발력 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="나의 반응 속도는 몇 ms? 0.01초의 승부, 초정밀 순발력 테스트 게임">
-    <meta property="og:title" content="절대색감 테스트 | 상위 1% 눈썰미 도전">
-<meta property="og:description" content="이 색깔이 다르게 보인다고? 당신의 눈은 얼마나 예민할까요? 레벨 30 이상이면 탈인간급! 도전해보세요."> 
-<meta property="og:image" content="https://simsimlabs.github.io/thumbnail.jpg">
-<meta property="og:url" content="https://simsimlabs.github.io/color-game.html">
+    <title>절대색감 테스트 | 심심풀이 연구소</title>
+    <meta name="description" content="당신의 눈은 상위 몇 %? 미세하게 다른 색깔을 찾아내는 절대색감 테스트 게임">
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
     <style>
         /* 게임 전용 스타일 */
-        #game-area { 
-            width: 100%;
-            height: 350px;
-            background-color: #0984e3; /* 대기 색상 (파랑) */
-            color: white;
+        .game-info {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 20px;
-            cursor: pointer;
-            user-select: none; /* 텍스트 드래그 방지 */
-            transition: background-color 0.1s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            padding: 20px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
         }
-        #game-area h1 { font-size: 3rem; margin: 0; }
-        #game-area p { font-size: 1.2rem; margin-top: 10px; opacity: 0.9; }
-        
-        /* 상태별 색상 클래스 */
-        .state-wait { background-color: #0984e3 !important; } /* 파랑: 시작 전/결과 */
-        .state-ready { background-color: #d63031 !important; } /* 빨강: 준비 */
-        .state-go { background-color: #00b894 !important; } /* 초록: 클릭! */
+        #board {
+            display: grid;
+            gap: 8px;
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1; /* 정사각형 유지 */
+            margin: 0 auto;
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .cell {
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .cell:active { transform: scale(0.95); }
+        .timer-danger { color: #e74c3c; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0.5; } }
     </style>
 </head>
 <body>
@@ -44,8 +44,8 @@
         <header>
             <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
             <div class="lang-switch">
-                <a href="reaction.html" class="lang-btn active">🇰🇷 KO</a>
-                <a href="en/reaction.html" class="lang-btn">🇺🇸 EN</a>
+                <a href="color-game.html" class="lang-btn active">🇰🇷 KO</a>
+                <a href="color-game-en.html" class="lang-btn">🇺🇸 EN</a>
             </div>
         </header>
 
@@ -61,41 +61,42 @@
 
         <main id="screen-start" class="screen active">
             <div class="hero">
-                <div class="icon-large">⚡</div>
-                <h1 class="main-title">순발력 테스트</h1>
-                <p class="sub-desc">당신의 반응 속도는 얼마나 빠를까요?<br>화면 색이 바뀌는 순간 클릭하세요!</p>
-                <button onclick="startGame()" class="btn-primary full-width">테스트 시작하기</button>
+                <div class="icon-large">🎨</div>
+                <h1 class="main-title">절대색감 테스트</h1>
+                <p class="sub-desc">미세하게 다른 색깔 하나를 찾아보세요!<br>레벨이 오를수록 차이가 줄어듭니다.</p>
+                <button onclick="startGame()" class="btn-primary full-width">게임 시작</button>
             </div>
         </main>
 
         <main id="screen-game" class="screen">
             <div class="top-bar">
-                <button onclick="location.reload()" class="back-btn">← 처음으로</button>
+                <button onclick="location.reload()" class="back-btn">← 포기하기</button>
             </div>
             
-            <div id="game-area" class="state-wait" onmousedown="handleClick()">
-                <div id="game-icon" style="font-size: 4rem; margin-bottom: 10px;">⚡</div>
-                <h1 id="game-msg">클릭해서 시작</h1>
-                <p id="game-sub">초록색이 되면 클릭하세요!</p>
+            <div class="game-info">
+                <span id="level-display">Lv. 1</span>
+                <span id="time-display">15.0초</span>
             </div>
-            
-            <div class="record-list" style="margin-top: 20px; text-align: center; color: #666;">
-                <p>최근 기록: <span id="last-score">-</span> ms</p>
-            </div>
+
+            <div id="board">
+                </div>
+            <p style="text-align:center; color:#888; margin-top:15px; font-size:0.9rem;">
+                틀리면 시간이 3초 깎입니다!
+            </p>
         </main>
 
         <main id="screen-result" class="screen">
             <div class="result-card">
-                <div class="res-icon" id="res-icon">⏱️</div>
-                <h3 id="res-level">Level ?</h3>
-                <h1 id="res-title">0 ms</h1>
-                <p id="res-desc">결과 설명</p>
+                <div class="res-icon" id="res-icon">👁️</div>
+                <h3 id="res-level">Level 0</h3>
+                <h1 id="res-title">게임 종료!</h1>
+                <p id="res-desc">결과 메시지</p>
             </div>
             
             <div class="action-buttons">
                 <button onclick="shareResult()" class="btn-secondary">🔗 기록 공유하기</button>
                 <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
-                <button onclick="resetGame()" class="btn-primary" style="background-color:#00b894; margin-top:10px; flex-basis:100%;">다시 도전하기</button>
+                <button onclick="location.reload()" class="btn-primary" style="background-color:#00b894; margin-top:10px; flex-basis:100%;">다시 도전하기</button>
             </div>
         </main>
 
@@ -109,138 +110,147 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-<div class="article-section">
-    <h3>🎨 시각 인지 능력과 색감</h3>
-    <p>인간의 눈은 수백만 가지의 색상을 구별할 수 있지만, 디지털 화면에서의 미세한 색상 차이를 감지하는 능력은 훈련과 타고난 감각에 따라 다릅니다. 이 테스트는 당신의 망막 원추세포(Cone Cell)의 민감도를 간접적으로 측정합니다.</p>
-    <p>디자이너, 아티스트, 혹은 시각적 감각이 뛰어난 상위 1%의 눈을 가지고 있나요? 단계가 올라갈수록 미세해지는 명도와 채도의 차이를 극복하고 최고 레벨에 도전해보세요.</p>
-</div>
-        
         <footer>
             <p>© 2024 심심풀이 연구소</p>
             <div class="footer-links">
                 <a href="privacy.html">개인정보처리방침</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
+                <a href="mailto:contact@example.com">문의하기</a>
             </div>
         </footer>
     </div>
 
     <script>
-        let state = 'waiting'; // waiting, ready, now, result
-        let startTime = 0;
-        let endTime = 0;
-        let timeoutId = null;
-        let score = 0;
-
-        const area = document.getElementById('game-area');
-        const msg = document.getElementById('game-msg');
-        const sub = document.getElementById('game-sub');
-        const icon = document.getElementById('game-icon');
+        let level = 1;
+        let time = 15.0;
+        let timerInterval;
+        let isPlaying = false;
 
         function startGame() {
             document.getElementById('screen-start').classList.remove('active');
             document.getElementById('screen-game').classList.add('active');
-            resetState();
-        }
-
-        function resetGame() {
-            document.getElementById('screen-result').classList.remove('active');
-            document.getElementById('screen-game').classList.add('active');
-            resetState();
-        }
-
-        function resetState() {
-            state = 'waiting';
-            area.className = 'state-wait';
-            icon.innerText = '⚡';
-            msg.innerText = '클릭해서 시작';
-            sub.innerText = '초록색이 되면 클릭하세요!';
-        }
-
-        function handleClick() {
-            if (state === 'waiting') {
-                // 준비 상태로 전환
-                state = 'ready';
-                area.className = 'state-ready';
-                icon.innerText = '🔴';
-                msg.innerText = '기다리세요...';
-                sub.innerText = '아직 아닙니다.';
-                
-                // 랜덤 시간 후 초록색으로 변경 (2~5초 사이)
-                const randomTime = Math.floor(Math.random() * 3000) + 2000;
-                timeoutId = setTimeout(() => {
-                    state = 'now';
-                    area.className = 'state-go';
-                    icon.innerText = '🟢';
-                    msg.innerText = '클릭!!!';
-                    sub.innerText = '지금 누르세요!';
-                    startTime = Date.now();
-                }, randomTime);
-
-            } else if (state === 'ready') {
-                // 너무 빨리 클릭함 (부정출발)
-                clearTimeout(timeoutId);
-                state = 'waiting';
-                area.className = 'state-wait';
-                icon.innerText = '⚠️';
-                msg.innerText = '너무 빨라요!';
-                sub.innerText = '초록색이 되면 클릭해야 합니다. 다시 하려면 클릭.';
             
-            } else if (state === 'now') {
-                // 성공적인 클릭
-                endTime = Date.now();
-                score = endTime - startTime;
-                state = 'result';
+            level = 1;
+            time = 15.0;
+            isPlaying = true;
+            
+            renderGame();
+            
+            // 타이머 시작
+            timerInterval = setInterval(() => {
+                if (!isPlaying) return;
+                time -= 0.1;
+                updateTimeDisplay();
                 
-                // 결과 화면 표시 (약간의 딜레이 후)
-                document.getElementById('last-score').innerText = score;
-                setTimeout(showResult, 200);
+                if (time <= 0) {
+                    endGame();
+                }
+            }, 100);
+        }
+
+        function updateTimeDisplay() {
+            const timeEl = document.getElementById('time-display');
+            timeEl.innerText = time.toFixed(1) + "초";
+            if (time <= 5) {
+                timeEl.classList.add('timer-danger');
+            } else {
+                timeEl.classList.remove('timer-danger');
             }
         }
 
-        function showResult() {
+        function renderGame() {
+            document.getElementById('level-display').innerText = `Lv. ${level}`;
+            const board = document.getElementById('board');
+            board.innerHTML = '';
+
+            // 그리드 크기 계산 (레벨이 오를수록 칸 수 증가, 최대 8x8)
+            // Lv1~2: 2x2, Lv3~4: 3x3, ... 
+            let size = Math.min(Math.ceil((level + 1) / 2) + 1, 8);
+            board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+            // 색상 생성
+            // 기본 색상
+            let r = Math.floor(Math.random() * 200) + 20;
+            let g = Math.floor(Math.random() * 200) + 20;
+            let b = Math.floor(Math.random() * 200) + 20;
+
+            // 다른 색상과의 차이 (레벨이 오를수록 작아짐 -> 어려워짐)
+            let diff = Math.max(40 - level * 1.5, 5); 
+            
+            // 정답 타일 인덱스
+            let answerIndex = Math.floor(Math.random() * (size * size));
+
+            for (let i = 0; i < size * size; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                
+                if (i === answerIndex) {
+                    // 정답 타일 (색이 조금 다름)
+                    cell.style.backgroundColor = `rgb(${r + diff}, ${g + diff}, ${b + diff})`;
+                    cell.onclick = () => {
+                        if (!isPlaying) return;
+                        level++;
+                        time += 1.0; // 정답 시 시간 보너스
+                        renderGame();
+                    };
+                } else {
+                    // 일반 타일
+                    cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                    cell.onclick = () => {
+                        if (!isPlaying) return;
+                        time -= 3.0; // 오답 시 시간 차감
+                        updateTimeDisplay();
+                        // 화면 흔들림 효과 등 추가 가능
+                        board.style.transform = 'translateX(5px)';
+                        setTimeout(() => board.style.transform = 'translateX(0)', 100);
+                        if(time <= 0) endGame();
+                    };
+                }
+                board.appendChild(cell);
+            }
+        }
+
+        function endGame() {
+            isPlaying = false;
+            clearInterval(timerInterval);
+            
             document.getElementById('screen-game').classList.remove('active');
             document.getElementById('screen-result').classList.add('active');
-
-            let level = "";
+            
+            document.getElementById('res-level').innerText = `최종 기록: Lv. ${level}`;
+            
             let title = "";
             let desc = "";
 
-            if (score < 180) {
-                level = "God Like";
-                title = "⚡ " + score + " ms";
-                desc = "인간의 반응 속도가 아닙니다! 프로게이머 수준이네요.";
-            } else if (score < 250) {
-                level = "Pro Gamer";
-                title = "🏎️ " + score + " ms";
-                desc = "엄청난 반사 신경입니다. 상위 1%에 해당합니다.";
-            } else if (score < 350) {
-                level = "Average";
-                title = "🚗 " + score + " ms";
-                desc = "평균적인 반응 속도입니다. 집중하면 더 빨라질 수 있어요.";
-            } else if (score < 500) {
-                level = "Turtle";
-                title = "🐢 " + score + " ms";
-                desc = "조금 느긋하시군요. 피곤하신가요?";
+            if (level < 5) {
+                title = "색맹 테스트 요망";
+                desc = "혹시 화면 밝기가 너무 어두운가요? 일반인보다 색 감각이 조금 부족할 수 있습니다.";
+            } else if (level < 15) {
+                title = "평범한 눈";
+                desc = "대다수의 사람들이 이 정도 레벨에 도달합니다. 꾸준히 연습하면 늘 수 있어요!";
+            } else if (level < 25) {
+                title = "예리한 눈썰미";
+                desc = "미술이나 디자인 쪽 재능이 있으신가요? 색감이 아주 뛰어납니다.";
+            } else if (level < 40) {
+                title = "신의 눈";
+                desc = "사람의 눈을 초월했습니다. 모니터의 픽셀 차이까지 구분할 기세네요!";
             } else {
-                level = "Sloth";
-                title = "🦥 " + score + " ms";
-                desc = "주무시고 계셨나요? 다시 도전해보세요!";
+                title = "초월자";
+                desc = "당신은 기계입니까? 믿을 수 없는 기록입니다!";
             }
 
-            document.getElementById('res-level').innerText = level;
             document.getElementById('res-title').innerText = title;
             document.getElementById('res-desc').innerText = desc;
         }
 
         function shareResult() {
-            const text = `나의 순발력 테스트 결과: ${score}ms! 당신은 몇 ms가 나올까요?`;
+            const text = `절대색감 테스트 결과: Lv.${level} 달성! 당신의 눈은 얼마나 정확한가요?`;
             const url = window.location.href;
             
             if (navigator.share) {
-                navigator.share({ title: '순발력 테스트', text: text, url: url });
+                navigator.share({ title: '절대색감 테스트', text: text, url: url });
             } else {
                 navigator.clipboard.writeText(`${text} ${url}`).then(() => {
-                    alert("기록이 복사되었습니다!");
+                    alert("결과가 복사되었습니다!");
                 });
             }
         }

@@ -3,39 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reaction Time Test | SimSim Labs</title>
-    <meta name="description" content="Test your visual reflexes. How fast can you click? Reaction Time Test Game.">
-    <meta property="og:title" content="Color Sense Test | Top 1% Eyesight Challenge">
-<meta property="og:description" content="Can you spot the different color? Test your visual sensitivity level. Only the top 1% can reach level 50!">
-<meta property="og:image" content="https://simsimlabs.github.io/en/thumbnail.jpg">
-<meta property="og:url" content="https://simsimlabs.github.io/en/color-game.html">
-    <link rel="stylesheet" href="../style.css">
+    <title>Color Sense Test | SimSim Labs</title>
+    <meta name="description" content="Test your color vision! Find the slightly different color tile. How sharp are your eyes?">
+    <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
     <style>
         /* Game Specific Styles */
-        #game-area {
-            width: 100%; 
-            height: 350px;
-            background-color: #0984e3;
-            color: white;
+        .game-info {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border-radius: 20px;
-            cursor: pointer;
-            user-select: none;
-            transition: background-color 0.1s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            padding: 20px;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
         }
-        #game-area h1 { font-size: 3rem; margin: 0; }
-        #game-area p { font-size: 1.2rem; margin-top: 10px; opacity: 0.9; }
-        
-        .state-wait { background-color: #0984e3 !important; } /* Blue: Wait/Result */
-        .state-ready { background-color: #d63031 !important; } /* Red: Ready */
-        .state-go { background-color: #00b894 !important; } /* Green: Go! */
+        #board {
+            display: grid;
+            gap: 8px;
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        .cell {
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .cell:active { transform: scale(0.95); }
+        .timer-danger { color: #e74c3c; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0.5; } }
     </style>
 </head>
 <body>
@@ -43,8 +44,8 @@
         <header>
             <a href="index.html" class="logo">🧪 SimSim Labs</a>
             <div class="lang-switch">
-                <a href="../reaction.html" class="lang-btn">🇰🇷 KO</a>
-                <a href="reaction-en.html" class="lang-btn active">🇺🇸 EN</a>
+                <a href="color-game.html" class="lang-btn">🇰🇷 KO</a>
+                <a href="color-game-en.html" class="lang-btn active">🇺🇸 EN</a>
             </div>
         </header>
 
@@ -60,41 +61,42 @@
 
         <main id="screen-start" class="screen active">
             <div class="hero">
-                <div class="icon-large">⚡</div>
-                <h1 class="main-title">Reaction Test</h1>
-                <p class="sub-desc">How fast are your reflexes?<br>Click as soon as the screen turns green!</p>
-                <button onclick="startGame()" class="btn-primary full-width">Start Test</button>
+                <div class="icon-large">🎨</div>
+                <h1 class="main-title">Color Sense Test</h1>
+                <p class="sub-desc">Find the one tile with a different color!<br>It gets harder as you level up.</p>
+                <button onclick="startGame()" class="btn-primary full-width">Start Game</button>
             </div>
         </main>
 
         <main id="screen-game" class="screen">
             <div class="top-bar">
-                <button onclick="location.reload()" class="back-btn">← Restart</button>
+                <button onclick="location.reload()" class="back-btn">← Give Up</button>
             </div>
             
-            <div id="game-area" class="state-wait" onmousedown="handleClick()">
-                <div id="game-icon" style="font-size: 4rem; margin-bottom: 10px;">⚡</div>
-                <h1 id="game-msg">Click to Start</h1>
-                <p id="game-sub">Wait for the green color.</p>
+            <div class="game-info">
+                <span id="level-display">Lv. 1</span>
+                <span id="time-display">15.0s</span>
             </div>
-            
-            <div class="record-list" style="margin-top: 20px; text-align: center; color: #666;">
-                <p>Last Score: <span id="last-score">-</span> ms</p>
-            </div>
+
+            <div id="board">
+                </div>
+            <p style="text-align:center; color:#888; margin-top:15px; font-size:0.9rem;">
+                Wrong click = -3 seconds!
+            </p>
         </main>
 
         <main id="screen-result" class="screen">
             <div class="result-card">
-                <div class="res-icon" id="res-icon">⏱️</div>
-                <h3 id="res-level">Level ?</h3>
-                <h1 id="res-title">0 ms</h1>
-                <p id="res-desc">Result description.</p>
+                <div class="res-icon" id="res-icon">👁️</div>
+                <h3 id="res-level">Level 0</h3>
+                <h1 id="res-title">Game Over!</h1>
+                <p id="res-desc">Result Message</p>
             </div>
             
             <div class="action-buttons">
                 <button onclick="shareResult()" class="btn-secondary">🔗 Share Score</button>
                 <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
-                <button onclick="resetGame()" class="btn-primary" style="background-color:#00b894; margin-top:10px; flex-basis:100%;">Try Again</button>
+                <button onclick="location.reload()" class="btn-primary" style="background-color:#00b894; margin-top:10px; flex-basis:100%;">Try Again</button>
             </div>
         </main>
 
@@ -108,130 +110,134 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-<div class="article-section">
-    <h3>🎨 Visual Perception & Color Sense</h3>
-    <p>The human eye can distinguish millions of colors, but detecting subtle differences on a digital screen requires keen sensitivity. This test measures the responsiveness of your retinal cone cells.</p>
-    <p>Do you have the eyes of a designer or an artist? Challenge yourself to identify the odd color out as the differences become increasingly subtle.</p>
-</div>
-        
         <footer>
             <p>© 2024 SimSim Labs</p>
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
+                <a href="mailto:contact@example.com">Contact Us</a>
             </div>
         </footer>
     </div>
 
     <script>
-        let state = 'waiting';
-        let startTime = 0;
-        let endTime = 0;
-        let timeoutId = null;
-        let score = 0;
-
-        const area = document.getElementById('game-area');
-        const msg = document.getElementById('game-msg');
-        const sub = document.getElementById('game-sub');
-        const icon = document.getElementById('game-icon');
+        let level = 1;
+        let time = 15.0;
+        let timerInterval;
+        let isPlaying = false;
 
         function startGame() {
             document.getElementById('screen-start').classList.remove('active');
             document.getElementById('screen-game').classList.add('active');
-            resetState();
-        }
-
-        function resetGame() {
-            document.getElementById('screen-result').classList.remove('active');
-            document.getElementById('screen-game').classList.add('active');
-            resetState();
-        }
-
-        function resetState() {
-            state = 'waiting';
-            area.className = 'state-wait';
-            icon.innerText = '⚡';
-            msg.innerText = 'Click to Start';
-            sub.innerText = 'Wait for green.';
-        }
-
-        function handleClick() {
-            if (state === 'waiting') {
-                state = 'ready';
-                area.className = 'state-ready';
-                icon.innerText = '🔴';
-                msg.innerText = 'Wait for Green...';
-                sub.innerText = 'Not yet.';
-                
-                const randomTime = Math.floor(Math.random() * 3000) + 2000;
-                timeoutId = setTimeout(() => {
-                    state = 'now';
-                    area.className = 'state-go';
-                    icon.innerText = '🟢';
-                    msg.innerText = 'CLICK!';
-                    sub.innerText = 'Click Now!';
-                    startTime = Date.now();
-                }, randomTime);
-
-            } else if (state === 'ready') {
-                clearTimeout(timeoutId);
-                state = 'waiting';
-                area.className = 'state-wait';
-                icon.innerText = '⚠️';
-                msg.innerText = 'Too Early!';
-                sub.innerText = 'Click when it turns green. Click to retry.';
             
-            } else if (state === 'now') {
-                endTime = Date.now();
-                score = endTime - startTime;
-                state = 'result';
+            level = 1;
+            time = 15.0;
+            isPlaying = true;
+            
+            renderGame();
+            
+            timerInterval = setInterval(() => {
+                if (!isPlaying) return;
+                time -= 0.1;
+                updateTimeDisplay();
                 
-                document.getElementById('last-score').innerText = score;
-                setTimeout(showResult, 200);
+                if (time <= 0) {
+                    endGame();
+                }
+            }, 100);
+        }
+
+        function updateTimeDisplay() {
+            const timeEl = document.getElementById('time-display');
+            timeEl.innerText = time.toFixed(1) + "s";
+            if (time <= 5) {
+                timeEl.classList.add('timer-danger');
+            } else {
+                timeEl.classList.remove('timer-danger');
             }
         }
 
-        function showResult() {
+        function renderGame() {
+            document.getElementById('level-display').innerText = `Lv. ${level}`;
+            const board = document.getElementById('board');
+            board.innerHTML = '';
+
+            let size = Math.min(Math.ceil((level + 1) / 2) + 1, 8);
+            board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
+            let r = Math.floor(Math.random() * 200) + 20;
+            let g = Math.floor(Math.random() * 200) + 20;
+            let b = Math.floor(Math.random() * 200) + 20;
+
+            let diff = Math.max(40 - level * 1.5, 5); 
+            
+            let answerIndex = Math.floor(Math.random() * (size * size));
+
+            for (let i = 0; i < size * size; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'cell';
+                
+                if (i === answerIndex) {
+                    cell.style.backgroundColor = `rgb(${r + diff}, ${g + diff}, ${b + diff})`;
+                    cell.onclick = () => {
+                        if (!isPlaying) return;
+                        level++;
+                        time += 1.0; 
+                        renderGame();
+                    };
+                } else {
+                    cell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                    cell.onclick = () => {
+                        if (!isPlaying) return;
+                        time -= 3.0; 
+                        updateTimeDisplay();
+                        board.style.transform = 'translateX(5px)';
+                        setTimeout(() => board.style.transform = 'translateX(0)', 100);
+                        if(time <= 0) endGame();
+                    };
+                }
+                board.appendChild(cell);
+            }
+        }
+
+        function endGame() {
+            isPlaying = false;
+            clearInterval(timerInterval);
+            
             document.getElementById('screen-game').classList.remove('active');
             document.getElementById('screen-result').classList.add('active');
-
-            let level = "";
+            
+            document.getElementById('res-level').innerText = `Final Score: Lv. ${level}`;
+            
             let title = "";
             let desc = "";
 
-            if (score < 180) {
-                level = "God Like";
-                title = "⚡ " + score + " ms";
-                desc = "Inhuman reflexes! Pro gamer level.";
-            } else if (score < 250) {
-                level = "Pro Gamer";
-                title = "🏎️ " + score + " ms";
-                desc = "Top 1% speed. Amazing!";
-            } else if (score < 350) {
-                level = "Average";
-                title = "🚗 " + score + " ms";
-                desc = "Average speed. Focus to get faster.";
-            } else if (score < 500) {
-                level = "Turtle";
-                title = "🐢 " + score + " ms";
-                desc = "A bit slow. Are you tired?";
+            if (level < 5) {
+                title = "Need Eye Check";
+                desc = "Is your screen too dark? You might need a color vision test.";
+            } else if (level < 15) {
+                title = "Average Eyes";
+                desc = "Most people reach this level. Keep practicing!";
+            } else if (level < 25) {
+                title = "Sharp Eyes";
+                desc = "Do you have artistic talent? Your color sense is great.";
+            } else if (level < 40) {
+                title = "God's Eyes";
+                desc = "Beyond human limits. You can see pixels!";
             } else {
-                level = "Sloth";
-                title = "🦥 " + score + " ms";
-                desc = "Were you sleeping? Try again!";
+                title = "Superhuman";
+                desc = "Are you a machine? Unbelievable score!";
             }
 
-            document.getElementById('res-level').innerText = level;
             document.getElementById('res-title').innerText = title;
             document.getElementById('res-desc').innerText = desc;
         }
 
         function shareResult() {
-            const text = `Reaction Time Test: ${score}ms! How fast are you?`;
+            const text = `Color Sense Test Result: Reached Lv.${level}! How accurate are your eyes?`;
             const url = window.location.href;
             
             if (navigator.share) {
-                navigator.share({ title: 'Reaction Test', text: text, url: url });
+                navigator.share({ title: 'Color Sense Test', text: text, url: url });
             } else {
                 navigator.clipboard.writeText(`${text} ${url}`).then(() => {
                     alert("Link Copied!");

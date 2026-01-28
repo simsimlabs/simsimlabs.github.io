@@ -468,3 +468,36 @@ footer a { color: var(--text-light); text-decoration: underline; }
     display: flex;
     justify-content: space-between;
 }
+
+/* 게임 연구소 이동 버튼 스타일 */
+.game-lab-btn {
+    display: inline-block;
+    background-color: #6c5ce7; /* 보라색 포인트 */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 30px;
+    box-shadow: 0 4px 0 #5f27cd;
+    transition: all 0.2s;
+    margin: 15px 0;
+    font-family: 'Jua', sans-serif; /* 폰트가 없다면 기본 폰트 적용됨 */
+    font-size: 1.1rem;
+    animation: floating 2s infinite ease-in-out; /* 둥둥 떠다니는 효과 */
+}
+
+.game-lab-btn:hover {
+    background-color: #5f27cd;
+    transform: translateY(-2px);
+}
+
+.game-lab-btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+/* 둥둥 떠다니는 애니메이션 */
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}

@@ -1,56 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>https://simsimlabs.github.io/</loc><priority>1.0</priority></url>
-    <url><loc>https://simsimlabs.github.io/index.html</loc><priority>1.0</priority></url>
-    <url><loc>https://simsimlabs.github.io/privacy.html</loc><priority>0.5</priority></url>
 
-    <url><loc>https://simsimlabs.github.io/love-test.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/zombie-test.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/animal-test.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/mental-age.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/reaction.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/lotto.html</loc><priority>0.9</priority></url>
+   <url><loc>https://simsimlabs.com/</loc></url>
+   <url><loc>https://simsimlabs.com/index.html</loc></url>
+   <url><loc>https://simsimlabs.com/animal-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/color-game.html</loc></url>
+   <url><loc>https://simsimlabs.com/kkondae-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/lotto.html</loc></url>
+   <url><loc>https://simsimlabs.com/love-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/mental-age.html</loc></url>
+   <url><loc>https://simsimlabs.com/reaction.html</loc></url>
+   <url><loc>https://simsimlabs.com/rich-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/vocab-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/zombie-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/privacy.html</loc></url>
 
-    <url><loc>https://simsimlabs.github.io/color-game.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/kkondae-test.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/vocab-test.html</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/rich-test.html</loc><priority>0.9</priority></url>
+   <url><loc>https://simsimlabs.com/en/</loc></url>
+   <url><loc>https://simsimlabs.com/en/index.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/animal-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/color-game.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/kkondae-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/lotto.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/love-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/mental-age.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/reaction.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/rich-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/vocab-test.html</loc></url>
+   <url><loc>https://simsimlabs.com/en/zombie-test.html</loc></url>
 
+   <url><loc>https://simsimlabs.com/simsim-games/</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/index.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/game1.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/game2.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/game3.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/game4.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/game5.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/game6.html</loc></url>
 
-    <url><loc>https://simsimlabs.github.io/en/</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/index.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/privacy.html</loc><priority>0.5</priority></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/index.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/game1.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/game2.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/game3.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/game4.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/game5.html</loc></url>
+   <url><loc>https://simsimlabs.com/simsim-games/en/game6.html</loc></url>
 
-    <url><loc>https://simsimlabs.github.io/en/love-test.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/zombie-test.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/animal-test.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/mental-age.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/reaction.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/lotto.html</loc><priority>0.8</priority></url>
-
-    <url><loc>https://simsimlabs.github.io/en/color-game.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/kkondae-test.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/vocab-test.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/en/rich-test.html</loc><priority>0.8</priority></url>
-
-
-    <url><loc>https://simsimlabs.github.io/simsim-games/</loc><priority>0.9</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/index.html</loc><priority>0.9</priority></url>
-
-    <url><loc>https://simsimlabs.github.io/simsim-games/game1.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/game2.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/game3.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/game4.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/game5.html</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/game6.html</loc><priority>0.8</priority></url>
-
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/</loc><priority>0.8</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/index.html</loc><priority>0.8</priority></url>
-
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/game1.html</loc><priority>0.7</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/game2.html</loc><priority>0.7</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/game3.html</loc><priority>0.7</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/game4.html</loc><priority>0.7</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/game5.html</loc><priority>0.7</priority></url>
-    <url><loc>https://simsimlabs.github.io/simsim-games/en/game6.html</loc><priority>0.7</priority></url>
 </urlset>

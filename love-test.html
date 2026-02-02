@@ -3,14 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>연애 세포 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="나의 연애 세포 생존율은? 15문항으로 알아보는 10단계 정밀 연애 능력 진단">
-    <meta property="og:title" content="연애 세포 테스트 | 내 연애 세포는 생존 중?">
-<meta property="og:description" content="혹시 내 연애 세포가 동면 상태? 자발적 솔로인지 못 하는 건지 진단해드립니다. 친구들에게도 공유해보세요!"> 
-<meta property="og:image" content="https://simsimlabs.github.io/thumbnail.jpg">
-<meta property="og:url" content="https://simsimlabs.github.io/love-test.html">
-    <link rel="stylesheet" href="style.css">
+    <title>연애 세포 테스트 - 심심풀이 연구소</title>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
+
+    <link rel="canonical" href="https://simsimlabs.com/love-test.html">
+
+    <meta name="description" content="나의 연애 세포 생존율은? 15가지 질문으로 알아보는 10단계 정밀 연애 능력 진단. 자발적 솔로인지 못 하는 건지 팩트 폭격해 드립니다.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="💖 연애 세포 테스트 | 내 연애 세포는 생존 중?">
+    <meta property="og:description" content="혹시 내 연애 세포가 동면 상태? 자발적 솔로인지 못 하는 건지 진단해드립니다.">
+    <meta property="og:image" content="https://simsimlabs.com/thumbnail.jpg">
+    <meta property="og:url" content="https://simsimlabs.com/love-test.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* 추가적인 인라인 스타일 (반응형 보완) */
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
+        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
+        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
+        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
+        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
+
+        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
+
+        .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
+        .screen.active { display: flex; }
+
+        /* 시작 화면 */
+        .hero { text-align: center; margin-top: 40px; }
+        .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
+        .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
+        .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 40px; }
+        
+        /* 버튼 */
+        .btn-primary { background-color: #ff7675; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; }
+        .btn-primary:hover { background-color: #e17055; transform: translateY(-2px); }
+        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
+        .btn-secondary:hover { background-color: #b2bec3; }
+
+        /* 퀴즈 화면 */
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
+        .progress-container { width: 100%; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
+        .progress-bar { height: 100%; background: #ff7675; width: 0%; transition: width 0.3s; }
+        
+        .quiz-content { text-align: center; animation: fadeIn 0.5s; }
+        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #2d3436; }
+        .opt-btn { display: block; width: 100%; padding: 18px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 15px; background: white; font-size: 1rem; color: #555; cursor: pointer; transition: 0.2s; text-align: left; }
+        .opt-btn:hover { border-color: #ff7675; color: #ff7675; background: #fff0f0; }
+
+        /* 결과 화면 */
+        .result-card { text-align: center; background: #fdfdfd; border-radius: 20px; padding: 40px 20px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .res-icon { font-size: 5rem; margin-bottom: 10px; }
+        #res-level { color: #ff7675; font-weight: bold; margin-bottom: 5px; }
+        #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #2d3436; margin-bottom: 20px; }
+        #res-desc { color: #636e72; line-height: 1.7; word-break: keep-all; }
+        .action-buttons { text-align: center; }
+
+        /* 하단 설명글 (SEO용) */
+        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
+        .article-section h3 { color: #ff7675; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
+
+        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
+        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
+
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 공유 토스트 */
+        #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #333; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
+        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -23,6 +93,7 @@
         </header>
 
         <div class="ad-banner">
+            <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-2261846676525942"
@@ -35,23 +106,26 @@
         <main id="screen-start" class="screen active">
             <div class="hero">
                 <div class="icon-large">💖</div>
-                <h1 class="main-title">연애 세포 생존 테스트</h1>
-                <p class="sub-desc">당신의 연애 세포는 안녕하신가요?<br>15문항으로 알아보는 10단계 정밀 진단</p>
-                <button onclick="startTest()" class="btn-primary full-width">테스트 시작하기</button>
+                <h1 class="main-title">연애 세포 테스트</h1>
+                <p class="sub-desc">
+                    당신의 연애 세포는 안녕하신가요?<br>
+                    15가지 질문으로 알아보는 10단계 정밀 진단
+                </p>
+                <button onclick="startTest()" class="btn-primary">테스트 시작하기</button>
             </div>
         </main>
 
         <main id="screen-quiz" class="screen">
             <div class="top-bar">
-                <button onclick="location.reload()" class="back-btn">← 처음으로</button>
-                <span id="quiz-progress">1 / 15</span>
+                <button onclick="location.reload()" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 처음으로</button>
+                <span id="quiz-progress" style="font-weight:bold; color:#ff7675;">1 / 15</span>
             </div>
             <div class="progress-container">
                 <div class="progress-bar" id="bar"></div>
             </div>
             
             <div class="quiz-content">
-                <h2 id="q-text">질문 내용이 여기에 나옵니다.</h2>
+                <h2 id="q-text">질문 내용</h2>
                 <div id="answer-box">
                     </div>
             </div>
@@ -66,12 +140,13 @@
             </div>
             
             <div class="action-buttons">
-                <button onclick="shareResult()" class="btn-secondary">🔗 결과 공유하기</button>
-                <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
+                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> 결과 공유하기</button>
+                <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하러가기</button>
             </div>
         </main>
 
         <div class="ad-banner">
+            <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-2261846676525942"
@@ -81,20 +156,26 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-<div class="article-section">
-    <h3>💖 연애 세포와 심리학의 관계</h3>
-    <p>오랫동안 연애를 하지 않으면 정말로 '연애 세포'가 죽을까요? 심리학적으로 이는 관계에 대한 민감도가 떨어진 상태를 의미합니다. 이 테스트는 당신의 현재 생활 패턴과 감정 상태를 분석하여, 새로운 만남을 시작할 준비가 되었는지를 진단합니다.</p>
-    <p>자발적 솔로인지, 혹은 환경적인 요인으로 연애를 미루고 있는지 파악하고, 죽어가는 연애 감각을 깨울 수 있는 맞춤형 조언을 확인해보세요.</p>
-</div>
+        <div class="article-section">
+            <h3>💖 연애 세포와 심리학의 관계</h3>
+            <p>
+                오랫동안 연애를 하지 않으면 정말로 '연애 세포'가 죽을까요? 심리학적으로 이는 관계에 대한 민감도가 떨어진 상태를 의미합니다. 이 테스트는 당신의 현재 생활 패턴과 감정 상태를 분석하여, 새로운 만남을 시작할 준비가 되었는지를 진단합니다.
+            </p>
+            <p>
+                자발적 솔로인지, 혹은 환경적인 요인으로 연애를 미루고 있는지 파악하고, 죽어가는 연애 감각을 깨울 수 있는 맞춤형 조언을 확인해보세요.
+            </p>
+        </div>
         
         <footer>
-            <p>© 2024 심심풀이 연구소</p>
+            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
             <div class="footer-links">
-                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://simsimlabs.com/privacy.html">개인정보처리방침</a> | 
                 <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
             </div>
         </footer>
     </div>
+
+    <div id="toast">📋 링크가 복사되었습니다!</div>
 
     <script>
         // --- 데이터 영역 (15문항) ---
@@ -185,7 +266,9 @@
         function shareResult() {
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
-                alert("링크가 복사되었습니다! 친구들에게 공유해보세요.");
+                const toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
             });
         }
     </script>

@@ -4,57 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Powerball Generator | SimSim Labs</title>
-    <meta name="description" content="AI Lucky Number Generator for Powerball. Generate your winning numbers now!">
-    <meta property="og:title" content="Powerball Generator | AI Lucky Numbers">
-<meta property="og:description" content="Test your luck! Generate your lucky numbers based on random algorithms and your touch timing.">
-<meta property="og:image" content="https://simsimlabs.github.io/en/thumbnail.jpg">
-<meta property="og:url" content="https://simsimlabs.github.io/en/lotto.html">
-    <link rel="stylesheet" href="../style.css">
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
+
+    <link rel="canonical" href="https://simsimlabs.com/en/lotto.html">
+
+    <meta name="description" content="AI Lucky Number Generator for Powerball. Generate your winning numbers now! Not just random, but based on your touch timing.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="🎰 Powerball Generator | AI Lucky Numbers">
+    <meta property="og:description" content="Test your luck! Generate your lucky numbers based on random algorithms and your touch timing. Will you be the next winner?">
+    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.jpg">
+    <meta property="og:url" content="https://simsimlabs.com/en/lotto.html">
+
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* Inline Styles for Better Responsiveness */
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
+        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
+        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
+        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
+        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
+
+        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
+
+        .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
+        .screen.active { display: flex; }
+
+        /* Main Screen */
+        .hero { text-align: center; padding: 20px 0; }
+        .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
+        .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
+        .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 20px; }
+        
+        /* Buttons */
+        .btn-primary { background-color: #0984e3; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; box-shadow: 0 4px 0 #0769b5; }
+        .btn-primary:active { transform: translateY(4px); box-shadow: none; }
+        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-top: 10px; }
+        .btn-secondary:hover { background-color: #b2bec3; }
+
+        .top-bar { display: flex; justify-content: flex-start; margin-bottom: 20px; }
+        .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
+
         /* Powerball Styles */
-        .lotto-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-            min-height: 60px;
-        }
-        .ball {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #ddd;
-        }
+        .lotto-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 30px 0; min-height: 60px; }
+        .ball { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid #ddd; }
+        
         /* Powerball Colors */
         .bg-white { background-color: #ffffff; color: #333; }
-        .bg-power { background-color: #d63031; color: white; border: none; } /* Red */
+        .bg-power { background-color: #d63031; color: white; border: none; } /* Red Ball */
 
-        @keyframes popIn {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        .history-box {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 20px;
-            text-align: left;
-            font-size: 0.9rem;
-            color: #555;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        .history-item { border-bottom: 1px solid #eee; padding: 5px 0; }
-        .pb-text { color: #d63031; font-weight: bold; }
+        .history-box { background: #f8f9fa; border-radius: 10px; padding: 15px; margin-top: 30px; text-align: left; font-size: 0.9rem; color: #555; max-height: 200px; overflow-y: auto; border: 1px solid #eee; }
+        .history-item { border-bottom: 1px solid #eee; padding: 8px 0; display: flex; justify-content: space-between; }
+        .history-item:last-child { border-bottom: none; }
+        .pb-text { color: #d63031; font-weight: bold; margin-left: 5px; }
+
+        /* SEO Article Section */
+        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
+        .article-section h3 { color: #0984e3; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
+
+        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
+        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
+
+        @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        /* Toast */
+        #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #333; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
+        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
     </style>
 </head>
 <body>
@@ -68,6 +90,7 @@
         </header>
 
         <div class="ad-banner">
+            <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-2261846676525942"
@@ -79,32 +102,39 @@
 
         <main id="screen-game" class="screen active">
             <div class="top-bar">
-                <button onclick="location.href='index.html'" class="back-btn">← Home</button>
+                <button onclick="location.href='index.html'" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Home</button>
             </div>
             
-            <div class="hero" style="padding: 20px 0;">
+            <div class="hero">
                 <div class="icon-large">🎰</div>
                 <h1 class="main-title">Powerball Generator</h1>
-                <p class="sub-desc">Lucky Numbers for Powerball!<br>5 White Balls + 1 Red Powerball.</p>
+                <p class="sub-desc">
+                    AI-powered Lucky Numbers!<br>
+                    5 White Balls + 1 Red Powerball.
+                </p>
             </div>
 
             <div id="result-area" class="lotto-container">
                 <div style="color:#aaa; align-self:center;">Tap button to generate</div>
             </div>
 
-            <button onclick="generatePowerball()" class="btn-primary full-width" style="font-size: 1.2rem;">🎲 Generate Numbers</button>
+            <div style="text-align:center;">
+                <button onclick="generatePowerball()" class="btn-primary">🎲 Generate Numbers</button>
+            </div>
 
             <div class="history-box">
-                <strong>📋 History</strong>
-                <div id="history-list"></div>
+                <div style="margin-bottom:10px; font-weight:bold; color:#333;">📋 History</div>
+                <div id="history-list">
+                    </div>
             </div>
             
-            <div class="action-buttons" style="margin-top: 20px;">
-                <button onclick="shareResult()" class="btn-secondary">🔗 Share Numbers</button>
+            <div class="action-buttons" style="text-align:center; margin-top:20px;">
+                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share Numbers</button>
             </div>
         </main>
 
         <div class="ad-banner">
+            <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-2261846676525942"
@@ -114,20 +144,26 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-<div class="article-section">
-    <h3>🎰 Luck, Probability, and Statistics</h3>
-    <p>The odds of winning the lottery are astronomical, but we all dream of luck. This generator uses a combination of random algorithms and your touch timing to generate your lucky numbers.</p>
-    <p>Try your luck with numbers generated by science. Fortune favors the bold!</p>
-</div>
+        <div class="article-section">
+            <h3>🎰 Luck, Probability, and Powerball</h3>
+            <p>
+                The odds of winning the Powerball jackpot are 1 in 292.2 million. It sounds impossible, but someone wins eventually! This generator goes beyond simple randomness.
+            </p>
+            <p>
+                By using your touch timing (in milliseconds) as a seed for the random number generator, we create a set of numbers unique to that exact moment. Try your luck with numbers generated by this unique algorithm. Fortune favors the bold!
+            </p>
+        </div>
         
         <footer>
-            <p>© 2024 SimSim Labs</p>
+            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
             <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="https://simsimlabs.com/en/privacy.html">Privacy Policy</a> | 
                 <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
             </div>
         </footer>
     </div>
+
+    <div id="toast">📋 Numbers Copied!</div>
 
     <script>
         function generatePowerball() {
@@ -165,7 +201,8 @@
                 container.appendChild(ball);
             }, delay);
 
-            addToHistory(sortedWhite, powerBall);
+            // Add to history (after animation)
+            setTimeout(() => addToHistory(sortedWhite, powerBall), 600);
         }
 
         function addToHistory(whites, red) {
@@ -176,7 +213,7 @@
             const now = new Date();
             const timeStr = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
             
-            item.innerHTML = `<span>[${timeStr}]</span> <strong>${whites.join(', ')}</strong> + <span class="pb-text">${red}</span>`;
+            item.innerHTML = `<span style="color:#888;">[${timeStr}]</span> <strong>${whites.join(', ')}</strong> + <span class="pb-text">${red}</span>`;
             list.prepend(item); 
         }
 
@@ -187,18 +224,20 @@
                 return;
             }
             
-            // Separate White and Red
             const nums = Array.from(balls).map(b => b.innerText);
             const whites = nums.slice(0, 5).join(', ');
             const red = nums[5];
 
             const text = `🎱 My Powerball Numbers:\nWhite: [ ${whites} ]\nRed: [ ${red} ]\nGood Luck!`;
+            const url = window.location.href;
             
             if (navigator.share) {
-                navigator.share({ title: 'Powerball Generator', text: text, url: window.location.href });
+                navigator.share({ title: 'Powerball Generator', text: text, url: url });
             } else {
-                navigator.clipboard.writeText(text).then(() => {
-                    alert("Copied to clipboard!");
+                navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+                    const toast = document.getElementById("toast");
+                    toast.className = "show";
+                    setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
                 });
             }
         }

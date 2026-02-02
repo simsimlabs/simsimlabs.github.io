@@ -3,14 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>좀비 아포칼립스 생존 테스트 | 심심풀이 연구소</title>
-    <meta name="description" content="좀비 사태 발생! 당신의 생존 확률은? 15문항으로 알아보는 아포칼립스 생존 등급 (10단계)">
-    <meta property="og:title" content="좀비 아포칼립스 생존 확률 테스트">
-<meta property="og:description" content="지금 당장 좀비 사태가 터진다면? 나의 생존 등급과 생존 일수를 계산해드립니다. 당신은 리더인가요, 짐덩어리인가요?">
-<meta property="og:image" content="https://simsimlabs.github.io/thumbnail.jpg">
-<meta property="og:url" content="https://simsimlabs.github.io/zombie-test.html">
-    <link rel="stylesheet" href="style.css">
+    <title>좀비 아포칼립스 생존 테스트 - 심심풀이 연구소</title>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
+
+    <link rel="canonical" href="https://simsimlabs.com/zombie-test.html">
+
+    <meta name="description" content="좀비 사태 발생! 당신의 생존 확률은? 15가지 질문으로 알아보는 아포칼립스 생존 등급 테스트. 리더형인지 짐덩어리인지 확인해보세요.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="🧟‍♂️ 좀비 아포칼립스 생존 확률 테스트">
+    <meta property="og:description" content="지금 당장 좀비 사태가 터진다면? 나의 생존 등급과 생존 일수를 계산해드립니다. 당신은 리더인가요, 짐덩어리인가요?">
+    <meta property="og:image" content="https://simsimlabs.com/thumbnail.jpg">
+    <meta property="og:url" content="https://simsimlabs.com/zombie-test.html">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* 추가적인 인라인 스타일 (반응형 및 테마 적용) */
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #2d3436; color: #dfe6e9; margin: 0; padding: 0; }
+        .app-container { max-width: 600px; margin: 0 auto; background: #353b48; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #444; background: #2f3640; }
+        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #e17055; text-decoration: none; }
+        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
+        .lang-switch .lang-btn.active { color: #e17055; font-weight: bold; }
+
+        .ad-banner { background: #2d3436; padding: 10px 0; text-align: center; overflow: hidden; border-bottom: 1px solid #444; }
+
+        .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
+        .screen.active { display: flex; }
+
+        /* 시작 화면 */
+        .hero { text-align: center; margin-top: 40px; }
+        .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
+        .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #e17055; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .sub-desc { color: #b2bec3; line-height: 1.6; margin-bottom: 40px; }
+        
+        /* 버튼 (좀비 테마 - 붉은색 계열) */
+        .btn-primary { background-color: #c0392b; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; box-shadow: 0 4px 0 #96281b; }
+        .btn-primary:active { transform: translateY(4px); box-shadow: none; }
+        
+        .btn-secondary { background-color: #636e72; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
+        .btn-secondary:hover { background-color: #b2bec3; }
+
+        /* 퀴즈 화면 */
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
+        .progress-container { width: 100%; height: 8px; background: #2d3436; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
+        .progress-bar { height: 100%; background: #e17055; width: 0%; transition: width 0.3s; }
+        
+        .quiz-content { text-align: center; animation: fadeIn 0.5s; }
+        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #dfe6e9; }
+        .opt-btn { display: block; width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #636e72; border-radius: 10px; background: #2d3436; font-size: 1rem; color: #dfe6e9; cursor: pointer; transition: 0.2s; text-align: left; }
+        .opt-btn:hover { border-color: #e17055; color: #e17055; background: #3d3d3d; }
+
+        /* 결과 화면 */
+        .result-card { text-align: center; background: #2f3640; border-radius: 20px; padding: 40px 20px; border: 1px solid #444; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .res-icon { font-size: 5rem; margin-bottom: 10px; }
+        #res-level { color: #e17055; font-weight: bold; margin-bottom: 5px; }
+        #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #dfe6e9; margin-bottom: 20px; }
+        #res-desc { color: #b2bec3; line-height: 1.7; word-break: keep-all; }
+        .action-buttons { text-align: center; }
+
+        /* 하단 설명글 (SEO용) */
+        .article-section { padding: 30px 20px; background: #2f3640; border-top: 1px solid #444; color: #b2bec3; line-height: 1.8; font-size: 0.95rem; }
+        .article-section h3 { color: #e17055; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
+
+        footer { text-align: center; padding: 30px; color: #636e72; font-size: 0.85rem; border-top: 1px solid #444; margin-top: auto; background: #2d3436; }
+        .footer-links a { color: #636e72; text-decoration: none; margin: 0 5px; }
+
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 공유 토스트 */
+        #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #e17055; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
+        #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -23,6 +94,7 @@
         </header>
 
         <div class="ad-banner">
+            <span style="font-size:10px; color:#636e72; display:block; margin-bottom:5px;">Sponsored</span>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-2261846676525942"
@@ -36,15 +108,19 @@
             <div class="hero">
                 <div class="icon-large">🧟‍♂️</div>
                 <h1 class="main-title">좀비 생존 테스트</h1>
-                <p class="sub-desc">세상이 좀비로 뒤덮였습니다.<br>당신은 끝까지 살아남을 수 있을까요?</p>
-                <button onclick="startTest()" class="btn-primary full-width">생존 확률 확인하기</button>
+                <p class="sub-desc">
+                    세상이 좀비로 뒤덮였습니다.<br>
+                    당신의 생존 확률과 등급은?<br>
+                    15가지 질문으로 확인해보세요.
+                </p>
+                <button onclick="startTest()" class="btn-primary">생존 확률 확인하기</button>
             </div>
         </main>
 
         <main id="screen-quiz" class="screen">
             <div class="top-bar">
-                <button onclick="location.reload()" class="back-btn">← 포기하기</button>
-                <span id="quiz-progress">1 / 15</span>
+                <button onclick="location.reload()" class="back-btn"><i class="fa-solid fa-arrow-left"></i> 포기하기</button>
+                <span id="quiz-progress" style="font-weight:bold; color:#e17055;">1 / 15</span>
             </div>
             <div class="progress-container">
                 <div class="progress-bar" id="bar"></div>
@@ -66,12 +142,13 @@
             </div>
             
             <div class="action-buttons">
-                <button onclick="shareResult()" class="btn-secondary">🔗 결과 공유하기</button>
+                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> 결과 공유하기</button>
                 <button onclick="location.href='index.html'" class="btn-primary">다른 테스트 하기</button>
             </div>
         </main>
 
         <div class="ad-banner">
+            <span style="font-size:10px; color:#636e72; display:block; margin-bottom:5px;">Sponsored</span>
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-2261846676525942"
@@ -81,20 +158,26 @@
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-<div class="article-section">
-    <h3>🧟‍♂️ 재난 상황에서의 생존 심리</h3>
-    <p>좀비 아포칼립스는 단순한 공상 과학 소재가 아닙니다. 극한 상황에서 인간이 내리는 판단과 행동 양식을 시뮬레이션하는 좋은 도구입니다. 당신은 리더형인가요, 아니면 독자 생존형인가요?</p>
-    <p>이 테스트는 위기 상황에서의 의사결정 능력, 체력, 그리고 협동심을 기반으로 당신의 생존 확률을 계산합니다. 영화 속 주인공처럼 살아남을 수 있을지 지금 확인하세요.</p>
-</div>
+        <div class="article-section">
+            <h3>🧟‍♂️ 재난 상황에서의 생존 심리</h3>
+            <p>
+                좀비 아포칼립스는 단순한 공상 과학 소재가 아닙니다. 극한 상황에서 인간이 내리는 판단과 행동 양식을 시뮬레이션하는 좋은 도구입니다. 당신은 위기 상황에서 리더형인가요, 협력형인가요, 아니면 독자 생존형인가요?
+            </p>
+            <p>
+                심심풀이 연구소의 <strong>좀비 생존 테스트</strong>는 위기 상황에서의 의사결정 능력, 도덕적 딜레마, 생존 기술에 대한 지식을 기반으로 당신의 생존 확률을 계산합니다. 영화 속 주인공처럼 끝까지 살아남을 수 있을지 지금 바로 확인하세요.
+            </p>
+        </div>
         
         <footer>
-            <p>© 2024 심심풀이 연구소</p>
+            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
             <div class="footer-links">
-                <a href="privacy.html">개인정보처리방침</a> | 
+                <a href="https://simsimlabs.com/privacy.html">개인정보처리방침</a> | 
                 <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
             </div>
         </footer>
     </div>
+
+    <div id="toast">📋 링크가 복사되었습니다!</div>
 
     <script>
         // --- 데이터 영역 (15문항) ---
@@ -130,7 +213,6 @@
             { lv: "Lv.10", icon: "👑", t: "아포칼립스의 지배자", d: "좀비 바이러스 항체를 보유했거나, 새로운 문명을 건설할 영웅입니다. 인류의 희망!" }
         ];
 
-        // --- 로직 (공통) ---
         let currentStep = 0;
         let score = 0;
 
@@ -186,7 +268,9 @@
         function shareResult() {
             const url = window.location.href;
             navigator.clipboard.writeText(url).then(() => {
-                alert("링크가 복사되었습니다!");
+                const toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
             });
         }
     </script>

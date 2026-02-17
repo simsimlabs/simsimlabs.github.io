@@ -8,19 +8,21 @@
     <title>SimSim Labs | Free Personality Tests & Quizzes</title>
     
     <meta name="description" content="Bored? Try our free fun tests! Love Cell Test, Spirit Animal, Zombie Survival, Powerball Generator, and more. Discover your true self with SimSim Labs.">
-    <meta name="keywords" content="personality test, mbti, love quiz, fun games, zombie survival, spirit animal">
+    <meta name="keywords" content="personality test, mbti, love quiz, fun games, zombie survival, spirit animal, mental age test">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="SimSim Labs | Free Fun Tests & Quizzes">
     <meta property="og:description" content="Bored? Check your Love Cells, Zombie Survival Rank, Mental Age, and more! Fun psychological tests for everyone.">
-    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/en/">
     
     <link rel="canonical" href="https://simsimlabs.com/en/">
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
     
     <script type="application/ld+json">
     {
@@ -33,32 +35,19 @@
     </script>
 
     <style>
-        /* Essential Styles for Layout Stability */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-            text-decoration: none;
-            color: inherit;
-            overflow: hidden;
+        /* CLS Prevention for Ads */
+        .ad-banner {
+            width: 100%;
+            min-height: 280px; /* Reserve space for ads */
+            background: #f8f9fa;
             display: flex;
-            flex-direction: column;
-            border: 1px solid #eee;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            text-align: center;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .card-img { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
-        .card-body { padding: 20px; text-align: left; }
-        .card-tag { font-size: 0.8rem; color: #666; background: #f1f2f6; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
-        .card h3 { margin: 5px 0; font-size: 1.2rem; color: #2d3436; }
-        .card p { font-size: 0.9rem; color: #636e72; margin: 0; }
-        
+
+        /* Essential Styles */
         .hero-banner {
             background: linear-gradient(135deg, #6c5ce7, #a29bfe);
             color: white;
@@ -80,17 +69,24 @@
             transition: 0.2s;
         }
         .hero-btn:hover { transform: scale(1.05); }
-
-        .category-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; -webkit-overflow-scrolling: touch; }
+        .category-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; }
         .cat-btn { white-space: nowrap; padding: 8px 16px; border: 1px solid #ddd; border-radius: 20px; background: white; cursor: pointer; color: #555; transition: 0.2s; }
         .cat-btn.active { background: #2d3436; color: white; border-color: #2d3436; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 0; }
+        .card { background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s; text-decoration: none; color: inherit; overflow: hidden; display: flex; flex-direction: column; border: 1px solid #eee; }
+        .card:hover { transform: translateY(-5px); }
+        .card-img { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
+        .card-body { padding: 20px; text-align: left; }
+        .card-tag { font-size: 0.8rem; color: #666; background: #f1f2f6; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
+        .card h3 { margin: 5px 0; font-size: 1.2rem; color: #2d3436; font-family: 'Jua', sans-serif; }
+        .card p { font-size: 0.9rem; color: #636e72; margin: 0; }
     </style>
 </head>
 <body>
     <div class="app-container">
         <header>
             <a href="index.html" class="logo">🧪 SimSim Labs</a>
-            <a href="https://simsimlabs.com/simsim-games/en/" class="game-lab-btn" style="font-size:0.8rem; margin-left:10px; text-decoration:none; color:#6c5ce7;"> 🎮 Game Labs</a>
+            <a href="https://simsimlabs.com/simsim-games/en/" class="game-lab-btn" style="font-size:0.8rem; margin-left:10px; text-decoration:none; color:#6c5ce7; font-weight:bold;"> 🎮 Game Labs</a>
             <div class="lang-switch">
                 <a href="../index.html" class="lang-btn">🇰🇷 KO</a>
                 <a href="index.html" class="lang-btn active">🇺🇸 EN</a>
@@ -100,12 +96,12 @@
         <main>
             <div class="hero-banner">
                 <span style="background:rgba(255,255,255,0.2); padding:4px 10px; border-radius:15px; font-size:0.8rem;">HOT 🔥</span>
-                <h1>How alive are your Love Cells?</h1>
+                <h1 style="font-family:'Jua', sans-serif;">How alive are your Love Cells?</h1>
                 <p>CPR for your dying dating instincts. Check your level now.</p>
                 <a href="love-test.html" class="hero-btn">Start Test 👉</a>
             </div>
             
-            <div class="ad-banner" style="margin-bottom: 30px; text-align: center;">
+            <div class="ad-banner">
                 <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -113,7 +109,6 @@
                      data-ad-slot="4380369066"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
             
             <div class="category-nav">
@@ -208,7 +203,7 @@
                 </a>
             </div>
 
-            <div class="ad-banner" style="margin: 40px 0; text-align: center;">
+            <div class="ad-banner">
                 <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
                 <ins class="adsbygoogle"
                      style="display:block"
@@ -216,24 +211,23 @@
                      data-ad-slot="4380369066"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
 
-            <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px;">
-                <h3 style="color:#2d3436; margin-bottom:15px;">🧪 SimSim Labs: Discover Your True Self</h3>
-                <p style="color:#636e72; line-height:1.6;">
-                    SimSim Labs provides a variety of free psychological tests, quizzes, and mini-games designed to explore your personality and potential. 
-                    Whether you are bored or curious about your dating style, mental age, or survival instincts, we have the perfect test for you.
+            <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+                <h3 style="color:#2d3436; margin-bottom:15px; font-family:'Jua', sans-serif;">🧪 SimSim Labs: Discover Your True Self</h3>
+                <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                    SimSim Labs offers a variety of free psychological tests, quizzes, and mini-games designed to explore your personality and potential. 
+                    From MBTI-based personality analysis to love psychology, brain training games, and fun fortune telling, all content is free to enjoy without any complex sign-up process.
                 </p>
                 
-                <h3 style="color:#2d3436; margin-top:25px; margin-bottom:15px;">💡 Why Take Personality Tests?</h3>
-                <p style="color:#636e72; line-height:1.6;">
-                    Self-awareness is the key to personal growth. Our quizzes are based on behavioral psychology concepts and fun statistical patterns 
-                    to help you understand yourself better. Share your results with friends and spark interesting conversations about your hidden traits.
+                <h3 style="color:#2d3436; margin-top:25px; margin-bottom:15px; font-family:'Jua', sans-serif;">💡 Why Take Personality Tests?</h3>
+                <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                    Self-awareness is key to personal growth. Our quizzes are based on behavioral psychology concepts and statistical patterns 
+                    to help you understand your dating style, mental age, or hidden talents. Share your results with friends and spark interesting conversations about your unique traits.
                 </p>
 
-                <h3 style="color:#2d3436; margin-top:25px; margin-bottom:15px;">🚀 Popular Categories</h3>
-                <ul style="color:#636e72; line-height:1.6; padding-left:20px;">
+                <h3 style="color:#2d3436; margin-top:25px; margin-bottom:15px; font-family:'Jua', sans-serif;">🚀 Popular Categories</h3>
+                <ul style="color:#636e72; line-height:1.8; padding-left:20px; list-style-type:disc;">
                     <li><strong>Personality & Love:</strong> Check your "Love Cells" status, find your Spirit Animal, and measure your Mental Age.</li>
                     <li><strong>Brain & Skills:</strong> Challenge your eyes with the Color Sense Test and test your reflexes with the Reaction Time Game.</li>
                     <li><strong>Fun & Survival:</strong> Can you survive a Zombie Apocalypse? Find out now with our immersive survival simulation.</li>
@@ -250,36 +244,67 @@
         <footer>
             <p>© 2024 SimSim Labs</p>
             <div class="footer-links">
-                <a href="https://simsimlabs.com/en/privacy.html">Privacy Policy</a> | <a href="mailto:contact@example.com">Contact Us</a>
+                <a href="privacy.html">Privacy Policy</a> | <a href="mailto:contact@example.com">Contact Us</a>
             </div>
-
             <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
                 <span>More Projects : </span>
-                <a href="https://simsimlabs.com/daily-tools/en" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ Daily Tools (Web Utilities)
+                <a href="https://simsimlabs.com/daily-tools/" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
+                    🛠️ Daily Tools
                 </a>
             </div>
         </footer>
     </div>
 
     <script>
-        function filter(c){
-            document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-            event.target.classList.add('active');
-            document.querySelectorAll('.card').forEach(d=>{
-                d.style.display = (c==='all' || d.classList.contains('category-'+c)) ? 'flex' : 'none';
+    function downloadJSAtOnload() {
+        var element = document.createElement("script");
+        element.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942";
+        element.async = true;
+        element.crossOrigin = "anonymous";
+        document.body.appendChild(element);
+        
+        // Push ads after script load
+        element.onload = function() {
+            var ads = document.querySelectorAll('.adsbygoogle');
+            ads.forEach(function(ad) {
+                if (ad.innerHTML.replace(/\s/g, "").length === 0) {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                }
             });
-        }
-        
-        function shareTwitter() {
-            var sendText = encodeURIComponent(document.title);
-            var sendUrl = encodeURIComponent(window.location.href);
-            window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
-        }
-        
-        function copyLink() { 
-            navigator.clipboard.writeText(window.location.href).then(()=>alert("Link Copied!")); 
-        }
+        };
+    }
+
+    // Load on user interaction
+    if(window.addEventListener) {
+        window.addEventListener("load", function() {
+            window.addEventListener("scroll", downloadJSAtOnload, {once:true});
+            window.addEventListener("mousemove", downloadJSAtOnload, {once:true});
+            window.addEventListener("touchstart", downloadJSAtOnload, {once:true});
+        }, false);
+    } else if (window.attachEvent) {
+        window.attachEvent("onload", function() {
+            document.attachEvent("onscroll", downloadJSAtOnload);
+            document.attachEvent("onmousemove", downloadJSAtOnload);
+        });
+    }
+
+    function filter(c){
+        document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+        event.target.classList.add('active');
+        document.querySelectorAll('.card').forEach(d=>{
+            d.style.display = (c==='all' || d.classList.contains('category-'+c)) ? 'flex' : 'none';
+        });
+    }
+    
+    function shareTwitter() {
+        var sendText = encodeURIComponent(document.title);
+        var sendUrl = encodeURIComponent(window.location.href);
+        window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendUrl);
+    }
+    
+    function copyLink() { 
+        navigator.clipboard.writeText(window.location.href).then(()=>alert("Link Copied!")); 
+    }
     </script>
 </body>
 </html>

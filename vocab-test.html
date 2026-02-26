@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>어휘력 테스트 - 심심풀이 연구소</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/vocab-test.html">
 
     <meta name="description" content="나의 어휘력은 상위 몇 %일까? 맞춤법, 문해력, 사자성어 등 15가지 질문으로 알아보는 한국어 능력 정밀 진단 테스트.">
@@ -14,25 +12,18 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="📚 어휘력/문해력 테스트 | 한국인 상위 1% 도전">
     <meta property="og:description" content="요즘 문해력이 문제라는데... 나의 어휘력 수준은? 헷갈리는 맞춤법과 단어 퀴즈로 뇌섹남녀 인증하기!">
-    <meta property="og:image" content="https://simsimlabs.com/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/vocab-test.html">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        /* 추가적인 인라인 스타일 (반응형 보완) */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
-
-        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
-
+        /* 이 페이지 전용 스타일 */
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
@@ -42,12 +33,6 @@
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
         .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 40px; }
         
-        /* 버튼 (지적인 느낌의 녹색 테마) */
-        .btn-primary { background-color: #00b894; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; }
-        .btn-primary:hover { background-color: #00a383; transform: translateY(-2px); }
-        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
-        .btn-secondary:hover { background-color: #b2bec3; }
-
         /* 퀴즈 화면 */
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
@@ -55,7 +40,7 @@
         .progress-bar { height: 100%; background: #00b894; width: 0%; transition: width 0.3s; }
         
         .quiz-content { text-align: center; animation: fadeIn 0.5s; }
-        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #2d3436; }
+        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #2d3436; word-break: keep-all; }
         .opt-btn { display: block; width: 100%; padding: 18px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 15px; background: white; font-size: 1rem; color: #555; cursor: pointer; transition: 0.2s; text-align: left; }
         .opt-btn:hover { border-color: #00b894; color: #00b894; background: #f0fffa; }
 
@@ -67,12 +52,11 @@
         #res-desc { color: #636e72; line-height: 1.7; word-break: keep-all; }
         .action-buttons { text-align: center; }
 
-        /* 하단 설명글 (SEO용) */
-        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #00b894; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
-        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
+        /* 버튼 포인트 컬러 설정 (이 페이지 테마: 녹색) */
+        .btn-primary { background-color: #00b894; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 0 auto; display: block; }
+        .btn-primary:hover { background-color: #00a383; transform: translateY(-2px); }
+        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 10px auto; display: block; }
+        .btn-secondary:hover { background-color: #b2bec3; }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -84,13 +68,7 @@
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-            <div class="lang-switch">
-                <a href="vocab-test.html" class="lang-btn active">🇰🇷 KO</a>
-                <a href="en/vocab-test.html" class="lang-btn">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
@@ -100,7 +78,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -127,7 +104,7 @@
             <div class="quiz-content">
                 <h2 id="q-text">질문 내용</h2>
                 <div id="answer-box">
-                    </div>
+                </div>
             </div>
         </main>
 
@@ -153,39 +130,26 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <h3>📚 문해력 위기와 어휘의 힘</h3>
-            <p>
-                최근 디지털 매체의 발달로 긴 글을 읽고 이해하는 문해력(Literacy)이 사회적 이슈가 되고 있습니다. 어휘력은 단순한 암기력이 아니라, 세상을 인식하고 표현하는 해상도와 같습니다. 아는 단어가 많을수록 생각의 폭이 넓어집니다.
+        <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+            <h3 style="color:#00b894; margin-bottom:15px; font-family:'Jua', sans-serif;">📚 문해력 위기와 어휘의 힘</h3>
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                최근 디지털 매체의 발달과 숏폼 콘텐츠의 유행으로 긴 글을 읽고 이해하는 문해력(Literacy) 저하가 사회적 이슈로 떠오르고 있습니다. 어휘력은 단순한 암기력이 아니라, 세상을 인식하고 표현하는 해상도와 같습니다. 아는 단어가 많을수록 생각의 폭이 넓어지고 다른 사람과의 소통도 원활해집니다.
             </p>
-            <p>
-                심심풀이 연구소의 <strong>어휘력 테스트</strong>는 헷갈리기 쉬운 맞춤법, 고사성어, 그리고 순우리말 퀴즈를 통해 당신의 한국어 구사 능력이 상위 몇 퍼센트인지 확인해드립니다. 지적 즐거움과 함께 두뇌를 자극하는 유익한 시간이 될 것입니다.
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all; margin-top:15px;">
+                심심풀이 연구소의 <strong>어휘력 테스트</strong>는 일상에서 자주 틀리는 맞춤법부터, 알쏭달쏭한 순우리말, 그리고 지적인 대화를 위한 필수 사자성어까지 아우르는 15가지 질문으로 구성되어 있습니다. 나의 한국어 구사 능력이 상위 몇 퍼센트인지 확인해보고, 친구들과 점수를 비교하며 재미있게 우리말 실력을 점검해보세요.
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/privacy.html">개인정보처리방침</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>함께 운영하는 곳 : </span>
-                <a href="https://simsimlabs.com/daily-tools/" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ 데일리 툴즈 (유용한 웹 도구)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 링크가 복사되었습니다!</div>
 
+    <script src="common.js"></script>
+
     <script>
-        // --- 데이터 영역 (15문항) ---
         const questions = [
             { q: "다음 중 맞춤법이 올바른 것은?", a: [{ t: "어의없다", s: 0 }, { t: "어이없다", s: 10 }, { t: "으이없다", s: 0 }] },
             { q: "감기가 씻은 듯이 [ 낳았다 / 나았다 ].", a: [{ t: "낳았다", s: 0 }, { t: "나았다", s: 10 }] },
@@ -204,7 +168,6 @@
             { q: "'명징하다'의 뜻은?", a: [{ t: "소리가 웅장하다", s: 0 }, { t: "깨끗하고 맑다", s: 10 }, { t: "매우 복잡하다", s: 0 }] }
         ];
 
-        // 결과 데이터 (0~150점 -> 10단계)
         const results = [
             { lv: "Lv.1", t: "한국어 입문자 (외국인)", d: "혹시 한국에 오신 지 얼마 안 되셨나요? 한국어 공부가 시급합니다!" },
             { lv: "Lv.2", t: "유치원생", d: "아직 글자가 헷갈리는 단계입니다. 받아쓰기 연습을 해볼까요?" },

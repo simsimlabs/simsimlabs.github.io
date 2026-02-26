@@ -450,3 +450,36 @@ footer a { color: #666; margin: 0 5px; }
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-3px); }
 }
+
+
+/* =========================================
+   최적화 전용 스타일 (추가분)
+   ========================================= */
+/* 광고 CLS(레이아웃 밀림) 완벽 방지 */
+.ad-banner {
+    width: 100%;
+    min-height: 280px; 
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+    text-align: center;
+}
+
+/* 메인 페이지 그리드 및 카드 (HTML에서 가져옴) */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 0; }
+.card { background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.2s; text-decoration: none; color: inherit; overflow: hidden; display: flex; flex-direction: column; border: 1px solid #eee; }
+.card:hover { transform: translateY(-5px); }
+.card-img { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
+.card-body { padding: 20px; text-align: left; }
+.card-tag { font-size: 0.8rem; color: #666; background: #f1f2f6; padding: 4px 8px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
+.card h3 { margin: 5px 0; font-size: 1.2rem; color: #2d3436; font-family: 'Jua', sans-serif; }
+.card p { font-size: 0.9rem; color: #636e72; margin: 0; }
+
+.hero-banner { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; padding: 40px 20px; border-radius: 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3); }
+.hero-btn { display: inline-block; background: white; color: #6c5ce7; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: 0.2s; }
+.hero-btn:hover { transform: scale(1.05); }
+.category-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 20px; }
+.cat-btn { white-space: nowrap; padding: 8px 16px; border: 1px solid #ddd; border-radius: 20px; background: white; cursor: pointer; color: #555; transition: 0.2s; }
+.cat-btn.active { background: #2d3436; color: white; border-color: #2d3436; }

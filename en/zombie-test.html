@@ -5,93 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zombie Survival Test | SimSim Labs</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/en/zombie-test.html">
 
-    <meta name="description" content="Can you survive a Zombie Apocalypse? Check your survival rank in 10 levels with 15 questions. Are you a leader, a fighter, or just bait?">
+    <meta name="description" content="A zombie outbreak has occurred! Can you survive? Take our immersive 15-question Zombie Survival Test to calculate your survival rank across 10 levels. Are you a leader or bait?">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="🧟‍♂️ Zombie Survival Test | Can You Survive?">
     <meta property="og:description" content="If a zombie outbreak happens today, how long would you last? Check your survival rank and see if you are a leader or bait.">
-    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/en/zombie-test.html">
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="../style.css">
+
     <style>
-        /* Inline Styles for Better Responsiveness & Zombie Theme */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #2d3436; color: #dfe6e9; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: #353b48; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        /* Zombie Theme specific dark styles */
+        body { background-color: #2d3436; color: #dfe6e9; }
+        .app-container { background: #353b48; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        header { border-bottom: 1px solid #444; background: #2f3640; }
+        .logo { color: #e17055; }
+        .lang-switch .lang-btn.active { color: #e17055; border-color: #e17055; }
+        .ad-banner { background: #2d3436; border-bottom: 1px solid #444; }
+        footer { border-top: 1px solid #444; background: #2d3436; }
         
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #444; background: #2f3640; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #e17055; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #e17055; font-weight: bold; }
-
-        .ad-banner { background: #2d3436; padding: 10px 0; text-align: center; overflow: hidden; border-bottom: 1px solid #444; }
-
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
-        /* Start Screen */
         .hero { text-align: center; margin-top: 40px; }
         .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #e17055; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .sub-desc { color: #b2bec3; line-height: 1.6; margin-bottom: 40px; }
         
-        /* Buttons (Blood Red Theme) */
-        .btn-primary { background-color: #c0392b; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; box-shadow: 0 4px 0 #96281b; }
+        /* Theme: Blood Red/Survival */
+        .btn-primary { background-color: #c0392b; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 0 auto; display: block; box-shadow: 0 4px 0 #96281b; }
         .btn-primary:active { transform: translateY(4px); box-shadow: none; }
-        
-        .btn-secondary { background-color: #636e72; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
+        .btn-secondary { background-color: #636e72; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 10px auto; display: block; }
         .btn-secondary:hover { background-color: #b2bec3; }
 
-        /* Quiz Screen */
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
         .progress-container { width: 100%; height: 8px; background: #2d3436; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
         .progress-bar { height: 100%; background: #e17055; width: 0%; transition: width 0.3s; }
         
         .quiz-content { text-align: center; animation: fadeIn 0.5s; }
-        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #dfe6e9; }
+        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #dfe6e9; word-break: keep-all; }
         .opt-btn { display: block; width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #636e72; border-radius: 10px; background: #2d3436; font-size: 1rem; color: #dfe6e9; cursor: pointer; transition: 0.2s; text-align: left; }
         .opt-btn:hover { border-color: #e17055; color: #e17055; background: #3d3d3d; }
 
-        /* Result Screen */
         .result-card { text-align: center; background: #2f3640; border-radius: 20px; padding: 40px 20px; border: 1px solid #444; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .res-icon { font-size: 5rem; margin-bottom: 10px; }
         #res-level { color: #e17055; font-weight: bold; margin-bottom: 5px; }
-        #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #dfe6e9; margin-bottom: 20px; }
+        #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #dfe6e9; margin-bottom: 20px; word-break: keep-all; }
         #res-desc { color: #b2bec3; line-height: 1.7; word-break: keep-all; }
-        .action-buttons { text-align: center; }
-
-        /* SEO Article Section */
-        .article-section { padding: 30px 20px; background: #2f3640; border-top: 1px solid #444; color: #b2bec3; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #e17055; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #636e72; font-size: 0.85rem; border-top: 1px solid #444; margin-top: auto; background: #2d3436; }
-        .footer-links a { color: #636e72; text-decoration: none; margin: 0 5px; }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Toast */
         #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #e17055; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 SimSim Labs</a>
-            <div class="lang-switch">
-                <a href="../zombie-test.html" class="lang-btn">🇰🇷 KO</a>
-                <a href="zombie-test.html" class="lang-btn active">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#636e72; display:block; margin-bottom:5px;">Sponsored</span>
@@ -101,7 +81,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -109,11 +88,11 @@
                 <div class="icon-large">🧟‍♂️</div>
                 <h1 class="main-title">Zombie Survival Test</h1>
                 <p class="sub-desc">
-                    The world is overrun by zombies.<br>
-                    Can you survive until the end?<br>
-                    Check your survival rank now.
+                    The world is overrun by the undead.<br>
+                    Can you make the right calls to survive until the end?<br>
+                    Discover your survival rank now!
                 </p>
-                <button onclick="startTest()" class="btn-primary">Start Survival Test</button>
+                <button onclick="startTest()" class="btn-primary">Start Survival Mission</button>
             </div>
         </main>
 
@@ -127,23 +106,22 @@
             </div>
             
             <div class="quiz-content">
-                <h2 id="q-text">Question goes here.</h2>
-                <div id="answer-box">
-                    </div>
+                <h2 id="q-text">Loading Situation...</h2>
+                <div id="answer-box"></div>
             </div>
         </main>
 
         <main id="screen-result" class="screen">
             <div class="result-card">
                 <div class="res-icon" id="res-icon">💀</div>
-                <h3 id="res-level">Level ?</h3>
-                <h1 id="res-title">Result Title</h1>
-                <p id="res-desc">Result description goes here.</p>
+                <h3 id="res-level">Rank ?</h3>
+                <h1 id="res-title">Calculating Survival...</h1>
+                <p id="res-desc">Please wait.</p>
             </div>
             
             <div class="action-buttons">
-                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share Result</button>
-                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share My Rank</button>
+                <button onclick="location.href='index.html'" class="btn-primary">Try Other Quizzes</button>
             </div>
         </main>
 
@@ -155,72 +133,58 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <div class="article-section">
-            <h3>🧟‍♂️ Survival Instincts in Crisis</h3>
+            <h3>🧟‍♂️ Crisis Psychology: The Zombie Apocalypse Simulator</h3>
             <p>
-                A Zombie Apocalypse isn't just a sci-fi trope; it's a great simulation for decision-making under extreme pressure. Are you a natural-born leader, a loyal teammate, or a lone wolf survivor?
+                A Zombie Apocalypse is more than just a popular sci-fi trope; it serves as a fascinating psychological simulator for decision-making under extreme pressure. In a total societal collapse, the choices you make determine not just your fate, but the fate of those around you. 
+                
             </p>
-            <p>
-                SimSim Lab's <strong>Zombie Survival Test</strong> calculates your survival probability based on your physical traits, decision-making skills, and cooperation levels. Can you survive like a movie hero? Find out your survival rank now.
+            <p style="margin-top:15px;">
+                SimSim Lab's <strong>Zombie Survival Test</strong> calculates your statistical probability of survival by evaluating your tactical decision-making, emotional resilience, and cooperation skills. Are you a "Cold Strategist" who survives at any cost, or a "Loyal Guardian" who leads with heart? Take this 15-question immersive challenge to see if you have the instincts of a wasteland hero. Share your ranking with your "survival squad" and see who would be the first to fall!
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/en/privacy.html">Privacy Policy</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>More Projects : </span>
-                <a href="https://simsimlabs.com/daily-tools/en" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ Daily Tools (Web Utilities)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 Link Copied!</div>
 
+    <script src="common.js"></script>
+
     <script>
-        // --- Data (15 Questions in English) ---
         const questions = [
-            { q: "Breaking News! Zombie virus is spreading.", a: [{ t: "Lock doors and wait at home.", s: 5 }, { t: "Run to the mart for food immediately.", s: 10 }, { t: "Ignore it as fake news and go to work.", s: 0 }] },
-            { q: "Choose one weapon to take.", a: [{ t: "Loud but powerful Shotgun.", s: 6 }, { t: "Quiet and durable Baseball Bat.", s: 10 }, { t: "Cool Katana (Samurai Sword).", s: 4 }] },
-            { q: "A stranger knocks begging for help.", a: [{ t: "Open the door out of pity.", s: 0 }, { t: "Ignore and pretend no one's home.", s: 8 }, { t: "Check for bites, disarm, then let in.", s: 10 }] },
-            { q: "Your friend got bitten on the arm!", a: [{ t: "Protect them till the end.", s: 2 }, { t: "Eliminate them before they turn.", s: 10 }, { t: "Tie them up somewhere safe.", s: 6 }] },
-            { q: "Out of food. Zombies are everywhere.", a: [{ t: "Stay inside even if starving.", s: 0 }, { t: "Go out to scavenge despite danger.", s: 10 }, { t: "Try to loot the neighbor's house.", s: 7 }] },
-            { q: "It's freezing at night. Make a fire?", a: [{ t: "Make a fire, don't want to freeze.", s: 2 }, { t: "Don't. Light and smoke attract them.", s: 10 }, { t: "Make a very small, hidden fire.", s: 6 }] },
-            { q: "A horde is attacking. Need to escape.", a: [{ t: "Use a teammate as bait and run.", s: 5 }, { t: "Try to save everyone and run.", s: 8 }, { t: "Quietly escape alone.", s: 10 }] },
-            { q: "You hear a military rescue helicopter.", a: [{ t: "Run to the roof and scream.", s: 4 }, { t: "Signal with mirror or smoke.", s: 10 }, { t: "Watch first, it might be a trap.", s: 7 }] },
-            { q: "Found an empty-looking supermarket.", a: [{ t: "Rush inside immediately!", s: 2 }, { t: "Scout the area and use back door.", s: 10 }, { t: "Barricade entrance and make it a base.", s: 6 }] },
-            { q: "Found an injured puppy on the way.", a: [{ t: "Take it. It cures loneliness.", s: 4 }, { t: "Leave it. Barking is dangerous.", s: 10 }, { t: "Use it as food...", s: 8 }] },
-            { q: "Zombie blood splashed in your eye.", a: [{ t: "Wipe it off and ignore.", s: 2 }, { t: "Wash immediately with clean water.", s: 10 }, { t: "Assume infection and give up.", s: 0 }] },
-            { q: "Met a large survivor group. Join them?", a: [{ t: "Yes, strength in numbers.", s: 6 }, { t: "No, humans are scarier. Stay solo.", s: 8 }, { t: "Follow secretly to observe.", s: 10 }] },
-            { q: "When sleeping...", a: [{ t: "Just sleep deep to recover.", s: 0 }, { t: "Take turns standing guard.", s: 10 }, { t: "Sleep lightly with one eye open.", s: 7 }] },
-            { q: "Radio says a vaccine is developed.", a: [{ t: "Doubt it. Could be a trap.", s: 10 }, { t: "Go to the station with hope.", s: 4 }, { t: "Wait and see others go first.", s: 7 }] },
-            { q: "Cornered at the very end. Your choice?", a: [{ t: "Die as a human.", s: 5 }, { t: "Do whatever to survive (Become zombie?)", s: 2 }, { t: "Fight till death, take them with me.", s: 10 }] }
+            { q: "Breaking News! A zombie virus is spreading rapidly.", a: [{ t: "Lock all doors and wait at home.", s: 5 }, { t: "Run to the nearest supermarket for supplies immediately.", s: 10 }, { t: "Ignore it as fake news and head to work.", s: 0 }] },
+            { q: "You can grab one weapon. What do you choose?", a: [{ t: "A loud but powerful shotgun.", s: 6 }, { t: "A quiet and durable baseball bat.", s: 10 }, { t: "A sharp Katana sword.", s: 4 }] },
+            { q: "A stranger knocks on your door begging for help.", a: [{ t: "Open the door out of pity.", s: 0 }, { t: "Ignore them and stay silent.", s: 8 }, { t: "Check for bites and disarm them before letting them in.", s: 10 }] },
+            { q: "Your best friend got bitten on the arm!", a: [{ t: "Protect them until the very end.", s: 2 }, { t: "Eliminate them before they turn.", s: 10 }, { t: "Tie them up somewhere safe and wait.", s: 6 }] },
+            { q: "Food is gone. Zombies are everywhere outside.", a: [{ t: "Stay inside and starve.", s: 0 }, { t: "Go out to scavenge despite the risk.", s: 10 }, { t: "Try to sneak into the neighbor's house.", s: 7 }] },
+            { q: "It's freezing at night. Should you start a fire?", a: [{ t: "Yes, I'll freeze otherwise.", s: 2 }, { t: "No, light and smoke will attract them.", s: 10 }, { t: "Make a very small, well-hidden fire.", s: 6 }] },
+            { q: "A massive horde is approaching. You need to escape.", a: [{ t: "Use a teammate as a distraction and run.", s: 5 }, { t: "Try to save everyone and escape together.", s: 8 }, { t: "Escape alone quietly through a side exit.", s: 10 }] },
+            { q: "You hear a military rescue helicopter nearby.", a: [{ t: "Run to the roof and scream for help.", s: 4 }, { t: "Signal quietly using a mirror or smoke.", s: 10 }, { t: "Hide and watch; it might be a trap.", s: 7 }] },
+            { q: "You find an empty-looking grocery store.", a: [{ t: "Rush inside immediately to grab food.", s: 2 }, { t: "Scout the perimeter and use the back entrance.", s: 10 }, { t: "Barricade the front door and make it your base.", s: 6 }] },
+            { q: "You found an injured puppy. What do you do?", a: [{ t: "Take it with you for companionship.", s: 4 }, { t: "Leave it; barking is too dangerous.", s: 10 }, { t: "Use it as a distraction for zombies...", s: 8 }] },
+            { q: "Zombie blood splashed into your eye during a fight.", a: [{ t: "Wipe it off and keep fighting.", s: 2 }, { t: "Immediately wash it out with clean water.", s: 10 }, { t: "Assume you are infected and give up.", s: 0 }] },
+            { q: "You meet a large group of survivors. Join them?", a: [{ t: "Yes, there is strength in numbers.", s: 6 }, { t: "No, people are more dangerous than zombies.", s: 8 }, { t: "Follow them from a distance to observe first.", s: 10 }] },
+            { q: "When it's time to sleep...", a: [{ t: "Just sleep deeply to recover energy.", s: 0 }, { t: "Establish a rotating guard shift with others.", s: 10 }, { t: "Sleep lightly in a hidden, narrow spot.", s: 7 }] },
+            { q: "The radio claims a vaccine has been developed.", a: [{ t: "Doubt it immediately; it's a trap.", s: 10 }, { t: "Head toward the broadcast station with hope.", s: 4 }, { t: "Wait and see if other groups move first.", s: 7 }] },
+            { q: "You are cornered with no escape. Final choice?", a: [{ t: "Die with dignity as a human.", s: 5 }, { t: "Do anything to live, even if it means turning.", s: 2 }, { t: "Fight until the last breath and take them with me.", s: 10 }] }
         ];
 
-        // Result Data
         const results = [
-            { lv: "Lv.1", icon: "🍗", t: "Opening Victim", d: "You die in the first 5 minutes wondering 'What's that?'. Next time, be faster." },
-            { lv: "Lv.2", icon: "📢", t: "The Nuisance", d: "You scream at wrong times and doom your team. A true burden to humanity." },
-            { lv: "Lv.3", icon: "🏃", t: "Extra A", d: "Good at running but has low stamina. You specialize in screaming and dying." },
-            { lv: "Lv.4", icon: "🏠", t: "Home Camper", d: "Outside is dangerous! You survive until food runs out. Might get rescued if lucky." },
-            { lv: "Lv.5", icon: "🛡️", t: "Loyal Guardian", d: "Great fighter but too kind. You will likely die sacrificing yourself for others." },
-            { lv: "Lv.6", icon: "🧠", t: "Cold Strategist", d: "You make quick, cold decisions. High survival chance due to lack of hesitation." },
-            { lv: "Lv.7", icon: "🍀", t: "Lucky Coward", d: "No skills but insane luck. You survive by accidentally avoiding every danger." },
-            { lv: "Lv.8", icon: "🗡️", t: "Human Weapon", d: "You beat zombies with bare hands. Zombies run away from YOU." },
-            { lv: "Lv.9", icon: "🐺", t: "Lone Wolf", d: "You trust no one and survive alone. A legendary survivor." },
-            { lv: "Lv.10", icon: "👑", t: "Wasteland Ruler", d: "You have the antibody or will build a new civilization. Hope of humanity!" }
+            { lv: "Lv.1", icon: "🍗", t: "Opening Victim", d: "You die in the first 5 minutes. You were basically a snack for the first zombie you saw. Better luck in the next life!" },
+            { lv: "Lv.2", icon: "📢", t: "The Loud Nuisance", d: "You scream at the wrong moments and alert the horde. You're the reason the whole team got wiped out." },
+            { lv: "Lv.3", icon: "🏃", t: "Generic Extra A", d: "You can run, but your stamina is low. You specialize in being a background character who dies off-screen." },
+            { lv: "Lv.4", icon: "🏠", t: "The Home Camper", d: "You stay safe inside until the food runs out. You might survive a few weeks if you have enough canned goods." },
+            { lv: "Lv.5", icon: "🛡️", t: "The Loyal Guardian", d: "A brave fighter with too much heart. You will likely die heroically while sacrificing yourself for a friend." },
+            { lv: "Lv.6", icon: "🧠", t: "The Cold Strategist", d: "You make logical, sometimes ruthless decisions. Your survival rate is high because you don't let emotions slow you down." },
+            { lv: "Lv.7", icon: "🍀", t: "The Lucky Coward", d: "You have no real skills, but insane luck. You survive simply because zombies happen to miss you every time." },
+            { lv: "Lv.8", icon: "🗡️", t: "The Human Weapon", d: "You take out zombies with whatever is in your hand. Even the undead are afraid of meeting you in a dark alley." },
+            { lv: "Lv.9", icon: "🐺", t: "The Lone Wolf", d: "You trust no one and move like a ghost. You've mastered the art of survival in the new world." },
+            { lv: "Lv.10", icon: "👑", t: "Ruler of the Wasteland", d: "You either hold the cure or are building a new empire. You are the protagonist of this apocalypse." }
         ];
 
-        // --- Logic ---
         let currentStep = 0;
         let score = 0;
 
@@ -261,11 +225,9 @@
         function showResult() {
             document.getElementById('screen-quiz').classList.remove('active');
             document.getElementById('screen-result').classList.add('active');
-
             let level = Math.floor(score / 15.1);
             if (level >= 10) level = 9;
             if (level < 0) level = 0;
-
             const res = results[level];
             document.getElementById('res-icon').innerText = res.icon;
             document.getElementById('res-level').innerText = res.lv;

@@ -5,92 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Sense Test | SimSim Labs</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/en/color-game.html">
 
-    <meta name="description" content="Test your color vision! Find the slightly different color tile. How sharp are your eyes? Challenge your visual sensitivity now.">
+    <meta name="description" content="Test your color vision! Find the slightly different color tile. How sharp are your eyes? Challenge your visual sensitivity now with this top 1% eyesight game.">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="🎨 Color Sense Test | Top 1% Eyesight Challenge">
     <meta property="og:description" content="Can you spot the different color? Test your visual sensitivity level. Only the top 1% can reach level 50!">
-    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/en/color-game.html">
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="../style.css">
+
     <style>
-        /* Inline Styles for Better Responsiveness */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
-
-        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
-
+        /* Game specific layout */
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
-        /* Start Screen */
         .hero { text-align: center; margin-top: 40px; }
         .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
         .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 40px; }
         
-        /* Buttons */
-        .btn-primary { background-color: #00b894; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; }
-        .btn-primary:hover { background-color: #00a383; transform: translateY(-2px); }
-        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
+        .btn-primary { background-color: #00b894; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 0 auto; display: block; box-shadow: 0 4px 0 #008f72; }
+        .btn-primary:active { transform: translateY(4px); box-shadow: none; }
+        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 10px auto; display: block; }
         .btn-secondary:hover { background-color: #b2bec3; }
 
-        /* Game Screen */
-        .top-bar { display: flex; justify-content: flex-start; margin-bottom: 20px; }
-        .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
-        
         .game-info { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 1.3rem; font-weight: bold; color: #2d3436; font-family: 'Jua', sans-serif; }
         .timer-danger { color: #e74c3c; animation: blink 1s infinite; }
 
+        /* Board Styling */
         #board { display: grid; gap: 8px; width: 100%; max-width: 380px; aspect-ratio: 1; margin: 0 auto; background: #f0f2f5; padding: 10px; border-radius: 15px; box-sizing: border-box; }
         .cell { border-radius: 8px; cursor: pointer; transition: transform 0.1s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .cell:active { transform: scale(0.95); }
 
-        /* Result Screen */
         .result-card { text-align: center; background: #fdfdfd; border-radius: 20px; padding: 40px 20px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .res-icon { font-size: 5rem; margin-bottom: 10px; }
         #res-level { color: #00b894; font-weight: bold; margin-bottom: 5px; font-size: 1.2rem; }
         #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #2d3436; margin-bottom: 20px; }
         #res-desc { color: #636e72; line-height: 1.7; word-break: keep-all; }
-        .action-buttons { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-
-        /* SEO Article Section */
-        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #00b894; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
-        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes blink { 50% { opacity: 0.5; } }
 
-        /* Toast */
         #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #333; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 SimSim Labs</a>
-            <div class="lang-switch">
-                <a href="../color-game.html" class="lang-btn">🇰🇷 KO</a>
-                <a href="color-game.html" class="lang-btn active">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
@@ -100,7 +70,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -109,8 +78,8 @@
                 <h1 class="main-title">Color Sense Test</h1>
                 <p class="sub-desc">
                     How sharp are your eyes?<br>
-                    Find the slightly different color tile!<br>
-                    It gets harder as you level up.
+                    Find the tile with the slightly different color!<br>
+                    Difficulty increases with every level.
                 </p>
                 <button onclick="startGame()" class="btn-primary">Start Game</button>
             </div>
@@ -126,10 +95,9 @@
                 <span id="time-display">15.0s</span>
             </div>
 
-            <div id="board">
-                </div>
+            <div id="board"></div>
             <p style="text-align:center; color:#888; margin-top:15px; font-size:0.9rem;">
-                <i class="fa-solid fa-circle-exclamation"></i> Wrong click = -3 seconds!
+                <i class="fa-solid fa-circle-exclamation"></i> Wrong choice subtracts 3 seconds!
             </p>
         </main>
 
@@ -138,54 +106,36 @@
                 <div class="res-icon" id="res-icon">👁️</div>
                 <h3 id="res-level">Level 0</h3>
                 <h1 id="res-title">Game Over!</h1>
-                <p id="res-desc">Result Message</p>
+                <p id="res-desc">Analysis in progress...</p>
             </div>
             
             <div class="action-buttons">
-                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share Score</button>
-                <button onclick="location.reload()" class="btn-primary" style="background-color:#00b894;">Try Again</button>
-                <button onclick="location.href='index.html'" class="btn-secondary" style="margin-top:10px;">More Tests</button>
+                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share My Score</button>
+                <button onclick="location.reload()" class="btn-primary" style="background-color:#00b894;">Challenge Again</button>
+                <button onclick="location.href='index.html'" class="btn-secondary">Other Fun Tests</button>
             </div>
         </main>
 
-        <div class="ad-banner">
-            <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-2261846676525942"
-                 data-ad-slot="4380369066"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+        <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+            <h3 style="color:#00b894; margin-bottom:15px; font-family:'Jua', sans-serif;">🎨 Science of Color Perception</h3>
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                
 
-        <div class="article-section">
-            <h3>🎨 Color Sensitivity & Visual Perception</h3>
-            <p>
-                The human eye can distinguish millions of colors, but the ability to perceive subtle differences varies from person to person. This 'Color Sense Test' measures how quickly and accurately you can detect slight variations in hue and saturation.
+[Image of human eye color perception]
+
+                Human vision is capable of distinguishing millions of colors, but this sensitivity varies significantly between individuals. Factors like lighting, screen quality, and biological traits play a role in how we perceive subtle changes in hue and saturation. This <strong>Color Sense Test</strong> is designed to measure your visual acuity and reaction speed.
             </p>
-            <p>
-                Designers and artists often score higher on this test due to their trained eyes. With practice, anyone can improve their color discrimination skills. Are your eyes in the top 1%? Challenge yourself now!
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all; margin-top:15px;">
+                Designers, artists, and photographers often develop a highly refined "eye" for color through professional training. However, everyone can improve their color discrimination skills with regular mental exercises. Are you part of the elite top 1% who can reach Level 50? Test your limits now and share your amazing results with your friends!
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/en/privacy.html">Privacy Policy</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>More Projects : </span>
-                <a href="https://simsimlabs.com/daily-tools/en" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ Daily Tools (Web Utilities)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 Link Copied!</div>
+
+    <script src="common.js"></script>
 
     <script>
         let level = 1;
@@ -196,11 +146,9 @@
         function startGame() {
             document.getElementById('screen-start').classList.remove('active');
             document.getElementById('screen-game').classList.add('active');
-            
             level = 1;
             time = 15.0;
             isPlaying = true;
-            
             renderGame();
             
             if (timerInterval) clearInterval(timerInterval);
@@ -208,21 +156,15 @@
                 if (!isPlaying) return;
                 time -= 0.1;
                 updateTimeDisplay();
-                
-                if (time <= 0) {
-                    endGame();
-                }
+                if (time <= 0) endGame();
             }, 100);
         }
 
         function updateTimeDisplay() {
             const timeEl = document.getElementById('time-display');
             timeEl.innerText = Math.max(0, time).toFixed(1) + "s";
-            if (time <= 5) {
-                timeEl.classList.add('timer-danger');
-            } else {
-                timeEl.classList.remove('timer-danger');
-            }
+            if (time <= 5) timeEl.classList.add('timer-danger');
+            else timeEl.classList.remove('timer-danger');
         }
 
         function renderGame() {
@@ -236,15 +178,12 @@
             let r = Math.floor(Math.random() * 200) + 20;
             let g = Math.floor(Math.random() * 200) + 20;
             let b = Math.floor(Math.random() * 200) + 20;
-
             let diff = Math.max(40 - level * 1.5, 5); 
-            
             let answerIndex = Math.floor(Math.random() * (size * size));
 
             for (let i = 0; i < size * size; i++) {
                 const cell = document.createElement('div');
                 cell.className = 'cell';
-                
                 if (i === answerIndex) {
                     cell.style.backgroundColor = `rgb(${r + diff}, ${g + diff}, ${b + diff})`;
                     cell.onclick = () => {
@@ -259,10 +198,8 @@
                         if (!isPlaying) return;
                         time -= 3.0; 
                         updateTimeDisplay();
-                        
                         board.style.transform = 'translateX(5px)';
                         setTimeout(() => board.style.transform = 'translateX(0)', 100);
-                        
                         if(time <= 0) endGame();
                     };
                 }
@@ -273,30 +210,28 @@
         function endGame() {
             isPlaying = false;
             clearInterval(timerInterval);
-            
             document.getElementById('screen-game').classList.remove('active');
             document.getElementById('screen-result').classList.add('active');
-            
             document.getElementById('res-level').innerText = `Final Score: Lv. ${level}`;
             
             let title = "";
             let desc = "";
 
             if (level < 5) {
-                title = "Need Eye Check";
-                desc = "Is your screen too dark? You might need a color vision test.";
+                title = "Need Eye Checkup";
+                desc = "Is your screen too dim? You might have trouble distinguishing subtle color shifts.";
             } else if (level < 15) {
-                title = "Average Eyes";
-                desc = "Most people reach this level. Keep practicing!";
+                title = "Average Vision";
+                desc = "You have standard color perception. Most people fall into this category.";
             } else if (level < 25) {
-                title = "Sharp Eyes";
-                desc = "Do you have artistic talent? Your color sense is great.";
+                title = "Eagle Eye";
+                desc = "Your eyes are quite sharp! You might have a talent for design or art.";
             } else if (level < 40) {
-                title = "God's Eyes";
-                desc = "Beyond human limits. You can see pixels!";
+                title = "God's Vision";
+                desc = "Absolutely incredible! You can distinguish colors better than 99% of people.";
             } else {
-                title = "Superhuman";
-                desc = "Are you a machine? Unbelievable score!";
+                title = "Beyond Human";
+                desc = "Are you part robot? Your visual processing speed and accuracy are legendary!";
             }
 
             document.getElementById('res-title').innerText = title;
@@ -304,9 +239,8 @@
         }
 
         function shareResult() {
-            const text = `Color Sense Test Result: Reached Lv.${level}! How accurate are your eyes?`;
+            const text = `I reached Level ${level} in the Color Sense Test! Can you beat my score?`;
             const url = window.location.href;
-            
             if (navigator.share) {
                 navigator.share({ title: 'Color Sense Test', text: text, url: url });
             } else {

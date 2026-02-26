@@ -5,93 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spirit Animal Test | SimSim Labs</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/en/animal-test.html">
 
-    <meta name="description" content="What is your spirit animal? Find your inner animal based on your personality. Puppy? Cat? Fox? Discover your hidden wild side with this 15-question test.">
+    <meta name="description" content="What is your spirit animal? Find your inner animal based on your personality, traits, and social style. Take this free 15-question quiz to discover your hidden wild side.">
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="🐶 Spirit Animal Test | What Animal Are You?">
+    <meta property="og:title" content="🐶 Spirit Animal Test | Find Your Inner Animal">
     <meta property="og:description" content="Puppy? Cat? Fox? Based on your personality and vibes, find your inner Spirit Animal right now.">
-    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/en/animal-test.html">
 
-    <link rel="stylesheet" href="../style.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="../style.css">
+
     <style>
-        /* Inline Styles for Better Responsiveness */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
-
-        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
-
+        /* Page specific styles */
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
-        /* Start Screen */
         .hero { text-align: center; margin-top: 40px; }
         .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
         .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 40px; }
         
-        /* Buttons */
-        .btn-primary { background-color: #6c5ce7; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; }
-        .btn-primary:hover { background-color: #5f27cd; transform: translateY(-2px); }
-        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
-        .btn-secondary:hover { background-color: #b2bec3; }
-
-        /* Quiz Screen */
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
         .progress-container { width: 100%; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
         .progress-bar { height: 100%; background: #00b894; width: 0%; transition: width 0.3s; }
         
         .quiz-content { text-align: center; animation: fadeIn 0.5s; }
-        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #2d3436; }
+        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #2d3436; word-break: keep-all; }
         .opt-btn { display: block; width: 100%; padding: 18px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 15px; background: white; font-size: 1rem; color: #555; cursor: pointer; transition: 0.2s; text-align: left; }
         .opt-btn:hover { border-color: #6c5ce7; color: #6c5ce7; background: #f8f6ff; }
 
-        /* Result Screen */
         .result-card { text-align: center; background: #fdfdfd; border-radius: 20px; padding: 40px 20px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .res-icon { font-size: 5rem; margin-bottom: 10px; }
         #res-level { color: #00b894; font-weight: bold; margin-bottom: 5px; }
         #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #2d3436; margin-bottom: 20px; }
         #res-desc { color: #636e72; line-height: 1.7; word-break: keep-all; }
         .action-buttons { text-align: center; }
-
-        /* SEO Article Section */
-        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #6c5ce7; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
-        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
-
+        
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Toast */
         #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #333; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 SimSim Labs</a>
-            <div class="lang-switch">
-                <a href="../animal-test.html" class="lang-btn">🇰🇷 KO</a>
-                <a href="animal-test.html" class="lang-btn active">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
@@ -101,7 +68,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -110,9 +76,9 @@
                 <h1 class="main-title">Spirit Animal Test</h1>
                 <p class="sub-desc">
                     Which animal matches your personality?<br>
-                    Find out in 10 levels with 15 questions.
+                    Discover your true self through 15 quick questions!
                 </p>
-                <button onclick="startTest()" class="btn-primary">Start Test</button>
+                <button onclick="startTest()" class="hero-btn">Start My Journey</button>
             </div>
         </main>
 
@@ -126,9 +92,8 @@
             </div>
             
             <div class="quiz-content">
-                <h2 id="q-text">Question goes here.</h2>
-                <div id="answer-box">
-                    </div>
+                <h2 id="q-text">Question Loading...</h2>
+                <div id="answer-box"></div>
             </div>
         </main>
 
@@ -136,13 +101,13 @@
             <div class="result-card">
                 <div class="res-icon" id="res-icon">🐾</div>
                 <h3 id="res-level">Level ?</h3>
-                <h1 id="res-title">Result Title</h1>
-                <p id="res-desc">Result description goes here.</p>
+                <h1 id="res-title">Finding your animal...</h1>
+                <p id="res-desc">Analysis in progress.</p>
             </div>
             
             <div class="action-buttons">
                 <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share Result</button>
-                <button onclick="location.href='index.html'" class="btn-primary">More Tests</button>
+                <button onclick="location.href='index.html'" class="hero-btn">Try Other Tests</button>
             </div>
         </main>
 
@@ -154,39 +119,26 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <h3>🐶 Physiognomy & Spirit Animals</h3>
-            <p>
-                They say your face reveals your personality. Whether you look like a puppy, a cat, or a fox, these comparisons can give interesting insights into how others perceive you.
+        <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+            <h3 style="color:#2d3436; margin-bottom:15px; font-family:'Jua', sans-serif;">🐶 Understanding Your Spirit Animal</h3>
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                Ancient traditions suggest that every person has a spiritual connection to an animal that reflects their inner strength and personality. Whether you possess the loyalty of a dog, the independence of a cat, or the wisdom of an owl, identifying your spirit animal can provide profound insights into your behavior and social interactions.
             </p>
-            <p>
-                SimSim Lab's <strong>Spirit Animal Test</strong> analyzes not just your looks, but your personality, social style, and how you handle crises to find your true inner animal. Share the results with your friends and compare your spirit animals!
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all; margin-top:15px;">
+                SimSim Lab's <strong>Spirit Animal Test</strong> goes beyond surface-level traits. We analyze your decision-making patterns, emotional responses, and social instincts through a series of psychological prompts. Are you a natural leader like a lion, or a clever strategist like a fox? Take the test, discover your wild side, and share the results with your pack!
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/en/privacy.html">Privacy Policy</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>More Projects : </span>
-                <a href="https://simsimlabs.com/daily-tools/en" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ Daily Tools (Web Utilities)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 Link Copied!</div>
 
+    <script src="common.js"></script>
+
     <script>
-        // --- Data (15 Questions in English) ---
         const questions = [
             { q: "At a new social gathering, you...", a: [{ t: "Observe quietly from the corner.", s: 2 }, { t: "Talk to the person next to me.", s: 6 }, { t: "Take center stage and lead.", s: 10 }] },
             { q: "When a friend shares their worries...", a: [{ t: "Listen quietly and empathize.", s: 2 }, { t: "Give realistic advice.", s: 6 }, { t: "Get angry together like it's my own problem.", s: 10 }] },
@@ -205,7 +157,6 @@
             { q: "If born again?", a: [{ t: "A loved pet.", s: 2 }, { t: "Free wild animal.", s: 6 }, { t: "King of the jungle.", s: 10 }] }
         ];
 
-        // Result Data
         const results = [
             { lv: "Lv.1", icon: "🦥", t: "Peaceful Sloth", d: "Everything is bothersome. Outside of bed is dangerous! You are relaxed and peaceful." },
             { lv: "Lv.2", icon: "🐹", t: "Timid Hamster", d: "Scared and cautious, but you show endless cuteness to your own people." },

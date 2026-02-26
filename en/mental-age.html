@@ -5,92 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mental Age Test | SimSim Labs</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/en/mental-age.html">
 
-    <meta name="description" content="How old is your mind? Analyze your true Mental Age in 10 levels with 15 questions. Are you a child at heart or an old soul?">
+    <meta name="description" content="How old is your mind? Take our free precision Mental Age Test to analyze your psychological maturity across 10 levels. Are you a child at heart or a wise old soul?">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="🧠 Mental Age Test | How Old Is Your Mind?">
-    <meta property="og:description" content="Adult body, child's mind? Or wise beyond your years? Measure your true psychological maturity.">
-    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.jpg">
+    <meta property="og:description" content="Adult body, child's mind? Or wise beyond your years? Discover your true psychological age with 15 questions.">
+    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/en/mental-age.html">
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="../style.css">
+
     <style>
-        /* Inline Styles for Better Responsiveness */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
-
-        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
-
+        /* Page specific layout */
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
-        /* Start Screen */
         .hero { text-align: center; margin-top: 40px; }
         .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
         .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 40px; }
         
-        /* Buttons */
-        .btn-primary { background-color: #00cec9; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; }
-        .btn-primary:hover { background-color: #00b894; transform: translateY(-2px); }
-        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
-        .btn-secondary:hover { background-color: #b2bec3; }
-
-        /* Quiz Screen */
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
         .progress-container { width: 100%; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
         .progress-bar { height: 100%; background: #00cec9; width: 0%; transition: width 0.3s; }
         
         .quiz-content { text-align: center; animation: fadeIn 0.5s; }
-        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #2d3436; }
+        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #2d3436; word-break: keep-all; }
         .opt-btn { display: block; width: 100%; padding: 18px; margin-bottom: 15px; border: 2px solid #eee; border-radius: 15px; background: white; font-size: 1rem; color: #555; cursor: pointer; transition: 0.2s; text-align: left; }
         .opt-btn:hover { border-color: #00cec9; color: #00cec9; background: #f0fffe; }
 
-        /* Result Screen */
         .result-card { text-align: center; background: #fdfdfd; border-radius: 20px; padding: 40px 20px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .res-icon { font-size: 5rem; margin-bottom: 10px; }
         #res-level { color: #00cec9; font-weight: bold; margin-bottom: 5px; }
         #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #2d3436; margin-bottom: 20px; }
         #res-desc { color: #636e72; line-height: 1.7; word-break: keep-all; }
-        .action-buttons { text-align: center; }
-
-        /* SEO Article Section */
-        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #00cec9; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
-        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
+        
+        /* Theme: Mint */
+        .btn-primary { background-color: #00cec9; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 0 auto; display: block; box-shadow: 0 4px 0 #00b894; }
+        .btn-primary:active { transform: translateY(2px); box-shadow: none; }
+        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 10px auto; display: block; }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Toast */
         #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #333; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 SimSim Labs</a>
-            <div class="lang-switch">
-                <a href="../mental-age.html" class="lang-btn">🇰🇷 KO</a>
-                <a href="mental-age.html" class="lang-btn active">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
@@ -100,7 +72,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -108,11 +79,10 @@
                 <div class="icon-large">🧠</div>
                 <h1 class="main-title">Mental Age Test</h1>
                 <p class="sub-desc">
-                    Adult body, child mind?<br>
-                    Or an old soul in a young body?<br>
-                    Find out your true age.
+                    Is your mind older or younger than your body?<br>
+                    Discover your true age through 15 psychological prompts.
                 </p>
-                <button onclick="startTest()" class="btn-primary">Start Test</button>
+                <button onclick="startTest()" class="btn-primary">Find My Mind Age</button>
             </div>
         </main>
 
@@ -126,9 +96,8 @@
             </div>
             
             <div class="quiz-content">
-                <h2 id="q-text">Question goes here.</h2>
-                <div id="answer-box">
-                    </div>
+                <h2 id="q-text">Loading question...</h2>
+                <div id="answer-box"></div>
             </div>
         </main>
 
@@ -136,13 +105,13 @@
             <div class="result-card">
                 <div class="res-icon" id="res-icon">👶</div>
                 <h3 id="res-level">Level ?</h3>
-                <h1 id="res-title">Result Title</h1>
-                <p id="res-desc">Result description goes here.</p>
+                <h1 id="res-title">Calculating...</h1>
+                <p id="res-desc">Please wait a moment.</p>
             </div>
             
             <div class="action-buttons">
-                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share Result</button>
-                <button onclick="location.href='index.html'" class="btn-primary">Other Tests</button>
+                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share My Age</button>
+                <button onclick="location.href='index.html'" class="hero-btn">Try Other Quizzes</button>
             </div>
         </main>
 
@@ -154,39 +123,26 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <h3>🧠 Physical Age vs. Mental Age</h3>
-            <p>
-                Growing old doesn't mean growing up. Some people remain children at heart, while others are old souls from a young age. This test measures your psychological maturity based on your preferences, behaviors, and values.
+        <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+            <h3 style="color:#2d3436; margin-bottom:15px; font-family:'Jua', sans-serif;">🧠 Chronological vs. Psychological Maturity</h3>
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                Your chronological age counts the years since your birth, but your <strong>Mental Age</strong> determines how you perceive the world, handle emotions, and interact with society. Psychological maturity isn't always linear; some people remain youthful and inquisitive "children at heart" well into their 80s, while others display the wisdom and patience of an "old soul" during their teenage years.
             </p>
-            <p>
-                Are you innocent and playful, or wise and experienced? Compare your mental age with your chronological age now. The results range from a 5-year-old toddler to a 1000-year-old sage.
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all; margin-top:15px;">
+                SimSim Lab's <strong>Mental Age Test</strong> is an entertainment-based psychological tool that analyzes your daily habits, humor, stressors, and life values. Through 15 targeted questions, we map your mindset to a developmental stage ranging from a 5-year-old toddler to a 1000-year-old enlightened sage. Are you surprisingly mature or delightfully young? Discover your true mental age and share the results to see how you stack up against your friends!
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/en/privacy.html">Privacy Policy</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>More Projects : </span>
-                <a href="https://simsimlabs.com/daily-tools/en" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ Daily Tools (Web Utilities)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 Link Copied!</div>
 
+    <script src="common.js"></script>
+
     <script>
-        // --- Data (15 Questions in English) ---
         const questions = [
             { q: "Passing by a toy store, you...", a: [{ t: "Wow! I want that! (Stare)", s: 0 }, { t: "Toys are high quality these days.", s: 5 }, { t: "Kids would love that. No interest.", s: 10 }] },
             { q: "After fighting with a friend...", a: [{ t: "Sulk and don't talk to them.", s: 2 }, { t: "Talk it out over a drink.", s: 6 }, { t: "Fighting is a waste of energy. Let it go.", s: 10 }] },
@@ -200,12 +156,11 @@
             { q: "When someone nags you...", a: [{ t: "Cover ears, hate hearing it.", s: 0 }, { t: "Say okay and ignore it.", s: 5 }, { t: "Reflect if it's helpful advice.", s: 10 }] },
             { q: "Ideal Birthday Gift?", a: [{ t: "Games, toys, pretty useless things.", s: 2 }, { t: "Cash or gift cards.", s: 6 }, { t: "Health supplements or massage device.", s: 10 }] },
             { q: "A younger person talks down to you.", a: [{ t: "Talk back! 'How old are you?'", s: 2 }, { t: "Offended but hold it in.", s: 5 }, { t: "Haha... Kids these days...", s: 10 }] },
-            { q: "Favorite Snack?", a: [{ t: "Jellies, chocolate, candy.", s: 2 }, { t: "Pizza, Chicken, Spicy food.", s: 5 }, { t: "Rice crust, Dried persimmon, Tea.", s: 10 }] },
+            { q: "Favorite Snack?", a: [{ t: "Jellies, chocolate, candy.", s: 2 }, { t: "Pizza, Chicken, Spicy food.", s: 5 }, { t: "Traditional snacks and tea.", s: 10 }] },
             { q: "How often do you show emotions?", a: [{ t: "Immediately show if upset.", s: 0 }, { t: "Control depending on situation.", s: 6 }, { t: "Rarely show emotions.", s: 10 }] },
             { q: "If born again?", a: [{ t: "Carefree Kindergartner.", s: 0 }, { t: "Passionate 20s.", s: 5 }, { t: "Don't want to be born again. Once is enough.", s: 10 }] }
         ];
 
-        // Result Data
         const results = [
             { lv: "Lv.1", icon: "🍼", t: "Toddler (5 yrs)", d: "Pure innocence! Everything is new and fun. You can be bratty sometimes, but you're adorable." },
             { lv: "Lv.2", icon: "🎈", t: "Elementary Schooler (10 yrs)", d: "Full of curiosity. Playing is priority. You dislike serious things and think simply." },
@@ -219,7 +174,6 @@
             { lv: "Lv.10", icon: "🧙‍♂️", t: "Ancient Sage (1000 yrs)", d: "Are you human? You have shed all worldly desires. A sage found in legends." }
         ];
 
-        // --- Logic ---
         let currentStep = 0;
         let score = 0;
 
@@ -260,11 +214,9 @@
         function showResult() {
             document.getElementById('screen-quiz').classList.remove('active');
             document.getElementById('screen-result').classList.add('active');
-
             let level = Math.floor(score / 15.1);
             if (level >= 10) level = 9;
             if (level < 0) level = 0;
-
             const res = results[level];
             document.getElementById('res-icon').innerText = res.icon;
             document.getElementById('res-level').innerText = res.lv;

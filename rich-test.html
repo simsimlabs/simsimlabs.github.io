@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부자 될 확률 테스트 - 심심풀이 연구소</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/rich-test.html">
 
     <meta name="description" content="나의 머니 마인드는 상위 몇 %일까? 15가지 질문으로 알아보는 부자 될 확률 테스트. 소비 습관과 재무 지능(FQ)을 분석해 드립니다.">
@@ -14,25 +12,18 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="💰 부자 될 확률 테스트 | 나의 재무 지능(FQ) 분석">
     <meta property="og:description" content="나는 미래에 부자가 될 상인가? 소비 습관과 마인드로 알아보는 나의 부자 가능성! 결과가 소름 돋습니다.">
-    <meta property="og:image" content="https://simsimlabs.com/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/thumbnail.webp"> 
     <meta property="og:url" content="https://simsimlabs.com/rich-test.html">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        /* 추가적인 인라인 스타일 (반응형 및 테마 적용) */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
-
-        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
-
+        /* 이 페이지(퀴즈) 전용 스타일만 남김 */
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
@@ -42,12 +33,6 @@
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
         .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 40px; }
         
-        /* 버튼 (골드 테마) */
-        .btn-primary { background-color: #f1c40f; color: #2c3e50; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; }
-        .btn-primary:hover { background-color: #f39c12; transform: translateY(-2px); }
-        .btn-secondary { background-color: #ecf0f1; color: #2c3e50; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
-        .btn-secondary:hover { background-color: #bdc3c7; }
-
         /* 퀴즈 화면 */
         .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
@@ -67,12 +52,11 @@
         #res-desc { color: #636e72; line-height: 1.7; word-break: keep-all; }
         .action-buttons { text-align: center; }
 
-        /* 하단 설명글 (SEO용) */
-        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #f39c12; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
-        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
+        /* 버튼 포인트 컬러 설정 (이 페이지 테마: 골드) */
+        .btn-primary { background-color: #f1c40f; color: #2c3e50; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 0 auto; display: block; }
+        .btn-primary:hover { background-color: #f39c12; transform: translateY(-2px); }
+        .btn-secondary { background-color: #ecf0f1; color: #2c3e50; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 10px auto; display: block; }
+        .btn-secondary:hover { background-color: #bdc3c7; }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -84,13 +68,7 @@
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-            <div class="lang-switch">
-                <a href="rich-test.html" class="lang-btn active">🇰🇷 KO</a>
-                <a href="en/rich-test.html" class="lang-btn">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
@@ -100,7 +78,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -127,7 +104,7 @@
             <div class="quiz-content">
                 <h2 id="q-text">질문 내용</h2>
                 <div id="answer-box">
-                    </div>
+                </div>
             </div>
         </main>
 
@@ -153,39 +130,26 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <h3>💰 부자의 마인드셋(Mindset)과 FQ</h3>
-            <p>
-                경제적 자유는 단순히 돈을 많이 버는 것이 아니라, 돈을 대하는 태도와 습관에서 시작됩니다. 세계적인 부호들은 공통적인 사고방식(Mindset)과 행동 패턴을 가지고 있습니다. 당신은 소비 지향적인가요, 아니면 투자 지향적인가요?
+        <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+            <h3 style="color:#f39c12; margin-bottom:15px; font-family:'Jua', sans-serif;">💰 부자의 마인드셋(Mindset)과 FQ</h3>
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                경제적 자유는 단순히 돈을 많이 버는 것이 아니라, 돈을 대하는 태도와 습관에서 시작됩니다. 세계적인 부호들은 공통적인 사고방식(Mindset)과 행동 패턴을 가지고 있습니다. 당신은 현재의 즐거움을 좇는 소비 지향적인가요, 아니면 미래의 자유를 위해 씨앗을 뿌리는 투자 지향적인가요?
             </p>
-            <p>
-                심심풀이 연구소의 <strong>부자 될 확률 테스트</strong>는 당신의 평소 소비 습관, 저축 패턴, 투자에 대한 인식을 통해 잠재적인 재무 지능(FQ: Financial Quotient)을 분석합니다. 나의 부자 레벨을 확인하고 경제적 자유를 위한 첫걸음을 내딛어 보세요.
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all; margin-top:15px;">
+                심심풀이 연구소의 <strong>부자 될 확률 테스트</strong>는 당신의 평소 소비 습관, 저축 패턴, 투자에 대한 인식을 통해 잠재적인 재무 지능(FQ: Financial Quotient)을 분석합니다. 나의 부자 레벨을 확인하고 부족한 점을 점검하여 경제적 자유를 향한 의미 있는 첫걸음을 내딛어 보세요.
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/privacy.html">개인정보처리방침</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
-
-                <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>함께 운영하는 곳 : </span>
-                <a href="https://simsimlabs.com/daily-tools/" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ 데일리 툴즈 (유용한 웹 도구)
-                </a>
-            </div>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 링크가 복사되었습니다!</div>
 
+    <script src="common.js"></script>
+
     <script>
-        // --- 데이터 영역 (15문항) ---
         const questions = [
             { q: "로또 10억에 당첨된다면 가장 먼저 할 일은?", a: [{ t: "평소 갖고 싶던 명품차와 가방을 산다.", s: 2 }, { t: "빚을 갚고 나머지는 통장에 넣는다.", s: 5 }, { t: "건물이나 우량 주식에 투자한다.", s: 10 }] },
             { q: "사고 싶은 물건이 있는데 돈이 부족하다.", a: [{ t: "신용카드 할부로 일단 긁는다.", s: 2 }, { t: "부모님이나 친구에게 빌린다.", s: 4 }, { t: "돈을 모을 때까지 참거나 포기한다.", s: 10 }] },
@@ -204,7 +168,6 @@
             { q: "10년 뒤 나의 자산 목표가 있는가?", a: [{ t: "하루하루 살기도 벅차다.", s: 2 }, { t: "막연하게 부자가 되고 싶다.", s: 5 }, { t: "구체적인 목표 금액과 계획이 있다.", s: 10 }] }
         ];
 
-        // 결과 데이터 (0~150점 -> 10단계 매핑)
         const results = [
             { lv: "Lv.1", t: "해맑은 텅장 요정", d: "월급이 통장을 스쳐 지나갑니다. '욜로(YOLO)'하다가 '골로' 갈 수 있습니다. 소비 통제가 시급합니다." },
             { lv: "Lv.2", t: "충동 구매러", d: "할인 문구만 보면 이성을 잃습니다. '이건 사야 해!'가 말버릇이시군요. 신용카드를 자르세요." },
@@ -218,7 +181,6 @@
             { lv: "Lv.10", t: "한국의 워렌 버핏", d: "당신의 머니 마인드는 완벽합니다. 걸어 다니는 대기업입니다. 저에게도 팁 좀 주세요!" }
         ];
 
-        // --- 로직 (공통) ---
         let currentStep = 0;
         let score = 0;
 

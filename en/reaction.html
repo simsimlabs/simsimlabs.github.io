@@ -5,54 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Reaction Time Test | SimSim Labs</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/en/reaction.html">
 
-    <meta name="description" content="How fast is your brain? Test your reaction time in milliseconds. Compare your reflexes with pro gamers in this simple yet addictive speed test.">
+    <meta name="description" content="Test your reaction time in milliseconds! Challenge your reflexes against pro-gamer standards. A simple, precise tool to measure how fast your brain processes visual signals.">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="⚡ Reaction Time Test | Speed Challenge">
-    <meta property="og:description" content="How fast are your reflexes? Test your speed in milliseconds! Challenge your friends to beat your score.">
-    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.jpg">
+    <meta property="og:description" content="How fast are your reflexes? Test your speed in milliseconds! Compare your score with the global average.">
+    <meta property="og:image" content="https://simsimlabs.com/en/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/en/reaction.html">
 
-    <link rel="stylesheet" href="../style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="../style.css">
+
     <style>
-        /* Inline Styles for Better Responsiveness */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
-
-        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
-
+        /* Page specific layout */
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
-        /* Main Screen */
         .hero { text-align: center; padding: 20px 0; }
         .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
         .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 20px; }
         
-        /* Buttons */
-        .btn-primary { background-color: #0984e3; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; box-shadow: 0 4px 0 #0769b5; }
+        .btn-primary { background-color: #0984e3; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 0 auto; display: block; box-shadow: 0 4px 0 #0769b5; }
         .btn-primary:active { transform: translateY(4px); box-shadow: none; }
-        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
-        .btn-secondary:hover { background-color: #b2bec3; }
+        .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 10px auto; display: block; }
 
-        /* Game Area Styles */
+        /* Reaction Area */
         #game-area {
             width: 100%;
             height: 350px;
-            background-color: #0984e3; /* Blue: Wait */
+            background-color: #0984e3; 
             color: white;
             display: flex;
             flex-direction: column;
@@ -60,9 +48,9 @@
             align-items: center;
             border-radius: 20px;
             cursor: pointer;
-            user-select: none; /* Prevent text selection */
-            -webkit-tap-highlight-color: transparent; /* Remove blue highlight on mobile */
-            touch-action: manipulation; /* Prevent double-tap zoom */
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
             transition: background-color 0.1s;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             text-align: center;
@@ -72,45 +60,28 @@
         #game-area h1 { font-family: 'Jua', sans-serif; font-size: 2.5rem; margin: 0; }
         #game-area p { font-size: 1.1rem; margin-top: 10px; opacity: 0.9; }
         
-        /* State Colors */
-        .state-wait { background-color: #0984e3 !important; } /* Blue */
-        .state-ready { background-color: #d63031 !important; } /* Red */
-        .state-go { background-color: #00b894 !important; } /* Green */
+        .state-wait { background-color: #0984e3 !important; } 
+        .state-ready { background-color: #d63031 !important; } 
+        .state-go { background-color: #00b894 !important; } 
 
         .top-bar { display: flex; justify-content: flex-start; margin-bottom: 20px; }
         .back-btn { background: none; border: none; font-size: 1rem; color: #b2bec3; cursor: pointer; }
 
-        /* Result Screen */
         .result-card { text-align: center; background: #fdfdfd; border-radius: 20px; padding: 40px 20px; border: 1px solid #eee; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .res-icon { font-size: 5rem; margin-bottom: 10px; }
         #res-level { color: #00b894; font-weight: bold; margin-bottom: 5px; }
         #res-title { font-family: 'Jua', sans-serif; font-size: 3rem; color: #2d3436; margin-bottom: 10px; }
         #res-desc { color: #636e72; line-height: 1.7; word-break: keep-all; }
-        .action-buttons { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-
-        /* SEO Article Section */
-        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #0984e3; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
-        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        /* Toast */
         #toast { visibility: hidden; min-width: 250px; margin-left: -125px; background-color: #333; color: #fff; text-align: center; border-radius: 2px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; font-size: 17px; opacity: 0; transition: 0.5s; }
         #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 SimSim Labs</a>
-            <div class="lang-switch">
-                <a href="../reaction.html" class="lang-btn">🇰🇷 KO</a>
-                <a href="reaction.html" class="lang-btn active">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
@@ -120,7 +91,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -128,11 +98,11 @@
                 <div class="icon-large">⚡</div>
                 <h1 class="main-title">Reaction Test</h1>
                 <p class="sub-desc">
-                    How fast are your reflexes?<br>
-                    Click as soon as the screen turns green!<br>
-                    A battle of milliseconds.
+                    How fast are your neural pathways?<br>
+                    Click immediately when the screen turns green!<br>
+                    Challenge your reflex speed now.
                 </p>
-                <button onclick="startGame()" class="btn-primary">Start Test</button>
+                <button onclick="startGame()" class="btn-primary">Start Challenge</button>
             </div>
         </main>
 
@@ -143,12 +113,12 @@
             
             <div id="game-area" class="state-wait" onmousedown="handleClick()" ontouchstart="handleClick()">
                 <div id="game-icon" style="font-size: 4rem; margin-bottom: 10px;">⚡</div>
-                <h1 id="game-msg">Click to Start</h1>
-                <p id="game-sub">Wait for the green color.</p>
+                <h1 id="game-msg">Click to Ready</h1>
+                <p id="game-sub">Wait for the green screen.</p>
             </div>
             
             <div class="record-list" style="margin-top: 20px; text-align: center; color: #666;">
-                <p>Last Score: <span id="last-score" style="font-weight:bold; color:#0984e3;">-</span> ms</p>
+                <p>Latest Score: <span id="last-score" style="font-weight:bold; color:#0984e3;">-</span> ms</p>
             </div>
         </main>
 
@@ -157,13 +127,13 @@
                 <div class="res-icon" id="res-icon">⏱️</div>
                 <h3 id="res-level">Level ?</h3>
                 <h1 id="res-title">0 ms</h1>
-                <p id="res-desc">Result description.</p>
+                <p id="res-desc">Analyzing your data...</p>
             </div>
             
             <div class="action-buttons">
-                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share Score</button>
-                <button onclick="resetGame()" class="btn-primary" style="background-color:#00b894;">Try Again</button>
-                <button onclick="location.href='index.html'" class="btn-secondary" style="margin-top:10px;">Other Tests</button>
+                <button onclick="shareResult()" class="btn-secondary"><i class="fa-solid fa-link"></i> Share My Reflexes</button>
+                <button onclick="resetGame()" class="btn-primary" style="background-color:#00b894; box-shadow: 0 4px 0 #008f72;">Try Again</button>
+                <button onclick="location.href='index.html'" class="btn-secondary">Other Skill Tests</button>
             </div>
         </main>
 
@@ -175,39 +145,27 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <h3>⚡ Nervous System & Reflexes</h3>
-            <p>
-                It takes about 0.2 seconds (200ms) for a visual signal to travel from your eyes to your brain and down to your muscles. However, trained pro gamers or athletes can react as fast as 0.15 seconds or less.
+        <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+            <h3 style="color:#0984e3; margin-bottom:15px; font-family:'Jua', sans-serif;">⚡ Neural Reflexes and Cognitive Speed</h3>
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                The average human reaction time to a visual stimulus is approximately 250 milliseconds (0.25 seconds). This duration represents the time it takes for light to enter the eyes, be processed by the brain's visual cortex, and then trigger a motor command to the muscles. High-performance individuals, such as <strong>professional gamers</strong>, F1 racers, and sprinters, can often achieve reaction times below 180ms.
             </p>
-            <p>
-                This test measures your visual-motor reaction time in milliseconds (ms). Try 5 times to get an accurate average. How agile is your nervous system? Challenge yourself to be in the top 1%!
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all; margin-top:15px;">
+                Factors such as age, fatigue, and even screen latency (input lag) can affect your performance on this test. SimSim Lab's <strong>Reaction Time Test</strong> provides a precise environment to measure your millisecond-level speed. To get an accurate reading of your natural reflex, we recommend taking the test at least five times and calculating your average. Are your reflexes sharp enough to be in the top 1%? Test your speed now and see how you compare to the world!
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/en/privacy.html">Privacy Policy</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">Contact Us</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>More Projects : </span>
-                <a href="https://simsimlabs.com/daily-tools/en" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ Daily Tools (Web Utilities)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 Score Copied!</div>
 
+    <script src="common.js"></script>
+
     <script>
-        let state = 'waiting'; // waiting, ready, now, result
+        let state = 'waiting'; 
         let startTime = 0;
         let endTime = 0;
         let timeoutId = null;
@@ -235,30 +193,25 @@
             area.className = 'state-wait';
             icon.innerText = '⚡';
             msg.innerText = 'Click to Start';
-            sub.innerText = 'Wait for green.';
+            sub.innerText = 'Wait for the green color.';
             area.style.backgroundColor = ''; 
         }
 
-        function handleClick(e) {
-            // Prevent double firing on touch devices (optional but good practice)
-            if (e && e.type === 'touchstart') {
-                // e.preventDefault(); // Sometimes needed, but be careful with scrolling
-            }
-
+        function handleClick() {
             if (state === 'waiting') {
                 state = 'ready';
                 area.className = 'state-ready';
                 icon.innerText = '🔴';
                 msg.innerText = 'Wait for Green...';
-                sub.innerText = 'Not yet.';
+                sub.innerText = 'Not yet!';
                 
                 const randomTime = Math.floor(Math.random() * 3000) + 2000;
                 timeoutId = setTimeout(() => {
                     state = 'now';
                     area.className = 'state-go';
                     icon.innerText = '🟢';
-                    msg.innerText = 'CLICK!';
-                    sub.innerText = 'Click Now!';
+                    msg.innerText = 'CLICK NOW!';
+                    sub.innerText = 'Go! Go! Go!';
                     startTime = Date.now();
                 }, randomTime);
 
@@ -267,14 +220,13 @@
                 state = 'waiting';
                 area.className = 'state-wait'; 
                 icon.innerText = '⚠️';
-                msg.innerText = 'Too Early!';
-                sub.innerText = 'Click when it turns green. Click to retry.';
+                msg.innerText = 'Too Fast!';
+                sub.innerText = 'Click ONLY when it turns green. Click to retry.';
             
             } else if (state === 'now') {
                 endTime = Date.now();
                 score = endTime - startTime;
                 state = 'result';
-                
                 document.getElementById('last-score').innerText = score;
                 setTimeout(showResult, 200);
             }
@@ -285,29 +237,24 @@
             document.getElementById('screen-result').classList.add('active');
 
             let level = "";
-            let title = "";
+            let title = score + " ms";
             let desc = "";
 
             if (score < 180) {
                 level = "God Like";
-                title = "⚡ " + score + " ms";
-                desc = "Inhuman reflexes! Pro gamer level.";
+                desc = "Inhuman reflexes! You're definitely at a pro gamer level.";
             } else if (score < 250) {
                 level = "Pro Gamer";
-                title = "🏎️ " + score + " ms";
-                desc = "Top 1% speed. Amazing!";
+                desc = "Excellent! You're faster than the vast majority of people.";
             } else if (score < 350) {
                 level = "Average";
-                title = "🚗 " + score + " ms";
-                desc = "Average speed. Focus to get faster.";
+                desc = "Solid performance. You're right in the middle of the pack.";
             } else if (score < 500) {
                 level = "Turtle";
-                title = "🐢 " + score + " ms";
-                desc = "A bit slow. Are you tired?";
+                desc = "A bit slow today. Are you feeling tired? Try again!";
             } else {
                 level = "Sloth";
-                title = "🦥 " + score + " ms";
-                desc = "Were you sleeping? Try again!";
+                desc = "Did you fall asleep? Let's try to focus and go again!";
             }
 
             document.getElementById('res-level').innerText = level;
@@ -316,9 +263,8 @@
         }
 
         function shareResult() {
-            const text = `Reaction Time Test: ${score}ms! How fast are you?`;
+            const text = `I got ${score}ms on the Reaction Time Test! Can you beat my speed?`;
             const url = window.location.href;
-            
             if (navigator.share) {
                 navigator.share({ title: 'Reaction Test', text: text, url: url });
             } else {

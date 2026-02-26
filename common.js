@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if(footerBox) {
         footerBox.innerHTML = `
             <footer>
-                <p>© 2026 심심풀이 연구소</p>
+                <p>© 2024 심심풀이 연구소</p>
                 <div class="footer-links">
                     <a href="privacy.html">개인정보처리방침</a> | <a href="https://forms.gle/1arMG4Y5RodkcpEY7" target="_blank">문의하기</a>
                 </div>

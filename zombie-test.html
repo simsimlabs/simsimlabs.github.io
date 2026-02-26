@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>좀비 아포칼립스 생존 테스트 - 심심풀이 연구소</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/zombie-test.html">
 
     <meta name="description" content="좀비 사태 발생! 당신의 생존 확률은? 15가지 질문으로 알아보는 아포칼립스 생존 등급 테스트. 리더형인지 짐덩어리인지 확인해보세요.">
@@ -14,25 +12,26 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="🧟‍♂️ 좀비 아포칼립스 생존 확률 테스트">
     <meta property="og:description" content="지금 당장 좀비 사태가 터진다면? 나의 생존 등급과 생존 일수를 계산해드립니다. 당신은 리더인가요, 짐덩어리인가요?">
-    <meta property="og:image" content="https://simsimlabs.com/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/thumbnail.webp"> 
     <meta property="og:url" content="https://simsimlabs.com/zombie-test.html">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        /* 추가적인 인라인 스타일 (반응형 및 테마 적용) */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #2d3436; color: #dfe6e9; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: #353b48; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.5); display: flex; flex-direction: column; }
+        /* 좀비 테마 전용 다크 스타일 덮어쓰기 */
+        body { background-color: #2d3436; color: #dfe6e9; }
+        .app-container { background: #353b48; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        header { border-bottom: 1px solid #444; background: #2f3640; }
+        .logo { color: #e17055; }
+        .lang-switch .lang-btn.active { color: #e17055; }
+        .ad-banner { background: #2d3436; border-bottom: 1px solid #444; }
+        footer { border-top: 1px solid #444; background: #2d3436; }
         
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #444; background: #2f3640; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #e17055; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #e17055; font-weight: bold; }
-
-        .ad-banner { background: #2d3436; padding: 10px 0; text-align: center; overflow: hidden; border-bottom: 1px solid #444; }
-
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
@@ -42,11 +41,10 @@
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #e17055; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .sub-desc { color: #b2bec3; line-height: 1.6; margin-bottom: 40px; }
         
-        /* 버튼 (좀비 테마 - 붉은색 계열) */
-        .btn-primary { background-color: #c0392b; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; box-shadow: 0 4px 0 #96281b; }
+        /* 버튼 (붉은색 계열) */
+        .btn-primary { background-color: #c0392b; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 0 auto; display: block; box-shadow: 0 4px 0 #96281b; }
         .btn-primary:active { transform: translateY(4px); box-shadow: none; }
-        
-        .btn-secondary { background-color: #636e72; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-bottom: 10px; }
+        .btn-secondary { background-color: #636e72; color: white; border: none; padding: 15px 30px; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin: 10px auto; display: block; }
         .btn-secondary:hover { background-color: #b2bec3; }
 
         /* 퀴즈 화면 */
@@ -56,7 +54,7 @@
         .progress-bar { height: 100%; background: #e17055; width: 0%; transition: width 0.3s; }
         
         .quiz-content { text-align: center; animation: fadeIn 0.5s; }
-        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #dfe6e9; }
+        #q-text { font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 40px; color: #dfe6e9; word-break: keep-all; }
         .opt-btn { display: block; width: 100%; padding: 18px; margin-bottom: 15px; border: 1px solid #636e72; border-radius: 10px; background: #2d3436; font-size: 1rem; color: #dfe6e9; cursor: pointer; transition: 0.2s; text-align: left; }
         .opt-btn:hover { border-color: #e17055; color: #e17055; background: #3d3d3d; }
 
@@ -64,16 +62,13 @@
         .result-card { text-align: center; background: #2f3640; border-radius: 20px; padding: 40px 20px; border: 1px solid #444; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .res-icon { font-size: 5rem; margin-bottom: 10px; }
         #res-level { color: #e17055; font-weight: bold; margin-bottom: 5px; }
-        #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #dfe6e9; margin-bottom: 20px; }
+        #res-title { font-family: 'Jua', sans-serif; font-size: 2.2rem; color: #dfe6e9; margin-bottom: 20px; word-break: keep-all; }
         #res-desc { color: #b2bec3; line-height: 1.7; word-break: keep-all; }
         .action-buttons { text-align: center; }
 
         /* 하단 설명글 (SEO용) */
         .article-section { padding: 30px 20px; background: #2f3640; border-top: 1px solid #444; color: #b2bec3; line-height: 1.8; font-size: 0.95rem; }
         .article-section h3 { color: #e17055; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #636e72; font-size: 0.85rem; border-top: 1px solid #444; margin-top: auto; background: #2d3436; }
-        .footer-links a { color: #636e72; text-decoration: none; margin: 0 5px; }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -85,13 +80,7 @@
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-            <div class="lang-switch">
-                <a href="zombie-test.html" class="lang-btn active">🇰🇷 KO</a>
-                <a href="en/zombie-test.html" class="lang-btn">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#636e72; display:block; margin-bottom:5px;">Sponsored</span>
@@ -101,7 +90,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-start" class="screen active">
@@ -129,7 +117,7 @@
             <div class="quiz-content">
                 <h2 id="q-text">질문 내용</h2>
                 <div id="answer-box">
-                    </div>
+                </div>
             </div>
         </main>
 
@@ -155,39 +143,26 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <div class="article-section">
             <h3>🧟‍♂️ 재난 상황에서의 생존 심리</h3>
             <p>
-                좀비 아포칼립스는 단순한 공상 과학 소재가 아닙니다. 극한 상황에서 인간이 내리는 판단과 행동 양식을 시뮬레이션하는 좋은 도구입니다. 당신은 위기 상황에서 리더형인가요, 협력형인가요, 아니면 독자 생존형인가요?
+                좀비 아포칼립스는 단순한 공상 과학 소재가 아닙니다. 극한 상황에서 인간이 내리는 판단과 행동 양식을 시뮬레이션하는 흥미로운 심리학적 도구이기도 합니다. 위기 상황이 닥쳤을 때, 당신은 그룹을 이끄는 리더형인가요, 협력하여 살아남는 협동형인가요, 아니면 오직 나만의 안위를 생각하는 독자 생존형인가요?
             </p>
-            <p>
-                심심풀이 연구소의 <strong>좀비 생존 테스트</strong>는 위기 상황에서의 의사결정 능력, 도덕적 딜레마, 생존 기술에 대한 지식을 기반으로 당신의 생존 확률을 계산합니다. 영화 속 주인공처럼 끝까지 살아남을 수 있을지 지금 바로 확인하세요.
+            <p style="margin-top:15px;">
+                심심풀이 연구소의 <strong>좀비 생존 테스트</strong>는 긴급 상황에서의 의사결정 능력, 도덕적 딜레마 앞에서의 선택, 그리고 기본적인 생존 기술에 대한 지식을 종합하여 당신의 생존 확률을 계산합니다. 영화 속 주인공처럼 끝까지 살아남을 수 있을지, 아니면 안타까운 엑스트라로 남을지 지금 바로 확인해보세요.
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/privacy.html">개인정보처리방침</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>함께 운영하는 곳 : </span>
-                <a href="https://simsimlabs.com/daily-tools/" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ 데일리 툴즈 (유용한 웹 도구)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 링크가 복사되었습니다!</div>
 
+    <script src="common.js"></script>
+
     <script>
-        // --- 데이터 영역 (15문항) ---
         const questions = [
             { q: "속보! 좀비 바이러스가 퍼졌다는 뉴스가 나온다.", a: [{ t: "창문 잠그고 집에서 구조를 기다린다.", s: 5 }, { t: "당장 식량을 털러 마트로 뛴다.", s: 10 }, { t: "거짓말이라며 무시하고 출근한다.", s: 0 }] },
             { q: "무기 하나를 챙길 수 있다면?", a: [{ t: "소리는 크지만 강력한 샷건.", s: 6 }, { t: "조용하고 내구성이 좋은 야구방망이.", s: 10 }, { t: "멋있는 일본도 (카타나).", s: 4 }] },
@@ -206,7 +181,6 @@
             { q: "마지막 순간, 막다른 길에 몰렸다.", a: [{ t: "인간답게 최후를 맞이한다.", s: 5 }, { t: "좀비가 되어서라도 산다.", s: 2 }, { t: "끝까지 싸우다 동귀어진한다.", s: 10 }] }
         ];
 
-        // 결과 데이터 (0~150점 -> 10단계 매핑)
         const results = [
             { lv: "Lv.1", icon: "🍗", t: "오프닝 희생양", d: "영화 시작 5분 만에 '어? 저게 뭐지?' 하다가 물리는 타입입니다. 다음 생엔 눈치를 챙기세요." },
             { lv: "Lv.2", icon: "📢", t: "답답한 민폐 캐릭터", d: "하지 말라는 짓만 골라 하다가 소리 질러서 팀원 위치까지 발각되게 만듭니다." },

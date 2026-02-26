@@ -7,41 +7,27 @@
     
     <meta name="description" content="심심풀이 연구소 및 패밀리 사이트(게임 연구소, 데일리 툴즈)의 개인정보처리방침입니다.">
     <link rel="canonical" href="https://simsimlabs.com/privacy.html">
-    <meta name="robots" content="noindex"> <link rel="stylesheet" href="style.css">
+    <meta name="robots" content="noindex"> 
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        /* 가독성을 위한 추가 스타일 */
-        .privacy-content {
-            font-size: 0.95rem;
-            color: #444;
-            line-height: 1.8;
-            text-align: left;
-            word-break: keep-all;
-        }
-        .privacy-content h3 {
-            font-size: 1.1rem;
-            color: #2d3436;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            border-left: 4px solid #6c5ce7;
-            padding-left: 10px;
-        }
-        .privacy-content ul {
-            background: #f8f9fa;
-            padding: 15px 20px 15px 35px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
+        /* 가독성을 위한 추가 스타일 (이 페이지 전용) */
+        .screen { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .privacy-content { font-size: 0.95rem; color: #444; line-height: 1.8; text-align: left; word-break: keep-all; }
+        .privacy-content h3 { font-size: 1.1rem; color: #2d3436; margin-top: 25px; margin-bottom: 10px; border-left: 4px solid #6c5ce7; padding-left: 10px; }
+        .privacy-content ul { background: #f8f9fa; padding: 15px 20px 15px 35px; border-radius: 10px; margin-bottom: 20px; }
+        .btn-primary { background-color: #6c5ce7; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 200px; margin: 0 auto; display: block; }
+        .btn-primary:hover { background-color: #5f27cd; transform: translateY(-2px); }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-            <a href="index.html" style="font-size:0.9rem; color:#666; text-decoration:none;">🏠 홈으로</a>
-        </header>
+        <div id="header-placeholder"></div>
 
         <main class="screen active">
             <h1 style="font-family: 'Jua', sans-serif; font-size: 1.8rem; margin-bottom: 30px; text-align:center; color:#2d3436;">개인정보처리방침</h1>
@@ -88,19 +74,13 @@
             </div>
             
             <div style="margin-top: 40px; text-align: center;">
-                <button onclick="location.href='index.html'" class="btn-primary" style="max-width:200px;">확인</button>
+                <button onclick="location.href='index.html'" class="btn-primary">확인</button>
             </div>
         </main>
 
-        <footer>
-            <p>© 2024 심심풀이 연구소</p>
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>함께 운영하는 곳 : </span>
-                <a href="https://simsimlabs.com/daily-tools/" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ 데일리 툴즈
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
+
+    <script src="common.js"></script>
 </body>
 </html>

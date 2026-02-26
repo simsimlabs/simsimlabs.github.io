@@ -3,7 +3,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // 1. 공통 헤더 삽입
     const headerBox = document.getElementById("header-placeholder");
-    if(headerBox) {
+    if(headerBox) { 
         headerBox.innerHTML = `
             <header>
                 <a href="index.html" class="logo">🧪 심심풀이 연구소</a>

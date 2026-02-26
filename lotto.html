@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로또 번호 생성기 - 심심풀이 연구소</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2261846676525942" crossorigin="anonymous"></script>
-
     <link rel="canonical" href="https://simsimlabs.com/lotto.html">
 
     <meta name="description" content="AI 알고리즘이 추천하는 이번 주 행운의 로또 번호! 1등 당첨을 기원합니다. 무작위 랜덤 추첨이 아닌, 당신의 운과 타이밍을 결합한 번호 생성기.">
@@ -14,35 +12,26 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="🎰 AI 로또 번호 생성기 | 행운의 숫자 뽑기">
     <meta property="og:description" content="이번 주 로또 1등은 나? 단순 랜덤이 아닌, 당신의 터치 타이밍과 알고리즘이 결합된 행운의 번호를 뽑아보세요.">
-    <meta property="og:image" content="https://simsimlabs.com/thumbnail.jpg">
+    <meta property="og:image" content="https://simsimlabs.com/thumbnail.webp">
     <meta property="og:url" content="https://simsimlabs.com/lotto.html">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        /* 추가적인 인라인 스타일 (반응형 보완) */
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f9f9f9; color: #333; margin: 0; padding: 0; }
-        .app-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; }
-        .logo { font-family: 'Jua', sans-serif; font-size: 1.2rem; color: #333; text-decoration: none; }
-        .lang-switch .lang-btn { text-decoration: none; font-size: 0.9rem; color: #999; margin-left: 10px; }
-        .lang-switch .lang-btn.active { color: #333; font-weight: bold; }
-
-        .ad-banner { background: #f1f2f6; padding: 10px 0; text-align: center; overflow: hidden; }
-
+        /* 로또 생성기 전용 스타일 */
         .screen { display: none; padding: 20px; flex: 1; flex-direction: column; }
         .screen.active { display: flex; }
 
-        /* 메인 화면 */
         .hero { text-align: center; padding: 20px 0; }
         .icon-large { font-size: 5rem; margin-bottom: 20px; animation: bounce 2s infinite; }
         .main-title { font-family: 'Jua', sans-serif; font-size: 2.5rem; color: #2d3436; margin-bottom: 10px; }
         .sub-desc { color: #636e72; line-height: 1.6; margin-bottom: 20px; }
         
-        /* 버튼 */
         .btn-primary { background-color: #0984e3; color: white; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; box-shadow: 0 4px 0 #0769b5; }
         .btn-primary:active { transform: translateY(4px); box-shadow: none; }
         .btn-secondary { background-color: #dfe6e9; color: #2d3436; border: none; padding: 15px 30px; border-radius: 30px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; max-width: 300px; margin-top: 10px; }
@@ -66,13 +55,6 @@
         .history-item { border-bottom: 1px solid #eee; padding: 8px 0; display: flex; justify-content: space-between; }
         .history-item:last-child { border-bottom: none; }
 
-        /* 하단 설명글 (SEO용) */
-        .article-section { padding: 30px 20px; background: #fff; border-top: 1px solid #eee; color: #555; line-height: 1.8; font-size: 0.95rem; }
-        .article-section h3 { color: #0984e3; font-family: 'Jua', sans-serif; margin-bottom: 15px; }
-
-        footer { text-align: center; padding: 30px; color: #b2bec3; font-size: 0.85rem; border-top: 1px solid #eee; margin-top: auto; }
-        .footer-links a { color: #b2bec3; text-decoration: none; margin: 0 5px; }
-
         @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
@@ -83,13 +65,7 @@
 </head>
 <body>
     <div class="app-container">
-        <header>
-            <a href="index.html" class="logo">🧪 심심풀이 연구소</a>
-            <div class="lang-switch">
-                <a href="lotto.html" class="lang-btn active">🇰🇷 KO</a>
-                <a href="en/lotto.html" class="lang-btn">🇺🇸 EN</a>
-            </div>
-        </header>
+        <div id="header-placeholder"></div>
 
         <div class="ad-banner">
             <span style="font-size:10px; color:#ccc; display:block; margin-bottom:5px;">Sponsored</span>
@@ -99,7 +75,6 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <main id="screen-game" class="screen active">
@@ -127,7 +102,7 @@
             <div class="history-box">
                 <div style="margin-bottom:10px; font-weight:bold; color:#333;">📋 최근 생성 기록</div>
                 <div id="history-list">
-                    </div>
+                </div>
             </div>
             
             <div class="action-buttons" style="text-align:center; margin-top:20px;">
@@ -143,36 +118,24 @@
                  data-ad-slot="4380369066"
                  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div class="article-section">
-            <h3>🎰 로또 확률과 행운의 알고리즘</h3>
-            <p>
-                로또 1등 당첨 확률은 약 814만 분의 1입니다. 벼락 맞을 확률보다 낮다고 하지만, 매주 당첨자는 나옵니다. 우리는 왜 로또를 살까요? 그것은 '희망'을 사기 때문입니다.
+        <div class="article-section" style="background:#f9f9f9; padding:30px; border-radius:15px; margin-bottom:30px; border:1px solid #eee;">
+            <h3 style="color:#0984e3; margin-bottom:15px; font-family:'Jua', sans-serif;">🎰 로또 확률과 행운의 알고리즘</h3>
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all;">
+                로또 1등 당첨 확률은 약 814만 분의 1입니다. 벼락 맞을 확률보다 낮다고 하지만, 매주 당첨자는 어김없이 등장합니다. 우리가 로또를 구매하는 이유는 단순한 금전적 기대를 넘어, 일주일 동안 간직할 수 있는 '희망'과 설렘을 얻기 때문일 것입니다.
             </p>
-            <p>
-                심심풀이 연구소의 <strong>로또 번호 생성기</strong>는 단순한 무작위(Random) 추출 방식을 넘어, 사용자가 버튼을 누르는 미세한 타이밍(밀리초 단위)을 시드값으로 활용하여 당신만의 고유한 럭키 넘버를 생성합니다. 과학적 알고리즘과 당신의 운이 만나는 순간, 기적은 일어날지도 모릅니다. 이번 주의 주인공은 바로 당신입니다!
+            <p style="color:#636e72; line-height:1.8; word-break:keep-all; margin-top:15px;">
+                심심풀이 연구소의 <strong>로또 번호 생성기</strong>는 단순한 무작위(Random) 추출 방식을 넘어, 사용자가 버튼을 누르는 미세한 타이밍(밀리초 단위)을 시드(Seed)값으로 활용하여 당신만의 고유한 럭키 넘버를 생성합니다. 과학적 알고리즘과 당신의 운이 만나는 그 찰나의 순간, 기적은 일어날지도 모릅니다. 생성된 번호를 기록하고 친구들과 공유하며 이번 주의 주인공이 되어보세요!
             </p>
         </div>
         
-        <footer>
-            <p>© 2024 SimSim Game Labs. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://simsimlabs.com/privacy.html">개인정보처리방침</a> | 
-                <a href="https://forms.gle/1arMG4Y5RodkcpEY7">문의하기</a>
-            </div>
-
-            <div style="margin-top: 15px; font-size: 0.85rem; color: #999;">
-                <span>함께 운영하는 곳 : </span>
-                <a href="https://simsimlabs.com/daily-tools/" target="_blank" style="color: #6c5ce7; font-weight: bold; text-decoration: none;">
-                    🛠️ 데일리 툴즈 (유용한 웹 도구)
-                </a>
-            </div>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <div id="toast">📋 번호가 복사되었습니다!</div>
+
+    <script src="common.js"></script>
 
     <script>
         function generateLotto() {
